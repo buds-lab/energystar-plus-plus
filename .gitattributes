@@ -1,1 +1,3 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
+NYC/data/PLUTO_for_WEB/* filter=lfs diff=lfs merge=lfs -text
+NYC/data/PLUTO_for_WEB/*.csv filter=lfs diff=lfs merge=lfs -text
