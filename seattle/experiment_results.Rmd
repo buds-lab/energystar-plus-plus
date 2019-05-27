@@ -1,0 +1,417 @@
+---
+title: "Seattle dataset results"
+output: 
+  #github_document
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    theme: journal
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(jtools)
+library(readr)
+library(dplyr)
+
+library(jtools)
+library(caret)
+library(MASS)
+library(tibble)
+library(broom)
+
+library(DMwR)  ## for unscale
+
+options(scipen=10) # avoid scientific notation in plots
+
+```
+
+
+```{r}
+variableImportance <- function(m) {
+  vi.int <- varImp(m) %>% 
+       mutate(Variable=row.names(.)) %>%
+       #mutate(Overall=round(Overall,2)) %>%
+       mutate(Percentage = round(Overall*100/sum(Overall), 2)) %>%
+       arrange(-Percentage)
+  return(vi.int)
+}
+
+coefTable <- function(m) {
+  intCoeff <- as.data.frame(summary(m)$coefficients) %>%
+       mutate(Variable = rownames(.)) %>%
+       mutate(pVal = round(`Pr(>|t|)`, 4)) %>%
+       arrange(pVal) %>%
+       mutate(Significance = 
+                case_when(pVal <= 0.001 ~ "0.001", 
+                          pVal > 0.001 & pVal <= 0.01 ~ "0.01",
+                          pVal > 0.01  & pVal <= 0.05 ~ "0.05",
+                          pVal > 0.05  & pVal <= 0.1  ~ "0.1",
+                          pVal > 0.1   & pVal <= 0.2  ~  "0.2"))
+  return(intCoeff)
+}
+
+filterCoefTable <- function(coefTab) {
+  coefTab1 = coefTab %>% 
+    #filter(!is.na(Significance)) %>%
+    filter(Significance <= 0.1) %>%
+    dplyr::select(Variable,pVal,Significance)
+  return(coefTab1)
+}
+```
+
+
+```{r}
+# Loading all non-interacation models
+lm1a = readRDS("SiteEnergyUseLog_Scale_lmFitSW.RDS")
+lm1b = readRDS("SiteEnergyUseLog_NoScale_lmFitSW.RDS")
+lm1c = readRDS("SiteEnergyUse_NoScale_lmFitSW.RDS")
+
+lm1a.coef = coefTable(lm1a)
+lm1b.coef = coefTable(lm1b)
+lm1c.coef = coefTable(lm1c)
+
+lm1a.coef1 = filterCoefTable(lm1a.coef)
+lm1b.coef1 = filterCoefTable(lm1b.coef)
+lm1c.coef1 = filterCoefTable(lm1c.coef)
+
+lm1a.vi = variableImportance(lm1a)
+lm1b.vi = variableImportance(lm1b)
+lm1c.vi = variableImportance(lm1c)
+
+######## using source eui
+lm2a = readRDS("SourceEUILog_Scale_lmFitSW.RDS")
+lm2b = readRDS("SourceEUILog_NoScale_lmFitSW.RDS")
+lm2c = readRDS("SourceEUI_NoScale_lmFitSW.RDS")
+
+lm2a.coef = coefTable(lm2a)
+lm2b.coef = coefTable(lm2b)
+lm2c.coef = coefTable(lm2c)
+
+lm2a.coef1 = filterCoefTable(lm2a.coef)
+lm2b.coef1 = filterCoefTable(lm2b.coef)
+lm2c.coef1 = filterCoefTable(lm2c.coef)
+
+lm2a.vi = variableImportance(lm2a)
+lm2b.vi = variableImportance(lm2b)
+lm2c.vi = variableImportance(lm2c)
+# options(max.print=99)
+# coef = m$coefficients[!is.na(m$coefficients) ]
+# 
+# ss = summary(m)
+# View(ss$coefficients)
+# print(nrow(ss$coefficients))
+#summ(m)
+```
+
+
+
+```{r}
+# Loading all interacation models
+m1a = readRDS("SiteEnergyUseLog_Scale_IntlmFit.RDS")
+m1b = readRDS("SiteEnergyUseLog_NoScale_IntlmFit.RDS")
+m1c = readRDS("SiteEnergyUse_NoScale_IntlmFit.RDS")
+
+m1a.coef = coefTable(m1a)
+m1b.coef = coefTable(m1b)
+m1c.coef = coefTable(m1c)
+
+m1a.coef1 = filterCoefTable(m1a.coef)
+m1b.coef1 = filterCoefTable(m1b.coef)
+m1c.coef1 = filterCoefTable(m1c.coef)
+
+m1a.vi = variableImportance(m1a)
+m1b.vi = variableImportance(m1b)
+m1c.vi = variableImportance(m1c)
+
+######## using source eui
+m2a = readRDS("SourceEUILog_Scale_IntlmFit.RDS")
+m2b = readRDS("SourceEUILog_NoScale_IntlmFit.RDS")
+m2c = readRDS("SourceEUI_NoScale_IntlmFit.RDS")
+
+m2a.coef = coefTable(m2a)
+m2b.coef = coefTable(m2b)
+m2c.coef = coefTable(m2c)
+
+m2a.coef1 = filterCoefTable(m2a.coef)
+m2b.coef1 = filterCoefTable(m2b.coef)
+m2c.coef1 = filterCoefTable(m2c.coef)
+
+m2a.vi = variableImportance(m2a)
+m2b.vi = variableImportance(m2b)
+m2c.vi = variableImportance(m2c)
+# options(max.print=99)
+# coef = m$coefficients[!is.na(m$coefficients) ]
+# 
+# ss = summary(m)
+# View(ss$coefficients)
+# print(nrow(ss$coefficients))
+#summ(m)
+```
+
+# Comparision of all models WITHOUT interactions
+```{r}
+li = list( 
+  "log(SiteEnergyUse) - mean centering" = lm1a,
+  "log(SiteEnergyUse) - No mean centering" = lm1b, 
+  "SiteEnergyUse - No mean centering" = lm1c,
+  
+  "log(SourceEUI) - mean centering" = lm2a,
+  "log(SourceEUI) - No mean centering" = lm2b, 
+  "SourceEUI - No mean centering" = lm2c
+)
+
+all.coef = bind_rows(
+  lapply(names(li), function(x){
+    #print(paste("processing ", x))
+    m = li[[x]]
+    gl = add_column(round(glance(m),3), .before = 1, model = x)
+    coef = coefTable(m)
+    coef1 = filterCoefTable(coef)
+    df = as.data.frame.matrix(t(table(coef1$Significance)))
+    
+    coef1 = subset(coef1, Variable != "(Intercept)")
+    df["Variables"] = coef1$Variable[1]
+    cbind(gl,df)
+}))
+
+all1 = all.coef[, c(1:3, 13:17)]
+knitr::kable(all1)
+```
+
+
+# Comparision of all models WITH interactions
+```{r}
+# ###########
+# ########### OLD CODE
+# #########
+# #make a table of significance for all experiments
+# li = list(m1a.coef1, m1b.coef1, m1c.coef1, 
+#           m2a.coef1, m2b.coef1, m2c.coef1)
+# 
+# all.si = bind_rows(
+#   lapply(li, function(x){
+#     df = as.data.frame.matrix(t(table(x$Significance)))
+#     df["Variables"] = x$Variable[1]
+#     df
+# }))
+# 
+# all = add_column(round(glance(m1a),3), .before = 1, 
+#                  model = "log(SiteEnergyUse) - mean centering")
+# all = bind_rows(all, add_column(round(glance(m1b),3), .before = 1,
+#                                 model = "log(SiteEnergyUse) - No mean centering"))
+# all = bind_rows(all, add_column(round(glance(m1c),3), .before = 1, 
+#                                 model = "SiteEnergyUse - No mean centering"))
+# 
+# all = bind_rows(all, add_column(round(glance(m2a),3), .before = 1, 
+#                                 model = "log(SourceEUI) - mean centering"))
+# all = bind_rows(all, add_column(round(glance(m2b),3), .before = 1, 
+#                                 model = "log(SourceEUI) - No mean centering"))
+# all = bind_rows(all, add_column(round(glance(m2c),3), .before = 1, 
+#                                 model = "SourceEUI - No mean centering"))
+# 
+# all = bind_cols(all, all.si)
+# 
+# all1 = all[, c(1:3, 13:17)]
+# 
+# #so=summ(fit.model)
+# #knitr::kable(glance.summ.lm(so))
+# knitr::kable(all1)
+
+```
+
+```{r}
+li = list( 
+  "log(SiteEnergyUse) - mean centering" = m1a,
+  "log(SiteEnergyUse) - No mean centering" = m1b, 
+  "SiteEnergyUse - No mean centering" = m1c,
+  
+  "log(SourceEUI) - mean centering" = m2a,
+  "log(SourceEUI) - No mean centering" = m2b, 
+  "SourceEUI - No mean centering" = m2c
+)
+
+all.coef = bind_rows(
+  lapply(names(li), function(x){
+    #print(paste("processing ", x))
+    m = li[[x]]
+    gl = add_column(round(glance(m),3), .before = 1, model = x)
+    coef = coefTable(m)
+    coef1 = filterCoefTable(coef)
+    df = as.data.frame.matrix(t(table(coef1$Significance)))
+    df["Variables"] = coef1$Variable[1]
+    cbind(gl,df)
+}))
+
+all1 = all.coef[, c(1:3, 13:17)]
+knitr::kable(all1)
+```
+
+# Experimental results using SiteEnergyUse and interactions
+
+## 1A. Using log(SiteEnergyUse) and scaling all variables
+```{r}
+knitr::kable(m1a.coef1)
+```
+
+
+## 1B. Using log(SiteEnergyUse) and but NOT scaling all variables
+```{r}
+knitr::kable(m1b.coef1)
+```
+
+
+## 1C. Using SiteEnergyUse and NOT scaling all variables
+```{r}
+knitr::kable(m1c.coef1)
+```
+
+```{r}
+library(DMwR)  ## for unscale
+unscale_data <- function(df) {
+  for(col in names(df)) {
+    if( is.numeric(df[, col]) ){
+      # https://stackoverflow.com/questions/10287545/backtransform-scale-for-plotting
+      # https://rdrr.io/cran/DMwR/man/unscale.html
+      #df[, col] = scale(df[, col], center = T, scale = T)
+      df[, col] = unscale(df[, col], df[, col])
+    }
+  }
+  return (df)
+}
+
+```
+
+## Ranking using EER calculation - using model 1A. log(SiteEnergyUse) and scaling all variables
+```{r}
+step.model = m1a
+dat0 = step.model$model
+pre0 = predict(step.model, dat0)
+pre = unscale(pre0, dat0$SiteEnergyUseLog)
+
+dat = unscale_data(dat0)
+
+eer = dat$SiteEnergyUseLog / pre
+dat["eer"] = round(eer,2)
+
+eer_sorted = sort(eer)
+     #plot(eer_sorted, xlab = "Building Id", ylab = "Energy Efficiency Ratio")
+     
+     # Plot cumaltive percentage for energy efficiency ratio
+eer_cs = cumsum(eer_sorted)
+eer_pr = cumsum(eer_sorted) / sum(eer_sorted)
+
+summary(eer_sorted)
+hist(eer_sorted)
+#plot(eer_sorted)
+
+plot(eer_sorted,eer_pr, main = "Cumalativer percentile of EER",
+     cex.lab=1.5, cex.axis=1.5, cex.main=1.5, cex.sub=1.5,
+     #cex.lab=2.0, cex.axis=2.0, cex.main=2.0, cex.sub=2.0,
+     xlab = "Energy Efficiency Ratio", 
+     ylab = "Cumalative percentile")
+
+
+abline(h = 0.8, col = "red", lwd = 2)
+abline(v = 1.6, col = "blue", lwd = 2)
+
+```
+
+## Ranking using EER and clustering - using model 1A. log(SiteEnergyUse) and scaling all variables
+```{r}
+library(Ckmeans.1d.dp)
+
+k = 5
+result <- Ckmeans.1d.dp(eer_sorted, k, y=eer_sorted)
+plot(result)
+
+result <- Ckmeans.1d.dp(eer_sorted, y=eer_sorted)
+plot(result)
+
+k = 5
+result <- Ckmedian.1d.dp(eer_sorted, k)
+plot(result)
+
+result <- Ckmedian.1d.dp(eer_sorted)
+plot(result)
+
+```
+
+
+
+# Experimental results using SourceEUI and interactions
+
+
+## 2A. Using log(SiteEnergyUse) and scaling all variables
+```{r}
+knitr::kable(m2a.coef1)
+```
+
+
+## 2B. Using log(SiteEnergyUse) and but NOT scaling all variables
+```{r}
+knitr::kable(m2b.coef1)
+```
+
+
+## 2C. Using SiteEnergyUse and NOT scaling all variables
+```{r}
+knitr::kable(m2c.coef1)
+```
+
+
+## Ranking using EER calculation - using model 1A. log(SourceEUI) and scaling all variables
+```{r}
+step.model = m2a
+dat0 = step.model$model
+pre0 = predict(step.model, dat0)
+pre = unscale(pre0, dat0$SourceEUILog)
+
+dat = unscale_data(dat0)
+
+eer = dat$SourceEUILog / pre
+dat["eer"] = round(eer,2)
+
+eer_sorted = sort(eer)
+     #plot(eer_sorted, xlab = "Building Id", ylab = "Energy Efficiency Ratio")
+     
+     # Plot cumaltive percentage for energy efficiency ratio
+eer_cs = cumsum(eer_sorted)
+eer_pr = cumsum(eer_sorted) / sum(eer_sorted)
+
+summary(eer_sorted)
+hist(eer_sorted)
+#plot(eer_sorted)
+
+plot(eer_sorted,eer_pr, main = "Cumalativer percentile of EER",
+     cex.lab=1.5, cex.axis=1.5, cex.main=1.5, cex.sub=1.5,
+     #cex.lab=2.0, cex.axis=2.0, cex.main=2.0, cex.sub=2.0,
+     xlab = "Energy Efficiency Ratio", 
+     ylab = "Cumalative percentile")
+
+
+abline(h = 0.8, col = "red", lwd = 2)
+abline(v = 1.6, col = "blue", lwd = 2)
+
+```
+
+## Ranking using EER and clustering - using model 1A. log(SourceEUI) and scaling all variables
+```{r}
+library(Ckmeans.1d.dp)
+
+k = 5
+result <- Ckmeans.1d.dp(eer_sorted, k, y=eer_sorted)
+plot(result)
+
+result <- Ckmeans.1d.dp(eer_sorted, y=eer_sorted)
+plot(result)
+
+k = 5
+result <- Ckmedian.1d.dp(eer_sorted, k)
+plot(result)
+
+result <- Ckmedian.1d.dp(eer_sorted)
+plot(result)
+
+```

@@ -1,0 +1,15 @@
+"","exp","interaction","model","dependent","obs","rank","coef","R.2","Adj.R.2","mse"
+"1","C1",1,"Reg","SourceEUI",68,28,28,0.418,0,1790.915
+"2","C1",1,"Reg","SiteEnergyUse",68,28,28,0.955,0.922,8485187294282.94
+"3","C1a",1,"Reg-Lasso","SourceEUI",68,1,1,NA,NA,3077.111
+"4","C1a",1,"Reg-Ridge","SourceEUI",68,32,32,0.292,-0.318,3061.113
+"5","C1a",1,"Reg-ElasticNet","SourceEUI",68,1,1,NA,NA,3077.111
+"6","C1a",1,"Reg-Lasso","SiteEnergyUse",68,2,2,0.936,0.88,15606853613752.6
+"7","C1a",1,"Reg-Ridge","SiteEnergyUse",68,32,32,0.927,0.864,15228104144202.7
+"8","C1a",1,"Reg-ElasticNet","SiteEnergyUse",68,3,3,0.936,0.881,13864927092083.4
+"9","C2",2,"Reg","SourceEUI",68,68,303,1,1,0
+"10","C2",2,"Reg","SiteEnergyUse",68,68,303,1,1,0
+"11","C2",3,"Reg","SourceEUI",68,68,1702,1,1,0
+"12","C2",3,"Reg","SiteEnergyUse",68,68,1702,1,1,0
+"13","C3a",1,"rpart","SourceEUI",68,8,8,0.254,0.153,2294.449
+"14","C3a",1,"rpart","SiteEnergyUse",68,8,8,0.645,0.597,66536004111356.6
