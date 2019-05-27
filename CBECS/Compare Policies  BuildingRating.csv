@@ -1,0 +1,768 @@
+"Jurisdiction","Additional Requirements","Authority in Charge","Buildings Affected","Compliance Details","Deadline - Multifamily","Deadline - Nonresidential","Deadline - Public/Government","Deadline - Single Family","Disclosure Details","Enacted Date","Exemptions","Floor Area Affected","Mandatory Rating?","Policy Name","Reporting Details","Tool Characteristics","Tool Name","Utility-Requirements","Verification"
+"Atlanta","Audits: Yes
+Water Use Tracking: Yes","Atlanta Mayor's Office of Sustainability","2,900","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Written notice of first violation; Fine of $1,000 if 30 days late, an additional $1,000 every year thereafter","Size: >= 50,000 Sq. Feet
+Deadline: 1 Aug 2015
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jun 2017","Size: >= 50,000 Sq. Feet
+Deadline: 1 Aug 2015
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jun 2017","Size: >= 10,000 Sq. Feet
+Deadline: 30 Apr 2015","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2015","Building does not have certificate of occupancy or is within one year of receiving it, demolition permit, residential/hotel buildings when utility does not provide whole-building data access, if owner is not responsible for any part of utility costs, financial hardship, building does not receive utility services","402,000,000 Sq. Feet","Yes","Atlanta’s Commercial Buildings Energy Efficiency Ordinance (No. 15-O-1101)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Austin","Audits: Yes
+Retrocommisioning: No
+Water Use Tracking: No","Director of the Austin Electric Utility","2,800","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Proof of culpable mental state is not required for a fine of up to $500. If a person acts with criminal negligence, a fine of up to $2,000 may be assessed.
+Number of Buildings in Compliance: 3,527
+Compliance Rate (Based on # of Buildings): 79% (80% commercial, 76% multifamily)
+Compliance Rate (Based on Building Area): 83% commercial, 88% multifamily
+Description: Exemptions are allowed when:
+a) due to special circumstances unique to the applicant's facility and not based on a condition caused by actions of the applicant, strict compliance with provisions of this chapter would cause undue hardship;
+b) due to exhaustion of reasonable energy efficiency measures, full compliance would require performance of work excluded from the scope of Section 6-7-23(B);
+c) application for a permit to substantially remodel or demolish the facility will be filed not later than 6 months after the time of sale; and in the case of a remodel, the owner and the purchaser of the facility have entered into a binding agreement whereby the purchaser of the facility agrees to complete an energy audit within a specified period of time after remodel of the facility is complete;
+d) the director determines that the facility cannot be adequately evaluated using currently available audit or rating tools; or
+e) by filing an application with the director","Size: >= 5  Dwellings
+Deadline: 1 Jun 2011","Size: >= 75,000 Sq. Feet
+Deadline: 1 Jun 2012
+Size: >= 30,000 Sq. Feet
+Deadline: 1 Jun 2013
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Jun 2014","Size: >= 10,000 Sq. Feet
+Deadline: 1 Jun 2014","Size: All
+Deadline: 1 Jun 2009","Required: Yes
+Method: none
+Recipients: Buyers
+Trigger: Point of Transaction
+Trigger Events: Purchase/sell (required)
+Required: Yes
+Method: none
+Recipients: Lessees
+Trigger: Point of Transaction
+Trigger Events: Rent (required)","2008","Residential facilities that meet one or more of the following criteria: constructed no more than ten years before the time of sale; participated in the Austin Energy Home Performance with Energy Star program (or equivalent program) not more than 10 years before the time of sale and either performed at least three efficiency measures, performed all recommended measures, or received from Austin Electric Utility an energy efficiency rebate of at least $500; participated in the Austin Energy Free Weatherization Program (or equivalent) not more than 10 years before the time of sale; or if the facility is manufactured housing designed to be used without a permanent foundation. 
+
+Multifamily facilities where (1) the owner completed comprehensive duct remediation work on the facility through participation in an Austin Electric Utility rebate program no more than 10 years before the applicable audit deadline; (2) HVAC equipment was replaced through an Austin Electric Utility rebate program in all units of the facility no more than 10 years before the applicable audit deadline; and (3) HVAC equipment was replaced with equipment meeting the requirements for an Austin Electric Utility rebate program in all units no more than 10 years before the applicable audit deadline.
+
+Industrial buildings that qualify for tax exemption from State of Texas for manufacturing.","113,000,000 Sq. Feet","Yes","Austin's Energy Conservation Audit & Disclosure Ordinance (#20081106-047)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Works with municipal utility Austin Energy. Properties may be exempted if they participated in a utility rebate program.","Verification: No"
+"Berkeley","Audits: Yes
+Water Use Tracking: Yes","Office of Energy & Sustainable Development","257","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Owners that fail to comply with the ordinance may be subject to a fine of $100 for each violation, and an additional fine of up to $25 for each day that the violation continues, up to a maximum of $1,000 per violation","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jul 2018
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jul 2019
+Size: >= 15,000 Sq. Feet
+Deadline: 1 Jul 2020
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Jul 2021
+Size: < 5,000 Sq. Feet
+Deadline: 1 Jul 2022","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jul 2018
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jul 2019
+Size: >= 15,000 Sq. Feet
+Deadline: 1 Jul 2020
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Jul 2021
+Size: < 5,000 Sq. Feet
+Deadline: 1 Jul 2022","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jul 2018
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jul 2019
+Size: >= 15,000 Sq. Feet
+Deadline: 1 Jul 2020
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Jul 2021
+Size: < 5,000 Sq. Feet
+Deadline: 1 Jul 2022","","Required: Yes
+Method: Report to Recipient
+Recipients: Tenants, Buyers, Lessees
+Trigger: Point of Transaction
+Trigger Events: Purchase/sell (on demand), Rent (on demand)
+Required: Yes
+Method: Report to Recipient
+Recipients: Government
+Trigger: Date Certain
+Frequency: Annually","","Buildings that demonstrate effective and reasonably achievable level of efficiency, based on the specific building type, use, vintage, and condition, that supports the Berkeley Climate Action Plan (CAP) goal of 33% energy-related greenhouse gas reduction from 2000 levels by 2020 and 80% reduction by 2050. Qualified exemptions shall include, but are not limited to:
+1.    Any building that receives a Building Energy Score or Green Building Rating that demonstrates an effective and reasonable level of efficiency, as determined by the Administrator.
+2.    Any building that completes a multi-measure energy improvement project with a verified minimum improvement, as determined by Administrator.
+3.    Any whole building that has been served by an income-qualified Weatherization Assistance program for low-income households.
+4.    Any new building or Extensive Renovation with a construction completion date within ten years of the reporting deadline.
+
+Any building which is subject to rent control in which all of the units, excluding any owner-occupied units, have leases that date prior to January 1, 1999, may be deferred until the next reporting period.
+The requirement for an ENERGY STAR Performance Report and the requirement for an Energy Report may be deferred for up to one reporting cycle in cases of financial hardship.","13,700,000 Sq. Feet","Yes","Berkeley Energy Saving Ordinance (No. 7397)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually
+Required: Yes
+Trigger: Time of Transaction
+Trigger Events: Purchase/sell (required), Rent (required)","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Boston","Audits: Yes
+Water Use Tracking: Yes","Air Pollution Control Commission","1,600","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: $75 to $200 per day for owners. Maximum annual fine is $3,000. Non-residential tenants may be fined up to $35 at a time for failing to supply building owners with their energy data. Residential tenants will not be fined.
+Compliance Rate (Based on Building Area): 84% (2014)
+Description: In the case of non-compliance, warning notice is mailed to the building owner, indicating 30 days to comply or request a hearing. Failure to comply with the notice of violation or adverse hearing decision may result in fines based on square footage of property. Fines also listed for non-residential tenants who fail to comply.","Size: >= 50,000 Sq. Feet
+Deadline: 15 May 2015
+Size: >= 50  Dwellings
+Deadline: 15 May 2015
+Size: >= 35,000 Sq. Feet
+Deadline: 15 May 2017
+Size: >= 35  Dwellings
+Deadline: 15 May 2017","Size: >= 50,000 Sq. Feet
+Deadline: 15 Sep 2014
+Size: >= 35,000 Sq. Feet
+Deadline: 15 May 2016","Size: All
+Deadline: 15 Jun 2013","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2013","On May 14, Mayor Walsh signed an amendment to extend the 2014 reporting deadline to September 15th (originally it was May 15th), providing additional flexibility for implementation in the first year. Threshold also includes two or more non-residential buildings on the same parcel that equal or exceed 100,000 gross square feet.","250,000,000 Sq. Feet","Yes","Boston's Building Energy Reporting and Disclosure Ordinance","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Building owners may authorize an energy or water utility or other third party to report building-specific data on their behalf to the Commission.","Verification: No"
+"Boulder","Audits: Yes
+Retrocommisioning: Yes","City Manager","475","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description:  Failure to comply with the ordinance can result in fines of $0.0025 per square foot up to $1,000 per day of non-compliance.","","Size: >= 50,000 Sq. Feet
+Deadline: 1 Aug 2016
+Size: >= 30,000 Sq. Feet
+Deadline: 1 Jun 2018
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Jun 2020","Size: >= 5,000 Sq. Feet
+Deadline: 1 May 2016","","Required: Yes
+Method: none
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2015","New buildings over 10,000 square feet must report benchmarking data by August 1, 2016. Large industrial campuses must report by June 1, 2016.","26,000,000 Sq. Feet","Yes","Boulder Building Performance Ordinance (No. 8071)","Required: Yes
+Trigger: none
+Trigger Events: none","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Cambridge","Audits: No
+Retrocommisioning: No
+Water Use Tracking: Yes","City of Cambridge Community Development Department","1,121","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: First violation results in a warning. Subsequent violations result in a fine of $300 per day.
+Number of Buildings in Compliance: 1,121
+Area of Buildings in Compliance: 78,026,252 Sq. Feet
+Compliance Rate (Based on # of Buildings): 90% (2014)
+Compliance Rate (Based on Building Area): 93.5% (2014)","Size: >= 50  Dwellings
+Deadline: 1 May 2015","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2015
+Size: >= 25,000 Sq. Feet
+Deadline: 1 May 2016","Size: >= 10,000 Sq. Feet
+Deadline: 31 Dec 2014","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2014","Municipal buildings will report 2013 usage by December 31, 2014 and by May 1 for every year following. All covered properties will report the previous year usage on May 1. New properties with less than 12 months of usage statistics will begin reporting the following year.","78,026,252 Sq. Feet","Yes","Cambridge's Building Energy Use Disclosure Ordinance  (No. 1360)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No
+Notes: The Department may establish certification and/or licensing requirements for the users of benchmarking tools."
+"Chicago","Audits: No
+Retrocommisioning: No
+Water Use Tracking: No","City's Commissioner of Business Affairs and Consumer Protection","3,500","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Owner subject up to $100 fine for 1st violation and additional fines up to $25/day 
+Number of Buildings in Compliance: 1,774
+Area of Buildings in Compliance: 210,200,000 Sq. Feet
+Compliance Rate (Based on # of Buildings): 84%
+Compliance Rate (Based on Building Area): 92% 
+Description: Compliance numbers represent 2014 data, taken from the 2015 Chicago benchmarking report.","Size: >= 250,000 Sq. Feet
+Deadline: 1 Jun 2015
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2016","Size: >= 250,000 Sq. Feet
+Deadline: 1 Jun 2014
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2015","Size: >= 250,000 Sq. Feet
+Deadline: 1 Jun 2014
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2015","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2013","Requirements do not apply to any building with more than 10 percent occupancy use classified as Class D open air assembly units, Class G industrial units, Class H storage units, Class I hazardous use units, or Class J miscellaneous buildings and structures, as defined by Chapter 13-56.
+
+Additional exemptions include:
+a) The building is presently experiencing qualifying financial distress.
+b) The building or areas of the building subject to the requirements of this section have been less than 50 percent occupied during the calendar year for which benchmarking is required.
+c) The building is new construction and the certificate of occupancy was issued less than two years prior to the applicable benchmarking deadlines.
+
+The City will not publicly share data for buildings that contain a data center, television studio, or trading floor that together exceed 10% of gross area.","900,000,000 Sq. Feet","Yes","Chicago's Energy Use Benchmarking Ordinance (No. SO2013-1645)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Owners may authorize utilities to upload whole building energy data directly to Portfolio Manager.","Verification: Yes
+Notes: Prior to the first benchmarking deadline and prior to each third benchmarking deadline thereafter, the owner of a covered building shall ensure that reported benchmarking information for that year is verified by a professional engineer, architect, or holder of a City-recognized training credential."
+"Cook County","Water Use Tracking: Yes","Director of the Cook County Office of Capital Planning and Policy","","Enforcement: No","","","Size: >= 250,000 Sq. Feet
+Deadline: 1 Aug 2014
+Size: >= 35,000 Sq. Feet
+Deadline: 1 Jun 2015","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2014","","","Yes","Cook County Building Energy Benchmarking Ordinance","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: The Director shall verify all benchmarking information for each building.
+
+Benchmarking information shall include at least the following:
+Building address;
+Energy use intensity (EUI);
+Annual greenhouse gas emissions; and
+The Energy Performance Score that compares the energy use of the building to that of similar buildings, where available."
+"Denver","Audits: No
+Retrocommisioning: No
+Water Use Tracking: No","The Department of Environmental Health for the City","3,000","Enforcement: Yes
+Description: In the first compliance year, the City offers a 90-day grace period for non-compliant buildings to report. After the 90-day grace period, non-compliant buildings will be assessed a penalty of $2,000.","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2017
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jun 2018","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2017
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Jun 2018","Size: >= 25,000 Sq. Feet
+Deadline: 1 Jun 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2016","A) A building that was not occupied and did not have a certificate of occupancy or temporary certificate of occupancy for all 12 months of the calendar year for which benchmarking is required.
+B) A building that was not occupied, due to renovation, for all 12 months of the calendar year for which benchmarking is required
+C) A building for which a demolition permit for the entire building has been issued and for which demolition work has commenced on or before the date the benchmarking report is due
+D) A building that is presently experiencing qualifying financial distress, as defined by any of the following: 1) the building is the subject of a qualified tax lien sale or public auction due to property tax arrearages; 2) the building is controlled by a court appointed receiver; or 3) the building has been acquired by a deed in lieu of foreclosure
+E) A building that had an average physical occpancy of less than 60 percent throughout the calendar year for which benchmarking is required
+F) A building that is used primarily for industrial or agricultural processes
+G) A building for which the Owner can demonstrate that its energy performance is a confidential business practice that includes trade secrets, privileged, or confidential commercial information. In order to qualify for this exemption, the Owner shall specifically identify the information it believes is confidential and provide a written statement describing the manner in which public disclosure would cause substantial harm to the Owner's competitive position. Inefficient energy usage alone will not be considered confidential commercial information.","360,000,000 Sq. Feet","Yes","Energize Denver Ordinance","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Denver","","Denver Office of Sustainability","","Enforcement: No","","","Size: All
+Deadline: none","","Required: No","2013","","","Yes","Denver Executive Order No. 123","Required: No","","Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"District of Columbia","Water Use Tracking: Yes","District Department of the Environment","2,000","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Up to $100 per day.
+Number of Buildings in Compliance: 490
+Area of Buildings in Compliance: 170,000,000 Sq. Feet
+Compliance Rate (Based on # of Buildings): 83%
+Description: Compliance numbers from February 2014.","Size: >= 200,000 Sq. Feet
+Deadline: 9 Mar 2013
+Size: >= 150,000 Sq. Feet
+Deadline: 9 Mar 2013
+Size: >= 100,000 Sq. Feet
+Deadline: 1 Apr 2013
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2014","Size: >= 200,000 Sq. Feet
+Deadline: 9 Mar 2013
+Size: >= 150,000 Sq. Feet
+Deadline: 9 Mar 2013
+Size: >= 100,000 Sq. Feet
+Deadline: 1 Apr 2013
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2014","Size: >= 10,000 Sq. Feet
+Deadline: 1 Apr 2010","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2008","New buildings must only be benchmarked beginning with 1st full calendar year after receiving Certificate of occupancy; buildings that are sold must only be benchmarked beginning with 1st full calendar year after completion of transaction.","357,000,000 Sq. Feet","Yes","District of Columbia's Clean & Affordable Energy Act","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Pepco provides aggregate whole-building data via web services. Washington Gas provides aggregate whole-building data via spreadsheet.","Verification: No"
+"Evanston","Water Use Tracking: Yes","City Manager","557","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Any person who violates any provision of this Chapter will be fined one hundred dollars ($100) for each such offense. Every month a violation continues will be deemed a separate offense.","Size: >= 100,000 Sq. Feet
+Deadline: 30 Jun 2017
+Size: >= 50,000 Sq. Feet
+Deadline: 30 Jun 2018
+Size: >= 20,000 Sq. Feet
+Deadline: 30 Jun 2019","Size: >= 100,000 Sq. Feet
+Deadline: 30 Jun 2017
+Size: >= 50,000 Sq. Feet
+Deadline: 30 Jun 2018
+Size: >= 20,000 Sq. Feet
+Deadline: 30 Jun 2019","Size: >= 10,000 Sq. Feet
+Deadline: 30 Jun 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2016","The policy does not cover buildings whose primary occupancy is classified as Assembly Group A-5 uses, Factory Group F uses, Storage Group S uses, High Hazard Group H uses, or Utility and Miscellaneous Group U uses, as defined by Chapter 3 ""Use and Occupancy Classification"" of the International Building Code adopted pursuant to City Code Section 4-2-1.
+
+The City manager may exempt from the benchmarking requirement the owner of a covered building that submits documentation establishing any of the following:
+1. The building is presently experiencing qualifying financial distress, as defined by any of the following:
+1) the building is the subject of a qualified tax lien sale or public auction due to property tax arrearages, 
+2) the building is controlled by a court appointed receiver, or
+3) the building has been acquired by a deed in lieu of foreclosure; or
+
+2. The building had average physical occupancy of less than fifty percent (50%) throughout the calendar year for which benchmarking is required; or
+3. The building is a new construction and the building's certificate of occupancy was issued during the calendar year for which benchmarking is required.","45,600,000 Sq. Feet","Yes","Evanston Building Energy and Water Use Benchmarking Ordinance","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: Prior to the first benchmarking deadline in City Code Section 4-22-5 and prior to each third benchmarking deadline thereafter, the owner of a covered building must ensure that reported benchmarking information for that year is verified by a certified professional. Such verification must be in a form of a signed statement by a certified professional attesting to the accuracy of the information. The owner of a covered building must produce such statement for the most recent year in which verification of reported benchmarking information was required upon a written request by the City manager or his/her designee."
+"Fort Collins","Audits: No
+Retrocommisioning: No
+Water Use Tracking: Yes","City Manager","","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Non-compliance can result in a fee of up to $1000 per violation","Size: >= 20,000 Sq. Feet
+Deadline: 1 Mar 2021
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Mar 2022
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Mar 2023","Size: >= 20,000 Sq. Feet
+Deadline: 1 Mar 2020
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Mar 2021
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Mar 2022","Size: >= 20,000 Sq. Feet
+Deadline: 1 Mar 2020
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Mar 2021
+Size: >= 5,000 Sq. Feet
+Deadline: 1 Mar 2022","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2018","","","Yes","Building Energy and Water Scoring","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Kansas City MO","Water Use Tracking: Yes","City Manager","1,500","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Written warning for first failure to comply; fine of up to $500 if compliance not met within 60 days of warning; additional to other remedies, city may file suit","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2018
+Size: >= 100,000 Sq. Feet
+Deadline: 1 May 2017","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2018
+Size: >= 100,000 Sq. Feet
+Deadline: 1 May 2017","Size: >= 10,000 Sq. Feet
+Deadline: 1 May 2016","","Required: Yes
+Method: Report to Recipient
+Recipients: Government, Public Website
+Trigger: Date Certain
+Frequency: Annually","2015","","400,000,000 Sq. Feet","Yes","Kansas City Energy Empowerment Ordinance","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Los Angeles","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: Yes","The City of Los Angeles Department of Building and Safety","14,000","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Failure to comply with this division shall subject the owner to noncompliance fees as specified in Section 98.0411 of the Los Angeles Municipal Code, except that the amount of the noncompliance fee shall be $202.","Size: >= 100,000 Sq. Feet
+Deadline: 1 Jul 2017
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2018
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Apr 2019","Size: >= 100,000 Sq. Feet
+Deadline: 1 Jul 2017
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2018
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Apr 2019","Size: >= 7,500 Sq. Feet
+Deadline: 1 Jul 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2016","Benchmarking requirements do not apply to one- and two-family dwellings and related accessory structures; residential hotels as defined by the California Health and Safety Code Section 50519; broadcast antennas; vehicle charging stations; utility pumping stations; treatment facilities; sound stages; structure primarily used for the production and post-production of motion pictures and television; and similar uses; and other buildings not meeting the purpose of this division, as determined by the Department of Building and Safety.
+
+The owner of a building subject to this division shall not be required to file a benchmarking report for a reporting year if any of the following conditions apply:
+1. The building did not have a Certificate of Occupancy or Temporary Certificate of Occupancy for the entire calendar year required to be benchmarked;
+2. The entire building was not occupied, due to renovation, for the entire calendar year required to be benchmarked;
+3. The demolition permit for the entire building has been issued and demolition work has commenced on or before the date the benchmarking report is due for that calendar year;
+4. The building did not receive energy or water services for the entire calendar year required to be benchmarked.","900,000,000 Sq. Feet","Yes","City of Los Angeles Existing Buildings Energy and Water Efficiency Program","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: The building owner or the owner's authorized representative shall run all automated data quality checker functions available within ENERGY STAR Portfolio Manager, and shall correct all missing or incorrect information as identified by ENERGY STAR Portfolio Manager prior to submitting the benchmarking report to the Department."
+"Minneapolis","Water Use Tracking: Yes","Director of Minneapolis Health Department","625","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Warning notice mailed to the building owner, indicating 45 days to comply else face a penalty. Failure to comply with penalties may result in a suspension of commercial building registration.
+Number of Buildings in Compliance: 102
+Area of Buildings in Compliance: 21,000,000 Sq. Feet
+Compliance Rate (Based on # of Buildings): 87% (2013)
+Description: Compliance data from November 2013","","Size: >= 100,000 Sq. Feet
+Deadline: 1 Jun 2014
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2015","Size: >= 25,000 Sq. Feet
+Deadline: 1 May 2013","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2013","**Threshold Values apply to occupancy use other than residential or industrial
+
+Exemptions: Industrial & residential - when either use comprises over 50% of a building's GSF; New buildings issued a certificate of occupancy less than 2 years before current reporting deadline; Unoccupied buildings - buildings, or the commercial areas of mixed use buildings, that were less than 50% occupied during the year for which reporting is due; Buildings that are in verifiable financial distress, such as subject to tax lien sales, or currently owned by financial institutions due to borrower default.","110,000,000 Sq. Feet","Yes","Minneapolis' Commercial Building Rating and Disclosure Ordinance","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Montgomery County","Audits: No
+Retrocommisioning: No
+Water Use Tracking: No","Department of Environmental Protection","750","Enforcement: Yes
+Penalties for Non-Compliance: No
+Description: Any violation of this Article is a Class A violation. Such violations are punishable by the issuance of civil citations carrying fines of $500 for the initial offense and $750 for repeat offenses.","","Size: >= 250,000 Sq. Feet
+Deadline: 1 Jun 2016
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2017","Size: All
+Deadline: 1 Jun 2015","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2014","Any building where more than 10 percent is used for:
+1) Public occupancy in a building without walls;
+2) Warehousing
+3) Self storage; or
+4) A use classified as manufacturing and industrial, transportation, communications, or utilities
+
+Any building:
+a) in financial distress
+b) with average occupancy of less than 50 percent during the calendar year
+c) newly constructed and received its certificate of occupancy during the current calendar year","68,000,000 Sq. Feet","Yes","Montgomery County's Bill 2-14 and Bill 35-15","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: Benchmarking data must be verified by a recognized data verifier before the first submission and every three years thereafter. A recognized data verifier is defined as a Professional Engineer, Registered Architect, or another trained individual whose professional license or building energy training program credential is recognized by the Director."
+"New York City","","City of New York","","Enforcement: No","Size: >= 25,000 Sq. Feet
+Deadline: 1 Jan 2020","Size: >= 25,000 Sq. Feet
+Deadline: 1 Jan 2020","Size: >= 25,000 Sq. Feet
+Deadline: 1 Jan 2020","","Required: Yes
+Method: Publicly Posted Certificate
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","","","","Yes","Int. No. 1632 - Energy Efficiency Scores and Grades","Required: No","","Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"New York City","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: Yes","Department of Buildings","33,417","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: $500 fine for missing May 1st benchmarking deadline, additional $500 fines for each subsequent quarter failing to benchmark (maximum: $2,000)
+Compliance Rate (Based on # of Buildings): 87%
+Description: Compliance data is based on NYC's Energy and Water Use 2013 Report, released in August 2016. This report analyzed benchmarking data collected for calendar year 2013.","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2011
+Size: > 25,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2011
+Size: > 25,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 10,000 Sq. Feet
+Deadline: 1 May 2010","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2009","Exemptions: City buildings less than or equal to 50,000 gross square feet that participate in an HPD program; residential property classified as class one in section 1802, subdivision one of the real property tax law.
+
+New York City's policy covers 2.8 billion SF of building area annually.","2,800,000,000 Sq. Feet","Yes","New York City's Local Law 84 (additional requirements in Local Laws 87 & 88)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Orlando","Audits: Yes","City of Orlando's Office of Sustainability & Energy","826","Enforcement: No","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 10,000 Sq. Feet
+Deadline: 1 May 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2016","Benchmarking is not required for a city property if:
+1) the property does not have a certificate of occupancy or temporary certificate of occupancy for the full calendar year being benchmarked, or
+2) full demolition permit has been issued during the previous calendar year, provided that demolition work has commenced, some energy-related systems have been compromised and legal occupancy is no longer possible prior to May 1, or 
+3) the property does not receive utility services
+
+Benchmarking is not required for a non-city property if:
+1) it meets any of the exemptions defined for a covered city property, or
+2) the director determines that, due to special circumstances unique to the4 applicant's facility and not based on a condition caused by actions of the applicant, strict compliance with provisions of this ordinance would cause undue hardship or would not be in the public interest; or
+3) the property qualifies as having a financial hardship; or
+4) the property is considered “industry,” “manufacturing,” or is part of a theme park; or
+5) substantially all of such non-city property is used for telecommunications infrastructure; or
+6) more than 3 meters are associated with the covered non-city property, and,
+(i) the electric utility does not provide whole-building data aggregation services, and,
+(ii) the owner does not have access to master meters or other means. Once such services are available from the utility, as determined by the office, such buildings will no longer be exempt from benchmarking requirements, and such buildings shall file initial benchmarking reports in the year following such data availability according to the schedule established in this part.","125,600,000 Sq. Feet","Yes","Orlando Ordinance No. 2016-64","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: The Orlando Utility Commission is expected to provide whole building utility data to building owners and provide a free energy audit that meets the requirements of the ordinance.","Verification: Yes
+Notes: Benchmarking must be conducted by a qualified benchmarker defined as an individual or entity that possesses a benchmarking certification or other credential approved by the director. Qualified benchmarkers include Registered Architects, Professionals Engineers licensed in the State of Florida, Certified Energy Managers, Certified Facilities Managers, Building Energy Audits Professionals, Individuals with a Certificate of Proficiency of Benchmarking, Real Property Administrators, Facilities Management Administrators, System Maintenance Administrators, System Maintenance Technicians, High Performance Managers, Certified Healthcare Facility Managers, Certified Plant Maintenance Managers, or designated staff with at least three years of professional experience performing benchmarking and energy audits on similar types of buildings, or additional credentials approved by the director."
+"Philadelphia","Water Use Tracking: Yes","Office of Sustainability","2,900","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: $300 fine for the 1st 30 days, and then $100/day
+Compliance Rate (Based on # of Buildings): 90%
+Compliance Rate (Based on Building Area): 90%
+Description: Based on 2014 Energy Benchmarking Report, detailing statistics from 2013.","Size: >= 50,000 Sq. Feet
+Deadline: 30 Jun 2016","Size: >= 50,000 Sq. Feet
+Deadline: 1 Nov 2013","Size: >= 50,000 Sq. Feet
+Deadline: 1 Nov 2013","","Required: Yes
+Method: Public Website
+Recipients: Public Website
+Trigger: Date Certain
+Frequency: Annually","2012","a) any calendar year where more than 50 percent of the indoor floor space is unoccupied for more than 180 days in total
+b) where benchmarking or disclosure would cause exceptional hardship or would not be in the public interest
+c) where buildings are used primarily for manufacturing or other industrial purposes for which benchmarking results would not meaningfully reflect building energy use characteristics due to the intensive use of process energy. ""Process energy"" refers to energy used in the actual manufacturing, production, or processing of a good, commodity, or other material.","390,000,000 Sq. Feet","Yes","City of Philadelphia Building Energy Benchmarking Ordinance (No. 120428)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Owners may arrange for usage information to be electronically transmitted to the benchmarking application by the utility or other energy supplier. Energy suppliers may require building owners requesting electronic transmittal to the benchmarking application to create and maintain lists of buildings and utility account numbers for which the electronic transmittal is requested, and to provide such information to the utility or energy supplier in the manner specified thereby.","Verification: No"
+"Pittsburgh","Water Use Tracking: Yes","Pittsburgh Department of Innovation and Performance","861","Enforcement: No","","Size: >= 50,000 Sq. Feet
+Deadline: 1 Jun 2018","Size: All
+Deadline: 1 Jun 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: none","2016","Buildings that are primarily used for manufacturing or other industrial purposes for which benchmarking results would not meaningfully reflect the building's energy use characteristics due to the intensive use of process energy.","164,000,000 Sq. Feet","Yes","Bill 2016-0829 Building Benchmarking","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Portland","Audits: No
+Retrocommisioning: No
+Water Use Tracking: No","Portland Bureau of Planning and Sustainability","1,024","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: $500 for every 90 day period during which violations continue.","","Size: >= 50,000 Sq. Feet
+Deadline: 22 Apr 2016
+Size: >= 20,000 Sq. Feet
+Deadline: 22 Apr 2017","Size: >= 20,000 Sq. Feet
+Deadline: 22 Apr 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually
+Required: No","2015","The ordinance's definition of ""Covered building"" does not include buildings predominantly used for housing, industrial, nursing home, parking, primary and secondary education, residential, warehouse and worship pmposes.","87,000,000 Sq. Feet","Yes","Commercial Building Energy Performance Reporting (No. 187095)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"Portland, ME","Audits: No
+Retrocommisioning: No
+Water Use Tracking: Yes","City of Portland Energy and Sustainability Coordinator","284","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: For the first violation, a written warning may be issued. Any subsequent or ongoing violation will be subject to a fine of up to $20.00 per day.","Size: >= 50  Dwellings
+Deadline: 1 May 2018","Size: >= 20,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 5,000 Sq. Feet
+Deadline: 1 May 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2016","","","Yes","Portland","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: The City Manager or his or her designee, including but not limited to the Department, may establish certification and/or licensing requirements for the users of Benchmarking Tools."
+"Reno","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: Yes","City Manager","500","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Non-compliant building owners may be fined up to $850","Size: >= 100,000 Sq. Feet
+Deadline: 1 Apr 2020
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2021
+Size: >= 30,000 Sq. Feet
+Deadline: 1 Apr 2022","Size: >= 100,000 Sq. Feet
+Deadline: 1 Apr 2020
+Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2021
+Size: >= 30,000 Sq. Feet
+Deadline: 1 Apr 2022","Size: >= 10,000 Sq. Feet
+Deadline: 1 Apr 2019","","Required: Yes
+Method: none
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2019","The City Manager may exempt buildings from compliance if one of the following conditions exist:
+
+The building was built under the currently adopted International Conservation Code.
+The building is LEED certified.
+The building has a National Green Building Standard Multifamily certification.
+The building has a Net-Zero Energy certification from the International Living Future Institute or other certification program
+The building is a low-income multifamily property with an Enterprise Green Communities certification for a period of three years from the date of the issuance of the certification, or six years from the date of the issuance of certification if the owner supplies a retuning report during the first 3-year period.","25,000,000 Sq. Feet","Yes","Reno Energy and Water Efficiency Program","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: Buildings must have a qualified service company submit documentation with the City that establishes that it is exempt from the performance targets, has met the performance targets, or has completed an audit or retuning."
+"Salt Lake City","Retrocommisioning: Yes
+Water Use Tracking: Yes","Salt Lake City Department of Sustainability","","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: If after three written notices, an owner has not compiled with the ordinance, that owner may be fined up to $500 per violation, not to exceed $1,000 annually.","","Size: >= 50,000 Sq. Feet
+Deadline: 1 May 2019
+Size: >= 25,000 Sq. Feet
+Deadline: 1 May 2020","Size: >= 3,000 Sq. Feet
+Deadline: 1 May 2018","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","","City-owned buildings that are exempt: wastewater reclamation plants, buildings used for heavy manufacturing.
+Privately-owned buildings that are exempt: houses of worship, apartments, agricultural storage facilities and greenhouses, buildings used for heavy manufacturing purposes, oil and gas production facilities, buildings containing: a movie/television/radio production studio, soundstages, broadcast antennae, data center, or trading floor that together exceed 10% of Gross Floor Area.
+
+Privately owned buildings are exempt if they meet the following conditions:
+1. New construction with a Certificate of Occupation issued less than two years prior to the applicable deadlines
+2. Do not have a Certificate of Occupation or temporary Certificate of Occupation for all 12 months of the calendar year being benchmarked
+3. Have a full demolition permit for the prior calendar year, provided that demolition work has commenced, some energy-related systems have been compromised, and legal occupancy is no longer possible at some point during the calendar year being benchmarked
+4. Do not receive utility services
+5. Are not assessed ad valorem real property taxes by Salt Lake County","","No","Salt Lake City Commercial Building Benchmarking and Market Transparency","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No
+Notes: A randomly-selected subset of benchmarking submissions not to exceed 10% of the total benchmarking submissions in a given year may be subject to verification by the city."
+"Salt Lake City","Audits: Yes
+Retrocommisioning: Yes","Energy Management Steering Committee","","Enforcement: No","","","Size: >= 3,000 Sq. Feet
+Deadline: none","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2015","Rules and exemptions are overseen by the Steering Committee.","","Yes","Comprehensive Energy Management of Salt Lake City Facilities","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"
+"San Francisco","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: No","San Francisco Department of Environment","2,312","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Warning, then public notice, then fine
+Compliance Rate (Based on Building Area): 82% (2013)","","Size: >= 50,000 Sq. Feet
+Deadline: 1 Oct 2011
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Apr 2012
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Apr 2013","Size: >= 50,000 Sq. Feet
+Deadline: 1 Oct 2011
+Size: >= 25,000 Sq. Feet
+Deadline: 1 Apr 2012
+Size: >= 10,000 Sq. Feet
+Deadline: 1 Apr 2013","","Required: Yes
+Method: Public Website
+Recipients: Tenants
+Trigger: Date Certain
+Frequency: Annually","2011","Exemptions: New buildings with Certificate of Occupancy from the Dept. of Building Inspection dated less than 2 years prior to benchmarking due date; Unoccupied buildings: less than 1 full-time equivalent occupant for previous calendar year
+
+The city took the initiative to benchmark and disclose the energy use of its municipal buildings. The city's first report reveals municipal buildings' energy use for calendar year 2011.","203,000,000 Sq. Feet","Yes","San Francisco's Existing Commercial Buildings Energy Performance Ordinance","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Pacific Gas & Electric, along with other serving utilities, is required by California's state law AB802 to aggregate and provide data for buildings that meet the state's threshold requirements of three or more accounts for non-residential buildings or five or more accounts if any residential accounts are present.","Verification: No"
+"San José","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: Yes","Director of the Department","","Enforcement: Yes
+Penalties for Non-Compliance: Yes","Size: > 50,000 Sq. Feet
+Deadline: 1 May 2019
+Size: >= 20,000 Sq. Feet
+Deadline: 1 May 2020","Size: > 50,000 Sq. Feet
+Deadline: 1 May 2019
+Size: >= 20,000 Sq. Feet
+Deadline: 1 May 2020","Size: >= 15,000 Sq. Feet
+Deadline: 1 May 2019","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2018","Owners of residential properties that are smaller than 50,000 square feet are exempt from the performance improvement pathway for water efficiency if the property is not sub-metered for water use.","","Yes","San José","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: Owners may establish satisfactory energy and water efficiency by providing a ""performance verification report"" to the department in such a form as required by the Director of the implementing department."
+"San José","Audits: Yes
+Retrocommisioning: Yes
+Water Use Tracking: Yes","Director of the Department","","Enforcement: Yes
+Penalties for Non-Compliance: Yes","Size: > 50,000 Sq. Feet
+Deadline: 1 May 2019
+Size: >= 20,000 Sq. Feet
+Deadline: 1 May 2020","Size: > 50,000 Sq. Feet
+Deadline: 1 May 2019
+Size: >= 20,000 Sq. Feet
+Deadline: 1 May 2020","Size: >= 15,000 Sq. Feet
+Deadline: 1 May 2019","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2018","Owners of residential properties that are smaller than 50,000 square feet are exempt from the performance improvement pathway for water efficiency if the property is not sub-metered for water use.","","Yes","San José","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No
+Notes: Owners may establish satisfactory energy and water efficiency by providing a ""performance verification report"" to the department in such a form as required by the Director of the implementing department."
+"Seattle","Audits: No
+Retrocommisioning: Yes
+Water Use Tracking: No","Director of the Seattle Office of Sustainability and Environment","3,250","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: Penalties accrue quarterly, starting 90 days after reporting deadlines. Buildings 50,000 SF or greater: $1,000/quarter. Buildings greater than or equal to 20,000 SF and less than 50,000 SF: $500/quarter
+Number of Buildings in Compliance: 2,992
+Area of Buildings in Compliance: 267,200,000 Sq. Feet
+Compliance Rate (Based on # of Buildings): 99.2 (2013)
+Compliance Rate (Based on Building Area): 99.4% (2013)
+Description: This compliance data is for the 2013 energy reporting year. Non-Residential: 1,651 buildings (99% compliance) with 178.6 million square feet (99.2% compliance). Multifamily: 1,565 buildings (99.5% compliance) with 102.4 million square feet (99.7% compliance).","Size: >= 50,000 Sq. Feet
+Deadline: 1 Oct 2012
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Apr 2013","Size: >= 50,000 Sq. Feet
+Deadline: 1 Oct 2012
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Apr 2013","Size: >= 50,000 Sq. Feet
+Deadline: 1 Oct 2012
+Size: >= 20,000 Sq. Feet
+Deadline: 1 Apr 2013","","Required: Yes
+Method: Public Website, Report to Recipient
+Recipients: Public Website, Tenants, Buyers, Lenders
+Trigger: Point of Transaction
+Trigger Events: Purchase/sell (on demand), Rent (on demand), Financing","2012","Buildings subject to the Seattle Residential Code are exempt.  Per the Director's Rule, buildings used primarily for manufacturing or industrial purposes are also exempt from all benchmarking, disclosure, and reporting requirements. Compliance for multifamily and nonresidential buildings less than 20,000 square feet is encouraged, but is voluntary.","281,200,000 Sq. Feet","Yes","Seattle's Building Energy Benchmarking and Reporting Program (No. 123993)","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","Rating Type: Measured
+Energy Type: Total
+Floor Space Type: All - Gross
+End Uses: Lighting, Mech. Vent., DHW, Heating, Cooling, Plug/Process Loads
+Scale Type: Continuous
+Scale Standard: Relative
+Best/Worst Value: 100/1","ENERGY STAR Portfolio Manager","Utility Requirements/Support: Yes
+Notes: Upon written or secure electronic authorization by an authorized representative of the building owner, the utility providing energy service to the building must upload the utility consumption data for the accounts to Energy Star Portfolio Manager.","Verification: No"
+"South Portland, ME","Audits: No
+Retrocommisioning: No
+Water Use Tracking: Yes","City of South Portland","","Enforcement: Yes
+Description: Notwithstanding relevant ordinance provisions with fee requirements to the contrary, the Owner of a Covered Property for which at least one Energy Performance Report has been issued, and which the South Portland Sustainability Coordinator deems is in compliance with the Energy and Water Use Benchmarking provisions, shall, for however long a period such compliance is maintained, be excused from paying the first $5,000 per project of any building, electrical, plumbing, demolition, site plan, or other City application, review, or inspection fee(s) associated with building construction or redevelopment on the Covered Property. In addition, to the extent otherwise allowed by law, the Owner of a Covered Property in compliance with these provisions shall also be eligible for any financial incentives, reduced interest loans, assistance with the cost of meters that would aid in the collection of whole-building data by owners, or other programs the City of South Portland may provide associated with improving energy and water efficiency and/or meeting the objectives of the City’s Climate Action Plan.","Size: >= 10  Dwellings
+Deadline: 1 May 2018","Size: >= 5,000 Sq. Feet
+Deadline: 1 May 2018","Size: >= 5,000 Sq. Feet
+Deadline: 1 May 2018","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2017","The Sustainability Coordinator shall grant a waiver from a requirement of this section if he/she determines that either, (1) due to special circumstances unique to the applicant’s facility and not based on a condition caused by actions of the applicant, strict compliance with provisions of this section would cause hardship, or (2) an application for a permit to substantially remodel or demolish the facility will be filed not later than 6 months after the time of sale.","","Yes","Energy and Water Use Performance Benchmarking","Required: Yes
+Trigger: Date Certain
+Frequency: Annually","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: Owners of each Covered Property shall complete and submit a benchmarking verification report (called an energy audit in the ordinance) to the Sustainability Coordinator within five years of the first annual benchmarking report deadline, and every five years thereafter. The report must meet the following criteria:
+(a) Must be performed by a licensed professional engineer every five years.
+(b) Shall consist of a review of the owner’s meter data for up to the most recent three years, as appropriate, and include a determination as to whether accurate data is being used and whether the Portfolio Manager tool is being appropriately applied. Any inconsistencies shall be documented and recommendations for corrections shall be provided.
+
+A benchmarking verification report is not required if:
+(a) The building is to be fully demolished within six months of when the assessment or action would otherwise be due.
+(b) The building is fully vacant for the five-year period."
+"St. Louis","Audits: No
+Retrocommisioning: No
+Water Use Tracking: Yes","St. Louis Building Division","","Enforcement: Yes
+Penalties for Non-Compliance: Yes
+Description: If  benchmarking information is not reported within 60 days after a written warning is issued, the owner is subject to a fine of at least $50 and not more than $200. Each day of the violation is a separate offense. Cumulative fine cannot exceed $1,000.","Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2018","Size: >= 50,000 Sq. Feet
+Deadline: 1 Apr 2018","Size: >= 50,000 Sq. Feet
+Deadline: 31 Dec 2017","","Required: Yes
+Method: Public Website
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","2017","An extension of the benchmarking submission date or an exemption from the benchmarking requirements to the owner of a covered property that submits a request, together with documentation in a form prescribed by the Commissioner's rule, at least thirty days prior to any benchmarking submission deadline, establishing any of the following criteria:
+1) The property does not have a certificate of occupancy or temporary certificate of occupancy for all 12 months of the calendar year being benchmarked.
+2) A demolition permit was issued during the prior calendar year, provided that demolition work has commenced and energy-related systems have been significantly compromised.
+3) The covered property had average physical occupancy of less than 50 percent throughout the calendar year for which benchmarking is required.
+4) The Commissioner determines that, due to special circumstances unique to the applicant's facility and not based on a condition caused by actions of the applicant, strict compliance with provisions of this ordinance would cause financial hardship or would not be in the public interest.
+5) The property is primarily used for manufacturing or other industrial purposes for which benchmarking results would not meaningfully reflect covered property energy use characteristics due to the intensive use of process energy.
+6) The owner is unable to benchmark due to the failure of either a utility or a tenant (or both) to report the information necessary for the owner to complete any benchmarking submittal requirement.
+7) The property is primarily multifamily residential, it is not master metered, and the serving electric utility does not provide data aggregation services or access to whole-building utility data. Once such services are available from the utility, as determined by the director, such buildings will no longer be exempt from benchmarking requirements, and shall file initial benchmarking reports in the first required reporting year following such data availability.","","Yes","Building Energy Awareness","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: Yes
+Notes: The owner of a covered property shall run all data through all data quality assurance tools within the ENERGY STAR Portfolio Manager and correct all missing or incorrect information identified by the tool."
+"West Chester, PA","","Borough of West Chester, Pennsylvania","","Enforcement: No","","Size: All
+Deadline: 1 Nov 2016","","","Required: Yes
+Method: none
+Recipients: none
+Trigger: Date Certain
+Frequency: Annually","","","","Yes","West Chester, PA ENERGY STAR Ordinance for Private Commercial Construction","Required: No","","ENERGY STAR Portfolio Manager","Utility Requirements/Support: No","Verification: No"

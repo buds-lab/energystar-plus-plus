@@ -1,0 +1,3 @@
+btype,filter_type,condition
+Office,building,PBAPLUS == '02' | PBAPLUS == '03' | PBAPLUS == '04' | PBAPLUS == '52'
+Hospital,building,

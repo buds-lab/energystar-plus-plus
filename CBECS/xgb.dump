@@ -1,0 +1,2254 @@
+booster[0]
+0:[WorkersCnt<73.5] yes=1,no=2,missing=1,gain=2.73123966e+018,cover=515743.781
+	1:[ComputersCnt<26.5] yes=3,no=4,missing=3,gain=4.97562409e+017,cover=482146.125
+		3:[WorkersCnt<23.5] yes=7,no=8,missing=7,gain=3.1370759e+016,cover=394534.25
+			7:leaf=196946.469,cover=389177.812
+			8:leaf=1033427.31,cover=5356.42188
+		4:[ComputersCnt<75.5] yes=9,no=10,missing=9,gain=7.52010806e+016,cover=87611.8828
+			9:leaf=976925.25,cover=74102.1484
+			10:leaf=1857712.75,cover=13509.7344
+	2:[ComputersCnt<481] yes=5,no=6,missing=5,gain=1.62073408e+017,cover=33597.6445
+		5:[HeatedPercent<99] yes=11,no=12,missing=11,gain=1.07513331e+017,cover=32970.9766
+			11:leaf=2264096.5,cover=6898.42676
+			12:leaf=3788885.75,cover=26072.5508
+		6:[WorkersCnt<242.5] yes=13,no=14,missing=13,gain=1.52286784e+016,cover=626.666016
+			13:leaf=7939249.5,cover=449.321014
+			14:leaf=11771941,cover=177.345001
+booster[1]
+0:[SqFt<39750] yes=1,no=2,missing=1,gain=1.71130642e+018,cover=512729.594
+	1:[SqFt<9950] yes=3,no=4,missing=3,gain=2.17356097e+017,cover=480811.5
+		3:[SqFt<3250] yes=7,no=8,missing=7,gain=1.27542962e+016,cover=386600.719
+			7:leaf=38830.9688,cover=180797.734
+			8:leaf=163810.188,cover=205802.969
+		4:[SqFt<27500] yes=9,no=10,missing=9,gain=6.56561815e+016,cover=94210.7891
+			9:leaf=567307.438,cover=80239.1875
+			10:leaf=1373746.25,cover=13971.6025
+	2:[SqFt<86500] yes=5,no=6,missing=5,gain=2.49848092e+017,cover=31918.0996
+		5:[SqFt<48250] yes=11,no=12,missing=11,gain=7.84156403e+016,cover=28630.6094
+			11:leaf=1811197.75,cover=11809.0615
+			12:leaf=2965728.75,cover=16821.5469
+		6:[CDD65<155.5] yes=13,no=14,missing=13,gain=1.86872704e+017,cover=3287.48999
+			13:leaf=25154320,cover=55.9690018
+			14:leaf=5304265.5,cover=3231.521
+booster[2]
+0:[SqFt<26500] yes=1,no=2,missing=1,gain=7.03793888e+017,cover=506294.375
+	1:[SqFt<9950] yes=3,no=4,missing=3,gain=5.19388591e+016,cover=454923.25
+		3:[SqFt<4475] yes=7,no=8,missing=7,gain=5.26465119e+015,cover=374005.188
+			7:leaf=29409.7246,cover=243265.469
+			8:leaf=114833.648,cover=130739.727
+		4:[ComputersCnt<90.5] yes=9,no=10,missing=9,gain=1.03603867e+016,cover=80918.0703
+			9:leaf=393518.281,cover=76105.5938
+			10:leaf=-125878.172,cover=4812.47803
+	2:[ComputersCnt<709] yes=5,no=6,missing=5,gain=3.07760555e+017,cover=51371.1172
+		5:[SqFt<72000] yes=11,no=12,missing=11,gain=1.30476932e+017,cover=50897.2695
+			11:leaf=1181448.38,cover=45408.3672
+			12:leaf=2953573,cover=5488.90283
+		6:[ComputersCnt<1060] yes=13,no=14,missing=13,gain=4.16223262e+016,cover=473.848999
+			13:leaf=12644556,cover=296.503998
+			14:leaf=5942197,cover=177.345001
+booster[3]
+0:[SqFt<22500] yes=1,no=2,missing=1,gain=3.13083359e+017,cover=506349.375
+	1:[ComputersCnt<116] yes=3,no=4,missing=3,gain=2.43464409e+016,cover=449175.219
+		3:[ComputersCnt<29.5] yes=7,no=8,missing=7,gain=1.82424785e+016,cover=448057.469
+			7:leaf=45392.9336,cover=393739.531
+			8:leaf=257634.047,cover=54317.9648
+		4:leaf=1674718.88,cover=1117.74194
+	2:[SqFt<73500] yes=5,no=6,missing=5,gain=1.60896072e+017,cover=57174.1406
+		5:[ComputersCnt<272.5] yes=9,no=10,missing=9,gain=4.37535792e+016,cover=51504.3203
+			9:leaf=655840.688,cover=48328.4727
+			10:leaf=1971234.38,cover=3175.84888
+		6:[ComputersCnt<810] yes=11,no=12,missing=11,gain=8.15068829e+016,cover=5669.81787
+			11:leaf=2298615.5,cover=5258.10986
+			12:leaf=7310961.5,cover=411.708008
+booster[4]
+0:[WorkersCnt<94] yes=1,no=2,missing=1,gain=1.40812934e+017,cover=539944.688
+	1:[SqFt<77000] yes=3,no=4,missing=3,gain=3.30527004e+016,cover=515102.625
+		3:[SqFt<74500] yes=7,no=8,missing=7,gain=1.02872979e+017,cover=513356.312
+			7:leaf=59062.2695,cover=512287.5
+			8:leaf=3429199.75,cover=1068.82397
+		4:[OpenHours<60] yes=9,no=10,missing=9,gain=1.49752313e+016,cover=1746.31299
+			9:leaf=-1745855.75,cover=1589.20093
+			10:leaf=1759557,cover=157.112
+	2:[OpenHours<82.5] yes=5,no=6,missing=5,gain=1.09409104e+017,cover=24842.0391
+		5:[SqFt<70500] yes=11,no=12,missing=11,gain=8.07271144e+016,cover=18338.002
+			11:leaf=115300.664,cover=14780.9463
+			12:leaf=1936855.5,cover=3557.05591
+		6:[SqFt<46250] yes=13,no=14,missing=13,gain=9.60162702e+016,cover=6504.03809
+			13:leaf=1035453,cover=3918.02905
+			14:leaf=3730881,cover=2586.00903
+booster[5]
+0:[WorkersCnt<37.5] yes=1,no=2,missing=1,gain=8.11411406e+016,cover=528984.312
+	1:[SqFt<23000] yes=3,no=4,missing=3,gain=9.79246745e+015,cover=454588.375
+		3:[SqFt<17375] yes=7,no=8,missing=7,gain=1.3003137e+016,cover=444222.094
+			7:leaf=19542.4863,cover=435481.469
+			8:leaf=-403363.312,cover=8740.63086
+		4:[OpenHours<59] yes=9,no=10,missing=9,gain=2.67297612e+016,cover=10366.2832
+			9:leaf=-82819.125,cover=6427.59521
+			10:leaf=1052898.75,cover=3938.68799
+	2:[OpenHours<84.5] yes=5,no=6,missing=5,gain=1.1104455e+017,cover=74395.9219
+		5:[WorkersCnt<478.5] yes=11,no=12,missing=11,gain=3.9594685e+016,cover=64212.8867
+			11:leaf=230609.953,cover=64156.918
+			12:leaf=9285737,cover=55.9690018
+		6:[SqFt<46250] yes=13,no=14,missing=13,gain=5.86974626e+016,cover=10183.0371
+			13:leaf=825652.062,cover=6405.02588
+			14:leaf=2532026.75,cover=3778.01099
+booster[6]
+0:[WorkersCnt<267.5] yes=1,no=2,missing=1,gain=5.0720961e+016,cover=509027.312
+	1:[WorkersCnt<38] yes=3,no=4,missing=3,gain=2.70621015e+016,cover=508188.438
+		3:[SqFt<49000] yes=7,no=8,missing=7,gain=1.0556889e+016,cover=433193.781
+			7:leaf=16561.6934,cover=431735.562
+			8:leaf=-908436.312,cover=1458.21692
+		4:[CDD65<1345.5] yes=9,no=10,missing=9,gain=2.3218954e+016,cover=74994.6641
+			9:leaf=425450.031,cover=37971.2148
+			10:leaf=43356.6562,cover=37023.4492
+	2:[WorkersCnt<425] yes=5,no=6,missing=5,gain=1.21145437e+016,cover=838.857971
+		5:[CDD65<1435.5] yes=11,no=12,missing=11,gain=1.07026279e+016,cover=604.494995
+			11:leaf=352359.062,cover=282.154999
+			12:leaf=3247274,cover=322.339996
+		6:[WorkersCnt<550] yes=13,no=14,missing=13,gain=9.91321334e+014,cover=234.363007
+			13:leaf=6153711,cover=55.9690018
+			14:leaf=4355106,cover=178.393997
+booster[7]
+0:[WorkersCnt<172.5] yes=1,no=2,missing=1,gain=2.13407326e+016,cover=509927.75
+	1:[WorkersCnt<108] yes=3,no=4,missing=3,gain=2.12440743e+016,cover=499648.25
+		3:[WorkersCnt<47.5] yes=7,no=8,missing=7,gain=2.62909122e+016,cover=489999.625
+			7:leaf=2483.51636,cover=449793.812
+			8:leaf=292247.688,cover=40205.8086
+		4:[HDD65<4565.5] yes=9,no=10,missing=9,gain=4.31729168e+016,cover=9648.62598
+			9:leaf=-1028904.19,cover=6206.55518
+			10:leaf=486960.312,cover=3442.07104
+	2:[WorkersCnt<478.5] yes=5,no=6,missing=5,gain=1.44279065e+016,cover=10279.4814
+		5:[HDD65<1389] yes=11,no=12,missing=11,gain=1.20396062e+016,cover=10045.1191
+			11:leaf=-352930.469,cover=1791.28198
+			12:leaf=628819.812,cover=8253.83691
+		6:[WorkersCnt<550] yes=13,no=14,missing=13,gain=4.5187965e+014,cover=234.363007
+			13:leaf=4078098.5,cover=55.9690018
+			14:leaf=2868243.5,cover=178.393997
+booster[8]
+0:[WorkersCnt<152.5] yes=1,no=2,missing=1,gain=1.80677699e+016,cover=524512.25
+	1:[CDD65<2273.5] yes=3,no=4,missing=3,gain=8.77449685e+015,cover=514529.938
+		3:[WorkersCnt<119] yes=7,no=8,missing=7,gain=1.81469841e+016,cover=440404.031
+			7:leaf=-7078.74072,cover=435013.344
+			8:leaf=-640824.562,cover=5390.6792
+		4:[WorkersCnt<23.5] yes=9,no=10,missing=9,gain=2.14542099e+016,cover=74125.8984
+			9:leaf=34583.5742,cover=62846.0977
+			10:leaf=548787.875,cover=11279.7998
+	2:[CDD65<950] yes=5,no=6,missing=5,gain=1.5377426e+016,cover=9982.30566
+		5:[WorkersCnt<193.5] yes=11,no=12,missing=11,gain=6.43054368e+015,cover=2486.98193
+			11:leaf=528845.312,cover=803.538025
+			12:leaf=-651078.75,cover=1683.44397
+		6:[CDD65<2459.5] yes=13,no=14,missing=13,gain=8.08459196e+015,cover=7495.32373
+			13:leaf=570515.75,cover=6436.44873
+			14:leaf=1594078.75,cover=1058.875
+booster[9]
+0:[ComputersCnt<367.5] yes=1,no=2,missing=1,gain=1.27723716e+016,cover=501756.781
+	1:[OpenHours<84.5] yes=3,no=4,missing=3,gain=1.08319612e+016,cover=500757.562
+		3:[IsBank.Yes<0.5] yes=7,no=8,missing=7,gain=6.51389182e+015,cover=466583.625
+			7:leaf=-14495.5186,cover=401551.5
+			8:leaf=102628.93,cover=65032.1211
+		4:[ComputersCnt<102.5] yes=9,no=10,missing=9,gain=3.79252098e+016,cover=34173.9297
+			9:leaf=72059.7266,cover=30264.3535
+			10:leaf=1208202.62,cover=3909.5769
+	2:[ComputersCnt<384] yes=5,no=6,missing=5,gain=6.92812069e+016,cover=999.213013
+		5:leaf=-4973612.5,cover=365.05899
+		6:[OpenHours<57.5] yes=11,no=12,missing=11,gain=3.56554387e+015,cover=634.153992
+			11:leaf=2153032.75,cover=199.915009
+			12:leaf=402598.125,cover=434.239014
+booster[10]
+0:[OpenHours<74] yes=1,no=2,missing=1,gain=1.02639303e+016,cover=497335.656
+	1:[WorkersCnt<129] yes=3,no=4,missing=3,gain=8.27882219e+015,cover=454569.812
+		3:[WorkersCnt<84.5] yes=7,no=8,missing=7,gain=3.54325482e+016,cover=441513.656
+			7:leaf=-4342.99463,cover=433877.938
+			8:leaf=-750339.5,cover=7635.71289
+		4:[OpenHours<54.5] yes=9,no=10,missing=9,gain=6.87664744e+015,cover=13056.1641
+			9:leaf=435793.344,cover=8721.14062
+			10:leaf=-93248.8438,cover=4335.02295
+	2:[WorkersCnt<45] yes=5,no=6,missing=5,gain=1.88756275e+016,cover=42765.8242
+		5:[HDD65<3974] yes=11,no=12,missing=11,gain=1.00219808e+016,cover=31455.5156
+			11:leaf=215845.734,cover=16374.1992
+			12:leaf=-172047.234,cover=15081.3154
+		6:[HDD65<4518.5] yes=13,no=14,missing=13,gain=7.31482151e+016,cover=11310.3076
+			13:leaf=90061.7344,cover=8879.2041
+			14:leaf=2215177.25,cover=2431.104
+booster[11]
+0:[CDD65<468.5] yes=1,no=2,missing=1,gain=4.06575831e+015,cover=518146.469
+	1:[WorkersCnt<22] yes=3,no=4,missing=3,gain=6.06092685e+015,cover=25330.3008
+		3:[CDD65<196] yes=7,no=8,missing=7,gain=7.01918653e+014,cover=19435.6074
+			7:leaf=68298.5469,cover=5525.59277
+			8:leaf=-76331.9766,cover=13910.0137
+		4:[WorkersCnt<464] yes=9,no=10,missing=9,gain=3.00376296e+015,cover=5894.69287
+			9:leaf=-456752.594,cover=5838.72412
+			10:leaf=2048990,cover=55.9690018
+	2:[CDD65<498.5] yes=5,no=6,missing=5,gain=8.49810873e+015,cover=492816.156
+		5:[WorkersCnt<33] yes=11,no=12,missing=11,gain=1.06085177e+016,cover=7875.37598
+			11:leaf=160467.969,cover=6207.62109
+			12:leaf=1135564.88,cover=1667.755
+		6:[WorkersCnt<6.5] yes=13,no=14,missing=13,gain=4.17068007e+015,cover=484940.781
+			13:leaf=-30414.6113,cover=200038.125
+			14:leaf=34261.2617,cover=284902.656
+booster[12]
+0:[SqFt<50500] yes=1,no=2,missing=1,gain=4.14319282e+015,cover=507962.5
+	1:[SqFt<48250] yes=3,no=4,missing=3,gain=6.65479928e+016,cover=488547.781
+		3:[SqFt<27750] yes=7,no=8,missing=7,gain=5.0436413e+015,cover=487196.188
+			7:leaf=4177.04639,cover=462597.344
+			8:leaf=-155358.344,cover=24598.8164
+		4:[SqFt<48750] yes=9,no=10,missing=9,gain=9.1698196e+016,cover=1351.62097
+			9:leaf=7966155.5,cover=276.953003
+			10:leaf=969016.125,cover=1074.66797
+	2:[HDD65<2296.5] yes=5,no=6,missing=5,gain=2.51868328e+016,cover=19414.6914
+		5:[HDD65<1157.5] yes=11,no=12,missing=11,gain=5.71371525e+015,cover=2795.82202
+			11:leaf=40504.8789,cover=832.565002
+			12:leaf=1113762,cover=1963.25696
+		6:[HDD65<4671.5] yes=13,no=14,missing=13,gain=3.8217362e+016,cover=16618.8691
+			13:leaf=-840181.062,cover=8304.97363
+			14:leaf=201029.359,cover=8313.89551
+booster[13]
+0:[ComputersCnt<103] yes=1,no=2,missing=1,gain=5.47890617e+015,cover=509025.781
+	1:[ComputersCnt<90.5] yes=3,no=4,missing=3,gain=2.75663628e+016,cover=482429.375
+		3:[WorkersCnt<57.5] yes=7,no=8,missing=7,gain=8.27942564e+015,cover=472804.375
+			7:leaf=21404.1426,cover=454916.594
+			8:leaf=-216710.031,cover=17887.7695
+		4:[OpenHours<42.5] yes=9,no=10,missing=9,gain=1.8150549e+016,cover=9625.00879
+			9:leaf=-1543895.62,cover=1840.17188
+			10:leaf=-345157.594,cover=7784.83691
+	2:[WorkersCnt<102] yes=5,no=6,missing=5,gain=3.58167824e+016,cover=26596.3926
+		5:[OpenHours<84] yes=11,no=12,missing=11,gain=2.9933504e+016,cover=8584.01074
+			11:leaf=479906.625,cover=7389.55615
+			12:leaf=2331744,cover=1194.45496
+		6:[ComputersCnt<144.5] yes=13,no=14,missing=13,gain=2.01255381e+016,cover=18012.3828
+			13:leaf=-1282836,cover=1583.44104
+			14:leaf=-1601.41833,cover=16428.9414
+booster[14]
+0:[ComputersCnt<172.5] yes=1,no=2,missing=1,gain=3.96464378e+015,cover=511573.594
+	1:[ComputersCnt<160.5] yes=3,no=4,missing=3,gain=1.16892453e+016,cover=500152.719
+		3:[WorkersCnt<84.5] yes=7,no=8,missing=7,gain=4.12061283e+015,cover=499676.5
+			7:leaf=206.324234,cover=483043.062
+			8:leaf=-173585.328,cover=16633.4355
+		4:[WorkersCnt<162.5] yes=9,no=10,missing=9,gain=4.21484414e+015,cover=476.192993
+			9:leaf=-2718780,cover=239.384995
+			10:leaf=-674263.188,cover=236.807999
+	2:[ComputersCnt<202.5] yes=5,no=6,missing=5,gain=1.17246626e+016,cover=11420.8945
+		5:[WorkersCnt<187.5] yes=11,no=12,missing=11,gain=1.50006715e+016,cover=2884.31494
+			11:leaf=1308246.5,cover=2018.54395
+			12:leaf=-399510.75,cover=865.770996
+		6:[ComputersCnt<385] yes=13,no=14,missing=13,gain=4.32214585e+015,cover=8536.58008
+			13:leaf=-115441.859,cover=7085.19775
+			14:leaf=534681.125,cover=1451.38196
+booster[15]
+0:[ComputersCnt<367.5] yes=1,no=2,missing=1,gain=8.04557809e+015,cover=501662.5
+	1:[SqFt<66500] yes=3,no=4,missing=3,gain=5.67270744e+015,cover=499836.75
+		3:[SqFt<57000] yes=7,no=8,missing=7,gain=1.26336216e+016,cover=490270.875
+			7:leaf=-5555.29248,cover=484158.781
+			8:leaf=-502214.312,cover=6112.08594
+		4:[ComputersCnt<102] yes=9,no=10,missing=9,gain=1.12544657e+016,cover=9565.86719
+			9:leaf=-326947.469,cover=2777.23706
+			10:leaf=493353.125,cover=6788.62988
+	2:[ComputersCnt<377.5] yes=5,no=6,missing=5,gain=1.97864634e+016,cover=1825.76099
+		5:leaf=-2985562,cover=365.05899
+		6:[OpenHours<52.5] yes=11,no=12,missing=11,gain=5.59044379e+015,cover=1460.70203
+			11:leaf=1316567.88,cover=248.755997
+			12:leaf=-467170.5,cover=1211.94604
+booster[16]
+0:[ComputersCnt<8.5] yes=1,no=2,missing=1,gain=5.1895349e+015,cover=526490.812
+	1:[CooledPercent<97.5] yes=3,no=4,missing=3,gain=9.93268096e+014,cover=195887.219
+		3:[CooledPercent<15] yes=7,no=8,missing=7,gain=2.98728733e+014,cover=67325.4531
+			7:leaf=-263098.719,cover=1031.34595
+			8:leaf=-76966.9141,cover=66294.1016
+		4:[HDD65<7158.5] yes=9,no=10,missing=9,gain=6.24307789e+014,cover=128561.773
+			9:leaf=-32030.9844,cover=125585.617
+			10:leaf=127039.141,cover=2976.15601
+	2:[HeatedPercent<37.5] yes=5,no=6,missing=5,gain=7.91971139e+015,cover=330603.594
+		5:[HeatedPercent<25] yes=11,no=12,missing=11,gain=2.51854069e+016,cover=6226.57617
+			11:leaf=-85661.9688,cover=4120.82715
+			12:leaf=1373588.38,cover=2105.74902
+		6:[HDD65<372] yes=13,no=14,missing=13,gain=6.72772697e+015,cover=324377
+			13:leaf=-594743.5,cover=2103.44897
+			14:leaf=21111.5273,cover=322273.562
+booster[17]
+0:[CDD65<1878] yes=1,no=2,missing=1,gain=3.34513394e+015,cover=531407.062
+	1:[CDD65<1354.5] yes=3,no=4,missing=3,gain=4.08712363e+015,cover=390271.625
+		3:[CDD65<1334.5] yes=7,no=8,missing=7,gain=1.1203784e+016,cover=245338.125
+			7:leaf=7081.38037,cover=244158.234
+			8:leaf=1067132.38,cover=1179.88293
+		4:[WorkersCnt<38] yes=9,no=10,missing=9,gain=2.19663053e+016,cover=144933.5
+			9:leaf=-15867.0332,cover=130375.57
+			10:leaf=-460500.031,cover=14557.9355
+	2:[WorkersCnt<37.5] yes=5,no=6,missing=5,gain=1.58025354e+016,cover=141135.406
+		5:[CDD65<1890.5] yes=11,no=12,missing=11,gain=1.39696055e+016,cover=118873.977
+			11:leaf=1533831.12,cover=692.221008
+			12:leaf=-11872.6328,cover=118181.758
+		6:[HDD65<406] yes=13,no=14,missing=13,gain=3.35277925e+016,cover=22261.4336
+			13:leaf=-3406732,cover=281.109009
+			14:leaf=360033.312,cover=21980.3242
+booster[18]
+0:[SqFt<35250] yes=1,no=2,missing=1,gain=4.53966178e+015,cover=522105.312
+	1:[SqFt<29500] yes=3,no=4,missing=3,gain=1.5912754e+016,cover=487302.688
+		3:[SqFt<22500] yes=7,no=8,missing=7,gain=4.69847947e+015,cover=478876.938
+			7:leaf=-3255.33984,cover=465185.594
+			8:leaf=200795.766,cover=13691.3564
+		4:[OpenHours<76] yes=9,no=10,missing=9,gain=9.39351116e+015,cover=8425.7373
+			9:leaf=-133843.094,cover=4489.40283
+			10:leaf=-860400,cover=3936.33398
+	2:[OpenHours<87.5] yes=5,no=6,missing=5,gain=1.47243344e+016,cover=34802.6289
+		5:[SqFt<42250] yes=11,no=12,missing=11,gain=6.94057266e+015,cover=30231.9023
+			11:leaf=290276.25,cover=8911.58203
+			12:leaf=-70498.6719,cover=21320.3203
+		6:[SqFt<55000] yes=13,no=14,missing=13,gain=4.65672595e+016,cover=4570.72607
+			13:leaf=2320695.5,cover=1429.43506
+			14:leaf=-42447.082,cover=3141.29102
+booster[19]
+0:[SqFt<39750] yes=1,no=2,missing=1,gain=3.60460499e+015,cover=505459.344
+	1:[SqFt<25250.5] yes=3,no=4,missing=3,gain=8.7745296e+015,cover=470828.812
+		3:[SqFt<5750] yes=7,no=8,missing=7,gain=2.87773734e+015,cover=448704.312
+			7:leaf=-23997.9121,cover=288458.125
+			8:leaf=33383.2578,cover=160246.188
+		4:[HeatedPercent<66.5] yes=9,no=10,missing=9,gain=6.56588347e+015,cover=22124.4941
+			9:leaf=-747935.5,cover=2507.99902
+			10:leaf=-158080.719,cover=19616.4941
+	2:[SqFt<50500] yes=5,no=6,missing=5,gain=8.94637232e+015,cover=34630.5586
+		5:[OpenHours<126.5] yes=11,no=12,missing=11,gain=2.05047988e+016,cover=14912.458
+			11:leaf=180995.312,cover=13687.3457
+			12:leaf=1646540.25,cover=1225.11206
+		6:[HeatedPercent<45] yes=13,no=14,missing=13,gain=5.73689519e+015,cover=19718.1016
+			13:leaf=1440779.38,cover=298.286011
+			14:leaf=-73887.0625,cover=19419.8145
+booster[20]
+0:[ComputersCnt<118] yes=1,no=2,missing=1,gain=7.53989347e+015,cover=504678.875
+	1:[ComputersCnt<90.5] yes=3,no=4,missing=3,gain=1.54187361e+016,cover=479009.594
+		3:[ComputersCnt<85.5] yes=7,no=8,missing=7,gain=6.52422927e+015,cover=468327
+			7:leaf=4307.74707,cover=464845.812
+			8:leaf=476000.469,cover=3481.18799
+		4:[WorkersCnt<84.5] yes=9,no=10,missing=9,gain=7.60321578e+015,cover=10682.5859
+			9:leaf=-194307.703,cover=6888.68164
+			10:leaf=-799534.5,cover=3793.90381
+	2:[ComputersCnt<121.5] yes=5,no=6,missing=5,gain=2.61725858e+016,cover=25669.2793
+		5:[WorkersCnt<85] yes=11,no=12,missing=11,gain=8.23719752e+015,cover=882.203003
+			11:leaf=482988.75,cover=279.455994
+			12:leaf=2739414.25,cover=602.747009
+		6:[HDD65<1311.5] yes=13,no=14,missing=13,gain=4.22688267e+015,cover=24787.0762
+			13:leaf=500709.281,cover=3075.08203
+			14:leaf=70689.7188,cover=21711.9941
+booster[21]
+0:[HDD65<6115] yes=1,no=2,missing=1,gain=1.91543972e+015,cover=521016.75
+	1:[HDD65<5369] yes=3,no=4,missing=3,gain=4.30301096e+015,cover=445377.75
+		3:[ComputersCnt<60.5] yes=7,no=8,missing=7,gain=2.49060295e+015,cover=385191.156
+			7:leaf=12856.0332,cover=332651.656
+			8:leaf=-67579.7031,cover=52539.4883
+		4:[HDD65<5400.5] yes=9,no=10,missing=9,gain=1.34685407e+016,cover=60186.6133
+			9:leaf=892709.562,cover=2427.07202
+			10:leaf=67294.375,cover=57759.543
+	2:[HDD65<6159.5] yes=5,no=6,missing=5,gain=4.56026474e+015,cover=75638.9922
+		5:[WorkersCnt<22.5] yes=11,no=12,missing=11,gain=2.6847911e+014,cover=996.768982
+			11:leaf=11768.4062,cover=48.8409996
+			12:leaf=-813387.062,cover=947.927979
+		6:[CDD65<1164] yes=13,no=14,missing=13,gain=1.43057173e+015,cover=74642.2188
+			13:leaf=-28813.0312,cover=73724.1875
+			14:leaf=-459817.375,cover=918.030029
+booster[22]
+0:[SqFt<39750] yes=1,no=2,missing=1,gain=4.75390603e+015,cover=529665.125
+	1:[ComputersCnt<38] yes=3,no=4,missing=3,gain=6.76276853e+015,cover=498210.562
+		3:[ComputersCnt<19.5] yes=7,no=8,missing=7,gain=6.6850205e+015,cover=436399.062
+			7:leaf=-10433.8887,cover=369598.125
+			8:leaf=107580.344,cover=66800.9375
+		4:[HDD65<484] yes=9,no=10,missing=9,gain=1.74395504e+016,cover=61811.4844
+			9:leaf=-2806894.75,cover=281.109009
+			10:leaf=-101355.164,cover=61530.375
+	2:[CDD65<1928] yes=5,no=6,missing=5,gain=9.95307561e+015,cover=31454.5723
+		5:[HDD65<2474.5] yes=11,no=12,missing=11,gain=7.90347319e+015,cover=27488.7188
+			11:leaf=-322928.719,cover=5229.61182
+			12:leaf=146060.641,cover=22259.1074
+		6:[SqFt<41000] yes=13,no=14,missing=13,gain=1.0975747e+016,cover=3965.85303
+			13:leaf=2952291.75,cover=226.828003
+			14:leaf=497455.656,cover=3739.0249
+booster[23]
+0:[HeatedPercent<31.5] yes=1,no=2,missing=1,gain=4.21246956e+015,cover=507208.75
+	1:[OpenHours<44] yes=3,no=4,missing=3,gain=6.69298712e+015,cover=12435.7627
+		3:[CooledPercent<45] yes=7,no=8,missing=7,gain=1.25709774e+015,cover=4270.5459
+			7:leaf=763899.812,cover=1807.46301
+			8:leaf=386603.594,cover=2463.08301
+		4:[HeatedPercent<5.5] yes=9,no=10,missing=9,gain=1.78986132e+015,cover=8165.2168
+			9:leaf=410419.031,cover=1162.26294
+			10:leaf=-49452.4414,cover=7002.9541
+	2:[ComputersCnt<367.5] yes=5,no=6,missing=5,gain=2.83696736e+015,cover=494773
+		5:[ComputersCnt<150.5] yes=11,no=12,missing=11,gain=4.19778131e+015,cover=492831
+			11:leaf=-7396.93848,cover=481131.344
+			12:leaf=200727.391,cover=11699.6348
+		6:[ComputersCnt<377.5] yes=13,no=14,missing=13,gain=7.56481556e+015,cover=1942.01404
+			13:leaf=-1824160.12,cover=365.05899
+			14:leaf=-91678.5859,cover=1576.95496
+booster[24]
+0:[IsBank.No<0.5] yes=1,no=2,missing=1,gain=2.20532035e+015,cover=524706.25
+	1:[ComputersCnt<50.5] yes=3,no=4,missing=3,gain=1.49917149e+015,cover=79200.625
+		3:[ComputersCnt<27] yes=7,no=8,missing=7,gain=1.12083057e+015,cover=75635.0312
+			7:leaf=51133.0352,cover=68000.7578
+			8:leaf=-87595.9531,cover=7634.27197
+		4:[OpenHours<44] yes=9,no=10,missing=9,gain=5.8328759e+015,cover=3565.59497
+			9:leaf=1945685.88,cover=226.828003
+			10:leaf=150168.141,cover=3338.76685
+	2:[OpenHours<53.5] yes=5,no=6,missing=5,gain=2.03730311e+015,cover=445505.594
+		5:[ComputersCnt<317] yes=11,no=12,missing=11,gain=4.5758195e+015,cover=316364.812
+			11:leaf=-31787.207,cover=315495.875
+			12:leaf=756694.062,cover=868.927002
+		6:[ComputersCnt<83.5] yes=13,no=14,missing=13,gain=2.4200922e+015,cover=129140.781
+			13:leaf=40689.7812,cover=110773.914
+			14:leaf=-93865.6875,cover=18366.8672
+booster[25]
+0:[ComputersCnt<200.5] yes=1,no=2,missing=1,gain=2.44665496e+015,cover=509848.594
+	1:[ComputersCnt<197.5] yes=3,no=4,missing=3,gain=1.07100614e+016,cover=500175.375
+		3:[SqFt<37250] yes=7,no=8,missing=7,gain=3.97785375e+015,cover=499772.156
+			7:leaf=-7570.64648,cover=477857.5
+			8:leaf=142013.078,cover=21914.668
+		4:[SqFt<89000] yes=9,no=10,missing=9,gain=1.13188591e+016,cover=403.199982
+			9:leaf=210073.234,cover=233.173004
+			10:leaf=3888327,cover=170.026993
+	2:[SqFt<86500] yes=5,no=6,missing=5,gain=5.06553114e+015,cover=9673.2168
+		5:[HeatedPercent<87.5] yes=11,no=12,missing=11,gain=6.03808944e+015,cover=8168.03418
+			11:leaf=943304,cover=448.114014
+			12:leaf=-351705.562,cover=7719.91992
+		6:[OpenHours<52.5] yes=13,no=14,missing=13,gain=1.50231567e+015,cover=1505.18298
+			13:leaf=1017434.75,cover=358.214996
+			14:leaf=212571.484,cover=1146.96802
+booster[26]
+0:[CooledPercent<72.5] yes=1,no=2,missing=1,gain=3.10747917e+015,cover=527967.188
+	1:[HDD65<982.5] yes=3,no=4,missing=3,gain=1.95895163e+015,cover=86247.7656
+		3:[HDD65<838.5] yes=7,no=8,missing=7,gain=7.38484998e+014,cover=9432.48633
+			7:leaf=-148336.484,cover=6612.9541
+			8:leaf=-358203.906,cover=2819.53198
+		4:[HDD65<2553.5] yes=9,no=10,missing=9,gain=2.58629643e+015,cover=76815.2812
+			9:leaf=88110.3516,cover=14000.6484
+			10:leaf=-75062.0391,cover=62814.6328
+	2:[CooledPercent<77.5] yes=5,no=6,missing=5,gain=2.49946159e+015,cover=441719.438
+		5:[OpenHours<41] yes=11,no=12,missing=11,gain=2.4517649e+015,cover=31430.9629
+			11:leaf=-19852.8281,cover=12130.3564
+			12:leaf=177111.875,cover=19300.6055
+		6:[OpenHours<53.5] yes=13,no=14,missing=13,gain=1.2931011e+015,cover=410288.5
+			13:leaf=-11272.7051,cover=296823.5
+			14:leaf=31817.5723,cover=113464.992
+booster[27]
+0:[HDD65<318] yes=1,no=2,missing=1,gain=2.47831263e+015,cover=494169.688
+	1:[SqFt<6650] yes=3,no=4,missing=3,gain=2.57397373e+014,cover=3690.39087
+		3:[CDD65<3608.5] yes=7,no=8,missing=7,gain=1.34420759e+012,cover=3065.43701
+			7:leaf=242676.969,cover=3041.71899
+			8:leaf=148605.297,cover=23.7180004
+		4:leaf=483900.25,cover=624.953979
+	2:[HDD65<326.5] yes=5,no=6,missing=5,gain=7.94134621e+015,cover=490479.281
+		5:leaf=-1820298,cover=281.109009
+		6:[CDD65<303.5] yes=9,no=10,missing=9,gain=1.75323478e+015,cover=490198.188
+			9:leaf=-138560.094,cover=10273.5996
+			10:leaf=4770.01855,cover=479924.594
+booster[28]
+0:[SqFt<77000] yes=1,no=2,missing=1,gain=4.08473831e+015,cover=540582.25
+	1:[SqFt<69500] yes=3,no=4,missing=3,gain=3.10194645e+015,cover=535374.5
+		3:[HeatedPercent<92.5] yes=7,no=8,missing=7,gain=2.74243567e+015,cover=532479.125
+			7:leaf=-45702.7773,cover=107235.859
+			8:leaf=15734.0957,cover=425243.25
+		4:[SqFt<70500] yes=9,no=10,missing=9,gain=1.67051075e+015,cover=2895.40894
+			9:leaf=842072.375,cover=653.843018
+			10:leaf=218580.312,cover=2241.56592
+	2:[ComputersCnt<169] yes=5,no=6,missing=5,gain=1.05056511e+016,cover=5207.75879
+		5:[ComputersCnt<153] yes=11,no=12,missing=11,gain=3.02664788e+015,cover=1973.72803
+			11:leaf=-765375.938,cover=1734.34302
+			12:leaf=-2066795.38,cover=239.384995
+		6:[SqFt<86500] yes=13,no=14,missing=13,gain=8.39101264e+015,cover=3234.03101
+			13:leaf=-951321.062,cover=720.52301
+			14:leaf=376878.812,cover=2513.50806
+booster[29]
+0:[ComputersCnt<27.5] yes=1,no=2,missing=1,gain=1.5135446e+015,cover=525852.688
+	1:[WorkersCnt<45] yes=3,no=4,missing=3,gain=6.47899414e+015,cover=412272.594
+		3:[WorkersCnt<25.5] yes=7,no=8,missing=7,gain=2.34680583e+015,cover=410745.656
+			7:leaf=6359.5498,cover=408321.812
+			8:leaf=-332394.094,cover=2423.82715
+		4:[SqFt<30000] yes=9,no=10,missing=9,gain=1.82598409e+016,cover=1526.94202
+			9:leaf=3794701.75,cover=196.322006
+			10:leaf=255401.953,cover=1330.62
+	2:[ComputersCnt<41.5] yes=5,no=6,missing=5,gain=2.70026124e+015,cover=113580.117
+		5:[SqFt<79000] yes=11,no=12,missing=11,gain=4.15798951e+015,cover=33157.9023
+			11:leaf=-108336.32,cover=32845.5352
+			12:leaf=-1364896.75,cover=312.367004
+		6:[CooledPercent<59] yes=13,no=14,missing=13,gain=3.85253332e+015,cover=80422.2188
+			13:leaf=-318938.75,cover=4324.99316
+			14:leaf=14132.0068,cover=76097.2266
+booster[30]
+0:[ComputersCnt<74] yes=1,no=2,missing=1,gain=2.29855885e+015,cover=497513.188
+	1:[ComputersCnt<60.5] yes=3,no=4,missing=3,gain=5.4565106e+015,cover=454929.969
+		3:[ComputersCnt<59.5] yes=7,no=8,missing=7,gain=8.65050866e+015,cover=440090.656
+			7:leaf=10154.458,cover=439323.438
+			8:leaf=1163231.5,cover=767.217041
+		4:[CDD65<2333.5] yes=9,no=10,missing=9,gain=2.00354346e+015,cover=14839.3115
+			9:leaf=-263006.469,cover=11838.0791
+			10:leaf=51037.9023,cover=3001.23291
+	2:[ComputersCnt<79.5] yes=5,no=6,missing=5,gain=7.04388219e+015,cover=42583.2344
+		5:[WorkersCnt<52.5] yes=11,no=12,missing=11,gain=9.70721262e+014,cover=3531.30884
+			11:leaf=372593.281,cover=1765.57996
+			12:leaf=732977.625,cover=1765.729
+		6:[WorkersCnt<65.5] yes=13,no=14,missing=13,gain=4.46838492e+015,cover=39051.9258
+			13:leaf=260516.172,cover=8893.87012
+			14:leaf=-16388.2754,cover=30158.0566
+booster[31]
+0:[WorkersCnt<25.5] yes=1,no=2,missing=1,gain=1.61500729e+015,cover=517788.062
+	1:[ComputersCnt<16.5] yes=3,no=4,missing=3,gain=1.85764261e+015,cover=425626.25
+		3:[WorkersCnt<19.5] yes=7,no=8,missing=7,gain=2.53785484e+015,cover=331462.906
+			7:leaf=-14218.8896,cover=323904.312
+			8:leaf=187011.625,cover=7558.6001
+		4:[WorkersCnt<12.5] yes=9,no=10,missing=9,gain=2.45998627e+015,cover=94163.3516
+			9:leaf=124763.344,cover=30717.0352
+			10:leaf=6401.92822,cover=63446.3164
+	2:[ComputersCnt<38.5] yes=5,no=6,missing=5,gain=4.26455946e+015,cover=92161.7891
+		5:[WorkersCnt<70.5] yes=11,no=12,missing=11,gain=7.13221571e+015,cover=13818.2949
+			11:leaf=-316352.938,cover=12103.4316
+			12:leaf=431593.25,cover=1714.86304
+		6:[OpenHours<57.5] yes=13,no=14,missing=13,gain=2.08165374e+015,cover=78343.4922
+			13:leaf=-58587.1094,cover=50170.0547
+			14:leaf=58028.668,cover=28173.4375
+booster[32]
+0:[SqFt<97500] yes=1,no=2,missing=1,gain=3.18398623e+015,cover=510946.25
+	1:[SqFt<96500] yes=3,no=4,missing=3,gain=2.15733026e+015,cover=510668.125
+		3:[SqFt<64500] yes=7,no=8,missing=7,gain=2.97486856e+015,cover=510284.781
+			7:leaf=-2383.11108,cover=501895.469
+			8:leaf=203748.828,cover=8389.29883
+		4:[WorkersCnt<225] yes=9,no=10,missing=9,gain=1.51034954e+015,cover=383.330994
+			9:leaf=-1339371.75,cover=239.384995
+			10:leaf=66355.4219,cover=143.945999
+	2:[WorkersCnt<200] yes=5,no=6,missing=5,gain=6.27917025e+015,cover=278.141998
+		5:leaf=2455542,cover=170.026993
+		6:[SqFt<98500] yes=11,no=12,missing=11,gain=1.85124012e+014,cover=108.115005
+			11:leaf=-1310175.5,cover=55.9690018
+			12:leaf=-403780.906,cover=52.1459999
+booster[33]
+0:[SqFt<99500] yes=1,no=2,missing=1,gain=5.07043438e+015,cover=493059.844
+	1:[SqFt<97500] yes=3,no=4,missing=3,gain=3.2603384e+015,cover=492272.75
+		3:[WorkersCnt<108] yes=5,no=6,missing=5,gain=2.56784418e+015,cover=491872.188
+			5:leaf=895.587341,cover=475518.656
+			6:leaf=-137463.547,cover=16353.5547
+		4:[WorkersCnt<200] yes=7,no=8,missing=7,gain=1.04117772e+015,cover=400.566986
+			7:leaf=1617432.88,cover=170.026993
+			8:leaf=496169.781,cover=230.539993
+	2:leaf=-874442.062,cover=787.078979
+booster[34]
+0:[HDD65<3403.5] yes=1,no=2,missing=1,gain=1.39838122e+015,cover=511549.469
+	1:[HDD65<3201.5] yes=3,no=4,missing=3,gain=2.60908472e+015,cover=235207.016
+		3:[CDD65<3853.5] yes=7,no=8,missing=7,gain=1.07896021e+015,cover=218987.797
+			7:leaf=15080.8682,cover=210333.094
+			8:leaf=-108601.766,cover=8654.70996
+		4:[HDD65<3205] yes=9,no=10,missing=9,gain=1.19613518e+016,cover=16219.2119
+			9:leaf=1236091.88,cover=1117.74194
+			10:leaf=72645.1562,cover=15101.4697
+	2:[CDD65<1343] yes=5,no=6,missing=5,gain=1.62123338e+015,cover=276342.469
+		5:[CDD65<1333.5] yes=11,no=12,missing=11,gain=3.44576663e+015,cover=206453.312
+			11:leaf=-3971.04077,cover=205326.281
+			12:leaf=597719.188,cover=1127.02698
+		6:[HDD65<4924.5] yes=13,no=14,missing=13,gain=3.65458928e+015,cover=69889.1562
+			13:leaf=-39318.9844,cover=64861.293
+			14:leaf=-343128.406,cover=5027.86426
+booster[35]
+0:[WorkersCnt<52.5] yes=1,no=2,missing=1,gain=2.13722646e+015,cover=513211.469
+	1:[WorkersCnt<47.5] yes=3,no=4,missing=3,gain=3.72576951e+015,cover=463204.438
+		3:[WorkersCnt<40.5] yes=7,no=8,missing=7,gain=8.81095428e+014,cover=453353.938
+			7:leaf=-1134.03198,cover=450395.906
+			8:leaf=-189091.328,cover=2958.0249
+		4:[WorkersCnt<49.5] yes=9,no=10,missing=9,gain=1.77730203e+015,cover=9850.50293
+			9:leaf=497753.438,cover=2023.953
+			10:leaf=136859.359,cover=7826.5498
+	2:[WorkersCnt<97.5] yes=5,no=6,missing=5,gain=4.44797067e+015,cover=50007.0273
+		5:[WorkersCnt<84.5] yes=11,no=12,missing=11,gain=2.07392079e+015,cover=25812.2246
+			11:leaf=-128032.484,cover=21494.6758
+			12:leaf=-388772.344,cover=4317.54785
+		6:[HDD65<406] yes=13,no=14,missing=13,gain=3.84402499e+015,cover=24194.8008
+			13:leaf=-1226680.12,cover=281.109009
+			14:leaf=48089.7852,cover=23913.6914
+booster[36]
+0:[ComputersCnt<57] yes=1,no=2,missing=1,gain=1.89340358e+015,cover=511762.281
+	1:[ComputersCnt<51.5] yes=3,no=4,missing=3,gain=2.53942465e+015,cover=448480.25
+		3:[WorkersCnt<62.5] yes=7,no=8,missing=7,gain=4.5793913e+015,cover=444962.656
+			7:leaf=10267.9121,cover=443079.062
+			8:leaf=-526045.062,cover=1883.57996
+		4:[WorkersCnt<37] yes=9,no=10,missing=9,gain=8.37588953e+014,cover=3517.60205
+			9:leaf=-34462.3945,cover=702.684021
+			10:leaf=384487.75,cover=2814.91797
+	2:[ComputersCnt<103] yes=5,no=6,missing=5,gain=3.52063704e+015,cover=63282.0508
+		5:[OpenHours<39] yes=11,no=12,missing=11,gain=2.882603e+015,cover=35747.375
+			11:leaf=418208.656,cover=1117.74194
+			12:leaf=-141731.156,cover=34629.6328
+		6:[WorkersCnt<104.5] yes=13,no=14,missing=13,gain=6.12727014e+015,cover=27534.6777
+			13:leaf=255192.953,cover=9904.11523
+			14:leaf=-82261.0938,cover=17630.5625
+booster[37]
+0:[SqFt<98500] yes=1,no=2,missing=1,gain=2.25732663e+015,cover=521478.375
+	1:[WorkersCnt<207.5] yes=3,no=4,missing=3,gain=1.14288664e+015,cover=520639.125
+		3:[SqFt<97500] yes=7,no=8,missing=7,gain=1.742798e+015,cover=517830.219
+			7:leaf=-5667.62012,cover=517660.188
+			8:leaf=1090464.75,cover=170.026993
+		4:[ComputersCnt<391.5] yes=9,no=10,missing=9,gain=1.47511511e+015,cover=2808.90601
+			9:leaf=346754.594,cover=2187.96289
+			10:leaf=-252482.891,cover=620.942993
+	2:[SqFt<99500] yes=5,no=6,missing=5,gain=7.33296512e+012,cover=839.224976
+		5:leaf=-422054.25,cover=52.1459999
+		6:leaf=-576379.25,cover=787.078979
+booster[38]
+0:[CDD65<4765] yes=1,no=2,missing=1,gain=2.50987205e+015,cover=534383
+	1:[HDD65<1678] yes=3,no=4,missing=3,gain=1.57996559e+015,cover=534334.125
+		3:[ComputersCnt<74] yes=5,no=6,missing=5,gain=3.95103625e+015,cover=97119.8281
+			5:leaf=20267.5039,cover=89550.5312
+			6:leaf=278566,cover=7569.29297
+		4:[ComputersCnt<215.5] yes=7,no=8,missing=7,gain=2.48827722e+015,cover=437214.312
+			7:leaf=-4870.37305,cover=430892.594
+			8:leaf=-221820.719,cover=6321.72998
+	2:leaf=-2435632,cover=48.8409996
+booster[39]
+0:[CDD65<4988] yes=1,no=2,missing=1,gain=6.7848452e+015,cover=525357.188
+	1:[CDD65<4765] yes=3,no=4,missing=3,gain=1.09826038e+015,cover=524159.781
+		3:[IsBank.Yes<0.5] yes=5,no=6,missing=5,gain=1.02503622e+015,cover=524110.969
+			5:leaf=-10648.8232,cover=450720.219
+			6:leaf=33103.8438,cover=73390.75
+		4:leaf=-1616206.62,cover=48.8409996
+	2:leaf=813163.125,cover=1197.38599
+booster[40]
+0:[SqFt<2975] yes=1,no=2,missing=1,gain=1.27870947e+015,cover=519532.531
+	1:[CDD65<2956.5] yes=3,no=4,missing=3,gain=4.01210746e+014,cover=146690.844
+		3:[CDD65<2285.5] yes=7,no=8,missing=7,gain=5.01682748e+014,cover=138716.203
+			7:leaf=-23573.5156,cover=121643.484
+			8:leaf=-86419.0938,cover=17072.7168
+		4:[CDD65<3822.5] yes=9,no=10,missing=9,gain=2.91520603e+014,cover=7974.63818
+			9:leaf=88879.6875,cover=5736.05029
+			10:leaf=-57180.1211,cover=2238.58789
+	2:[SqFt<57500] yes=5,no=6,missing=5,gain=1.44528414e+015,cover=372841.688
+		5:[SqFt<33250] yes=11,no=12,missing=11,gain=3.30276892e+015,cover=355968.656
+			11:leaf=6691.53271,cover=332447.719
+			12:leaf=139812.812,cover=23520.9414
+		6:[CDD65<2134] yes=13,no=14,missing=13,gain=4.52331621e+015,cover=16873.0352
+			13:leaf=-154473.312,cover=14767.2764
+			14:leaf=383278.219,cover=2105.75903
+booster[41]
+0:[OpenHours<107] yes=1,no=2,missing=1,gain=1.15150825e+015,cover=508369.906
+	1:[ComputersCnt<60.5] yes=3,no=4,missing=3,gain=1.49418704e+015,cover=491595.125
+		3:[ComputersCnt<50.5] yes=7,no=8,missing=7,gain=1.56581233e+015,cover=436943.344
+			7:leaf=3379.74365,cover=430849
+			8:leaf=178614.922,cover=6094.34619
+		4:[OpenHours<67.5] yes=9,no=10,missing=9,gain=1.77749114e+015,cover=54651.7852
+			9:leaf=-30170.3652,cover=47400.9844
+			10:leaf=-212684.219,cover=7250.79883
+	2:[OpenHours<156] yes=5,no=6,missing=5,gain=4.50249126e+015,cover=16774.7754
+		5:[OpenHours<135] yes=11,no=12,missing=11,gain=4.05206207e+014,cover=1227.89099
+			11:leaf=50816.2266,cover=97.4160004
+			12:leaf=781079.5,cover=1130.47498
+		6:[HDD65<1208.5] yes=13,no=14,missing=13,gain=2.98544787e+015,cover=15546.8848
+			13:leaf=-878399.375,cover=404.795013
+			14:leaf=65215.625,cover=15142.0898
+booster[42]
+0:[CDD65<4988] yes=1,no=2,missing=1,gain=3.08126994e+015,cover=503179.531
+	1:[CDD65<2935.5] yes=3,no=4,missing=3,gain=1.11666915e+015,cover=501982.156
+		3:[ComputersCnt<15.5] yes=5,no=6,missing=5,gain=8.83198016e+014,cover=462334.031
+			5:leaf=-5447.41064,cover=287592.625
+			6:leaf=25499.6387,cover=174741.406
+		4:[ComputersCnt<21.5] yes=7,no=8,missing=7,gain=4.20924378e+015,cover=39648.1211
+			7:leaf=10459.7412,cover=29814.4297
+			8:leaf=-248555.156,cover=9833.69043
+	2:leaf=552675.75,cover=1197.38599
+booster[43]
+0:[SqFt<67500] yes=1,no=2,missing=1,gain=1.46556122e+015,cover=513349.75
+	1:[SqFt<57500] yes=3,no=4,missing=3,gain=1.44406317e+015,cover=507095.938
+		3:[SqFt<48250] yes=7,no=8,missing=7,gain=1.70496203e+015,cover=501294.969
+			7:leaf=-633.623413,cover=496841.531
+			8:leaf=212719.375,cover=4453.4458
+		4:[WorkersCnt<135] yes=9,no=10,missing=9,gain=2.94858793e+015,cover=5800.96582
+			9:leaf=-410841.219,cover=2958.823
+			10:leaf=78732.5625,cover=2842.14307
+	2:[SqFt<68500] yes=5,no=6,missing=5,gain=1.03114767e+016,cover=6253.81494
+		5:leaf=1742731.75,cover=452.708984
+		6:[CDD65<823.5] yes=11,no=12,missing=11,gain=3.05184619e+015,cover=5801.10596
+			11:leaf=421958,cover=1749.96899
+			12:leaf=-120456.75,cover=4051.13696
+booster[44]
+0:[SqFt<30250] yes=1,no=2,missing=1,gain=1.26351442e+015,cover=511310.094
+	1:[ComputersCnt<131.5] yes=3,no=4,missing=3,gain=3.47036096e+015,cover=465548.531
+		3:[SqFt<10875] yes=7,no=8,missing=7,gain=7.87626269e+014,cover=462005.156
+			7:leaf=1515.65894,cover=393080.938
+			8:leaf=-38272.5117,cover=68924.2031
+		4:[CooledPercent<95] yes=9,no=10,missing=9,gain=2.89015892e+015,cover=3543.3689
+			9:leaf=2638873.75,cover=62.1409988
+			10:leaf=294755.562,cover=3481.22778
+	2:[SqFt<33250] yes=5,no=6,missing=5,gain=4.14422737e+015,cover=45761.582
+		5:[ComputersCnt<146] yes=11,no=12,missing=11,gain=4.09976721e+015,cover=6636.82422
+			11:leaf=-401943.469,cover=5979.11328
+			12:leaf=500597.531,cover=657.710999
+		6:[CDD65<902] yes=13,no=14,missing=13,gain=4.50029814e+015,cover=39124.7617
+			13:leaf=-209133.391,cover=10674.6191
+			14:leaf=52270.1172,cover=28450.1406
+booster[45]
+0:[HDD65<714] yes=1,no=2,missing=1,gain=6.7236854e+014,cover=516411.625
+	1:[HDD65<653.5] yes=3,no=4,missing=3,gain=2.35926902e+015,cover=17392.1035
+		3:[HeatedPercent<37.5] yes=7,no=8,missing=7,gain=8.90253036e+014,cover=12882.3545
+			7:leaf=155972.391,cover=3090.56006
+			8:leaf=-55350.2383,cover=9791.79492
+		4:[CDD65<3564.5] yes=9,no=10,missing=9,gain=2.43466073e+015,cover=4509.74902
+			9:leaf=525701.562,cover=2349.18408
+			10:leaf=20787.2949,cover=2160.56494
+	2:[HeatedPercent<12.5] yes=5,no=6,missing=5,gain=8.64353847e+014,cover=499019.531
+		5:[OpenHours<106] yes=11,no=12,missing=11,gain=2.2974642e+013,cover=2822.65601
+			11:leaf=-211488.391,cover=1791.31006
+			12:leaf=-146774.141,cover=1031.34595
+		6:[HeatedPercent<37.5] yes=13,no=14,missing=13,gain=1.15486664e+015,cover=496196.875
+			13:leaf=115594.383,cover=10433.8193
+			14:leaf=159.06076,cover=485763.031
+booster[46]
+0:[ComputersCnt<134] yes=1,no=2,missing=1,gain=2.78143666e+015,cover=500545.25
+	1:[SqFt<74500] yes=3,no=4,missing=3,gain=6.01006853e+015,cover=480826.469
+		3:[SqFt<43250] yes=7,no=8,missing=7,gain=5.67338766e+015,cover=479207.031
+			7:leaf=-2187.20923,cover=469961.969
+			8:leaf=269377.719,cover=9245.05762
+		4:[SqFt<97500] yes=9,no=10,missing=9,gain=1.60639025e+015,cover=1619.44202
+			9:leaf=-991533.25,cover=832.362976
+			10:leaf=-307035.781,cover=787.078979
+	2:[ComputersCnt<154.5] yes=5,no=6,missing=5,gain=7.94646581e+015,cover=19718.7949
+		5:[SqFt<71000] yes=11,no=12,missing=11,gain=2.7470992e+015,cover=5325.60791
+			11:leaf=-529562.938,cover=5185.58301
+			12:leaf=1006732.94,cover=140.024994
+		6:[CDD65<2368] yes=13,no=14,missing=13,gain=2.34797755e+015,cover=14393.1865
+			13:leaf=-58076.8164,cover=12128.7529
+			14:leaf=322685.562,cover=2264.43408
+booster[47]
+0:[ComputersCnt<147.5] yes=1,no=2,missing=1,gain=2.34810318e+015,cover=508067.344
+	1:[ComputersCnt<137.5] yes=3,no=4,missing=3,gain=4.57935587e+015,cover=491699.156
+		3:[OpenHours<53.5] yes=7,no=8,missing=7,gain=1.30587219e+015,cover=489517.969
+			7:leaf=-3204.41089,cover=355475.219
+			8:leaf=36561.1484,cover=134042.766
+		4:[OpenHours<49] yes=9,no=10,missing=9,gain=4.53998612e+014,cover=2181.17505
+			9:leaf=417385.844,cover=1655.24194
+			10:leaf=784134.625,cover=525.932983
+	2:[ComputersCnt<154.5] yes=5,no=6,missing=5,gain=4.78297329e+015,cover=16368.1758
+		5:[WorkersCnt<118] yes=11,no=12,missing=11,gain=5.47761942e+014,cover=2467.92505
+			11:leaf=318068.719,cover=79.9499969
+			12:leaf=-592232.938,cover=2387.9751
+		6:[ComputersCnt<200.5] yes=13,no=14,missing=13,gain=2.5853255e+015,cover=13900.251
+			13:leaf=164820.422,cover=4647.76709
+			14:leaf=-148999.219,cover=9252.48438
+booster[48]
+0:[HDD65<5640] yes=1,no=2,missing=1,gain=1.08331437e+015,cover=502504
+	1:[HDD65<5358] yes=3,no=4,missing=3,gain=6.03941282e+015,cover=394181.594
+		3:[HDD65<5087.5] yes=7,no=8,missing=7,gain=2.97096041e+015,cover=376126.375
+			7:leaf=10167.9102,cover=360243.719
+			8:leaf=-141551.969,cover=15882.6592
+		4:[HDD65<5406] yes=9,no=10,missing=9,gain=2.89263739e+015,cover=18055.2012
+			9:leaf=555662.875,cover=2427.07202
+			10:leaf=152851.812,cover=15628.1299
+	2:[SqFt<11500] yes=5,no=6,missing=5,gain=1.51409811e+015,cover=108322.406
+		5:[ComputersCnt<60] yes=11,no=12,missing=11,gain=2.49581919e+015,cover=91861.3281
+			11:leaf=-16207.4326,cover=90193.5781
+			12:leaf=407524.562,cover=1667.755
+		6:[ComputersCnt<200.5] yes=13,no=14,missing=13,gain=1.04168821e+015,cover=16461.0723
+			13:leaf=-105536.938,cover=15913.7217
+			14:leaf=-586843.375,cover=547.351013
+booster[49]
+0:[OpenHours<156] yes=1,no=2,missing=1,gain=8.75205082e+014,cover=527025.625
+	1:[OpenHours<135] yes=3,no=4,missing=3,gain=2.25275571e+015,cover=509671.594
+		3:[ComputersCnt<309.5] yes=7,no=8,missing=7,gain=9.42768407e+014,cover=508541.125
+			7:leaf=2844.34082,cover=506423.938
+			8:leaf=232367.859,cover=2117.18311
+		4:leaf=488773.031,cover=1130.47498
+	2:[ComputersCnt<110] yes=5,no=6,missing=5,gain=1.45833709e+015,cover=17354.0371
+		5:[ComputersCnt<90] yes=9,no=10,missing=9,gain=1.46848046e+015,cover=13241.0898
+			9:leaf=-84803.2812,cover=11521.793
+			10:leaf=-424873.906,cover=1719.29688
+		6:[ComputersCnt<138] yes=11,no=12,missing=11,gain=3.83283553e+015,cover=4112.94775
+			11:leaf=543940.562,cover=1492.72607
+			12:leaf=-145124.562,cover=2620.22192
+booster[50]
+0:[ComputersCnt<183.5] yes=1,no=2,missing=1,gain=2.09616188e+015,cover=530007.562
+	1:[WorkersCnt<123] yes=3,no=4,missing=3,gain=1.86493547e+015,cover=521151.125
+		3:[SqFt<43250] yes=7,no=8,missing=7,gain=2.6522835e+015,cover=514684.844
+			7:leaf=-1391.35291,cover=502291.938
+			8:leaf=159376.359,cover=12392.9131
+		4:[ComputersCnt<154.5] yes=9,no=10,missing=9,gain=1.79193686e+015,cover=6466.29004
+			9:leaf=-357411.594,cover=3348.12109
+			10:leaf=4252.77539,cover=3118.16895
+	2:[ComputersCnt<210.5] yes=5,no=6,missing=5,gain=4.05417801e+015,cover=8856.41992
+		5:[CDD65<798.5] yes=11,no=12,missing=11,gain=3.30656486e+015,cover=1691.58301
+			11:leaf=1729311.5,cover=276.953003
+			12:leaf=433434.125,cover=1414.63
+		6:[ComputersCnt<257.5] yes=13,no=14,missing=13,gain=3.05293711e+015,cover=7164.83691
+			13:leaf=-492275.438,cover=1025.71997
+			14:leaf=147327.234,cover=6139.1167
+booster[51]
+0:[CDD65<4988] yes=1,no=2,missing=1,gain=1.50973093e+015,cover=503879.812
+	1:[SqFt<49250] yes=3,no=4,missing=3,gain=1.4052329e+015,cover=502682.406
+		3:[SqFt<48250] yes=5,no=6,missing=5,gain=6.72249086e+015,cover=486103.281
+			5:leaf=-4275.7832,cover=485470.125
+			6:leaf=1114266.25,cover=633.151001
+		4:[ComputersCnt<171.5] yes=7,no=8,missing=7,gain=2.69757554e+015,cover=16579.1445
+			7:leaf=-247754.578,cover=8005.75781
+			8:leaf=29367.8828,cover=8573.38574
+	2:leaf=379636.625,cover=1197.38599
+booster[52]
+0:[WorkersCnt<21.5] yes=1,no=2,missing=1,gain=1.17236796e+015,cover=532992
+	1:[SqFt<33000] yes=3,no=4,missing=3,gain=5.98326203e+015,cover=422751.062
+		3:[SqFt<5150] yes=7,no=8,missing=7,gain=1.14340405e+015,cover=421753.219
+			7:leaf=-8073.97754,cover=295683.938
+			8:leaf=30974.959,cover=126069.281
+		4:[SqFt<35250] yes=9,no=10,missing=9,gain=8.34751268e+015,cover=997.857971
+			9:leaf=4648191.5,cover=62.7029991
+			10:leaf=585150,cover=935.155029
+	2:[WorkersCnt<38] yes=5,no=6,missing=5,gain=1.75700468e+015,cover=110240.945
+		5:[WorkersCnt<34.5] yes=11,no=12,missing=11,gain=1.31984452e+015,cover=38920.9609
+			11:leaf=-76563.3359,cover=36503.6445
+			12:leaf=-338469.406,cover=2417.31885
+		6:[CDD65<1343] yes=13,no=14,missing=13,gain=2.63492942e+015,cover=71319.9844
+			13:leaf=62127.8008,cover=36597.5898
+			14:leaf=-69896.2422,cover=34722.3906
+booster[53]
+0:[WorkersCnt<176] yes=1,no=2,missing=1,gain=1.36828464e+015,cover=522430.406
+	1:[WorkersCnt<102] yes=3,no=4,missing=3,gain=3.03551216e+015,cover=513247.781
+		3:[HDD65<184] yes=7,no=8,missing=7,gain=9.0390808e+014,cover=501890.312
+			7:leaf=413533.312,cover=624.953979
+			8:leaf=712.14801,cover=501265.375
+		4:[HDD65<1930.5] yes=9,no=10,missing=9,gain=2.32673706e+015,cover=11357.4766
+			9:leaf=112525.258,cover=2522.56494
+			10:leaf=-261279.75,cover=8834.91211
+	2:[CDD65<938.5] yes=5,no=6,missing=5,gain=1.85242986e+015,cover=9182.62305
+		5:[SqFt<64000] yes=11,no=12,missing=11,gain=1.23549257e+015,cover=1335.802
+			11:leaf=-617491.188,cover=582.81604
+			12:leaf=47910.8516,cover=752.986023
+		6:[HDD65<1389] yes=13,no=14,missing=13,gain=1.74304188e+015,cover=7846.8208
+			13:leaf=-90962.3516,cover=1906.96301
+			14:leaf=286250.625,cover=5939.85791
+booster[54]
+0:[SqFt<64500] yes=1,no=2,missing=1,gain=9.88499809e+014,cover=515202
+	1:[SqFt<49250] yes=3,no=4,missing=3,gain=1.90172522e+015,cover=504282.938
+		3:[SqFt<48250] yes=7,no=8,missing=7,gain=2.89395567e+015,cover=496621.719
+			7:leaf=2354.36523,cover=495988.594
+			8:leaf=736237.875,cover=633.151001
+		4:[OpenHours<52.5] yes=9,no=10,missing=9,gain=8.80057522e+014,cover=7661.20703
+			9:leaf=-292439.531,cover=3605.87402
+			10:leaf=-59314.7695,cover=4055.33301
+	2:[SqFt<96500] yes=5,no=6,missing=5,gain=1.15132021e+015,cover=10919.0537
+		5:[ComputersCnt<326.5] yes=11,no=12,missing=11,gain=7.44591301e+014,cover=9462.13477
+			11:leaf=192034.875,cover=7876.37012
+			12:leaf=-65779.6484,cover=1585.76501
+		6:[OpenHours<67.5] yes=13,no=14,missing=13,gain=2.73579753e+014,cover=1456.91895
+			13:leaf=-148833.734,cover=1400.94995
+			14:leaf=-916703.25,cover=55.9690018
+booster[55]
+0:[ComputersCnt<280.5] yes=1,no=2,missing=1,gain=7.08896767e+014,cover=526642.75
+	1:[SqFt<39750] yes=3,no=4,missing=3,gain=8.37455675e+014,cover=521725.031
+		3:[SqFt<30750] yes=7,no=8,missing=7,gain=1.4083532e+015,cover=491518.469
+			7:leaf=-2764.59546,cover=480915.469
+			8:leaf=-129254.805,cover=10603.0049
+		4:[HDD65<2837] yes=9,no=10,missing=9,gain=5.97998497e+015,cover=30206.5488
+			9:leaf=-187227.297,cover=8675.87012
+			10:leaf=150367.266,cover=21530.6777
+	2:[HDD65<2674.5] yes=5,no=6,missing=5,gain=1.64273654e+015,cover=4917.71289
+		5:[HDD65<2258.5] yes=11,no=12,missing=11,gain=1.09009766e+015,cover=1406.43396
+			11:leaf=72401.6641,cover=1248.13403
+			12:leaf=1026171.5,cover=158.300003
+		6:[SqFt<62500] yes=13,no=14,missing=13,gain=2.08015158e+015,cover=3511.27905
+			13:leaf=-722323.875,cover=859.777954
+			14:leaf=-108010.844,cover=2651.50098
+booster[56]
+0:[SqFt<8600] yes=1,no=2,missing=1,gain=1.8502052e+015,cover=496340.469
+	1:[WorkersCnt<33.5] yes=3,no=4,missing=3,gain=9.08464369e+014,cover=355685.531
+		3:[WorkersCnt<24.5] yes=7,no=8,missing=7,gain=5.42346962e+014,cover=352900.031
+			7:leaf=-2873.49683,cover=349231.844
+			8:leaf=-135558.672,cover=3668.20312
+		4:[SqFt<7100] yes=9,no=10,missing=9,gain=1.13726654e+015,cover=2785.49707
+			9:leaf=372059.062,cover=1667.755
+			10:leaf=-75383.3672,cover=1117.74194
+	2:[CDD65<2474.5] yes=5,no=6,missing=5,gain=2.61987502e+015,cover=140654.922
+		5:[WorkersCnt<21] yes=11,no=12,missing=11,gain=1.67629554e+015,cover=126946.695
+			11:leaf=85435.6641,cover=41086.1211
+			12:leaf=1114.20972,cover=85860.5781
+		6:[CDD65<2990.5] yes=13,no=14,missing=13,gain=3.35854631e+015,cover=13708.2295
+			13:leaf=370015.75,cover=6323.18506
+			14:leaf=29129.9727,cover=7385.04492
+booster[57]
+0:[OpenHours<156] yes=1,no=2,missing=1,gain=7.31956917e+014,cover=519829
+	1:[ComputersCnt<147.5] yes=3,no=4,missing=3,gain=1.1519521e+015,cover=504061.969
+		3:[ComputersCnt<137.5] yes=7,no=8,missing=7,gain=1.7558539e+015,cover=491114.094
+			7:leaf=2077.26636,cover=488349.281
+			8:leaf=276398.906,cover=2764.802
+		4:[HDD65<526.5] yes=9,no=10,missing=9,gain=8.5832284e+014,cover=12947.873
+			9:leaf=1321942.62,cover=48.8409996
+			10:leaf=-105605.891,cover=12899.0322
+	2:[HDD65<709.5] yes=5,no=6,missing=5,gain=1.12662602e+015,cover=15767.0312
+		5:leaf=-754095.812,cover=281.109009
+		6:[HDD65<2250.5] yes=11,no=12,missing=11,gain=1.31301848e+015,cover=15485.9219
+			11:leaf=214385.234,cover=1793.36304
+			12:leaf=-97952.2422,cover=13692.5586
+booster[58]
+0:[CDD65<4988] yes=1,no=2,missing=1,gain=6.40111859e+014,cover=512617.156
+	1:[CDD65<4765] yes=3,no=4,missing=3,gain=6.16595571e+014,cover=511419.781
+		3:[HDD65<1198] yes=5,no=6,missing=5,gain=5.50915791e+014,cover=511370.938
+			5:leaf=-28288.0723,cover=64951.0352
+			6:leaf=5552.90527,cover=446419.906
+		4:leaf=-1206359.25,cover=48.8409996
+	2:leaf=252347.469,cover=1197.38599
+booster[59]
+0:[ComputersCnt<206] yes=1,no=2,missing=1,gain=7.04692464e+014,cover=528407.688
+	1:[ComputersCnt<200.5] yes=3,no=4,missing=3,gain=3.07670304e+015,cover=520448.156
+		3:[ComputersCnt<185.5] yes=7,no=8,missing=7,gain=1.59908545e+015,cover=519406.562
+			7:leaf=-5280.44922,cover=518594.562
+			8:leaf=476591.438,cover=811.997009
+		4:[SqFt<59500] yes=9,no=10,missing=9,gain=7.49696356e+013,cover=1041.57605
+			9:leaf=-518826.969,cover=632.517029
+			10:leaf=-710968.5,cover=409.05899
+	2:[ComputersCnt<210.5] yes=5,no=6,missing=5,gain=2.96356153e+015,cover=7959.53613
+		5:leaf=1198517.62,cover=276.953003
+		6:[HDD65<5373.5] yes=11,no=12,missing=11,gain=8.53611731e+014,cover=7682.58301
+			11:leaf=103117.594,cover=6624.06396
+			12:leaf=-228775.406,cover=1058.51904
+booster[60]
+0:[HDD65<1198] yes=1,no=2,missing=1,gain=8.58426591e+014,cover=508661.969
+	1:[SqFt<11000] yes=3,no=4,missing=3,gain=1.66104048e+015,cover=59487.6875
+		3:[ComputersCnt<46.5] yes=7,no=8,missing=7,gain=6.9788635e+014,cover=48906.5156
+			7:leaf=-27383.4961,cover=46108.2852
+			8:leaf=149168.219,cover=2798.22998
+		4:[CDD65<3220] yes=9,no=10,missing=9,gain=1.82071905e+015,cover=10581.1738
+			9:leaf=-228933.875,cover=8911.65137
+			10:leaf=161662.422,cover=1669.52295
+	2:[ComputersCnt<19.5] yes=5,no=6,missing=5,gain=1.33681206e+015,cover=449174.25
+		5:[SqFt<25500] yes=11,no=12,missing=11,gain=8.68855241e+014,cover=318387.812
+			11:leaf=-10912.0156,cover=317040.625
+			12:leaf=-287110.375,cover=1347.18298
+		6:[ComputersCnt<20.5] yes=13,no=14,missing=13,gain=4.76572094e+015,cover=130786.445
+			13:leaf=412863.375,cover=3705.95703
+			14:leaf=17952.1641,cover=127080.492
+booster[61]
+0:[IsBank.No<0.5] yes=1,no=2,missing=1,gain=5.81907805e+014,cover=508953.094
+	1:[WorkersCnt<67.5] yes=3,no=4,missing=3,gain=3.73514012e+014,cover=67349.3594
+		3:[ComputersCnt<74.5] yes=7,no=8,missing=7,gain=7.71474307e+014,cover=66431.3281
+			7:leaf=28910.1797,cover=65269.0703
+			8:leaf=310982.594,cover=1162.26294
+		4:leaf=-186532.5,cover=918.030029
+	2:[WorkersCnt<68] yes=5,no=6,missing=5,gain=4.06947648e+014,cover=441603.75
+		5:[ComputersCnt<100.5] yes=9,no=10,missing=9,gain=4.48783871e+015,cover=405066.031
+			9:leaf=-9886.14062,cover=401636.656
+			10:leaf=384475.688,cover=3429.37183
+		6:[ComputersCnt<23.5] yes=11,no=12,missing=11,gain=1.07532946e+016,cover=36537.707
+			11:leaf=2277626,cover=248.468002
+			12:leaf=15841.6865,cover=36289.2383
+booster[62]
+0:[SqFt<77000] yes=1,no=2,missing=1,gain=4.56077443e+014,cover=522959.094
+	1:[SqFt<73500] yes=3,no=4,missing=3,gain=1.74228247e+015,cover=517585.906
+		3:[WorkersCnt<252.5] yes=7,no=8,missing=7,gain=7.52778851e+014,cover=516396.688
+			7:leaf=-89.751564,cover=515261.875
+			8:leaf=-279894.844,cover=1134.828
+		4:[SqFt<74500] yes=9,no=10,missing=9,gain=2.43580279e+014,cover=1189.19702
+			9:leaf=1109607.25,cover=55.9690018
+			10:leaf=379911.125,cover=1133.22803
+	2:[WorkersCnt<172.5] yes=5,no=6,missing=5,gain=2.34336342e+015,cover=5373.18701
+		5:[SqFt<97500] yes=11,no=12,missing=11,gain=8.79273959e+014,cover=3070.23096
+			11:leaf=-420205,cover=2113.125
+			12:leaf=-23560.6953,cover=957.105957
+		6:[HDD65<1555.5] yes=13,no=14,missing=13,gain=3.21823477e+014,cover=2302.95605
+			13:leaf=-644733.312,cover=55.9690018
+			14:leaf=181824.375,cover=2246.98706
+booster[63]
+0:[CDD65<2096] yes=1,no=2,missing=1,gain=6.40529209e+014,cover=521106.531
+	1:[CDD65<2056.5] yes=3,no=4,missing=3,gain=1.31368433e+015,cover=423780.25
+		3:[HeatedPercent<31.5] yes=7,no=8,missing=7,gain=7.67488376e+014,cover=416139.562
+			7:leaf=121756.836,cover=6510.68994
+			8:leaf=2957.54004,cover=409628.875
+		4:[SqFt<8550] yes=9,no=10,missing=9,gain=2.81792905e+014,cover=7640.67871
+			9:leaf=120955.852,cover=6510.2041
+			10:leaf=306641.719,cover=1130.47498
+	2:[CDD65<2354.5] yes=5,no=6,missing=5,gain=9.63662953e+014,cover=97326.2891
+		5:[SqFt<69500] yes=11,no=12,missing=11,gain=8.2512026e+014,cover=25774.8418
+			11:leaf=-90310.1719,cover=25120.998
+			12:leaf=300074.094,cover=653.843018
+		6:[IsBank.No<0.5] yes=13,no=14,missing=13,gain=5.65224675e+014,cover=71551.4531
+			13:leaf=75501.9766,cover=9396.31641
+			14:leaf=-14838.4307,cover=62155.1328
+booster[64]
+0:[HDD65<7186.5] yes=1,no=2,missing=1,gain=5.3735621e+014,cover=513711.125
+	1:[CooledPercent<22.5] yes=3,no=4,missing=3,gain=4.79338416e+014,cover=500683.812
+		3:[SqFt<5600] yes=7,no=8,missing=7,gain=3.67844991e+013,cover=4718.26514
+			7:leaf=-69193.2109,cover=1879.45605
+			8:leaf=-131181.094,cover=2838.80908
+		4:[SqFt<2975] yes=9,no=10,missing=9,gain=5.3770484e+014,cover=495965.531
+			9:leaf=-14970.4893,cover=135928.688
+			10:leaf=10373.0605,cover=360036.844
+	2:[CooledPercent<60] yes=5,no=6,missing=5,gain=3.62912758e+014,cover=13027.3174
+		5:[SqFt<15650] yes=11,no=12,missing=11,gain=3.33752115e+013,cover=3679.39697
+			11:leaf=7829.33936,cover=3021.68604
+			12:leaf=93120.4688,cover=657.710999
+		6:[SqFt<37750] yes=13,no=14,missing=13,gain=1.63801815e+014,cover=9347.91992
+			13:leaf=-90404.9141,cover=8563.35059
+			14:leaf=-254254.75,cover=784.56897
+booster[65]
+0:[ComputersCnt<83.5] yes=1,no=2,missing=1,gain=1.00035466e+015,cover=500657.219
+	1:[ComputersCnt<81.5] yes=3,no=4,missing=3,gain=4.77905306e+015,cover=462857.062
+		3:[WorkersCnt<75.5] yes=7,no=8,missing=7,gain=2.05081105e+015,cover=462411.375
+			7:leaf=4706.44971,cover=458171.781
+			8:leaf=244562.656,cover=4239.57812
+		4:[WorkersCnt<137.5] yes=9,no=10,missing=9,gain=8.62817792e+014,cover=445.700012
+			9:leaf=1236334.5,cover=424.919006
+			10:leaf=-992901.5,cover=20.7810001
+	2:[ComputersCnt<84.5] yes=5,no=6,missing=5,gain=2.04087813e+015,cover=37800.1406
+		5:[WorkersCnt<67.5] yes=11,no=12,missing=11,gain=1.73664694e+015,cover=1575.74097
+			11:leaf=-857836.938,cover=657.710999
+			12:leaf=-127102.57,cover=918.030029
+		6:[ComputersCnt<90.5] yes=13,no=14,missing=13,gain=1.09609062e+015,cover=36224.3984
+			13:leaf=159739.469,cover=3158.70312
+			14:leaf=-51911.0039,cover=33065.6953
+booster[66]
+0:[HDD65<144.5] yes=1,no=2,missing=1,gain=3.14939214e+014,cover=488298.094
+	1:leaf=-131515.188,cover=2140.90601
+	2:[HDD65<152.5] yes=3,no=4,missing=3,gain=4.65912281e+014,cover=486157.188
+		3:leaf=296428.625,cover=624.953979
+		4:[WorkersCnt<108] yes=5,no=6,missing=5,gain=2.49618869e+014,cover=485532.25
+			5:leaf=1615.41968,cover=466442.875
+			6:leaf=-38438.2031,cover=19089.3711
+booster[67]
+0:[WorkersCnt<12.5] yes=1,no=2,missing=1,gain=6.57015911e+014,cover=512064.969
+	1:[ComputersCnt<21.5] yes=3,no=4,missing=3,gain=1.77796963e+015,cover=330776.688
+		3:[OpenHours<84.5] yes=7,no=8,missing=7,gain=2.62441896e+014,cover=320808.531
+			7:leaf=5336.51904,cover=303647.062
+			8:leaf=-38301.5703,cover=17161.4805
+		4:[IsBank.Yes<0.5] yes=9,no=10,missing=9,gain=1.75902573e+015,cover=9968.14258
+			9:leaf=234014.938,cover=7452.28174
+			10:leaf=-97961.375,cover=2515.86084
+	2:[ComputersCnt<8] yes=5,no=6,missing=5,gain=8.73157188e+014,cover=181288.281
+		5:[OpenHours<48] yes=11,no=12,missing=11,gain=4.40332295e+014,cover=2291.81592
+			11:leaf=-537159.062,cover=440.04599
+			12:leaf=-155271.297,cover=1851.77002
+		6:[WorkersCnt<157.5] yes=13,no=14,missing=13,gain=5.56492437e+014,cover=178996.469
+			13:leaf=-20455.2852,cover=168093.203
+			14:leaf=59579.8359,cover=10903.2637
+booster[68]
+0:[SqFt<70500] yes=1,no=2,missing=1,gain=6.13080409e+014,cover=531803.25
+	1:[SqFt<67500] yes=3,no=4,missing=3,gain=1.90712614e+015,cover=526482.25
+		3:[WorkersCnt<57.5] yes=7,no=8,missing=7,gain=5.65242526e+014,cover=525093.562
+			7:leaf=1615.79639,cover=487152.594
+			8:leaf=-41889.6758,cover=37940.9492
+		4:[SqFt<68500] yes=9,no=10,missing=9,gain=1.69979773e+015,cover=1388.69604
+			9:leaf=946580.375,cover=452.708984
+			10:leaf=136676.344,cover=935.987
+	2:[SqFt<72000] yes=5,no=6,missing=5,gain=6.46081797e+014,cover=5321.02979
+		5:[WorkersCnt<185] yes=11,no=12,missing=11,gain=7.45076431e+014,cover=418.343994
+			11:leaf=-357445.156,cover=369.502991
+			12:leaf=-1773554,cover=48.8409996
+		6:[OpenHours<82.5] yes=13,no=14,missing=13,gain=4.51340396e+014,cover=4902.68604
+			13:leaf=-147390.609,cover=3533.98389
+			14:leaf=84764.7969,cover=1368.70203
+booster[69]
+0:[WorkersCnt<25.5] yes=1,no=2,missing=1,gain=1.06379757e+015,cover=501585.781
+	1:[WorkersCnt<24.5] yes=3,no=4,missing=3,gain=1.46243824e+015,cover=408695.531
+		3:[ComputersCnt<83] yes=7,no=8,missing=7,gain=7.27506995e+014,cover=404463.094
+			7:leaf=5716.38037,cover=403368.719
+			8:leaf=-274457.969,cover=1094.36389
+		4:[CDD65<1741] yes=9,no=10,missing=9,gain=2.15411454e+015,cover=4232.43506
+			9:leaf=40479.1094,cover=2886.37085
+			10:leaf=566282.875,cover=1346.06396
+	2:[ComputersCnt<46.5] yes=5,no=6,missing=5,gain=1.71835709e+015,cover=92890.2656
+		5:[CDD65<2869.5] yes=11,no=12,missing=11,gain=7.09331619e+015,cover=19428.0234
+			11:leaf=-85575.6953,cover=18770.3125
+			12:leaf=-1231802.75,cover=657.710999
+		6:[CDD65<1343] yes=13,no=14,missing=13,gain=7.68526617e+014,cover=73462.2422
+			13:leaf=27170.2363,cover=35011.4141
+			14:leaf=-43136.707,cover=38450.832
+booster[70]
+0:[ComputersCnt<257.5] yes=1,no=2,missing=1,gain=6.81145641e+014,cover=491193.344
+	1:[ComputersCnt<91.5] yes=3,no=4,missing=3,gain=7.32712361e+014,cover=484137
+		3:[WorkersCnt<68] yes=7,no=8,missing=7,gain=2.12012739e+015,cover=455521.031
+			7:leaf=-717.818726,cover=446055.344
+			8:leaf=163470.484,cover=9465.69336
+		4:[OpenHours<45.5] yes=9,no=10,missing=9,gain=1.93560392e+015,cover=28615.9746
+			9:leaf=73446.2422,cover=9427.01562
+			10:leaf=-116523.023,cover=19188.957
+	2:[HDD65<5373.5] yes=5,no=6,missing=5,gain=6.21764632e+014,cover=7056.35498
+		5:[WorkersCnt<187.5] yes=11,no=12,missing=11,gain=5.45132617e+014,cover=6007.21777
+			11:leaf=-20776.7227,cover=1620.61304
+			12:leaf=212219.109,cover=4386.60498
+		6:[WorkersCnt<82] yes=13,no=14,missing=13,gain=6.98459535e+013,cover=1049.13696
+			13:leaf=260266.656,cover=48.8409996
+			14:leaf=-156621.594,cover=1000.29596
+booster[71]
+0:[WorkersCnt<40.5] yes=1,no=2,missing=1,gain=6.66253782e+014,cover=501765.688
+	1:[HDD65<4046] yes=3,no=4,missing=3,gain=7.88723902e+014,cover=444046.062
+		3:[WorkersCnt<7.5] yes=7,no=8,missing=7,gain=9.1062863e+014,cover=252231.328
+			7:leaf=-14215.2451,cover=136687.25
+			8:leaf=27187.6465,cover=115544.086
+		4:[WorkersCnt<28.5] yes=9,no=10,missing=9,gain=1.34870281e+015,cover=191814.734
+			9:leaf=-17365.416,cover=180835.609
+			10:leaf=-141289.391,cover=10979.1309
+	2:[ComputersCnt<54.5] yes=5,no=6,missing=5,gain=1.24172967e+015,cover=57719.6328
+		5:[HDD65<2022] yes=11,no=12,missing=11,gain=3.12877496e+015,cover=7528.08398
+			11:leaf=-307964.094,cover=1368.92395
+			12:leaf=265700.75,cover=6159.16016
+		6:[HDD65<1739] yes=13,no=14,missing=13,gain=1.32609867e+015,cover=50191.5508
+			13:leaf=101526.625,cover=14007.4922
+			14:leaf=-22882.3789,cover=36184.0586
+booster[72]
+0:[SqFt<14875] yes=1,no=2,missing=1,gain=5.45901886e+014,cover=499977.688
+	1:[SqFt<10875] yes=3,no=4,missing=3,gain=1.10179064e+015,cover=415300.531
+		3:[SqFt<10375] yes=7,no=8,missing=7,gain=5.76466417e+014,cover=386748.406
+			7:leaf=-609.134216,cover=381307.562
+			8:leaf=111926.828,cover=5440.83984
+		4:[ComputersCnt<12] yes=9,no=10,missing=9,gain=1.229376e+015,cover=28552.1328
+			9:leaf=401295.156,cover=639.721985
+			10:leaf=-79702.2969,cover=27912.4121
+	2:[CooledPercent<35] yes=5,no=6,missing=5,gain=1.44430556e+015,cover=84677.1562
+		5:[SqFt<21500] yes=11,no=12,missing=11,gain=6.89908046e+014,cover=2540.01904
+			11:leaf=395195.375,cover=1807.46301
+			12:leaf=261.141632,cover=732.55603
+		6:[ComputersCnt<4.5] yes=13,no=14,missing=13,gain=1.26350891e+015,cover=82137.1328
+			13:leaf=315356.281,cover=1655.24194
+			14:leaf=12420.1338,cover=80481.8906
+booster[73]
+0:[WorkersCnt<63.5] yes=1,no=2,missing=1,gain=7.04977073e+014,cover=520524.594
+	1:[WorkersCnt<47.5] yes=3,no=4,missing=3,gain=7.47804541e+014,cover=481991.938
+		3:[SqFt<44750] yes=7,no=8,missing=7,gain=9.73684051e+014,cover=463046.469
+			7:leaf=433.215149,cover=461387.031
+			8:leaf=-262946.062,cover=1659.40894
+		4:[CDD65<753] yes=9,no=10,missing=9,gain=2.42070209e+015,cover=18945.4863
+			9:leaf=326961.812,cover=3497.18799
+			10:leaf=10680.0234,cover=15448.2979
+	2:[HDD65<1518] yes=5,no=6,missing=5,gain=1.99849419e+015,cover=38532.6641
+		5:[WorkersCnt<78] yes=11,no=12,missing=11,gain=4.24189251e+015,cover=6834.44482
+			11:leaf=1691017.12,cover=196.322006
+			12:leaf=75697.7266,cover=6638.12305
+		6:[HDD65<4243.5] yes=13,no=14,missing=13,gain=1.68482413e+015,cover=31698.2188
+			13:leaf=-176637.375,cover=13101.1885
+			14:leaf=-15902.3506,cover=18597.0293
+booster[74]
+0:[ComputersCnt<300.5] yes=1,no=2,missing=1,gain=5.06367014e+014,cover=505994.344
+	1:[ComputersCnt<9.5] yes=3,no=4,missing=3,gain=4.50524151e+014,cover=501880.75
+		3:[OpenHours<47.5] yes=7,no=8,missing=7,gain=5.7839781e+014,cover=198095.016
+			7:leaf=-1946.68652,cover=126450.742
+			8:leaf=36663.0312,cover=71644.2812
+		4:[SqFt<4425] yes=9,no=10,missing=9,gain=6.17497179e+014,cover=303785.719
+			9:leaf=-36076.2227,cover=74938.2812
+			10:leaf=-169.633881,cover=228847.453
+	2:[ComputersCnt<326.5] yes=5,no=6,missing=5,gain=7.31505073e+014,cover=4113.60107
+		5:[SqFt<65500] yes=11,no=12,missing=11,gain=1.71548094e+015,cover=1098.45496
+			11:leaf=2263087.5,cover=52.1459999
+			12:leaf=263016.531,cover=1046.30896
+		6:[OpenHours<42.5] yes=13,no=14,missing=13,gain=5.08654218e+014,cover=3015.146
+			13:leaf=489649.5,cover=261.266998
+			14:leaf=-10719.4561,cover=2753.87891
+booster[75]
+0:[WorkersCnt<267.5] yes=1,no=2,missing=1,gain=5.50392912e+014,cover=500808.594
+	1:[SqFt<23500] yes=3,no=4,missing=3,gain=5.40148408e+014,cover=499268.906
+		3:[SqFt<15125] yes=7,no=8,missing=7,gain=1.28121049e+015,cover=439166.969
+			7:leaf=-1935.89136,cover=407184.719
+			8:leaf=-73298.1641,cover=31982.2383
+		4:[WorkersCnt<49] yes=9,no=10,missing=9,gain=9.79006925e+014,cover=60101.9531
+			9:leaf=100176.789,cover=16044.4072
+			10:leaf=1126.57629,cover=44057.5469
+	2:[WorkersCnt<282.5] yes=5,no=6,missing=5,gain=6.24701222e+015,cover=1539.69202
+		5:leaf=-1888789.62,cover=222.037994
+		6:[CooledPercent<92.5] yes=11,no=12,missing=11,gain=1.56725991e+014,cover=1317.65405
+			11:leaf=-324960.531,cover=104.809998
+			12:leaf=110775.492,cover=1212.84399
+booster[76]
+0:[WorkersCnt<139] yes=1,no=2,missing=1,gain=4.29427003e+014,cover=496830.188
+	1:[WorkersCnt<108] yes=3,no=4,missing=3,gain=1.22402649e+015,cover=482517.125
+		3:[WorkersCnt<92] yes=7,no=8,missing=7,gain=5.23122285e+014,cover=479464.594
+			7:leaf=-2136.34741,cover=472183.562
+			8:leaf=90589.0234,cover=7281.03516
+		4:[WorkersCnt<129] yes=9,no=10,missing=9,gain=7.76576929e+014,cover=3052.53491
+			9:leaf=-357205.875,cover=1861.85999
+			10:leaf=-2221.41406,cover=1190.67505
+	2:[WorkersCnt<248] yes=5,no=6,missing=5,gain=7.2383661e+014,cover=14313.0469
+		5:[WorkersCnt<243] yes=11,no=12,missing=11,gain=7.45372113e+014,cover=11964.5469
+			11:leaf=86889.5078,cover=11915.7061
+			12:leaf=1417407.25,cover=48.8409996
+		6:[CooledPercent<97.5] yes=13,no=14,missing=13,gain=1.28106916e+015,cover=2348.5
+			13:leaf=-568566.562,cover=560.151001
+			14:leaf=25997.166,cover=1788.349
+booster[77]
+0:[HeatedPercent<25] yes=1,no=2,missing=1,gain=4.55461954e+014,cover=500888
+	1:[OpenHours<124] yes=3,no=4,missing=3,gain=1.0714514e+014,cover=6900.71191
+		3:[CooledPercent<65] yes=7,no=8,missing=7,gain=3.11063308e+014,cover=5869.36621
+			7:leaf=173075.375,cover=583.627014
+			8:leaf=-90852.5625,cover=5285.73926
+		4:leaf=-184552.281,cover=1031.34595
+	2:[CDD65<57.5] yes=5,no=6,missing=5,gain=4.3493852e+014,cover=493987.281
+		5:leaf=-168705.766,cover=1667.755
+		6:[SqFt<43250] yes=9,no=10,missing=9,gain=3.85646523e+014,cover=492319.531
+			9:leaf=4677.62305,cover=468061.156
+			10:leaf=49071.9766,cover=24258.3867
+booster[78]
+0:[ComputersCnt<280.5] yes=1,no=2,missing=1,gain=4.30418067e+014,cover=526393.312
+	1:[SqFt<60500] yes=3,no=4,missing=3,gain=2.67351094e+014,cover=521756.25
+		3:[SqFt<58500] yes=7,no=8,missing=7,gain=2.07341989e+015,cover=511341.5
+			7:leaf=-188.090912,cover=510708.562
+			8:leaf=621102.5,cover=632.923035
+		4:[OpenHours<45.5] yes=9,no=10,missing=9,gain=1.34463776e+015,cover=10414.748
+			9:leaf=170989.438,cover=2390.46899
+			10:leaf=-122309.5,cover=8024.27881
+	2:[ComputersCnt<306] yes=5,no=6,missing=5,gain=5.26646507e+014,cover=4637.08594
+		5:[OpenHours<55] yes=11,no=12,missing=11,gain=1.36202607e+015,cover=1232.94897
+			11:leaf=-1065682.38,cover=222.037994
+			12:leaf=-128171.219,cover=1010.91101
+		6:[HDD65<1184.5] yes=13,no=14,missing=13,gain=3.95424821e+014,cover=3404.13696
+			13:leaf=924035.875,cover=48.8409996
+			14:leaf=-50158.418,cover=3355.2959
+booster[79]
+0:[SqFt<28500] yes=1,no=2,missing=1,gain=8.49551846e+014,cover=523941.781
+	1:[SqFt<25000.5] yes=3,no=4,missing=3,gain=8.90343432e+014,cover=477924.938
+		3:[SqFt<17625] yes=7,no=8,missing=7,gain=6.09343922e+014,cover=469132.469
+			7:leaf=134.789963,cover=450291.375
+			8:leaf=-62883.6875,cover=18841.1133
+		4:[CooledPercent<67.5] yes=9,no=10,missing=9,gain=3.07690357e+015,cover=8792.47266
+			9:leaf=-99223.5078,cover=4310.43213
+			10:leaf=307006.25,cover=4482.04102
+	2:[IsBank.No<0.5] yes=5,no=6,missing=5,gain=1.44542937e+015,cover=46016.832
+		5:[CooledPercent<87.5] yes=11,no=12,missing=11,gain=8.46396991e+014,cover=1849.22192
+			11:leaf=867815.75,cover=226.828003
+			12:leaf=160953.625,cover=1622.39392
+		6:[WorkersCnt<22.5] yes=13,no=14,missing=13,gain=1.04407702e+015,cover=44167.6094
+			13:leaf=221687.531,cover=1480.45801
+			14:leaf=-71493.8984,cover=42687.1523
+booster[80]
+0:[HDD65<5640] yes=1,no=2,missing=1,gain=2.97857962e+014,cover=509369.281
+	1:[HDD65<5599] yes=3,no=4,missing=3,gain=2.0980773e+015,cover=404165.719
+		3:[OpenHours<135] yes=7,no=8,missing=7,gain=3.3136327e+014,cover=402297.75
+			7:leaf=-4014.55664,cover=389174.344
+			8:leaf=51449.9258,cover=13123.3887
+		4:[HDD65<5609.5] yes=9,no=10,missing=9,gain=2.95255621e+015,cover=1867.95593
+			9:leaf=1132141.25,cover=445.923004
+			10:leaf=120392,cover=1422.03296
+	2:[HDD65<5658] yes=5,no=6,missing=5,gain=8.89611342e+014,cover=105203.586
+		5:[ComputersCnt<81] yes=11,no=12,missing=11,gain=1.11178242e+015,cover=4339.10693
+			11:leaf=-142984.922,cover=4212.83984
+			12:leaf=-1173046,cover=126.266998
+		6:[ComputersCnt<17] yes=13,no=14,missing=13,gain=2.63371438e+014,cover=100864.477
+			13:leaf=-121.163078,cover=60408.0547
+			14:leaf=-35915.0742,cover=40456.4258
+booster[81]
+0:[OpenHours<93] yes=1,no=2,missing=1,gain=4.67001726e+014,cover=521342.5
+	1:[CooledPercent<22.5] yes=3,no=4,missing=3,gain=3.98450424e+014,cover=491302.031
+		3:[OpenHours<57.5] yes=7,no=8,missing=7,gain=5.44209581e+012,cover=3686.91895
+			7:leaf=-90924.7891,cover=1807.46301
+			8:leaf=-117526.609,cover=1879.45605
+		4:[OpenHours<37.5] yes=9,no=10,missing=9,gain=2.32225459e+014,cover=487615.125
+			9:leaf=-28244.5098,cover=19200.2344
+			10:leaf=10278.0049,cover=468414.875
+	2:[CDD65<1470.5] yes=5,no=6,missing=5,gain=3.99673685e+014,cover=30040.457
+		5:[CDD65<921] yes=11,no=12,missing=11,gain=1.33313772e+015,cover=15373.5439
+			11:leaf=31645.582,cover=7286.56201
+			12:leaf=-170819.141,cover=8086.98193
+		6:[CDD65<1736] yes=13,no=14,missing=13,gain=4.57418681e+014,cover=14666.9131
+			13:leaf=132099.906,cover=2695.69995
+			14:leaf=-24413.8477,cover=11971.2129
+booster[82]
+0:[SqFt<58500] yes=1,no=2,missing=1,gain=6.53680668e+014,cover=525363.438
+	1:[ComputersCnt<75.5] yes=3,no=4,missing=3,gain=3.82900294e+014,cover=510662.312
+		3:[SqFt<43250] yes=7,no=8,missing=7,gain=7.53799241e+014,cover=475309.094
+			7:leaf=-4239.85791,cover=473117.812
+			8:leaf=197542.5,cover=2191.28613
+		4:[ComputersCnt<79.5] yes=9,no=10,missing=9,gain=8.34580932e+014,cover=35353.207
+			9:leaf=209232.844,cover=2927.99194
+			10:leaf=17870.5977,cover=32425.2168
+	2:[ComputersCnt<167] yes=5,no=6,missing=5,gain=1.6200108e+015,cover=14701.1016
+		5:[CooledPercent<82.5] yes=11,no=12,missing=11,gain=3.35292501e+015,cover=7467.6709
+			11:leaf=100959.789,cover=2917.35498
+			12:leaf=-370499.531,cover=4550.31592
+		6:[ComputersCnt<202.5] yes=13,no=14,missing=13,gain=5.80332022e+014,cover=7233.43115
+			13:leaf=199756.547,cover=1983.96594
+			14:leaf=-18165.2305,cover=5249.46484
+booster[83]
+0:[CDD65<900.5] yes=1,no=2,missing=1,gain=2.54763216e+014,cover=507610.594
+	1:[SqFt<69000] yes=3,no=4,missing=3,gain=5.87186991e+014,cover=114344.672
+		3:[SqFt<67500] yes=7,no=8,missing=7,gain=6.98333564e+014,cover=112508.156
+			7:leaf=-14494.4248,cover=110656.484
+			8:leaf=-227033.516,cover=1851.67004
+		4:[OpenHours<56.5] yes=9,no=10,missing=9,gain=1.34632201e+014,cover=1836.51294
+			9:leaf=341553.719,cover=446.384003
+			10:leaf=124825.609,cover=1390.12903
+	2:[CDD65<927.5] yes=5,no=6,missing=5,gain=5.61764006e+014,cover=393265.938
+		5:[SqFt<27000] yes=11,no=12,missing=11,gain=1.95026573e+015,cover=19710.0078
+			11:leaf=41623.8203,cover=19153.5996
+			12:leaf=693090.625,cover=556.408997
+		6:[CDD65<931.5] yes=13,no=14,missing=13,gain=1.43263453e+015,cover=373555.938
+			13:leaf=-353148.281,cover=1343.71289
+			14:leaf=1858.02759,cover=372212.219
+booster[84]
+0:[ComputersCnt<76] yes=1,no=2,missing=1,gain=3.32351951e+014,cover=523619.688
+	1:[ComputersCnt<72] yes=3,no=4,missing=3,gain=7.7422879e+014,cover=480137.562
+		3:[SqFt<10000.5] yes=7,no=8,missing=7,gain=3.05899214e+014,cover=475401.594
+			7:leaf=1025.63721,cover=396396.125
+			8:leaf=-22369.4102,cover=79005.4766
+		4:[ComputersCnt<74.5] yes=9,no=10,missing=9,gain=7.93569363e+014,cover=4735.96777
+			9:leaf=-287919.281,cover=2283.93799
+			10:leaf=-6698.80078,cover=2452.03003
+	2:[WorkersCnt<77.5] yes=5,no=6,missing=5,gain=1.64728773e+015,cover=43482.1172
+		5:[WorkersCnt<49.5] yes=11,no=12,missing=11,gain=2.21394947e+015,cover=13525.4551
+			11:leaf=-7848.82324,cover=6985.70801
+			12:leaf=270093.906,cover=6539.74707
+		6:[WorkersCnt<90.5] yes=13,no=14,missing=13,gain=7.07115967e+014,cover=29956.6602
+			13:leaf=-149346.875,cover=4148.12598
+			14:leaf=3353.11792,cover=25808.5352
+booster[85]
+0:[HDD65<6916.5] yes=1,no=2,missing=1,gain=1.9726456e+014,cover=513524.312
+	1:[HDD65<5640] yes=3,no=4,missing=3,gain=2.08810354e+014,cover=484701.031
+		3:[HDD65<5599] yes=7,no=8,missing=7,gain=8.78286855e+014,cover=403020.156
+			7:leaf=1698.09485,cover=401152.188
+			8:leaf=237598.156,cover=1867.95593
+		4:[HDD65<5737] yes=9,no=10,missing=9,gain=5.48559397e+014,cover=81680.9062
+			9:leaf=-79962.4219,cover=13326.292
+			10:leaf=-3821.11719,cover=68354.6094
+	2:[WorkersCnt<1.5] yes=5,no=6,missing=5,gain=1.71080036e+015,cover=28823.2598
+		5:leaf=446999.594,cover=1107.75305
+		6:[HDD65<6921] yes=11,no=12,missing=11,gain=6.98433489e+014,cover=27715.5059
+			11:leaf=289169.875,cover=1031.34595
+			12:leaf=1368.74622,cover=26684.1602
+booster[86]
+0:[SqFt<63000] yes=1,no=2,missing=1,gain=3.29910095e+014,cover=521482.312
+	1:[WorkersCnt<248] yes=3,no=4,missing=3,gain=1.04576937e+015,cover=510360.812
+		3:[WorkersCnt<57.5] yes=7,no=8,missing=7,gain=2.39105712e+014,cover=509822.156
+			7:leaf=4038.9668,cover=471201.344
+			8:leaf=-24059.666,cover=38620.8164
+		4:[OpenHours<55] yes=9,no=10,missing=9,gain=1.26815e+014,cover=538.638
+			9:leaf=-675310.25,cover=222.037994
+			10:leaf=-335001.156,cover=316.600006
+	2:[WorkersCnt<51] yes=5,no=6,missing=5,gain=8.3308521e+014,cover=11121.4961
+		5:[OpenHours<45] yes=11,no=12,missing=11,gain=1.9198373e+014,cover=1965.67896
+			11:leaf=-11520.6152,cover=796.363953
+			12:leaf=-230056.047,cover=1169.31494
+		6:[ComputersCnt<326.5] yes=13,no=14,missing=13,gain=6.93741707e+014,cover=9155.81738
+			13:leaf=163395.922,cover=6607.43115
+			14:leaf=-47446.0547,cover=2548.38599
+booster[87]
+0:[SqFt<5850] yes=1,no=2,missing=1,gain=7.42930894e+014,cover=475317.594
+	1:[WorkersCnt<8.5] yes=3,no=4,missing=3,gain=9.19121525e+014,cover=269779.906
+		3:[SqFt<2975] yes=7,no=8,missing=7,gain=3.83198593e+014,cover=207000.875
+			7:leaf=-9172.76367,cover=132312.672
+			8:leaf=21586.0059,cover=74688.2031
+		4:[HDD65<5380.5] yes=9,no=10,missing=9,gain=3.48348658e+014,cover=62779.0312
+			9:leaf=-61484.1055,cover=45140.7773
+			10:leaf=-4585.33496,cover=17638.2539
+	2:[WorkersCnt<8.5] yes=5,no=6,missing=5,gain=7.99671438e+014,cover=205537.703
+		5:[SqFt<16375] yes=11,no=12,missing=11,gain=4.30382332e+014,cover=40484.5938
+			11:leaf=-15640.877,cover=37866.1758
+			12:leaf=-159537.859,cover=2618.41797
+		6:[SqFt<27500] yes=13,no=14,missing=13,gain=6.70307493e+014,cover=165053.109
+			13:leaf=42120.2539,cover=120873.531
+			14:leaf=-7296.11182,cover=44179.5781
+booster[88]
+0:[CDD65<4988] yes=1,no=2,missing=1,gain=1.81866397e+014,cover=511271.406
+	1:[CDD65<4765] yes=3,no=4,missing=3,gain=4.62541503e+014,cover=510074.031
+		3:[CDD65<3846.5] yes=5,no=6,missing=5,gain=2.74325433e+014,cover=510025.188
+			5:leaf=-1091.40417,cover=502519.031
+			6:leaf=-67208.7109,cover=7506.16504
+		4:leaf=-1047996.12,cover=48.8409996
+	2:leaf=131735.344,cover=1197.38599
+booster[89]
+0:[SqFt<33250] yes=1,no=2,missing=1,gain=4.14646981e+014,cover=505280.875
+	1:[SqFt<27250] yes=3,no=4,missing=3,gain=8.74416351e+014,cover=468508.406
+		3:[SqFt<23500] yes=7,no=8,missing=7,gain=1.00303552e+015,cover=459494.531
+			7:leaf=-4357.76709,cover=448467.562
+			8:leaf=100447.969,cover=11026.9951
+		4:[CDD65<1240.5] yes=9,no=10,missing=9,gain=3.68550674e+014,cover=9013.8584
+			9:leaf=-32233.2598,cover=4009.01709
+			10:leaf=-171934.688,cover=5004.84082
+	2:[CooledPercent<44] yes=5,no=6,missing=5,gain=1.10535278e+015,cover=36772.4844
+		5:[SqFt<47250] yes=11,no=12,missing=11,gain=1.24176082e+013,cover=324.290009
+			11:leaf=-553225.75,cover=249.445007
+			12:leaf=-729939.938,cover=74.8450012
+		6:[SqFt<36250] yes=13,no=14,missing=13,gain=7.49236509e+014,cover=36448.1953
+			13:leaf=179150.531,cover=4030.09106
+			14:leaf=22204.0801,cover=32418.1055
+booster[90]
+0:[CDD65<2273.5] yes=1,no=2,missing=1,gain=6.5066399e+014,cover=520743.906
+	1:[CDD65<2096] yes=3,no=4,missing=3,gain=6.77579879e+014,cover=441648.906
+		3:[CDD65<2052.5] yes=7,no=8,missing=7,gain=5.16462737e+014,cover=420273.812
+			7:leaf=-2272.80566,cover=412633.125
+			8:leaf=87803.3359,cover=7640.67871
+		4:[OpenHours<59.5] yes=9,no=10,missing=9,gain=6.75751632e+014,cover=21375.1055
+			9:leaf=-28078.3184,cover=16038.4746
+			10:leaf=-169107.719,cover=5336.63086
+	2:[CDD65<2295] yes=5,no=6,missing=5,gain=1.3198052e+015,cover=79094.9922
+		5:leaf=447821.625,cover=880.78302
+		6:[WorkersCnt<73] yes=11,no=12,missing=11,gain=8.74542247e+014,cover=78214.2109
+			11:leaf=16720.9922,cover=73954.1094
+			12:leaf=176675.109,cover=4260.09717
+booster[91]
+0:[ComputersCnt<83.5] yes=1,no=2,missing=1,gain=3.32005468e+014,cover=505174.344
+	1:[ComputersCnt<81.5] yes=3,no=4,missing=3,gain=1.71844514e+015,cover=464211.125
+		3:[CDD65<1190.5] yes=7,no=8,missing=7,gain=2.93672784e+014,cover=463765.406
+			7:leaf=-5600.93604,cover=163058.688
+			8:leaf=12493.1514,cover=300706.719
+		4:[OpenHours<67.5] yes=9,no=10,missing=9,gain=3.33823112e+014,cover=445.700012
+			9:leaf=-640302.562,cover=20.7810001
+			10:leaf=745749.25,cover=424.919006
+	2:[ComputersCnt<84.5] yes=5,no=6,missing=5,gain=1.42725682e+015,cover=40963.2305
+		5:leaf=-526747.312,cover=657.710999
+		6:[CDD65<1318] yes=11,no=12,missing=11,gain=1.04051126e+015,cover=40305.5195
+			11:leaf=41120.4336,cover=19007.3008
+			12:leaf=-69379.8828,cover=21298.2207
+booster[92]
+0:[SqFt<14125] yes=1,no=2,missing=1,gain=3.27691643e+014,cover=503624.188
+	1:[WorkersCnt<62.5] yes=3,no=4,missing=3,gain=4.55824242e+014,cover=406392.906
+		3:[SqFt<10625] yes=7,no=8,missing=7,gain=5.85149297e+014,cover=405275.156
+			7:leaf=2178.22778,cover=377866.125
+			8:leaf=-49771.7109,cover=27409.0508
+		4:leaf=218113.094,cover=1117.74194
+	2:[CDD65<1477] yes=5,no=6,missing=5,gain=1.55192442e+015,cover=97231.2578
+		5:[CDD65<1316.5] yes=9,no=10,missing=9,gain=1.40418144e+015,cover=59523.8789
+			9:leaf=10675.8818,cover=49491.5
+			10:leaf=-130178.875,cover=10032.3789
+		6:[SqFt<16625] yes=11,no=12,missing=11,gain=3.04906278e+015,cover=37707.3828
+			11:leaf=362725.469,cover=3915.21802
+			12:leaf=42715.4492,cover=33792.1641
+booster[93]
+0:[CDD65<2738] yes=1,no=2,missing=1,gain=3.8932684e+014,cover=509654.156
+	1:[CDD65<2666.5] yes=3,no=4,missing=3,gain=1.24471602e+015,cover=459202.875
+		3:[SqFt<74500] yes=7,no=8,missing=7,gain=2.66014554e+014,cover=458986.844
+			7:leaf=4234.78076,cover=454535.281
+			8:leaf=-80091.7812,cover=4451.56689
+		4:[SqFt<14250] yes=9,no=10,missing=9,gain=8.50963129e+013,cover=216.012009
+			9:leaf=137599.641,cover=19.6900005
+			10:leaf=893820.75,cover=196.322006
+	2:[SqFt<7700] yes=5,no=6,missing=5,gain=1.27002156e+015,cover=50451.2773
+		5:[SqFt<4450] yes=11,no=12,missing=11,gain=4.40907518e+014,cover=34336.7773
+			11:leaf=-13406.1973,cover=25583.9883
+			12:leaf=75857.7188,cover=8752.78906
+		6:[OpenHours<42.5] yes=13,no=14,missing=13,gain=9.04212486e+014,cover=16114.499
+			13:leaf=-235196.547,cover=4647.99414
+			14:leaf=-55690.0078,cover=11466.5049
+booster[94]
+0:[WorkersCnt<106] yes=1,no=2,missing=1,gain=5.50961525e+014,cover=538448.688
+	1:[WorkersCnt<14.5] yes=3,no=4,missing=3,gain=2.56296687e+014,cover=518568.688
+		3:[OpenHours<71] yes=7,no=8,missing=7,gain=4.35673362e+014,cover=370506.562
+			7:leaf=5478.11719,cover=340876.188
+			8:leaf=-37923.3945,cover=29630.3711
+		4:[CDD65<4485.5] yes=9,no=10,missing=9,gain=1.40110973e+015,cover=148062.125
+			9:leaf=-15286.3369,cover=148042.422
+			10:leaf=2810156.5,cover=19.6900005
+	2:[HeatedPercent<82.5] yes=5,no=6,missing=5,gain=5.99219677e+014,cover=19879.998
+		5:[CDD65<4009.5] yes=11,no=12,missing=11,gain=1.50146269e+014,cover=2835.44092
+			11:leaf=109608.781,cover=2585.99585
+			12:leaf=-168846.484,cover=249.445007
+		6:[CDD65<3293] yes=13,no=14,missing=13,gain=5.30036478e+014,cover=17044.5566
+			13:leaf=-73223.2188,cover=16386.7246
+			14:leaf=-387309.969,cover=657.833008
+booster[95]
+0:[CDD65<153] yes=1,no=2,missing=1,gain=2.5600676e+014,cover=525582.438
+	1:[CDD65<111] yes=3,no=4,missing=3,gain=6.01995501e+014,cover=6415.43994
+		3:[ComputersCnt<22] yes=7,no=8,missing=7,gain=6.65746691e+013,cover=3129.61206
+			7:leaf=11398.1768,cover=1461.85706
+			8:leaf=-88945.5703,cover=1667.755
+		4:[CooledPercent<85] yes=9,no=10,missing=9,gain=2.42864664e+014,cover=3285.82788
+			9:leaf=310258.031,cover=990.98999
+			10:leaf=106869.195,cover=2294.83789
+	2:[CDD65<381] yes=5,no=6,missing=5,gain=3.24904176e+014,cover=519167
+		5:[ComputersCnt<19] yes=11,no=12,missing=11,gain=2.46651298e+014,cover=11191.5859
+			11:leaf=-22363.127,cover=7082.83008
+			12:leaf=-128096.539,cover=4108.75586
+		6:[CDD65<512.5] yes=13,no=14,missing=13,gain=4.36914742e+014,cover=507975.438
+			13:leaf=49877.7695,cover=18402.7832
+			14:leaf=-4006.0127,cover=489572.656
+booster[96]
+0:[SqFt<14875] yes=1,no=2,missing=1,gain=3.98133603e+014,cover=504967.969
+	1:[ComputersCnt<17.5] yes=3,no=4,missing=3,gain=4.09322295e+014,cover=412326.406
+		3:[SqFt<13000] yes=7,no=8,missing=7,gain=4.38642057e+014,cover=325077.281
+			7:leaf=-2148.42773,cover=322131.156
+			8:leaf=130907.055,cover=2946.13501
+		4:[SqFt<13750] yes=9,no=10,missing=9,gain=7.29331752e+014,cover=87249.1016
+			9:leaf=-18790.4766,cover=81111.6875
+			10:leaf=-141528.016,cover=6137.41699
+	2:[SqFt<17625] yes=5,no=6,missing=5,gain=9.58452151e+014,cover=92641.5781
+		5:[ComputersCnt<12] yes=11,no=12,missing=11,gain=1.01890093e+015,cover=18138.4395
+			11:leaf=-85846.6484,cover=3224.45703
+			12:leaf=126965.945,cover=14913.9814
+		6:[OpenHours<54.5] yes=13,no=14,missing=13,gain=1.44678859e+015,cover=74503.1406
+			13:leaf=-41603.5195,cover=41440.3984
+			14:leaf=54691.2109,cover=33062.7422
+booster[97]
+0:[CDD65<1631] yes=1,no=2,missing=1,gain=4.84398357e+014,cover=499469.344
+	1:[WorkersCnt<140] yes=3,no=4,missing=3,gain=6.59146215e+014,cover=294926.281
+		3:[CDD65<1590] yes=7,no=8,missing=7,gain=2.68623814e+014,cover=287002.156
+			7:leaf=5921.90283,cover=269996.938
+			8:leaf=50408.8789,cover=17005.2109
+		4:[WorkersCnt<165] yes=9,no=10,missing=9,gain=4.51327411e+014,cover=7924.146
+			9:leaf=269109.562,cover=1642.49402
+			10:leaf=67007.9453,cover=6281.65186
+	2:[IsBank.No<0.5] yes=5,no=6,missing=5,gain=3.28881819e+014,cover=204543.031
+		5:[CooledPercent<77.5] yes=11,no=12,missing=11,gain=1.65095271e+014,cover=22254.9746
+			11:leaf=102880.023,cover=3065.63696
+			12:leaf=17089.9023,cover=19189.3379
+		6:[OpenHours<50.5] yes=13,no=14,missing=13,gain=1.9667724e+014,cover=182288.062
+			13:leaf=-21909.8848,cover=135649
+			14:leaf=3934.80566,cover=46639.0664
+booster[98]
+0:[HDD65<3815.5] yes=1,no=2,missing=1,gain=4.63260944e+014,cover=511525.906
+	1:[HDD65<3768] yes=3,no=4,missing=3,gain=1.91483426e+015,cover=272324.75
+		3:[SqFt<14250] yes=7,no=8,missing=7,gain=5.06854459e+014,cover=269382.438
+			7:leaf=-1470.35779,cover=226085.891
+			8:leaf=39076.6328,cover=43296.5664
+		4:[HDD65<3777.5] yes=9,no=10,missing=9,gain=3.74357698e+015,cover=2942.29395
+			9:leaf=2886849.75,cover=62.7029991
+			10:leaf=225800.969,cover=2879.59082
+	2:[SqFt<17750] yes=5,no=6,missing=5,gain=1.0616984e+015,cover=239201.172
+		5:[SqFt<16875] yes=11,no=12,missing=11,gain=7.139908e+014,cover=201189.469
+			11:leaf=-4639.44043,cover=199414.016
+			12:leaf=213983.328,cover=1775.45288
+		6:[SqFt<18250] yes=13,no=14,missing=13,gain=7.90251098e+014,cover=38011.7031
+			13:leaf=-286759.812,cover=1807.46301
+			14:leaf=-54206.7148,cover=36204.2422
+booster[99]
+0:[SqFt<1875] yes=1,no=2,missing=1,gain=2.34021125e+014,cover=507560.781
+	1:[CooledPercent<70.5] yes=3,no=4,missing=3,gain=1.30436823e+014,cover=64261.2266
+		3:[HDD65<1777.5] yes=7,no=8,missing=7,gain=2.16695008e+014,cover=11502.4473
+			7:leaf=209025.781,cover=639.721985
+			8:leaf=3562.06689,cover=10862.7246
+		4:[HDD65<678.5] yes=9,no=10,missing=9,gain=1.08413145e+014,cover=52758.7773
+			9:leaf=76744.5625,cover=1197.38599
+			10:leaf=-27713.6582,cover=51561.3945
+	2:[SqFt<21375] yes=5,no=6,missing=5,gain=1.7720468e+014,cover=443299.531
+		5:[SqFt<18125] yes=11,no=12,missing=11,gain=4.06920603e+014,cover=388719.531
+			11:leaf=5118.36719,cover=381728.344
+			12:leaf=88696.125,cover=6991.16699
+		6:[HDD65<4821.5] yes=13,no=14,missing=13,gain=1.2074867e+015,cover=54580.0195
+			13:leaf=19619.666,cover=37892.2812
+			14:leaf=-91214.4531,cover=16687.7363
+booster[100]
+0:[CDD65<1145] yes=1,no=2,missing=1,gain=3.68020615e+014,cover=500763.438
+	1:[CDD65<1137.5] yes=3,no=4,missing=3,gain=9.1388549e+014,cover=175813.234
+		3:[WorkersCnt<26] yes=7,no=8,missing=7,gain=6.06956792e+014,cover=175516.812
+			7:leaf=3156.64355,cover=141141.031
+			8:leaf=54028.8398,cover=34375.793
+		4:[WorkersCnt<115] yes=9,no=10,missing=9,gain=8.7938281e+013,cover=296.415009
+			9:leaf=698344.938,cover=247.574005
+			10:leaf=189663.109,cover=48.8409996
+	2:[CDD65<1149.5] yes=5,no=6,missing=5,gain=2.09046554e+015,cover=324950.219
+		5:leaf=-2084885,cover=55.9690018
+		6:[CDD65<1297.5] yes=11,no=12,missing=11,gain=3.39050389e+014,cover=324894.219
+			11:leaf=-40346.7461,cover=29111.2227
+			12:leaf=-1515.65308,cover=295783
+booster[101]
+0:[SqFt<97500] yes=1,no=2,missing=1,gain=2.48174669e+014,cover=510888.406
+	1:[IsBank.No<0.5] yes=3,no=4,missing=3,gain=1.98134626e+014,cover=510539.969
+		3:[SqFt<18250] yes=7,no=8,missing=7,gain=2.72057254e+014,cover=61130.707
+			7:leaf=13383.6182,cover=58273.3438
+			8:leaf=121869.18,cover=2857.36304
+		4:[SqFt<16625] yes=9,no=10,missing=9,gain=2.38955774e+014,cover=449409.281
+			9:leaf=1284.88635,cover=370231.812
+			10:leaf=-19494.8418,cover=79177.4688
+	2:[CDD65<2185] yes=5,no=6,missing=5,gain=2.99091255e+014,cover=348.42099
+		5:leaf=613959.938,cover=170.026993
+		6:leaf=-21334.5215,cover=178.393997
+booster[102]
+0:[OpenHours<50.5] yes=1,no=2,missing=1,gain=2.02853369e+014,cover=514844.75
+	1:[CooledPercent<92.5] yes=3,no=4,missing=3,gain=1.67009048e+014,cover=375154.375
+		3:[HeatedPercent<95] yes=7,no=8,missing=7,gain=2.71133299e+014,cover=122148.453
+			7:leaf=-10178.8613,cover=68116.6875
+			8:leaf=22388.3535,cover=54031.7656
+		4:[OpenHours<45.5] yes=9,no=10,missing=9,gain=8.85124644e+013,cover=253005.922
+			9:leaf=-7204.20654,cover=181592.188
+			10:leaf=-21471.0625,cover=71413.7422
+	2:[OpenHours<54.5] yes=5,no=6,missing=5,gain=3.07971972e+014,cover=139690.359
+		5:[IsBank.No<0.5] yes=11,no=12,missing=11,gain=6.16658821e+013,cover=9447.5127
+			11:leaf=40997.457,cover=4684.67676
+			12:leaf=96486.1797,cover=4762.83594
+		6:[HeatedPercent<87.5] yes=13,no=14,missing=13,gain=2.15244551e+014,cover=130242.852
+			13:leaf=-27810.4453,cover=20176.998
+			14:leaf=10762.1914,cover=110065.852
+booster[103]
+0:[CooledPercent<44] yes=1,no=2,missing=1,gain=2.93444648e+014,cover=502687.906
+	1:[CooledPercent<41.5] yes=3,no=4,missing=3,gain=4.7762053e+014,cover=24760.5098
+		3:[HeatedPercent<36.5] yes=7,no=8,missing=7,gain=1.59796909e+014,cover=24511.0645
+			7:leaf=20125.8379,cover=5110.75
+			8:leaf=-48107.3906,cover=19400.3145
+		4:leaf=-510419.094,cover=249.445007
+	2:[WorkersCnt<106] yes=5,no=6,missing=5,gain=1.78771135e+014,cover=477927.375
+		5:[WorkersCnt<91.5] yes=9,no=10,missing=9,gain=3.13136368e+014,cover=459913
+			9:leaf=-7.66707993,cover=454788.5
+			10:leaf=85328.3281,cover=5124.5
+		6:[OpenHours<47] yes=11,no=12,missing=11,gain=3.51871873e+014,cover=18014.3887
+			11:leaf=-103652.359,cover=5787.71289
+			12:leaf=-905.329285,cover=12226.6748
+booster[104]
+0:[ComputersCnt<103] yes=1,no=2,missing=1,gain=1.45878078e+014,cover=527584.062
+	1:[WorkersCnt<63.5] yes=3,no=4,missing=3,gain=4.11612788e+014,cover=502393.812
+		3:[ComputersCnt<100.5] yes=7,no=8,missing=7,gain=1.54742088e+015,cover=485357.438
+			7:leaf=-1026.7478,cover=484911.5
+			8:leaf=638101.438,cover=445.923004
+		4:[WorkersCnt<65.5] yes=9,no=10,missing=9,gain=6.90741806e+014,cover=17036.375
+			9:leaf=-266093.062,cover=1645.37195
+			10:leaf=-32118.5879,cover=15391.0029
+	2:[HDD65<5138] yes=5,no=6,missing=5,gain=7.37004979e+014,cover=25190.2656
+		5:[HDD65<4548.5] yes=11,no=12,missing=11,gain=1.84445814e+015,cover=17950.6504
+			11:leaf=21939.8164,cover=15871.0332
+			12:leaf=365727.344,cover=2079.61792
+		6:[WorkersCnt<50] yes=13,no=14,missing=13,gain=3.88061234e+014,cover=7239.61475
+			13:leaf=-566640.125,cover=178.393997
+			14:leaf=-55293.6797,cover=7061.22119
+booster[105]
+0:[SqFt<96500] yes=1,no=2,missing=1,gain=3.54806879e+014,cover=511414.844
+	1:[CDD65<2312] yes=3,no=4,missing=3,gain=1.18755745e+014,cover=510210
+		3:[CDD65<2111.5] yes=7,no=8,missing=7,gain=2.16930846e+014,cover=441598.5
+			7:leaf=2090.38159,cover=419343.562
+			8:leaf=-32692.6309,cover=22254.9199
+		4:[OpenHours<43] yes=9,no=10,missing=9,gain=5.41639366e+014,cover=68611.5078
+			9:leaf=-21238.584,cover=27827.1055
+			10:leaf=40886.4453,cover=40784.4023
+	2:[OpenHours<57.5] yes=5,no=6,missing=5,gain=4.49014126e+013,cover=1204.85791
+		5:[SqFt<98500] yes=11,no=12,missing=11,gain=4.00965265e+012,cover=1026.46399
+			11:leaf=-252058.391,cover=239.384995
+			12:leaf=-199060.938,cover=787.078979
+		6:leaf=-24906.3223,cover=178.393997
+booster[106]
+0:[SqFt<63500] yes=1,no=2,missing=1,gain=2.45249612e+014,cover=523756.344
+	1:[WorkersCnt<123] yes=3,no=4,missing=3,gain=2.98464659e+014,cover=514106.969
+		3:[ComputersCnt<143] yes=7,no=8,missing=7,gain=4.22162838e+014,cover=506350.094
+			7:leaf=253.489944,cover=504669.281
+			8:leaf=172549.438,cover=1680.802
+		4:[ComputersCnt<205] yes=9,no=10,missing=9,gain=4.65693472e+014,cover=7756.86621
+			9:leaf=-163534.906,cover=3348.25293
+			10:leaf=6286.64551,cover=4408.61279
+	2:[HDD65<1351.5] yes=5,no=6,missing=5,gain=6.35296127e+014,cover=9649.38281
+		5:[SqFt<72500] yes=11,no=12,missing=11,gain=7.33004419e+014,cover=300.174011
+			11:leaf=-1638782.62,cover=48.8409996
+			12:leaf=-196412.641,cover=251.333008
+		6:[ComputersCnt<36.5] yes=13,no=14,missing=13,gain=5.29946787e+014,cover=9349.20898
+			13:leaf=447418.844,cover=419.690979
+			14:leaf=53099.957,cover=8929.51758
+booster[107]
+0:[WorkersCnt<21.5] yes=1,no=2,missing=1,gain=3.3297754e+014,cover=517827.656
+	1:[WorkersCnt<11.5] yes=3,no=4,missing=3,gain=1.8043718e+014,cover=406198.406
+		3:[CooledPercent<77.5] yes=7,no=8,missing=7,gain=2.65664447e+014,cover=303963.094
+			7:leaf=15165.4902,cover=70097.5078
+			8:leaf=-8930.24707,cover=233865.594
+		4:[CooledPercent<77.5] yes=9,no=10,missing=9,gain=5.68217127e+014,cover=102235.32
+			9:leaf=-27749.8652,cover=28619.0312
+			10:leaf=29258.3633,cover=73616.2891
+	2:[HDD65<406] yes=5,no=6,missing=5,gain=4.45355796e+014,cover=111629.25
+		5:leaf=-451169.25,cover=281.109009
+		6:[HDD65<673] yes=11,no=12,missing=11,gain=3.92248424e+014,cover=111348.141
+			11:leaf=140337.297,cover=1785.12695
+			12:leaf=-21857.7812,cover=109563.016
+booster[108]
+0:[SqFt<10875] yes=1,no=2,missing=1,gain=3.89977393e+014,cover=538838.125
+	1:[SqFt<10375] yes=3,no=4,missing=3,gain=8.68340315e+014,cover=423231.75
+		3:[ComputersCnt<22.5] yes=7,no=8,missing=7,gain=2.5408082e+014,cover=418755.5
+			7:leaf=3108.30737,cover=380320.531
+			8:leaf=-26181.9277,cover=38434.9805
+		4:[ComputersCnt<32.5] yes=9,no=10,missing=9,gain=7.33882404e+014,cover=4476.23584
+			9:leaf=385036.062,cover=1177.073
+			10:leaf=69338.4844,cover=3299.16284
+	2:[WorkersCnt<176] yes=5,no=6,missing=5,gain=4.96413964e+014,cover=115606.375
+		5:[ComputersCnt<23.5] yes=11,no=12,missing=11,gain=3.1515809e+014,cover=106473.484
+			11:leaf=-64281.082,cover=21418.8359
+			12:leaf=-17686.6797,cover=85054.6484
+		6:[ComputersCnt<147] yes=13,no=14,missing=13,gain=4.88009519e+014,cover=9132.89648
+			13:leaf=221558.891,cover=1711.21094
+			14:leaf=18220.7578,cover=7421.68604
+booster[109]
+0:[WorkersCnt<84.5] yes=1,no=2,missing=1,gain=2.56746988e+014,cover=501834.375
+	1:[SqFt<43250] yes=3,no=4,missing=3,gain=2.71505452e+014,cover=472818.5
+		3:[SqFt<42250] yes=7,no=8,missing=7,gain=1.45559663e+015,cover=465382.5
+			7:leaf=788.856323,cover=464633.938
+			8:leaf=-478024.156,cover=748.565002
+		4:[CooledPercent<92.5] yes=9,no=10,missing=9,gain=6.88850947e+014,cover=7436.02686
+			9:leaf=-21065.6211,cover=4383.48486
+			10:leaf=191328.266,cover=3052.54199
+	2:[HeatedPercent<95] yes=5,no=6,missing=5,gain=6.41097622e+014,cover=29015.8672
+		5:[SqFt<36750] yes=11,no=12,missing=11,gain=1.37818219e+014,cover=4992.4668
+			11:leaf=-17449.7969,cover=1279.31799
+			12:leaf=113195.656,cover=3713.14893
+		6:[SqFt<96500] yes=13,no=14,missing=13,gain=4.51698758e+014,cover=24023.4004
+			13:leaf=-62291.1797,cover=23531.0332
+			14:leaf=269647.312,cover=492.367004
+booster[110]
+0:[OpenHours<49.5] yes=1,no=2,missing=1,gain=2.58822396e+014,cover=514126.344
+	1:[CDD65<793] yes=3,no=4,missing=3,gain=2.93837939e+014,cover=291688.594
+		3:[CDD65<389.5] yes=7,no=8,missing=7,gain=2.64746784e+014,cover=40205.6016
+			7:leaf=31745.4629,cover=10270.6582
+			8:leaf=-32133.0039,cover=29934.9453
+		4:[OpenHours<42.5] yes=9,no=10,missing=9,gain=3.68546446e+014,cover=251482.969
+			9:leaf=6244.20264,cover=164582.469
+			10:leaf=33881.5703,cover=86900.5
+	2:[CDD65<819] yes=5,no=6,missing=5,gain=4.34813295e+014,cover=222437.766
+		5:[HDD65<1739] yes=11,no=12,missing=11,gain=2.56096364e+015,cover=54445.4492
+			11:leaf=1049204.75,cover=283.890991
+			12:leaf=17151.9512,cover=54161.5586
+		6:[OpenHours<76.5] yes=13,no=14,missing=13,gain=2.90150609e+014,cover=167992.312
+			13:leaf=-20130.1797,cover=132546.625
+			14:leaf=14839.0703,cover=35445.6875
+booster[111]
+0:[CDD65<913.5] yes=1,no=2,missing=1,gain=1.68256485e+014,cover=521227.562
+	1:[WorkersCnt<72.5] yes=3,no=4,missing=3,gain=7.10622203e+014,cover=123328.367
+		3:[WorkersCnt<37.5] yes=7,no=8,missing=7,gain=3.70120015e+014,cover=112834.062
+			7:leaf=-11729.0986,cover=107119.812
+			8:leaf=77939.625,cover=5714.25098
+		4:[WorkersCnt<93] yes=9,no=10,missing=9,gain=7.32186093e+014,cover=10494.3047
+			9:leaf=-267868.844,cover=2382.64282
+			10:leaf=-51421.543,cover=8111.66211
+	2:[CDD65<916] yes=5,no=6,missing=5,gain=4.66958072e+014,cover=397899.188
+		5:leaf=444215.938,cover=276.953003
+		6:[WorkersCnt<120.5] yes=11,no=12,missing=11,gain=3.06279688e+014,cover=397622.25
+			11:leaf=-2692.21387,cover=384511.938
+			12:leaf=50667.9531,cover=13110.3037
+booster[112]
+0:[OpenHours<57.5] yes=1,no=2,missing=1,gain=2.20091136e+014,cover=516826.75
+	1:[OpenHours<54.5] yes=3,no=4,missing=3,gain=2.0731641e+014,cover=395485.5
+		3:[CooledPercent<82.5] yes=7,no=8,missing=7,gain=1.26104493e+014,cover=381851.844
+			7:leaf=11318.9004,cover=111203.039
+			8:leaf=-2413.6062,cover=270648.812
+		4:[IsBank.No<0.5] yes=9,no=10,missing=9,gain=1.13849785e+014,cover=13633.6553
+			9:leaf=104466.859,cover=2942.01099
+			10:leaf=28206.6562,cover=10691.6445
+	2:[OpenHours<58.5] yes=5,no=6,missing=5,gain=1.07152027e+014,cover=121341.25
+		5:leaf=-224987.641,cover=281.109009
+		6:[CooledPercent<20] yes=11,no=12,missing=11,gain=7.52810291e+013,cover=121060.141
+			11:leaf=-67686.7188,cover=2910.802
+			12:leaf=-11807.1826,cover=118149.344
+booster[113]
+0:[SqFt<90500] yes=1,no=2,missing=1,gain=1.92731909e+014,cover=484654.688
+	1:[SqFt<89000] yes=3,no=4,missing=3,gain=3.42154107e+014,cover=482263.781
+		3:[SqFt<77000] yes=7,no=8,missing=7,gain=1.99832732e+014,cover=481373.438
+			7:leaf=1325.08838,cover=479852.5
+			8:leaf=-123276.445,cover=1520.93201
+		4:[WorkersCnt<212.5] yes=9,no=10,missing=9,gain=2.7903317e+014,cover=890.343018
+			9:leaf=124040.188,cover=732.042969
+			10:leaf=625715.375,cover=158.300003
+	2:[SqFt<93000] yes=5,no=6,missing=5,gain=1.84893376e+014,cover=2390.91406
+		5:leaf=-455192.906,cover=157.112
+		6:[HDD65<4075.5] yes=11,no=12,missing=11,gain=1.45164929e+014,cover=2233.802
+			11:leaf=-207107.469,cover=652.141968
+			12:leaf=-14703.6104,cover=1581.66003
+booster[114]
+0:[WorkersCnt<13.5] yes=1,no=2,missing=1,gain=1.79139579e+014,cover=541525.688
+	1:[HDD65<5124.5] yes=3,no=4,missing=3,gain=2.82535028e+014,cover=364909.031
+		3:[SqFt<4750] yes=7,no=8,missing=7,gain=3.06726968e+014,cover=259528.031
+			7:leaf=-3773.46899,cover=198272.141
+			8:leaf=-31568.1094,cover=61255.8984
+		4:[HDD65<5578] yes=9,no=10,missing=9,gain=2.30076952e+014,cover=105380.992
+			9:leaf=45032.1406,cover=18924.5781
+			10:leaf=3239.76196,cover=86456.4141
+	2:[HDD65<4865.5] yes=5,no=6,missing=5,gain=5.55846111e+014,cover=176616.656
+		5:[HDD65<4851] yes=11,no=12,missing=11,gain=8.38789866e+014,cover=117476.758
+			11:leaf=20560.1367,cover=116819.047
+			12:leaf=409069.344,cover=657.710999
+		6:[HDD65<5204.5] yes=13,no=14,missing=13,gain=8.84562607e+014,cover=59139.9023
+			13:leaf=-138803.031,cover=6380.23682
+			14:leaf=-3469.59595,cover=52759.668
+booster[115]
+0:[SqFt<16625] yes=1,no=2,missing=1,gain=1.78945517e+014,cover=519545.312
+	1:[SqFt<16375] yes=3,no=4,missing=3,gain=9.67887456e+014,cover=439679.125
+		3:[OpenHours<55.5] yes=7,no=8,missing=7,gain=2.82855607e+014,cover=436893.625
+			7:leaf=6284.6709,cover=342339.031
+			8:leaf=-14928.1738,cover=94554.5781
+		4:[OpenHours<52.5] yes=9,no=10,missing=9,gain=1.32688921e+015,cover=2785.49707
+			9:leaf=493939.25,cover=1117.74194
+			10:leaf=10634.0771,cover=1667.755
+	2:[OpenHours<51.5] yes=5,no=6,missing=5,gain=7.95503239e+014,cover=79866.1875
+		5:[CDD65<2782.5] yes=11,no=12,missing=11,gain=9.7057067e+014,cover=48541.3711
+			11:leaf=-31338.4238,cover=46224.5352
+			12:leaf=-259005.109,cover=2316.83789
+		6:[HDD65<1296] yes=13,no=14,missing=13,gain=7.80048001e+014,cover=31324.8184
+			13:leaf=-148954.891,cover=2684.58911
+			14:leaf=44555.8633,cover=28640.2305
+booster[116]
+0:[WorkersCnt<6.5] yes=1,no=2,missing=1,gain=1.19401819e+014,cover=509756.188
+	1:[HeatedPercent<58] yes=3,no=4,missing=3,gain=1.68413821e+014,cover=214939.656
+		3:[OpenHours<42.5] yes=7,no=8,missing=7,gain=6.40421273e+013,cover=19161.1328
+			7:leaf=38254.2109,cover=12118.1035
+			8:leaf=-2911.50952,cover=7043.02881
+		4:[HeatedPercent<72.5] yes=9,no=10,missing=9,gain=2.36225668e+014,cover=195778.516
+			9:leaf=-64325.707,cover=9192.65039
+			10:leaf=-7953.54639,cover=186585.875
+	2:[OpenHours<65.5] yes=5,no=6,missing=5,gain=2.69023615e+014,cover=294816.531
+		5:[WorkersCnt<65.5] yes=11,no=12,missing=11,gain=1.64168548e+014,cover=250909.156
+			11:leaf=10550.8271,cover=222042.297
+			12:leaf=-16971.1387,cover=28866.8672
+		6:[OpenHours<71] yes=13,no=14,missing=13,gain=3.21165441e+014,cover=43907.3828
+			13:leaf=-74827.9531,cover=10286.1396
+			14:leaf=-5503.7041,cover=33621.2422
+booster[117]
+0:[WorkersCnt<48.5] yes=1,no=2,missing=1,gain=4.96590326e+014,cover=485733.688
+	1:[WorkersCnt<29] yes=3,no=4,missing=3,gain=7.31909471e+014,cover=429103.344
+		3:[WorkersCnt<26.5] yes=7,no=8,missing=7,gain=4.36505814e+014,cover=404549.562
+			7:leaf=698.398071,cover=401785.469
+			8:leaf=137574.969,cover=2764.0979
+		4:[WorkersCnt<30.5] yes=9,no=10,missing=9,gain=6.8648395e+014,cover=24553.7734
+			9:leaf=-191599.844,cover=3895.02295
+			10:leaf=-34481.0117,cover=20658.75
+	2:[HDD65<6020.5] yes=5,no=6,missing=5,gain=7.02627323e+014,cover=56630.3359
+		5:[WorkersCnt<51] yes=11,no=12,missing=11,gain=4.30591342e+014,cover=51691.293
+			11:leaf=116541.734,cover=8158.91602
+			12:leaf=30599.9961,cover=43532.375
+		6:[OpenHours<120.5] yes=13,no=14,missing=13,gain=6.19466421e+014,cover=4939.04395
+			13:leaf=-59929.2227,cover=4630.83789
+			14:leaf=-561858.438,cover=308.205994
+booster[118]
+0:[CDD65<1896.5] yes=1,no=2,missing=1,gain=9.3977416e+013,cover=522517.938
+	1:[CDD65<1883] yes=3,no=4,missing=3,gain=4.23318956e+014,cover=386493.688
+		3:[IsBank.No<0.5] yes=7,no=8,missing=7,gain=2.00133497e+014,cover=380759.219
+			7:leaf=-19217.0957,cover=52689.043
+			8:leaf=3577.8208,cover=328070.188
+		4:[CDD65<1886.5] yes=9,no=10,missing=9,gain=8.4997839e+014,cover=5734.45801
+			9:leaf=335439.719,cover=1324.73804
+			10:leaf=21922.3477,cover=4409.71973
+	2:[CDD65<1902.5] yes=5,no=6,missing=5,gain=1.90771743e+014,cover=136024.281
+		5:[OpenHours<47.5] yes=11,no=12,missing=11,gain=1.69185787e+013,cover=1310.802
+			11:leaf=-118448.828,cover=1031.34595
+			12:leaf=-213998.203,cover=279.455994
+		6:[OpenHours<60.5] yes=13,no=14,missing=13,gain=2.03470116e+014,cover=134713.469
+			13:leaf=-985.343567,cover=109386.102
+			14:leaf=-35133.9453,cover=25327.3691
+booster[119]
+0:[HDD65<730.5] yes=1,no=2,missing=1,gain=2.28680953e+014,cover=529917.75
+	1:[HDD65<653.5] yes=3,no=4,missing=3,gain=5.46697227e+014,cover=20755.7637
+		3:[SqFt<16125] yes=7,no=8,missing=7,gain=1.95372744e+014,cover=13768.7275
+			7:leaf=7909.96094,cover=12697.7158
+			8:leaf=-144716.875,cover=1071.01196
+		4:[SqFt<24300] yes=9,no=10,missing=9,gain=3.15222951e+014,cover=6987.03516
+			9:leaf=90391.6484,cover=6329.32422
+			10:leaf=339985,cover=657.710999
+	2:[HDD65<867] yes=5,no=6,missing=5,gain=3.66175221e+014,cover=509162
+		5:[SqFt<5300] yes=11,no=12,missing=11,gain=8.52384914e+013,cover=12881.2549
+			11:leaf=-21693.9902,cover=4758.77002
+			12:leaf=-79562.1641,cover=8122.48486
+		6:[HDD65<976] yes=13,no=14,missing=13,gain=2.13632965e+014,cover=496280.75
+			13:leaf=49361.5547,cover=10302.6895
+			14:leaf=-595.130676,cover=485978.062
+booster[120]
+0:[CDD65<2640] yes=1,no=2,missing=1,gain=3.36952331e+014,cover=502147.469
+	1:[CDD65<2611] yes=3,no=4,missing=3,gain=7.00973828e+014,cover=452549.5
+		3:[SqFt<16375] yes=7,no=8,missing=7,gain=1.68465629e+014,cover=451882.5
+			7:leaf=2604.22144,cover=378304.094
+			8:leaf=20558.6055,cover=73578.4062
+		4:[SqFt<31000] yes=9,no=10,missing=9,gain=2.61700914e+013,cover=667.016968
+			9:leaf=438089.656,cover=281.109009
+			10:leaf=297772.562,cover=385.90799
+	2:[CDD65<3220] yes=5,no=6,missing=5,gain=2.60317481e+014,cover=49597.957
+		5:[HDD65<998.5] yes=11,no=12,missing=11,gain=2.86678632e+014,cover=23338.2812
+			11:leaf=-147548.406,cover=3089.06494
+			12:leaf=-35277.2227,cover=20249.2168
+		6:[HDD65<1747.5] yes=13,no=14,missing=13,gain=6.20589891e+014,cover=26259.6758
+			13:leaf=-8882.88867,cover=25585.8809
+			14:leaf=324673.344,cover=673.794983
+booster[121]
+0:[CDD65<2172.5] yes=1,no=2,missing=1,gain=1.58433492e+014,cover=527012.438
+	1:[ComputersCnt<50] yes=3,no=4,missing=3,gain=2.04596455e+014,cover=440918.969
+		3:[OpenHours<65] yes=7,no=8,missing=7,gain=2.79858542e+014,cover=376522.969
+			7:leaf=-1442.17957,cover=340579
+			8:leaf=30409.8906,cover=35943.9648
+		4:[CDD65<1599.5] yes=9,no=10,missing=9,gain=5.18703167e+014,cover=64396
+			9:leaf=-989.08429,cover=47532.5156
+			10:leaf=-71071.7344,cover=16863.4844
+	2:[OpenHours<43] yes=5,no=6,missing=5,gain=4.12497719e+014,cover=86093.4609
+		5:[SqFt<51750] yes=11,no=12,missing=11,gain=6.71755031e+014,cover=35599.3984
+			11:leaf=-14797.4717,cover=35579.707
+			12:leaf=1942027.62,cover=19.6900005
+		6:[OpenHours<46.5] yes=13,no=14,missing=13,gain=1.22459664e+015,cover=50494.0625
+			13:leaf=202947.922,cover=4625.18604
+			14:leaf=17615.334,cover=45868.8789
+booster[122]
+0:[SqFt<3975] yes=1,no=2,missing=1,gain=2.26548519e+014,cover=496845.938
+	1:[CooledPercent<77.5] yes=3,no=4,missing=3,gain=2.24183485e+014,cover=190833.844
+		3:[IsBank.No<0.5] yes=7,no=8,missing=7,gain=1.46930378e+014,cover=36269.1445
+			7:leaf=84651.3828,cover=3179.03516
+			8:leaf=7389.12451,cover=33090.1094
+		4:[SqFt<3550] yes=9,no=10,missing=9,gain=1.03072462e+014,cover=154564.688
+			9:leaf=-13416.9082,cover=143919.5
+			10:leaf=-48425.5547,cover=10645.1943
+	2:[OpenHours<71] yes=5,no=6,missing=5,gain=3.04918955e+014,cover=306012.094
+		5:[SqFt<5550] yes=11,no=12,missing=11,gain=2.06032467e+014,cover=271529.719
+			11:leaf=15528.0088,cover=81462.4141
+			12:leaf=-5108.77539,cover=190067.297
+		6:[CooledPercent<46.5] yes=13,no=14,missing=13,gain=3.48754331e+014,cover=34482.3906
+			13:leaf=-368316.656,cover=249.445007
+			14:leaf=38307.3945,cover=34232.9453
+booster[123]
+0:[HDD65<3289.5] yes=1,no=2,missing=1,gain=2.41282069e+014,cover=511736.5
+	1:[HDD65<3097] yes=3,no=4,missing=3,gain=8.0585713e+014,cover=224344.469
+		3:[HDD65<3058.5] yes=7,no=8,missing=7,gain=2.50310442e+014,cover=210506.5
+			7:leaf=2641.55884,cover=203674.031
+			8:leaf=-64159.7188,cover=6832.47168
+		4:[WorkersCnt<10.5] yes=9,no=10,missing=9,gain=3.01554955e+014,cover=13837.9697
+			9:leaf=46557.8984,cover=8619.73535
+			10:leaf=151131.109,cover=5218.23486
+	2:[WorkersCnt<9.5] yes=5,no=6,missing=5,gain=2.64847833e+014,cover=287392.031
+		5:[HDD65<3747.5] yes=11,no=12,missing=11,gain=2.0796735e+014,cover=155103.938
+			11:leaf=-31165.2148,cover=21291.5215
+			12:leaf=5364.68555,cover=133812.422
+		6:[WorkersCnt<11.5] yes=13,no=14,missing=13,gain=1.42403197e+014,cover=132288.094
+			13:leaf=-51423.6836,cover=15549.1982
+			14:leaf=-16449.1914,cover=116738.898
+booster[124]
+0:[CooledPercent<20] yes=1,no=2,missing=1,gain=2.56949489e+014,cover=517420.844
+	1:leaf=128165.812,cover=1879.45605
+	2:[ComputersCnt<2.5] yes=3,no=4,missing=3,gain=7.2035871e+013,cover=515541.406
+		3:[SqFt<2200] yes=5,no=6,missing=5,gain=6.87949239e+013,cover=14201.7441
+			5:leaf=-3896.75293,cover=8634.34277
+			6:leaf=-52839.5625,cover=5567.40088
+		4:[ComputersCnt<406.5] yes=7,no=8,missing=7,gain=7.19481513e+013,cover=501339.656
+			7:leaf=1888.25146,cover=500386.469
+			8:leaf=-92476.1641,cover=953.180969
+booster[125]
+0:[CDD65<3098] yes=1,no=2,missing=1,gain=2.39770945e+014,cover=516803.844
+	1:[CDD65<2935.5] yes=3,no=4,missing=3,gain=6.49533676e+014,cover=486367.125
+		3:[ComputersCnt<91.5] yes=7,no=8,missing=7,gain=2.51651043e+014,cover=480813.875
+			7:leaf=1826.43933,cover=447422.75
+			8:leaf=-29069.918,cover=33391.125
+		4:[ComputersCnt<191] yes=9,no=10,missing=9,gain=3.26197968e+014,cover=5553.25684
+			9:leaf=-137385.203,cover=5278.80225
+			10:leaf=245913.859,cover=274.454987
+	2:[CDD65<3392.5] yes=5,no=6,missing=5,gain=5.57222749e+014,cover=30436.7266
+		5:[ComputersCnt<19] yes=11,no=12,missing=11,gain=1.07570459e+014,cover=6540.54102
+			11:leaf=154148.375,cover=3952.87109
+			12:leaf=64072.0547,cover=2587.66992
+		6:[ComputersCnt<314.5] yes=13,no=14,missing=13,gain=4.29843783e+014,cover=23896.1855
+			13:leaf=7542.75244,cover=23847.3438
+			14:leaf=-1001746.12,cover=48.8409996
+booster[126]
+0:[CDD65<153] yes=1,no=2,missing=1,gain=2.19642916e+014,cover=492534.031
+	1:[SqFt<11500] yes=3,no=4,missing=3,gain=1.31797036e+014,cover=4747.68506
+		3:[SqFt<2725] yes=7,no=8,missing=7,gain=1.72127599e+013,cover=3117.09912
+			7:leaf=2652.50562,cover=1461.85706
+			8:leaf=53770.3008,cover=1655.24194
+		4:[CooledPercent<85] yes=9,no=10,missing=9,gain=1.79496016e+013,cover=1630.58606
+			9:leaf=179245.875,cover=990.98999
+			10:leaf=105127.984,cover=639.596008
+	2:[CDD65<892] yes=5,no=6,missing=5,gain=2.20996267e+014,cover=487786.344
+		5:[HDD65<1460] yes=11,no=12,missing=11,gain=5.33976104e+014,cover=104191.75
+			11:leaf=447741.906,cover=289.570007
+			12:leaf=-18319.3887,cover=103902.18
+		6:[HDD65<5200.5] yes=13,no=14,missing=13,gain=3.12288884e+014,cover=383594.594
+			13:leaf=-2654.2229,cover=340949.5
+			14:leaf=28508.1426,cover=42645.0898
+booster[127]
+0:[WorkersCnt<35.5] yes=1,no=2,missing=1,gain=1.83260131e+014,cover=507920.719
+	1:[WorkersCnt<21.5] yes=3,no=4,missing=3,gain=1.44478925e+014,cover=437465.344
+		3:[CooledPercent<15] yes=7,no=8,missing=7,gain=9.30426063e+013,cover=402282.406
+			7:leaf=102398.719,cover=1031.34595
+			8:leaf=-802.861694,cover=401251.062
+		4:[HDD65<3292] yes=9,no=10,missing=9,gain=5.13606685e+014,cover=35182.9141
+			9:leaf=-75027.5469,cover=13827.6895
+			10:leaf=9898.87988,cover=21355.2246
+	2:[CooledPercent<96.5] yes=5,no=6,missing=5,gain=2.60018427e+014,cover=70455.3906
+		5:[IsBank.No<0.5] yes=11,no=12,missing=11,gain=4.19255481e+014,cover=16795.7598
+			11:leaf=360617.812,cover=507.937012
+			12:leaf=44170.8633,cover=16287.8223
+		6:[WorkersCnt<49.5] yes=13,no=14,missing=13,gain=1.62237138e+014,cover=53659.6367
+			13:leaf=37934.5391,cover=13157.2686
+			14:leaf=-5945.04395,cover=40502.3672
+booster[128]
+0:[HDD65<2212] yes=1,no=2,missing=1,gain=1.31772835e+014,cover=503685.938
+	1:[CDD65<816.5] yes=3,no=4,missing=3,gain=3.64654669e+014,cover=115771.82
+		3:[CDD65<515] yes=7,no=8,missing=7,gain=4.55741261e+014,cover=1402.23596
+			7:leaf=289348.281,cover=221.318008
+			8:leaf=-246576.828,cover=1180.91797
+		4:[CDD65<3317.5] yes=9,no=10,missing=9,gain=2.16700377e+014,cover=114369.586
+			9:leaf=22642.7773,cover=86902.2812
+			10:leaf=-12340.1924,cover=27467.3066
+	2:[HDD65<2359] yes=5,no=6,missing=5,gain=2.25399447e+014,cover=387914.125
+		5:[OpenHours<119] yes=11,no=12,missing=11,gain=1.32107322e+014,cover=12758.6396
+			11:leaf=-35597.2227,cover=11727.2939
+			12:leaf=-163711.984,cover=1031.34595
+		6:[HDD65<2666] yes=13,no=14,missing=13,gain=1.54399427e+014,cover=375155.5
+			13:leaf=27181.834,cover=23822.2734
+			14:leaf=-1378.8606,cover=351333.219
+booster[129]
+0:[SqFt<43250] yes=1,no=2,missing=1,gain=2.31530429e+014,cover=517228.938
+	1:[SqFt<42250] yes=3,no=4,missing=3,gain=3.18956552e+014,cover=493234.344
+		3:[SqFt<41750] yes=7,no=8,missing=7,gain=3.51953276e+014,cover=491955.219
+			7:leaf=-4977.57275,cover=490911.594
+			8:leaf=194514.344,cover=1043.61902
+		4:[SqFt<42750] yes=9,no=10,missing=9,gain=3.07792288e+014,cover=1279.11902
+			9:leaf=-517537.969,cover=249.445007
+			10:leaf=-93023.6797,cover=1029.67407
+	2:[WorkersCnt<18] yes=5,no=6,missing=5,gain=3.30471091e+014,cover=23994.5918
+		5:[CDD65<1051] yes=11,no=12,missing=11,gain=2.90510783e+014,cover=661.853027
+			11:leaf=101060.281,cover=230.809998
+			12:leaf=-375661.875,cover=431.042999
+		6:[WorkersCnt<37.5] yes=13,no=14,missing=13,gain=6.58835635e+014,cover=23332.7383
+			13:leaf=245197.109,cover=1652.828
+			14:leaf=20390.0996,cover=21679.9102
+booster[130]
+0:[SqFt<29500] yes=1,no=2,missing=1,gain=2.65439632e+014,cover=510154.594
+	1:[SqFt<25000.5] yes=3,no=4,missing=3,gain=3.18141951e+014,cover=462555.844
+		3:[HDD65<5371] yes=7,no=8,missing=7,gain=1.76182847e+014,cover=454922.188
+			7:leaf=-2307.54492,cover=337239.312
+			8:leaf=13120.9375,cover=117682.859
+		4:[CooledPercent<67.5] yes=9,no=10,missing=9,gain=5.69530313e+014,cover=7633.67969
+			9:leaf=-25446.1348,cover=3656.58887
+			10:leaf=162253.953,cover=3977.09106
+	2:[CooledPercent<44] yes=5,no=6,missing=5,gain=2.61974449e+014,cover=47598.7539
+		5:leaf=-331124.156,cover=324.290009
+		6:[HeatedPercent<77.5] yes=11,no=12,missing=11,gain=1.96616103e+014,cover=47274.4648
+			11:leaf=69905.7734,cover=2594.32495
+			12:leaf=-27296.9883,cover=44680.1406
+booster[131]
+0:[ComputersCnt<20.5] yes=1,no=2,missing=1,gain=2.11275112e+014,cover=516476.469
+	1:[ComputersCnt<19.5] yes=3,no=4,missing=3,gain=3.00167815e+014,cover=360826.969
+		3:[ComputersCnt<18.5] yes=7,no=8,missing=7,gain=2.3968164e+014,cover=355241.562
+			7:leaf=4059.42969,cover=345261.75
+			8:leaf=-49906.9062,cover=9979.80566
+		4:[OpenHours<44.5] yes=9,no=10,missing=9,gain=1.26400753e+015,cover=5585.41309
+			9:leaf=270595.219,cover=2403.76514
+			10:leaf=-59211.5977,cover=3181.64795
+	2:[ComputersCnt<72] yes=5,no=6,missing=5,gain=2.00409734e+014,cover=155649.5
+		5:[CDD65<715.5] yes=11,no=12,missing=11,gain=2.90361969e+014,cover=100650.164
+			11:leaf=-61441.9609,cover=16941.9941
+			12:leaf=-12158.3467,cover=83708.1719
+		6:[CDD65<704.5] yes=13,no=14,missing=13,gain=4.36746332e+014,cover=54999.332
+			13:leaf=102506.234,cover=4957.63721
+			14:leaf=-4313.11572,cover=50041.6953
+booster[132]
+0:[SqFt<90500] yes=1,no=2,missing=1,gain=1.79773943e+014,cover=519633.219
+	1:[ComputersCnt<118] yes=3,no=4,missing=3,gain=1.71366058e+014,cover=517251.188
+		3:[WorkersCnt<78] yes=7,no=8,missing=7,gain=3.61133366e+014,cover=493145.438
+			7:leaf=4129.71533,cover=484378.156
+			8:leaf=-66173.1484,cover=8767.25293
+		4:[ComputersCnt<134.5] yes=9,no=10,missing=9,gain=6.96646715e+014,cover=24105.7676
+			9:leaf=157938.906,cover=4290.28809
+			10:leaf=5364.89893,cover=19815.4785
+	2:[WorkersCnt<187.5] yes=5,no=6,missing=5,gain=1.8919044e+014,cover=2382.04199
+		5:[SqFt<98500] yes=11,no=12,missing=11,gain=3.50083875e+013,cover=1262.92603
+			11:leaf=-254851.953,cover=475.846985
+			12:leaf=-136530,cover=787.078979
+		6:[OpenHours<55] yes=13,no=14,missing=13,gain=1.66555812e+014,cover=1119.11597
+			13:leaf=295727.625,cover=199.915009
+			14:leaf=-49304.4297,cover=919.200989
+booster[133]
+0:[WorkersCnt<152.5] yes=1,no=2,missing=1,gain=6.58226849e+013,cover=533143.875
+	1:[WorkersCnt<108] yes=3,no=4,missing=3,gain=1.8893036e+014,cover=524752.562
+		3:[WorkersCnt<104.5] yes=7,no=8,missing=7,gain=1.2933982e+014,cover=517731.25
+			7:leaf=-874.809265,cover=516814.562
+			8:leaf=128130.32,cover=916.674988
+		4:[OpenHours<42.5] yes=9,no=10,missing=9,gain=1.93835984e+014,cover=7021.32422
+			9:leaf=55103.9258,cover=1436.56494
+			10:leaf=-86268.6016,cover=5584.75879
+	2:[WorkersCnt<157.5] yes=5,no=6,missing=5,gain=4.04295808e+014,cover=8391.32715
+		5:[OpenHours<55] yes=11,no=12,missing=11,gain=3.24587875e+013,cover=325.794006
+			11:leaf=141884.312,cover=48.8409996
+			12:leaf=449079.688,cover=276.953003
+		6:[OpenHours<55.5] yes=13,no=14,missing=13,gain=5.25818183e+014,cover=8065.5332
+			13:leaf=99331.0312,cover=4144.21582
+			14:leaf=-76034.4141,cover=3921.31714
+booster[134]
+0:[CDD65<2988.5] yes=1,no=2,missing=1,gain=9.4833507e+013,cover=512129.062
+	1:[CDD65<2935.5] yes=3,no=4,missing=3,gain=2.13372834e+014,cover=474981.75
+		3:[CDD65<2922.5] yes=7,no=8,missing=7,gain=1.08766364e+014,cover=472198.281
+			7:leaf=-2531.69531,cover=471893.438
+			8:leaf=202277.875,cover=304.826996
+		4:[WorkersCnt<32] yes=9,no=10,missing=9,gain=1.60991627e+013,cover=2783.47412
+			9:leaf=-79529.3516,cover=1879.45605
+			10:leaf=-135399.609,cover=904.018005
+	2:[CDD65<3038] yes=5,no=6,missing=5,gain=3.52254192e+014,cover=37147.3164
+		5:[WorkersCnt<18] yes=11,no=12,missing=11,gain=5.08289163e+013,cover=4322.57812
+			11:leaf=83022.0703,cover=3046.03906
+			12:leaf=164683.516,cover=1276.53894
+		6:[CDD65<3060] yes=13,no=14,missing=13,gain=4.88137294e+014,cover=32824.7383
+			13:leaf=-289644.031,cover=657.710999
+			14:leaf=8911.61816,cover=32167.0293
+booster[135]
+0:[HDD65<5200.5] yes=1,no=2,missing=1,gain=1.47892417e+014,cover=511030.562
+	1:[ComputersCnt<83.5] yes=3,no=4,missing=3,gain=1.33122436e+014,cover=370775.312
+		3:[ComputersCnt<80] yes=7,no=8,missing=7,gain=2.14580156e+014,cover=337056.75
+			7:leaf=-3184.7688,cover=336611.062
+			8:leaf=234923.734,cover=445.700012
+		4:[HDD65<1456.5] yes=9,no=10,missing=9,gain=3.06376157e+014,cover=33718.5586
+			9:leaf=43347.0742,cover=6214.68213
+			10:leaf=-41050.4258,cover=27503.875
+	2:[HDD65<5625] yes=5,no=6,missing=5,gain=3.31250057e+014,cover=140255.25
+		5:[ComputersCnt<12.5] yes=11,no=12,missing=11,gain=6.99632523e+014,cover=24664.7578
+			11:leaf=-19146.0742,cover=11194.8125
+			12:leaf=96990.6016,cover=13469.9453
+		6:[HeatedPercent<72.5] yes=13,no=14,missing=13,gain=2.17550076e+014,cover=115590.492
+			13:leaf=-51728.3633,cover=8706.58008
+			14:leaf=4705.21045,cover=106883.914
+booster[136]
+0:[SqFt<99500] yes=1,no=2,missing=1,gain=5.39777816e+013,cover=500246.781
+	1:[SqFt<96500] yes=3,no=4,missing=3,gain=2.6461411e+014,cover=499459.719
+		3:[SqFt<75500] yes=5,no=6,missing=5,gain=5.3758386e+013,cover=499037.625
+			5:leaf=2582.94653,cover=494351.719
+			6:leaf=-34359.7695,cover=4685.91602
+		4:[CooledPercent<92.5] yes=7,no=8,missing=7,gain=2.88067684e+014,cover=422.087982
+			7:leaf=-445868.344,cover=55.9690018
+			8:leaf=384805.562,cover=366.118988
+	2:leaf=-87455.7656,cover=787.078979
+booster[137]
+0:[OpenHours<71] yes=1,no=2,missing=1,gain=1.58678037e+014,cover=504117.094
+	1:[CooledPercent<93.5] yes=3,no=4,missing=3,gain=1.95060134e+014,cover=454421.188
+		3:[WorkersCnt<34.5] yes=7,no=8,missing=7,gain=3.17955825e+014,cover=133748.516
+			7:leaf=3614.34521,cover=120218.172
+			8:leaf=59124.7266,cover=13530.3535
+		4:[WorkersCnt<115] yes=9,no=10,missing=9,gain=9.29970478e+013,cover=320672.688
+			9:leaf=-7508.03613,cover=309111.344
+			10:leaf=23852.7305,cover=11561.3438
+	2:[WorkersCnt<18.5] yes=5,no=6,missing=5,gain=3.11262454e+014,cover=49695.8789
+		5:[OpenHours<84.5] yes=11,no=12,missing=11,gain=5.8370774e+013,cover=29999.2656
+			11:leaf=17978.8125,cover=10043.3975
+			12:leaf=-14110.4541,cover=19955.8691
+		6:[CooledPercent<55] yes=13,no=14,missing=13,gain=3.17036366e+014,cover=19696.6133
+			13:leaf=-238219.438,cover=432.404999
+			14:leaf=58710.8164,cover=19264.207
+booster[138]
+0:[HDD65<6576] yes=1,no=2,missing=1,gain=1.07625564e+014,cover=506364.531
+	1:[HDD65<6519.5] yes=3,no=4,missing=3,gain=4.1260969e+014,cover=464147.156
+		3:[HDD65<4505] yes=7,no=8,missing=7,gain=1.08871683e+014,cover=460238.812
+			7:leaf=3190.15723,cover=326396.688
+			8:leaf=-8437.13379,cover=133842.109
+		4:[WorkersCnt<10.5] yes=9,no=10,missing=9,gain=3.19931107e+014,cover=3908.35205
+			9:leaf=-23030.5469,cover=2143.17993
+			10:leaf=-220391.656,cover=1765.172
+	2:[HDD65<7207.5] yes=5,no=6,missing=5,gain=2.35861786e+014,cover=42217.375
+		5:[WorkersCnt<1.5] yes=11,no=12,missing=11,gain=5.02218545e+014,cover=28538.7793
+			11:leaf=261267.141,cover=1107.75305
+			12:leaf=25579.166,cover=27431.0254
+		6:[HDD65<7643] yes=13,no=14,missing=13,gain=1.36159733e+014,cover=13678.5957
+			13:leaf=-44850.4492,cover=8984.81934
+			14:leaf=27292.8574,cover=4693.77734
+booster[139]
+0:[CDD65<807.5] yes=1,no=2,missing=1,gain=8.80798387e+013,cover=501076.844
+	1:[CDD65<789] yes=3,no=4,missing=3,gain=4.76384351e+014,cover=98510.7422
+		3:[CDD65<753] yes=7,no=8,missing=7,gain=9.4893452e+013,cover=92750.9844
+			7:leaf=4642.01904,cover=87336.2188
+			8:leaf=-42191.0508,cover=5414.76465
+		4:[WorkersCnt<27.5] yes=9,no=10,missing=9,gain=2.01996553e+015,cover=5759.76318
+			9:leaf=62662.9102,cover=5535.82129
+			10:leaf=1112190.88,cover=223.942001
+	2:[HeatedPercent<52.5] yes=5,no=6,missing=5,gain=1.43865936e+014,cover=402566.094
+		5:[CDD65<1791.5] yes=11,no=12,missing=11,gain=1.82084702e+014,cover=21037.3457
+			11:leaf=61697.3203,cover=8802.21191
+			12:leaf=-3049.14941,cover=12235.1328
+		6:[CDD65<815.5] yes=13,no=14,missing=13,gain=1.04593468e+014,cover=381528.75
+			13:leaf=-99150.6797,cover=1388.2489
+			14:leaf=-4776.13086,cover=380140.5
+booster[140]
+0:[ComputersCnt<180] yes=1,no=2,missing=1,gain=3.21937595e+014,cover=533533.625
+	1:[ComputersCnt<118] yes=3,no=4,missing=3,gain=1.553438e+014,cover=523258.812
+		3:[ComputersCnt<100.5] yes=7,no=8,missing=7,gain=2.64611392e+014,cover=510303.656
+			7:leaf=-149.966812,cover=504811.969
+			8:leaf=-75913.7969,cover=5491.68604
+		4:[ComputersCnt<121.5] yes=9,no=10,missing=9,gain=6.91093927e+014,cover=12955.1523
+			9:leaf=395759.438,cover=602.747009
+			10:leaf=19570.3145,cover=12352.4053
+	2:[ComputersCnt<306] yes=5,no=6,missing=5,gain=4.05605102e+014,cover=10274.8291
+		5:[WorkersCnt<207.5] yes=11,no=12,missing=11,gain=1.80910784e+014,cover=6810.29688
+			11:leaf=-90077.7422,cover=6044.0249
+			12:leaf=-267100.281,cover=766.271973
+		6:[WorkersCnt<125] yes=13,no=14,missing=13,gain=6.36834464e+014,cover=3464.53198
+			13:leaf=1213541.75,cover=52.1459999
+			14:leaf=15873.9297,cover=3412.38599
+booster[141]
+0:[ComputersCnt<90.5] yes=1,no=2,missing=1,gain=4.87760847e+014,cover=510763.719
+	1:[HDD65<646.5] yes=3,no=4,missing=3,gain=1.38295741e+014,cover=475670.781
+		3:[ComputersCnt<27] yes=7,no=8,missing=7,gain=6.0350993e+013,cover=13952.8594
+			7:leaf=-26830.4453,cover=12063.252
+			8:leaf=-92807.5391,cover=1889.60693
+		4:[HDD65<817] yes=9,no=10,missing=9,gain=1.49974336e+014,cover=461717.906
+			9:leaf=30467.1562,cover=17103.0703
+			10:leaf=-2293.73169,cover=444614.844
+	2:[CDD65<811] yes=5,no=6,missing=5,gain=3.36181116e+014,cover=35092.9453
+		5:[CDD65<715.5] yes=11,no=12,missing=11,gain=7.55090281e+014,cover=3120.66992
+			11:leaf=-15568.7529,cover=1893.35095
+			12:leaf=-361215.75,cover=1227.31897
+		6:[WorkersCnt<45.5] yes=13,no=14,missing=13,gain=3.49922092e+014,cover=31972.2754
+			13:leaf=-113010.859,cover=5421.83887
+			14:leaf=-17305.8496,cover=26550.4375
+booster[142]
+0:[ComputersCnt<406.5] yes=1,no=2,missing=1,gain=1.88455246e+014,cover=517289.75
+	1:[SqFt<48500] yes=3,no=4,missing=3,gain=7.87847158e+013,cover=516398.688
+		3:[SqFt<40250] yes=7,no=8,missing=7,gain=3.46365423e+014,cover=499193.812
+			7:leaf=1766.79065,cover=491384.25
+			8:leaf=-71103.5078,cover=7809.56396
+		4:[CDD65<1109] yes=9,no=10,missing=9,gain=2.96102729e+014,cover=17204.8789
+			9:leaf=73959.5703,cover=7756.68799
+			10:leaf=-16553.7559,cover=9448.19141
+	2:[SqFt<47250] yes=5,no=6,missing=5,gain=3.21155643e+014,cover=891.039978
+		5:leaf=-460726.812,cover=279.455994
+		6:[ComputersCnt<1060] yes=11,no=12,missing=11,gain=3.35834042e+013,cover=611.583984
+			11:leaf=-68386.5859,cover=434.239014
+			12:leaf=108510.578,cover=177.345001
+booster[143]
+0:[SqFt<1450] yes=1,no=2,missing=1,gain=1.52991215e+014,cover=497245.688
+	1:[CDD65<4591] yes=3,no=4,missing=3,gain=4.83765403e+013,cover=27767.9785
+		3:[CDD65<2636.5] yes=7,no=8,missing=7,gain=8.82732465e+013,cover=26570.5938
+			7:leaf=-16167.5273,cover=21194.2832
+			8:leaf=-65421.7773,cover=5376.30908
+		4:leaf=44385.2422,cover=1197.38599
+	2:[SqFt<10625] yes=5,no=6,missing=5,gain=8.88422625e+013,cover=469477.719
+		5:[SqFt<10375] yes=9,no=10,missing=9,gain=4.20276475e+014,cover=350903.719
+			9:leaf=5015.79736,cover=349066.438
+			10:leaf=169604.5,cover=1837.30103
+		6:[HDD65<406] yes=11,no=12,missing=11,gain=3.36827274e+014,cover=118573.984
+			11:leaf=-379687.062,cover=281.109009
+			12:leaf=-4098.27344,cover=118292.875
+booster[144]
+0:[CooledPercent<72.5] yes=1,no=2,missing=1,gain=5.54832054e+013,cover=494908.594
+	1:[IsBank.No<0.5] yes=3,no=4,missing=3,gain=1.96086078e+014,cover=88932.9609
+		3:[WorkersCnt<22] yes=7,no=8,missing=7,gain=3.91480607e+013,cover=7322.14795
+			7:leaf=-45855.0195,cover=5530.83789
+			8:leaf=-104261.719,cover=1791.31006
+		4:[WorkersCnt<149] yes=9,no=10,missing=9,gain=6.05592192e+013,cover=81610.8125
+			9:leaf=-716.811768,cover=81028.1094
+			10:leaf=-111699.195,cover=582.700012
+	2:[CooledPercent<77.5] yes=5,no=6,missing=5,gain=1.4511307e+014,cover=405975.625
+		5:[WorkersCnt<68] yes=11,no=12,missing=11,gain=3.842266e+014,cover=26396.1016
+			11:leaf=23722.3945,cover=26150.9395
+			12:leaf=454666.031,cover=245.16301
+		6:[OpenHours<52.5] yes=13,no=14,missing=13,gain=7.5486592e+013,cover=379579.5
+			13:leaf=4572.75342,cover=266380.75
+			14:leaf=-6010.3374,cover=113198.781
+booster[145]
+0:[ComputersCnt<134] yes=1,no=2,missing=1,gain=1.14400044e+014,cover=509933.719
+	1:[ComputersCnt<130] yes=3,no=4,missing=3,gain=2.46030524e+014,cover=490359.906
+		3:[ComputersCnt<125.5] yes=7,no=8,missing=7,gain=1.51177581e+014,cover=489242.156
+			7:leaf=1609.95911,cover=487779.625
+			8:leaf=-108897.875,cover=1462.53296
+		4:leaf=162464.75,cover=1117.74194
+	2:[ComputersCnt<229] yes=5,no=6,missing=5,gain=1.68421304e+014,cover=19573.832
+		5:[OpenHours<45.5] yes=9,no=10,missing=9,gain=2.65877165e+014,cover=12444.6113
+			9:leaf=20941.8711,cover=4211.38818
+			10:leaf=-85107.3359,cover=8233.22266
+		6:[OpenHours<52.5] yes=11,no=12,missing=11,gain=1.88681571e+014,cover=7129.22168
+			11:leaf=122189.281,cover=1565.95703
+			12:leaf=-12681.2734,cover=5563.26514
+booster[146]
+0:[CDD65<2237.5] yes=1,no=2,missing=1,gain=1.20583069e+014,cover=504377.219
+	1:[CDD65<2234] yes=3,no=4,missing=3,gain=2.31332811e+014,cover=421307.156
+		3:[CDD65<535.5] yes=7,no=8,missing=7,gain=9.36098188e+013,cover=418473.281
+			7:leaf=-17523.5371,cover=40646.543
+			8:leaf=-184.232864,cover=377826.719
+		4:[OpenHours<60] yes=9,no=10,missing=9,gain=3.07610792e+014,cover=2833.87305
+			9:leaf=-6396.9668,cover=1678.44495
+			10:leaf=-236521.141,cover=1155.42798
+	2:[OpenHours<51] yes=5,no=6,missing=5,gain=1.07472648e+014,cover=83070.0625
+		5:[CDD65<3293] yes=11,no=12,missing=11,gain=4.0985342e+013,cover=56068.1953
+			11:leaf=10433.6221,cover=34924.8555
+			12:leaf=-8718.20605,cover=21143.3398
+		6:[CDD65<2558.5] yes=13,no=14,missing=13,gain=2.32337162e+014,cover=27001.8672
+			13:leaf=84695.7188,cover=6756.82812
+			14:leaf=11175.6797,cover=20245.0391
+booster[147]
+0:[HDD65<152.5] yes=1,no=2,missing=1,gain=1.5793338e+014,cover=510920.438
+	1:leaf=169558.562,cover=624.953979
+	2:[CDD65<1446.5] yes=3,no=4,missing=3,gain=1.3885079e+014,cover=510295.5
+		3:[HDD65<1204.5] yes=5,no=6,missing=5,gain=3.17189777e+014,cover=257245.531
+			5:leaf=-103913.867,cover=3251.59009
+			6:leaf=3982.81445,cover=253993.938
+		4:[ComputersCnt<7.5] yes=7,no=8,missing=7,gain=1.87535486e+014,cover=253049.953
+			7:leaf=6676.65869,cover=68213.8906
+			8:leaf=-14386.0029,cover=184836.062
+booster[148]
+0:[HDD65<144.5] yes=1,no=2,missing=1,gain=1.40304796e+014,cover=525725.5
+	1:leaf=-86563.8516,cover=2140.90601
+	2:[HDD65<7084] yes=3,no=4,missing=3,gain=1.33119324e+014,cover=523584.594
+		3:[CDD65<922.5] yes=5,no=6,missing=5,gain=1.16072087e+014,cover=508863.062
+			5:leaf=-9322.12988,cover=109962.766
+			6:leaf=3276.04883,cover=398900.281
+		4:[HDD65<7268.5] yes=7,no=8,missing=7,gain=1.49263821e+014,cover=14721.5391
+			7:leaf=83541.125,cover=4776.91016
+			8:leaf=9706.11621,cover=9944.62891
+booster[149]
+0:[WorkersCnt<43] yes=1,no=2,missing=1,gain=1.81909213e+014,cover=519054.906
+	1:[WorkersCnt<33.5] yes=3,no=4,missing=3,gain=1.95638294e+014,cover=456934.844
+		3:[WorkersCnt<16.5] yes=7,no=8,missing=7,gain=1.17013188e+014,cover=442766.219
+			7:leaf=-5834.30371,cover=365514.906
+			8:leaf=8871.77832,cover=77251.3047
+		4:[CDD65<712] yes=9,no=10,missing=9,gain=2.92459859e+014,cover=14168.6426
+			9:leaf=80352.7266,cover=1918.71704
+			10:leaf=-63771.582,cover=12249.9258
+	2:[OpenHours<47] yes=5,no=6,missing=5,gain=1.86296538e+014,cover=62120.0352
+		5:[CDD65<2243.5] yes=11,no=12,missing=11,gain=2.20340563e+014,cover=22386.2109
+			11:leaf=2367.59888,cover=19858.5781
+			12:leaf=-105236.758,cover=2527.63306
+		6:[WorkersCnt<56] yes=13,no=14,missing=13,gain=1.99240479e+014,cover=39733.8203
+			13:leaf=72813.5078,cover=9476.04688
+			14:leaf=15767.4346,cover=30257.7754

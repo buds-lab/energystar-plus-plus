@@ -1,0 +1,10 @@
+0	SqFt	q
+1	OpenHours	q
+2	WorkersCnt	q
+3	ComputersCnt	q
+4	IsBank.No	q
+5	IsBank.Yes	q
+6	CooledPercent	q
+7	CDD65	q
+8	HeatedPercent	q
+9	HDD65	q

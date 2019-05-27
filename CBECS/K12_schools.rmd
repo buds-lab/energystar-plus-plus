@@ -1,0 +1,229 @@
+---
+title: "Implementation of ENERGY STAR Score for K-12 Schools"
+output: 
+  #html_notebook:
+  github_document:
+    #html_preview: false
+    toc: yes
+    toc_depth: 2
+    fig_width: 8
+    fig_height: 5    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a replication of ENERGY STAR Score implimentation for K-12 school buildings, as described in https://www.energystar.gov/buildings/tools-and-resources/energy-star-score-k-12-schools
+
+#### Include required packages
+```{r results='hide', message=FALSE, warning=FALSE, collapse=TRUE}
+library(readxl)
+library(readr)
+library(dplyr)
+library(rpart)
+library(rpart.plot)
+library(rpart.utils)
+library(sfa)
+library(frontier)
+library(likert)
+library(mosaic)
+library(ggpubr)
+library(stringr)
+library(ggridges)
+library(egg) # same width for legends
+library(stringi)
+library(caret)
+library(ipred)
+library(fitdistrplus)   # fitting distributions, e.g. gamma
+```
+
+
+#### Load the CBECS 2012 survey micro dataset 
+
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+
+cbecs = read_csv("data/2012_public_use_data_aug2016.csv")
+
+cols = c( "PBAPLUS",
+          "MFBTU", 
+          "FINALWT",
+          #"ELBTU", "NGBTU", "FKBTU", "DHBTU",
+          "ONEACT", "ACT1", "ACT2", "ACT3", "ACT1PCT", "ACT2PCT", "ACT3PCT",
+          "PRAMTC", "PRUNIT",
+          "CWUSED", "WOUSED", "COUSED", "SOUSED",
+          #"NWKER", "RFGWIN", "EDSEAT",
+          #"HDD65", "CDD65", "HEATP", "COOLP",
+          "SQFT",		"NFLOOR",	"NELVTR",	"NESLTR",	"EDSEAT",	"COURT",
+          "MONUSE",	"OPNWE",	"WKHRS",	"NWKER",	"COOK",		"HEATP",
+          "COOLP",	"SNACK",	"FASTFD",	"CAF",		"FDPREP",	"KITCHN",
+          "BREAKRM",	"OTFDRM",	"LABEQP",	"POOL",		"HTPOOL",	"RFGRES",
+          "RFGCOMPN",	"RFGWIN",	"RFGOPN",	"RFGCLN",	"RFGVNN",	"RFGICN",
+          "PCTERMN",	"LAPTPN",	"PRNTRN",	"SERVERN",	"TRNGRM",	"STDNRM",
+          "WBOARDS",	"TVVIDEON",	"RGSTRN",	"COPIERN",	"HDD65",	"CDD65")
+cbecs1 = cbecs[, cols]
+```
+
+#### Filter the data for K-12 schools
+
+- Filter by school type (elementary/middle/high schools), minimum total working hours (atleast 30 hours per week), months in use (at least 8 months per year), workers (atleast 1 worker), and seats (at least 1 seat).
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+
+# VERFIFY MFBTU = sum("ELBTU", "NGBTU", "FKBTU", "DHBTU")
+#df1 = cbecs1[, 3:6]
+#rs = rowSums(df1, na.rm = T)
+#df2 = data.frame(btu = cbecs1$MFBTU, rs)
+#df2["diff"] = df2$btu - df2$rs
+#df3 = df2[df2$diff > 0, ]
+
+cbecs2 = cbecs1 %>% 
+  #distinct() %>%
+  filter(PBAPLUS == 28 | PBAPLUS == 29 ) %>%
+  filter(WKHRS  >= 30) %>% 
+  filter(MONUSE >= 8) %>%
+  filter(NWKER  >= 1) %>%
+  filter(EDSEAT >= 1)
+print (paste("Total rows :", nrow(cbecs2)))
+```
+
+- Filter by higherest single activity as education.
+
+if ONEACT=1, then primary activity of this building is 75% or more.
+if ONEACT=2, then the sub activities on this building are defined in ACT1, ACT2, and ACT3, and their corresponding percentage is defined in ACT1PCT, ACT2PCT, and ACT3PCT, respectively. 
+
+ACTx should be 17 (education) and its corresponding ACTxPCT >= 50 to qualify for single highest activity as educational building.
+
+Note: There is some problem here as act21 should contain only 2 rows (as per original document) but we have 4. So the final rows may differ.
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+
+act1 = cbecs2 %>% filter(ONEACT == 1)  # 75% or more the buildings
+act2 = cbecs2 %>% filter(ONEACT == 2)  # then, activities are defiend in ACT1, ACT2, ACT3
+act21 = act2 %>% 
+  filter( (ACT1 == 17 & ACT1PCT > 50) | (ACT2 == 17 & ACT2PCT > 50) | (ACT3 == 17 & ACT3PCT > 50))
+
+cbecs2 = rbind(act1, act21)
+print (paste("Total rows :", nrow(cbecs2)))
+```
+
+
+- Filter by square foot (<= 1,000,000) and propane used amount (< 1000)
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+cbecs3 = cbecs2
+cbecs3 = cbecs3 %>% filter(!is.na(MFBTU))
+cbecs3 = cbecs3 %>% filter(SQFT <= 1000000)
+cbecs3 = cbecs3 %>% filter(is.na(PRAMTC) | PRAMTC == 1 | PRAMTC == 2 | PRAMTC == 3 )
+print (paste("Total rows :", nrow(cbecs3)))
+```
+
+
+- Filter untracked energy usages (must not use chilled water, wood, coal, or solar)
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+#must not use chilled water, wood, coal, or solar
+cbecs4 = cbecs3
+cbecs4 = cbecs4 %>% 
+  filter(CWUSED == 2) %>%
+  filter(WOUSED == 2) %>% 
+  filter(COUSED == 2) %>% 
+  filter(SOUSED == 2)
+print (paste("Total rows :", nrow(cbecs4)))
+```
+
+- Filter by EUI (< 250)
+
+Note that the annual major fuel consumption (MFBTU), is the sum of annual electricity (ELBTU), natural gas (NGBTU), fuel oil (FKBTU), and district heat (DHBTU) consumption. So we use MFBTU as the total source energy for calculating soure EUI.
+
+Note: Filtred rows differ from original document.
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+cbecs5 = cbecs4
+cbecs5["EUI"] = round(cbecs5$MFBTU / cbecs5$SQFT, 1)
+cbecs5 = cbecs5 %>% 
+  filter(EUI < 250)
+print (paste("Total rows :", nrow(cbecs5)))
+```
+
+- Filter by maximum allowed workers (< 1.9 per 1000 sqft), walk-in refrigeration (< 0.06 per 1000 sqft), seats (17 per sqft), and operational hours ( < 140 per week).
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+#"NWKER", "RFGWIN", "EDSEAT",
+cbecs6 = cbecs5
+cbecs6 = cbecs6 %>% 
+  filter(NWKER  / SQFT * 1000 <= 1.9) %>% 
+  filter(is.na(RFGWIN) | (RFGWIN / SQFT * 1000 < 0.06)) %>% 
+  filter(EDSEAT / SQFT * 1000 <= 17) %>%
+  filter(WKHRS <= 140)
+write_csv(cbecs6, "data/cbecs_k12school_filtered.csv")
+print (paste("Total rows :", nrow(cbecs6)))
+```
+
+
+#### Prepare training dataset
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+FINALWT     = cbecs6$FINALWT
+EUI         = cbecs6$EUI 
+NWKER_SQFT  = round(cbecs6$NWKER / cbecs6$SQFT * 1000, 2)
+HDD_HEATP   = cbecs6$HDD65 * cbecs6$HEATP / 100
+CDD_COOLP   = cbecs6$CDD65 * cbecs6$COOLP / 100
+COOK        = cbecs6$COOK
+OPNWE       = cbecs6$OPNWE
+ISHC        = as.numeric(cbecs6$PBAPLUS == 29)
+# convert 2's (NO) to 0s
+COOK[COOK == 2] = 0
+OPNWE[OPNWE == 2] = 0
+
+train = data.frame(EUI, NWKER_SQFT, HDD_HEATP, CDD_COOLP, COOK, OPNWE, ISHC, FINALWT)
+train = na.omit(train)
+
+summary(train)
+write_csv(train, "data/cbecs_k12school_train.csv")
+print (paste("Total rows :", nrow(train)))
+```
+
+#### Fit Regression model and calculate Energy Efficiency Ratio
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+train1 = train
+#train1$NWKER_SQFT = train1$NWKER_SQFT - mean(train1$NWKER_SQFT)
+#train1$HDD_HEATP = train1$HDD_HEATP - mean(train1$HDD_HEATP)
+#train1$CDD_COOLP = train1$CDD_COOLP - mean(train1$CDD_COOLP)
+
+lmfit = lm(EUI ~ ., data = train1[, -c(8)], weights = train1$FINALWT)
+print(summary(lmfit))
+plot(lmfit)
+```
+
+- Calculate energy efficiency ratio
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+lmPred = predict(lmfit, train1[, -c(8)])
+eer = train1$EUI / lmPred
+#plot(eer)
+eer_sorted = sort(eer)
+plot(eer_sorted)
+```
+
+- Plot cumaltive percentage for energy efficiency ratio
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+eer_cs = cumsum(eer_sorted)
+eer_pr = cumsum(eer_sorted) / sum(eer_sorted) * 100
+plot(eer_sorted,eer_pr)
+```
+
+- Fit gamma distribution to energy efficiency ratio
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+fit.gamma <- fitdist(eer, distr = "gamma")
+summary(fit.gamma)
+plot(fit.gamma)
+```
+
+
+##### Test code
+```{r message=FALSE, warning=FALSE, foldcode=TRUE}
+set.seed(2017)
+x <- rgamma(100,2,11) + rnorm(100,0,.01)
+plot(x)
+library(fitdistrplus)
+fit.gamma <- fitdist(x, distr = "gamma", method = "mle")
+summary(fit.gamma)
+plot(fit.gamma)
+
+fit.gamma <- fitdist(x, distr = "gamma", method = "mle")
+summary(fit.gamma)
+
+```
