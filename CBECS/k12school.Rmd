@@ -1,0 +1,317 @@
+---
+title: "CBECS K-12 Schools - Data filteration"
+author: "Pandarasamy Arjunan"
+date: "3 June 2019"
+output: 
+  github_document:
+    toc: true
+#  html_document:
+#    code_folding: "hide"
+#    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load dataset
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+
+save_dir1 = './data/filtered/'
+dir.create(save_dir1, showWarnings = F)
+
+save_dir2 = './data/features/'
+dir.create(save_dir2, showWarnings = F)
+```
+
+```{r}
+cbecs = read.csv("data/2012_public_use_data_aug2016.csv")
+
+var1 = c( 'SQFT', 'NFLOOR', 'NELVTR', 'NESLTR', 'EDSEAT',
+          'COURT', 'MONUSE', 'OPNWE', 'WKHRS', 'NWKER',
+          'COOK',  'HEATP',   'COOLP',  'SNACK', 'FASTFD',
+          'CAF',   'FDPREP',   'KITCHN', 'BREAKRM', 'OTFDRM',
+          'LABEQP', 'POOL',   'HTPOOL', 'RFGRES', 'RFGCOMPN',
+          'RFGWIN', 'RFGOPN', 'RFGCLN', 'RFGVNN', 'RFGICN',
+          'PCTERMN', 'LAPTPN', 'PRNTRN', 'SERVERN', 'TRNGRM',
+          'STDNRM',  'WBOARDS', 'TVVIDEON', 'RGSTRN', 'COPIERN',
+          'HDD65',  'CDD65')
+
+var2 = c( "PBAPLUS", "PBA", "FINALWT",
+          "MFBTU", 
+          "ELBTU", "NGBTU", "FKBTU", "DHBTU",
+          "ONEACT", "ACT1", "ACT2", "ACT3", "ACT1PCT", "ACT2PCT", "ACT3PCT",
+          "PRAMTC", "PRUNIT",
+          "CWUSED", "WOUSED", "COUSED", "SOUSED", "PRUSED")
+
+schools = cbecs[, c(var1, var2)]
+```
+
+## Apply filters
+
+As per Energy Star's technical document [ENERGY STAR Score for K-12 Schools](https://www.energystar.gov/buildings/tools-and-resources/energy-star-score-k-12-schools), following filters are applied to define the peer group and to remove any outliers.
+
+After applying each filter, the number of remaining buildings in the dataset (_Number Remaining: X_) and any difference (_Difference: X_) in count from the original Energy Star's technical documentation is also given. 
+
+
+#. **Calculate source energy and source EUI**
+    ```{r}
+## convert electricity, natural gas, fuel oil, and district heat to source energy
+s0 = schools %>% 
+  mutate(ELBTU0 = ELBTU*2.80) %>%
+  mutate(NGBTU0 = NGBTU*1.05) %>%
+  mutate(FKBTU0 = FKBTU*1.01) %>%
+  mutate(DHBTU0 = DHBTU*1.20) %>%
+  mutate(SOURCE_ENERGY = rowSums(dplyr::select(., c(ELBTU0,NGBTU0,FKBTU0,DHBTU0)), na.rm = T)) %>% 
+  mutate(SOURCE_EUI = round(SOURCE_ENERGY/SQFT, 2)) %>%
+  mutate(SITE_EUI = round(MFBTU/SQFT, 2)) %>%
+  mutate(NGBTU_PERCENT = round(NGBTU / SOURCE_ENERGY * 100, 2)) %>% 
+  mutate(SUMBTU = rowSums(dplyr::select(., c(ELBTU,NGBTU,FKBTU,DHBTU)), na.rm = T))
+
+#Is MFBTU the sum of ELBTU,NGBTU,FKBTU,DHBTU? YES.
+#summary(o14$MFBTU - o14$SUMBTU)
+
+    ```
+
+#. **PBAPLUS = 28 or 29**
+<br/>Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Elementary/Middle Schools are coded as PBAPLUS=28; High Schools are coded as PBAPLUS=29.
+<br/>Number Remaining: 539.
+<br/>Difference: 0.
+    ```{r}
+    s1 = s0 %>% filter(PBAPLUS %in% c(28, 29))
+    ```
+
+#. **Must operate for at least 30 hours per week**
+<br/>EPA Program Filter – Baseline condition for being a full time K-12 school.
+<br/>Number Remaining: 523.
+<br/>Difference: 0.
+    ```{r}
+    s2 = s1 %>% filter(WKHRS >= 30)
+    ```
+
+#. **Must operate for at least 8 months per year**
+<br/>EPA Program Filter – Baseline condition for being a full time K-12 school.
+<br/>Number Remaining: 517.
+<br/>Difference: 0.
+    ```{r}
+    s3 = s2 %>% filter(MONUSE >= 8)
+    ```
+
+#. **Must have at least 1 worker**
+<br/>EPA Program Filter – Baseline condition for being a full time K-12 school.
+<br/>Number Remaining: 517.
+<br/>Difference: 0.
+    ```{r}
+    s4 = s3 %>% filter(NWKER >= 1)
+    ```
+
+#. **Must have at least 1 classroom seat**
+<br/>EPA Program Filter – Baseline condition for being a full time K-12 school.
+<br/>Number Remaining: 517.
+<br/>Difference: 0.
+    ```{r}
+    s5 = s4 %>% filter(EDSEAT >= 1)
+    ```
+
+
+#. **A single activity must characterize greater than 50% of the floor space**
+<br/>EPA Program Filter – In order to be considered part of the K-12 school peer group, more than 50% of the building must be defined as elementary/middle school or high school.
+This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as education (PBAX=17), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50.
+<br/>Number Remaining: 513.
+<br/>Difference: 0.
+    ```{r}
+    s6 = s5 %>% 
+      filter( (ONEACT == 1) |
+            (ONEACT == 2 & 
+               ((ACT1 == 17 & ACT1PCT > 50) | 
+                  (ACT1 == 17 & ACT2PCT > 50) | 
+                  (ACT1 == 17 & ACT2PCT > 50) )))
+    ```
+    
+
+#. **Must report energy usage**
+<br/>EPA Program Filter – Baseline condition for being a full time K-12 school.
+<br/>Number Remaining: 513.
+<br/>Difference: 0.
+    ```{r}
+    s7 = s6 %>% filter(!is.na(MFBTU))
+    ```
+
+
+#. **Must be less than or equal to 1,000,000 square feet**
+<br/>Data Limitation Filter – CBECS masks surveyed properties at or above above 1,000,000 square feet by applying regional averages.
+<br/>Number Remaining: 513.
+<br/>Difference: 0.
+    ```{r}
+    s8 = s7 %>% filter(SQFT <= 1000000)
+    ```
+
+
+#. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3**
+Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown.
+<br/>Number Remaining: 496.
+<br/>Difference: 0.
+    ```{r}
+    s9 = s8 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
+    ```
+
+
+#. **If propane is used, the unit (PRUNIT) must be known**
+<br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown.
+<br/>Number Remaining: 496.
+<br/>Difference: 0.
+    ```{r}
+    s10 = s9 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
+    ```
+
+#. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy**
+<br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy.
+<br/>Number Remaining: 490.
+<br/>Difference: -6.
+    ```{r}
+    s11 = s10 %>% 
+      filter( PRUSED == 2 | is.na(NGBTU_PERCENT) == T | 
+            ( PRUSED == 1 & NGBTU_PERCENT <= 10))
+    ```
+
+
+#. **must not use chilled water, wood, coal, or solar**
+<br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar.
+<br/>Number Remaining: 451. 
+<br/>Difference: -6.
+    ```{r}
+    s12 = s11 %>% 
+      filter(CWUSED == 2 & WOUSED == 2 & COUSED == 2 & SOUSED == 2)
+
+    ```
+
+
+#. **Must have Source EUI no greater than 250 kBtu/ft2**
+<br/>Analytical Filter – Values determined to be statistical outliers.
+<br/>Number Remaining: 429.
+<br/>Difference: -6.
+    ```{r}
+    s13 = s12 %>% filter(SOURCE_EUI <= 250)
+    ```
+
+
+#. **Must have no more than 1.9 workers per 1,000 square feet**
+<br/>Analytical Filter – Values determined to be statistical outliers.
+<br/>Number Remaining: 405.
+<br/>Difference: -6.
+    ```{r}
+    s14 = s13 %>% filter(NWKER  / SQFT * 1000 <= 1.9)
+    ```    
+
+#. **Must have no more than 0.06 walk-in refrigeration per 1,000 square feet**
+<br/>Analytical Filter – Values determined to be statistical outliers.
+<br/>Number Remaining: 396.
+<br/>Difference: -6.
+    ```{r}
+    s15 = s14 %>% filter(is.na(RFGWIN) | (RFGWIN / SQFT * 1000 <= 0.06)) 
+    ```
+    
+
+#. **Must have no more than 17 classroom seats per 1,000 square feet**
+<br/>Analytical Filter – Values determined to be statistical outliers.
+<br/>Number Remaining: 349.
+<br/>Difference: -6.
+    ```{r}
+    s16 = s15 %>% filter(EDSEAT / SQFT * 1000 <= 17)
+    ```
+
+#. **Must operate no more than 140 hours per week**
+<br/>Analytical Filter – Values determined to be statistical outliers.
+<br/>Number Remaining: 344.
+<br/>Difference: -6.
+    ```{r}
+    s17 = s16 %>% filter(WKHRS <= 140)
+    ```
+
+
+**Save the filtered dataset**
+```{r}
+write.csv(s17, paste0(save_dir1, "k12school.csv"), row.names = F)
+```
+
+
+## Prepare features
+
+The final regression equation includes the following variables: 
+ - Number of Workers per 1,000 Square Feet
+ - Heating Degree Days times Percent of the Building that is Heated
+ - Cooling Degree Days times Percent of the Building that is Cooled
+ - Whether there is Energy Used for Cooking (1 = yes, 0 = no)
+ - Whether the School is Open on Weekends (1 = yes, 0 = no)
+ - Whether the School is a High School (1 = yes, 0 = no)
+
+
+```{r}
+save_dir1 = './data/filtered/'
+save_dir2 = './data/features/'
+
+k12school = read.csv(paste0(save_dir1, "k12school.csv"))
+
+data = k12school %>%
+  mutate(NWKER_SQFT = NWKER/SQFT * 1000) %>%
+  mutate(CDD65_COOLP = CDD65 * COOLP / 100) %>%
+  mutate(HDD65_HEATP = HDD65 * HEATP / 100) %>%
+  mutate(IsCooking = ifelse(COOK == 1, "Yes", "No")) %>%
+  mutate(IsOpenWeekends = ifelse(OPNWE == 1, "Yes", "No")) %>%
+  mutate(IsHighSchool = ifelse(PBAPLUS == 29, "Yes", "No")) %>% 
+  mutate_if(is.numeric, round, 3)
+
+ivars = c(
+  #"SQFT", 
+          "NWKER_SQFT", "HDD65_HEATP",
+          "CDD65_COOLP", "IsCooking",
+          "IsOpenWeekends", "IsHighSchool")
+
+dvars  = c("SOURCE_EUI", "SOURCE_ENERGY", "FINALWT")
+
+features = data[, c(ivars, dvars)]
+features = features %>% na.omit()
+#write.csv(features, paste0(save_dir2, "k12school.csv"), row.names = F)
+```
+
+
+
+## Descriptive statistics 
+```{r include=FALSE}
+library(knitr)
+opts_chunk$set(results = 'asis',      
+              comment = NA, 
+              prompt = FALSE, 
+              cache = FALSE)
+
+library(summarytools)
+st_options(plain.ascii = FALSE,       
+            style = "rmarkdown",      
+            footnote = NA,            
+            subtitle.emphasis = FALSE)                                    
+st_css()                              
+```
+
+```{r}
+features1 = features
+
+features1 = features1 %>% dplyr::select(-one_of('SOURCE_ENERGY', 'FINALWT'))
+
+summarytools::descr(features1, stats = "common", 
+                    transpose = TRUE, 
+                    headings = FALSE)
+```
+
+
+```{r}
+dfSummary(features1, plain.ascii = FALSE, style = "grid", 
+          graph.magnif = 0.75, valid.col = FALSE)
+```
+
+
+**Extract R code from Rmd document**
+```{r}
+#knitr::purl("k12school.Rmd", output = "k12school.R", documentation = 2)
+```
+

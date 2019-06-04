@@ -1,4 +1,4 @@
-CBECS - Filtering offices
+CBECS Offices - Data filteration
 ================
 Pandarasamy Arjunan
 3 June 2019
@@ -13,7 +13,6 @@ Load dataset
 ------------
 
 ``` r
-library(readr)
 library(dplyr)
 
 save_dir1 = './data/filtered/'
@@ -21,9 +20,6 @@ dir.create(save_dir1, showWarnings = F)
 
 save_dir2 = './data/features/'
 dir.create(save_dir2, showWarnings = F)
-
-save_dir3 = './data/features_all/'
-dir.create(save_dir3, showWarnings = F)
 ```
 
 ``` r
@@ -49,9 +45,9 @@ offices = cbecs[, columns]
 Apply filters
 -------------
 
-As per Energy Star's technical document [ENERGY STAR Score for Offices](https://www.energystar.gov/buildings/tools-and-resources/energy-star-score-offices), following filters applied to define the peer group and to remove any outliers.
+As per Energy Star's technical document [ENERGY STAR Score for Offices](https://www.energystar.gov/buildings/tools-and-resources/energy-star-score-offices), following filters are applied to define the peer group and to remove any outliers.
 
-After applying each filter, the number of remaining buildings in the dataset and any difference in count from the original technical documentation is also given.
+After applying each filter, the number of remaining buildings in the dataset (*Number Remaining: X*) and any difference (*Difference: X*) in count from the original Energy Star's technical documentation is also given.
 
 1.  **Calculate source energy and source EUI**
 
@@ -72,101 +68,102 @@ After applying each filter, the number of remaining buildings in the dataset and
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS = 2, 3, 4 or 52** <br/>Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Offices are coded as PBAPLUS=2 and 4; Bank/Financial Institutions are coded as PBAPLUS=3; and Courthouses are coded as PBAPLUS=52. <br/>Number Remaining: 1076.
+2.  **PBAPLUS = 2, 3, 4 or 52** <br/>Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Offices are coded as PBAPLUS=2 and 4; Bank/Financial Institutions are coded as PBAPLUS=3; and Courthouses are coded as PBAPLUS=52. <br/>Number Remaining: 1076. <br/>Difference: 0.
 
     ``` r
     o1 = o0 %>% filter(PBAPLUS %in% c(2, 3, 4, 52))
     ```
 
-3.  **Must have at least 1 computer** <br/>EPA Program Filter – Baseline condition for being a functioning office building. <br/>Number Remaining: 1072.
+3.  **Must have at least 1 computer** <br/>EPA Program Filter – Baseline condition for being a functioning office building. <br/>Number Remaining: 1072. <br/>Difference: 0.
 
     ``` r
     o2 = o1 %>% 
-      mutate(PC_TOT = rowSums(dplyr::select(., c(PCTERMN,SERVERN,LAPTPN)), na.rm = T)) %>% 
+      mutate(PC_TOT = 
+               rowSums(dplyr::select(., c(PCTERMN,SERVERN,LAPTPN)), na.rm = T)) %>% 
       filter(PC_TOT >= 1)
     ```
 
-4.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1072.
+4.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1072. <br/>Difference: 0.
 
     ``` r
     o3 = o2 %>% filter(NWKER >= 1)
     ```
 
-5.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1065.
+5.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1065. <br/>Difference: 0.
 
     ``` r
     o4 = o3 %>% filter(WKHRS >= 30)
     ```
 
-6.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1046.
+6.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1046. <br/>Difference: 0.
 
     ``` r
     o5 = o4 %>% filter(MONUSE >= 10)
     ```
 
-7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the office peer group, more than 50% of the building must be defined as an office, bank/financial institution, or courthouse. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as Office/Professional (PBAX=11) or Public Order and Safety (PBAX=23), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 1003.
+7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the office peer group, more than 50% of the building must be defined as an office, bank/financial institution, or courthouse. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as Office/Professional (PBAX=11) or Public Order and Safety (PBAX=23), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 1003. <br/>Difference: 0.
 
     ``` r
     o6 = o5 %>% 
       filter( (ONEACT == 1) |
-            (ONEACT == 2 & 
+              (ONEACT == 2 & 
                ((ACT1 %in% c(11,23) & ACT1PCT > 50) | 
                   (ACT2 %in% c(11,23) & ACT2PCT > 50) | 
                   (ACT3 %in% c(11,23) & ACT3PCT > 50) )))
     ```
 
-8.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1003.
+8.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a full time office building. <br/>Number Remaining: 1003. <br/>Difference: 0.
 
     ``` r
     o7 = o6 %>% filter(!is.na(MFBTU))
     ```
 
-9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 972.
+9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 972. <br/>Difference: 0.
 
     ``` r
     o8 = o7 %>% filter(SQFT <= 1000000)
     ```
 
-10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 959.
+10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 959. <br/>Difference: 0.
 
     ``` r
     o9 = o8 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 959.
+11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 959. <br/>Difference: 0.
 
     ``` r
     o10 = o9 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 957.
+12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 957. <br/>Difference: 0.
 
     ``` r
     o11 = o10 %>% 
       filter( PRUSED == 2 | is.na(NGBTU_PERCENT) == T | 
-            (PRUSED == 1 & NGBTU_PERCENT <= 10))
+            ( PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 897. Difference: +1.
+13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 897. <br/>Difference: +1.
 
     ``` r
     o12 = o11 %>% 
       filter(CWUSED == 2 & WOUSED == 2 & COUSED == 2 & SOUSED == 2)
     ```
 
-14. **Server count must be known** <br/>Data Limitation Filter – CBECS codes missing responses for number of servers as ‘9995.’ <br/>Number Remaining: 893. Difference: +1.
+14. **Server count must be known** <br/>Data Limitation Filter – CBECS codes missing responses for number of servers as ‘9995.’ <br/>Number Remaining: 893. <br/>Difference: +1.
 
     ``` r
     o13 = o12 %>% filter(SERVERN != 9995)
     ```
 
-15. **Must have no more than 8 workers per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 889. Difference: +1.
+15. **Must have no more than 8 workers per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 889. <br/>Difference: +1.
 
     ``` r
     o14 = o13 %>% filter(NWKER  / SQFT * 1000 <= 8)
     ```
 
-16. **Banks must have Source EUI greater than 50 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 887. Difference: +1.
+16. **Banks must have Source EUI greater than 50 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 887. <br/>Difference: +1.
 
     ``` r
     o15 = o14 %>% 
@@ -181,6 +178,15 @@ write.csv(o15, paste0(save_dir1, "office.csv"), row.names = F)
 
 Prepare features
 ----------------
+
+The final regression equation includes the following variables: 
+
+-   Square Footage
+-   Weekly Operating Hours
+-   Number of Workers per 1,000 Square Feet
+-   Number of Computers per 1,000 Square Feet
+-   Natural log of Cooling Degree Days times Percent of the Building that is Cooled
+-   Whether or not the Building is a Bank Branch (1 = yes, 0 = no)
 
 ``` r
 office = read.csv(paste0(save_dir1, "office.csv"))
@@ -209,6 +215,8 @@ Descriptive statistics
 
 ``` r
 features1 = features
+
+## summary of SQFT less than 100,000 only, as per Energy Star tech doc.
 features1[features1$SQFT >= 100000, ]$SQFT = NA
 features1 = features1 %>% dplyr::select(-one_of('SOURCE_ENERGY', 'FINALWT'))
 
@@ -384,3 +392,9 @@ IQR (CV) : 120.6 (0.7)</p></td>
 </tr>
 </tbody>
 </table>
+
+**Extract R code from Rmd document**
+
+``` r
+#knitr::purl("office.Rmd", output = "office.R", documentation = 2)
+```
