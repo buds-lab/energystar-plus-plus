@@ -18,4 +18,10 @@ We reproduce the ENERGY STAR® models for the following building types:
  - [Worship Facilities](https://github.com/buds-lab/EnergyStarPlusPlus/blob/master/CBECS/worship.md)
 
  
+ ### Explainable Benchmarking system
+ In existing benchmarking systems, including ENERGY STAR®, it is difficult for the facility managers to understand how certain score/grade was assigned to their buildings. By leveraging Explainable Artificial Intelligence (XAI) methods, we unbox the complex models to make them exaplaintable to the facility managers. We have created an app using with one can clearly understand the level of influence of each building attribute and how it affects the final benchmarking score/grade.
+ 
+ ### Benchmarking using public datasets
+ One of challeneges of benchmarking is clearly define the peer groups. We analyze the feasability of using public datasets for developing a benchmarking system. 
+ 
  
