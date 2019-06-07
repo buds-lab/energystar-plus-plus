@@ -11,8 +11,6 @@ Pandarasamy Arjunan
 -   [Build models](#build-models)
     -   [Multiple Linear Regression (MLR)](#multiple-linear-regression-mlr)
     -   [Multiple Linear Regression (MLR) with Interaction terms](#multiple-linear-regression-mlr-with-interaction-terms)
-    -   [MLR plots using Source EUI](#mlr-plots-using-source-eui)
-    -   [MLR plots using Source Energy](#mlr-plots-using-source-energy)
 
 Load dataset
 ------------
@@ -36,7 +34,7 @@ dir.create(results_dir, recursive = T, showWarnings = F)
 ```
 
 ``` r
-cbecs = read.csv("data/2012_public_use_data_aug2016.csv")
+cbecs = read.csv("data/cbecs/2012_public_use_data_aug2016.csv")
 
 ## list of building attributes relevant to office buildings 
 columns = c( 'PBAPLUS', 'PBA', 'FINALWT', 
@@ -202,7 +200,6 @@ The final regression equation includes the following variables: 
 -   Whether or not the Building is a Bank Branch (1 = yes, 0 = no)
 
 ``` r
-building_type = "office"
 office = read.csv(paste0(filtered_dir, building_type, ".csv"))
 
 data = office %>%
@@ -586,24 +583,26 @@ knitr::kable(allMetrics0, row.names = F)
 | MLRi5 | SOURCE\_ENERGY |            5| meanCent  |  882|    63|    63|  0.725|    0.705|  7.046253e+14|  26544778|  6866007|  0.962|     122.133|         3.046|      131.085|     58.344|
 | MLRi6 | SOURCE\_ENERGY |            6| meanCent  |  882|    64|    64|  0.725|    0.704|  7.046189e+14|  26544658|  6865841|  0.961|     122.132|         3.046|      131.084|     58.344|
 
-### MLR plots using Source EUI
+#### MLR plots using Source EUI
 
 ``` r
 library(ggplot2)
 library(reshape2)
 
-th = theme(legend.direction = "horizontal",
-           legend.title = element_blank(),
+th = theme(legend.title = element_blank(),
+           legend.text=element_text(size=12),
            axis.text=element_text(size=12),
            text=element_text(size=12))
     
-allMetrics0 = allMetrics %>% filter(dependent == "SOURCE_EUI")
+allMetrics0 = allMetrics %>%
+  filter(stringr::str_detect(model, "MLR")) %>%
+  filter(dependent == "SOURCE_EUI")
 
 df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
 plot1 <- ggplot(df, aes(x = interaction, y=value, 
                         group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top")
+  theme_bw() + theme(legend.position="right")
 
 plot1 + th
 ```
@@ -617,31 +616,25 @@ df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean",
 plot1 <- ggplot(df, aes(x = interaction, y=value, 
                         group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top")
+  theme_bw() + theme(legend.position="right")
 
 plot1 + th
 ```
 
 ![](office_files/figure-markdown_github/unnamed-chunk-30-2.png)
 
-### MLR plots using Source Energy
+#### MLR plots using Source Energy
 
 ``` r
-library(ggplot2)
-library(reshape2)
-
-th = theme(legend.direction = "horizontal",
-           legend.title = element_blank(),
-           axis.text=element_text(size=12),
-           text=element_text(size=12))
-    
-allMetrics0 = allMetrics %>% filter(dependent == "SOURCE_ENERGY")
+allMetrics0 = allMetrics %>%
+  filter(stringr::str_detect(model, "MLR")) %>%
+  filter(dependent == "SOURCE_ENERGY")
 
 df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
 plot1 <- ggplot(df, aes(x = interaction, y=value, 
                         group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top")
+  theme_bw() + theme(legend.position="right")
 
 plot1 + th
 ```
@@ -655,7 +648,7 @@ df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean",
 plot1 <- ggplot(df, aes(x = interaction, y=value, 
                         group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top")
+  theme_bw() + theme(legend.position="right")
 
 plot1 + th
 ```

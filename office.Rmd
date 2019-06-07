@@ -37,7 +37,7 @@ dir.create(results_dir, recursive = T, showWarnings = F)
 ```
 
 ```{r}
-cbecs = read.csv("data/2012_public_use_data_aug2016.csv")
+cbecs = read.csv("data/cbecs/2012_public_use_data_aug2016.csv")
 
 ## list of building attributes relevant to office buildings 
 columns = c( 'PBAPLUS', 'PBA', 'FINALWT', 
@@ -232,7 +232,6 @@ The final regression equation includes the following variables: 
 
 
 ```{r}
-building_type = "office"
 office = read.csv(paste0(filtered_dir, building_type, ".csv"))
 
 data = office %>%
@@ -509,7 +508,6 @@ plot1 + th
 
 
 ```
-
 
 
 

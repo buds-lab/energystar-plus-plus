@@ -20,18 +20,23 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(readr)
 
-save_dir1 = './data/filtered/'
-dir.create(save_dir1, showWarnings = F)
+building_type = "multifamily"
 
-save_dir2 = './data/features/'
-dir.create(save_dir2, showWarnings = F)
+filtered_dir = './data/cbecs/filtered/'
+dir.create(filtered_dir, recursive = T, showWarnings = F)
+
+features_dir = './data/cbecs/features/'
+dir.create(features_dir, recursive = T, showWarnings = F)
+
+results_dir = './results/cbecs/'
+dir.create(results_dir, recursive = T, showWarnings = F)
 
 ```
 
 The reference data used to establish the peer building population in the United States is Fannie Mae’s Multifamily Energy and Water Market Research Survey.
 
 ```{r, warning=FALSE}
-multifamily = read_csv("data/FannieMae/mewmr-survey-database_data.csv")
+multifamily = read_csv("data/cbecs/FannieMae/mewmr-survey-database_data.csv")
 
 ## remove all special chars 
 cols = names(multifamily)
@@ -154,7 +159,7 @@ m6 = m5 %>% filter(Unit.Density > 0 &
 **Save the filtered dataset**
 ```{r}
 m7 = m6[, cols]
-write.csv(m7, paste0(save_dir1, "multifamily.csv"), row.names = F)
+write.csv(m7, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 ```
 
 
@@ -169,10 +174,7 @@ The final regression equation includes the following variables: 
  - Low-Rise building (yes/no)
 
 ```{r}
-save_dir1 = './data/filtered/'
-save_dir2 = './data/features/'
-
-multifamily = read.csv(paste0(save_dir1, "multifamily.csv"))
+multifamily = read.csv(paste0(filtered_dir, building_type, ".csv"))
 
 data = multifamily %>% 
   mutate(IsLowRise = 
@@ -203,7 +205,10 @@ features = data %>%
 
 #summary(features)
 features = features %>% na.omit()
-write.csv(features, paste0(save_dir2, "multifamily.csv"), row.names = F)
+
+write.csv(features, 
+          paste0(features_dir, building_type, ".csv"), 
+          row.names = F)
 
 ```
 

@@ -16,17 +16,22 @@ Load dataset
 library(dplyr)
 library(readr)
 
-save_dir1 = './data/filtered/'
-dir.create(save_dir1, showWarnings = F)
+building_type = "multifamily"
 
-save_dir2 = './data/features/'
-dir.create(save_dir2, showWarnings = F)
+filtered_dir = './data/cbecs/filtered/'
+dir.create(filtered_dir, recursive = T, showWarnings = F)
+
+features_dir = './data/cbecs/features/'
+dir.create(features_dir, recursive = T, showWarnings = F)
+
+results_dir = './results/cbecs/'
+dir.create(results_dir, recursive = T, showWarnings = F)
 ```
 
 The reference data used to establish the peer building population in the United States is Fannie Mae’s Multifamily Energy and Water Market Research Survey.
 
 ``` r
-multifamily = read_csv("data/FannieMae/mewmr-survey-database_data.csv")
+multifamily = read_csv("data/cbecs/FannieMae/mewmr-survey-database_data.csv")
 ```
 
     ## Parsed with column specification:
@@ -159,7 +164,7 @@ After applying each filter, the number of remaining buildings in the dataset (*N
 
 ``` r
 m7 = m6[, cols]
-write.csv(m7, paste0(save_dir1, "multifamily.csv"), row.names = F)
+write.csv(m7, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 ```
 
 Prepare features
@@ -168,10 +173,7 @@ Prepare features
 The final regression equation includes the following variables:   - Number of Units per 1,000 square feet - Number of Bedrooms per Unit - Total Heating Degree Days - Total Cooling Degree Days - Low-Rise building (yes/no)
 
 ``` r
-save_dir1 = './data/filtered/'
-save_dir2 = './data/features/'
-
-multifamily = read.csv(paste0(save_dir1, "multifamily.csv"))
+multifamily = read.csv(paste0(filtered_dir, building_type, ".csv"))
 
 data = multifamily %>% 
   mutate(IsLowRise = 
@@ -202,7 +204,10 @@ features = data %>%
 
 #summary(features)
 features = features %>% na.omit()
-write.csv(features, paste0(save_dir2, "multifamily.csv"), row.names = F)
+
+write.csv(features, 
+          paste0(features_dir, building_type, ".csv"), 
+          row.names = F)
 ```
 
 Descriptive statistics

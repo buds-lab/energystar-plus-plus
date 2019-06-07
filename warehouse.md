@@ -15,15 +15,20 @@ Load dataset
 ``` r
 library(dplyr)
 
-save_dir1 = './data/filtered/'
-dir.create(save_dir1, showWarnings = F)
+building_type = "warehouse"
 
-save_dir2 = './data/features/'
-dir.create(save_dir2, showWarnings = F)
+filtered_dir = './data/cbecs/filtered/'
+dir.create(filtered_dir, recursive = T, showWarnings = F)
+
+features_dir = './data/cbecs/features/'
+dir.create(features_dir, recursive = T, showWarnings = F)
+
+results_dir = './results/cbecs/'
+dir.create(results_dir, recursive = T, showWarnings = F)
 ```
 
 ``` r
-cbecs = read.csv("data/2012_public_use_data_aug2016.csv")
+cbecs = read.csv("data/cbecs/2012_public_use_data_aug2016.csv")
 
 var1 = c( 'SQFT', 'NFLOOR', 'NELVTR', 'NESLTR', 'COURT', 
           'MONUSE', 'OPNWE',  'WKHRS', 'NWKER', 'COOK', 
@@ -188,7 +193,7 @@ After applying each filter, the number of remaining buildings in the dataset (*N
 **Save the filtered dataset**
 
 ``` r
-write.csv(w15, paste0(save_dir1, "warehouse.csv"), row.names = F)
+write.csv(w15, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 ```
 
 Prepare features
@@ -203,7 +208,7 @@ The final regression equation includes the following variables: 
 -   Cooling Degree Days times (Percent of the Building that is Cooled plus Percent Cold Storage)
 
 ``` r
-warehouse = read.csv(paste0(save_dir1, "warehouse.csv"))
+warehouse = read.csv(paste0(filtered_dir, building_type, ".csv"))
 
 data = warehouse %>%
   mutate(NWKER_SQFT = NWKER/SQFT * 1000) %>%
@@ -223,7 +228,10 @@ dvars  = c("SOURCE_EUI", "SOURCE_ENERGY", "FINALWT")
 features = data[, c(ivars, dvars)]
 #summary(features)
 features = features %>% na.omit()
-write.csv(features, paste0(save_dir2, "warehouse.csv"), row.names = F)
+
+write.csv(features, 
+          paste0(features_dir, building_type, ".csv"), 
+          row.names = F)
 ```
 
 Descriptive statistics
