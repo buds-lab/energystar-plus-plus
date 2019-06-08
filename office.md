@@ -1,4 +1,4 @@
-CBECS Offices - Data filteration
+Benchmarking Office buildings
 ================
 Pandarasamy Arjunan
 3 June 2019

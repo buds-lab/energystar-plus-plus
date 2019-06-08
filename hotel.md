@@ -1,4 +1,4 @@
-CBECS Hotels - Data filteration
+Benchmarking Hotels
 ================
 Pandarasamy Arjunan
 3 June 2019
@@ -455,13 +455,12 @@ Build predictive models
 source("models.R")
 source("metrics.R")
 
-building_type = "office"
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
 cat(colnames(data))
 ```
 
-SQFT WKHRS NWKER\_SQFT PCTERMN\_SQFT CDD65\_COOLP IsBank SOURCE\_EUI SOURCE\_ENERGY FINALWT
+SQFT LODGRM\_SQFT NWKER\_SQFT RFG\_SQFT HDD65\_HEATP CDD65\_COOLP Kitchen SOURCE\_EUI SOURCE\_ENERGY FINALWT
 
 ``` r
 allMetrics = NULL
@@ -497,9 +496,9 @@ allMetrics = rbind(allMetrics, mlrMetrics1)
 knitr::kable(mlrMetrics1, row.names = F)
 ```
 
-| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|     rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
-|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|--------:|-------:|------:|-----------:|-------------:|------------:|----------:|
-| MLR   | SOURCE\_EUI |            1| meanCent  |  882|     6|     6|  0.204|    0.199|  15206.25|  123.314|  75.374|  0.565|     101.896|         9.942|       67.744|     95.398|
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI |            1| meanCent  |   98|     7|     7|  0.519|    0.487|  3225.436|  56.793|  43.441|  0.242|       51.91|         17.73|       30.992|     79.723|
 
 #### Using SOURCE\_ENERGY as dependent variable\*\*
 
@@ -529,8 +528,8 @@ knitr::kable(allMetrics, row.names = F)
 
 | model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|          rmse|          mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|-------------:|------------:|------:|-----------:|-------------:|------------:|----------:|
-| MLR   | SOURCE\_EUI    |            1| meanCent  |  882|     6|     6|  0.204|    0.199|  1.520625e+04|       123.314|       75.374|  0.565|     101.896|         9.942|       67.744|     95.398|
-| MLR   | SOURCE\_ENERGY |            1| meanCent  |  882|     7|     7|  0.653|    0.650|  9.244025e+14|  30403987.719|  7855736.665|  1.207|     139.889|         3.489|      150.142|     66.827|
+| MLR   | SOURCE\_EUI    |            1| meanCent  |   98|     7|     7|  0.519|    0.487|  3.225436e+03|        56.793|       43.441|  0.242|      51.910|        17.730|       30.992|     79.723|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |   98|     8|     8|  0.895|    0.887|  1.803708e+14|  13430219.878|  9080424.454|  0.383|      27.788|         9.234|       33.515|     35.980|
 
 ### Multiple Linear Regression (MLR) with Interaction terms
 
@@ -566,13 +565,14 @@ allMetrics0 = allMetrics %>% filter(dependent == y)
 knitr::kable(allMetrics0, row.names = F)
 ```
 
-| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|     rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
-|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|--------:|-------:|------:|-----------:|-------------:|------------:|----------:|
-| MLR   | SOURCE\_EUI |            1| meanCent  |  882|     6|     6|  0.204|    0.199|  15206.25|  123.314|  75.374|  0.565|     101.896|         9.942|       67.744|     95.398|
-| MLRi2 | SOURCE\_EUI |            2| meanCent  |  882|    16|    16|  0.230|    0.216|  15292.39|  123.662|  75.549|  0.564|     102.183|         9.970|       67.936|     95.668|
-| MLRi3 | SOURCE\_EUI |            3| meanCent  |  882|    26|    26|  0.239|    0.217|  15546.34|  124.685|  75.536|  0.562|     103.028|        10.053|       68.498|     96.459|
-| MLRi4 | SOURCE\_EUI |            4| meanCent  |  882|    31|    31|  0.244|    0.217|  15555.39|  124.721|  75.605|  0.562|     103.058|        10.056|       68.517|     96.487|
-| MLRi5 | SOURCE\_EUI |            5| meanCent  |  882|    32|    32|  0.245|    0.217|  15584.65|  124.838|  75.612|  0.563|     103.155|        10.065|       68.582|     96.577|
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI |            1| meanCent  |   98|     7|     7|  0.519|    0.487|  3225.436|  56.793|  43.441|  0.242|      51.910|        17.730|       30.992|     79.723|
+| MLRi2 | SOURCE\_EUI |            2| meanCent  |   98|    22|    22|  0.620|    0.515|  3037.103|  55.110|  40.682|  0.229|      50.371|        17.205|       30.073|     77.360|
+| MLRi3 | SOURCE\_EUI |            3| meanCent  |   98|    42|    42|  0.797|    0.648|  2346.616|  48.442|  34.816|  0.200|      44.277|        15.123|       26.435|     68.000|
+| MLRi4 | SOURCE\_EUI |            4| meanCent  |   98|    57|    57|  0.874|    0.703|  2006.153|  44.790|  30.259|  0.177|      40.939|        13.983|       24.442|     62.873|
+| MLRi5 | SOURCE\_EUI |            5| meanCent  |   98|    63|    63|  0.895|    0.708|  1702.391|  41.260|  28.187|  0.165|      37.712|        12.881|       22.515|     57.918|
+| MLRi6 | SOURCE\_EUI |            6| meanCent  |   98|    64|    64|  0.895|    0.699|  1698.416|  41.212|  28.204|  0.165|      37.668|        12.866|       22.489|     57.851|
 
 #### Using SOURCE\_ENERGY as dependent variable\*\*
 
@@ -611,12 +611,13 @@ knitr::kable(allMetrics0, row.names = F)
 
 | model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|      rmse|      mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|---------:|--------:|------:|-----------:|-------------:|------------:|----------:|
-| MLR   | SOURCE\_ENERGY |            1| meanCent  |  882|     7|     7|  0.653|    0.650|  9.244025e+14|  30403988|  7855737|  1.207|     139.889|         3.489|      150.142|     66.827|
-| MLRi2 | SOURCE\_ENERGY |            2| meanCent  |  882|    22|    22|  0.684|    0.676|  8.322307e+14|  28848410|  7421792|  0.858|     132.732|         3.310|      142.460|     63.408|
-| MLRi3 | SOURCE\_ENERGY |            3| meanCent  |  882|    42|    42|  0.704|    0.689|  7.771532e+14|  27877468|  7460931|  1.039|     128.264|         3.199|      137.666|     61.274|
-| MLRi4 | SOURCE\_ENERGY |            4| meanCent  |  882|    57|    57|  0.723|    0.704|  7.038205e+14|  26529616|  6967648|  0.952|     122.063|         3.044|      131.010|     58.311|
-| MLRi5 | SOURCE\_ENERGY |            5| meanCent  |  882|    63|    63|  0.725|    0.705|  7.046253e+14|  26544778|  6866007|  0.962|     122.133|         3.046|      131.085|     58.344|
-| MLRi6 | SOURCE\_ENERGY |            6| meanCent  |  882|    64|    64|  0.725|    0.704|  7.046189e+14|  26544658|  6865841|  0.961|     122.132|         3.046|      131.084|     58.344|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |   98|     8|     8|  0.895|    0.887|  1.803708e+14|  13430220|  9080424|  0.383|      27.788|         9.234|       33.515|     35.980|
+| MLRi2 | SOURCE\_ENERGY |            2| meanCent  |   98|    29|    29|  0.953|    0.934|  1.293115e+14|  11371523|  7485864|  0.237|      23.528|         7.819|       28.378|     30.465|
+| MLRi3 | SOURCE\_ENERGY |            3| meanCent  |   98|    64|    64|  0.977|    0.934|  5.039182e+13|   7098720|  4217495|  0.149|      14.688|         4.881|       17.715|     19.018|
+| MLRi4 | SOURCE\_ENERGY |            4| meanCent  |   98|    98|    99|  1.000|      NaN|  0.000000e+00|         0|        0|  0.000|       0.000|         0.000|        0.000|      0.000|
+| MLRi5 | SOURCE\_ENERGY |            5| meanCent  |   98|    98|   120|  1.000|      NaN|  0.000000e+00|         0|        0|  0.000|       0.000|         0.000|        0.000|      0.000|
+| MLRi6 | SOURCE\_ENERGY |            6| meanCent  |   98|    98|   127|  1.000|      NaN|  0.000000e+00|         0|        0|  0.000|       0.000|         0.000|        0.000|      0.000|
+| MLRi7 | SOURCE\_ENERGY |            7| meanCent  |   98|    98|   128|  1.000|      NaN|  0.000000e+00|         0|        0|  0.000|       0.000|         0.000|        0.000|      0.000|
 
 ### Comparision of MLR models
 
@@ -695,6 +696,10 @@ plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
 
 print(plot1)
 ```
+
+    Warning: Removed 4 rows containing missing values (geom_point).
+
+    Warning: Removed 4 rows containing missing values (geom_path).
 
 ![](hotel_files/figure-markdown_github/unnamed-chunk-33-1.png)
 

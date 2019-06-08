@@ -1,5 +1,5 @@
 ---
-title: "CBECS Hotels - Data filteration"
+title: "Benchmarking Hotels"
 author: "Pandarasamy Arjunan"
 date: "3 June 2019"
 output: 
@@ -327,7 +327,6 @@ dfSummary(features1, plain.ascii = FALSE, style = "grid",
 source("models.R")
 source("metrics.R")
 
-building_type = "office"
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
 cat(colnames(data))

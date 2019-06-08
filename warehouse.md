@@ -1,4 +1,4 @@
-CBECS Warehouses - Data filteration
+Benchmarking Warehouses
 ================
 Pandarasamy Arjunan
 3 June 2019

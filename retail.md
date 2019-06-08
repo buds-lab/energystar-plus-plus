@@ -1,4 +1,4 @@
-CBECS Retail stores and Supermarkets - Data filteration
+Benchmarking Retail stores and Supermarkets
 ================
 Pandarasamy Arjunan
 3 June 2019

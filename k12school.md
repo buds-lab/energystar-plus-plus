@@ -1,4 +1,4 @@
-CBECS K-12 Schools - Data filteration
+Benchmarking K-12 Schools
 ================
 Pandarasamy Arjunan
 3 June 2019

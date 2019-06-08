@@ -1,4 +1,4 @@
-CBECS Worship Facilities - Data filteration
+Benchmarking Worship facilities
 ================
 Pandarasamy Arjunan
 3 June 2019
