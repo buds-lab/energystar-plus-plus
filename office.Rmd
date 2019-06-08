@@ -14,15 +14,17 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Load dataset
-```{r message=FALSE, warning=FALSE}
 library(dplyr)
 library(Metrics)
 library(caret)
 library(xgboost)
+library(ggplot2)
+library(reshape2)
+library(ggpubr)
+```
 
+## Load dataset
+```{r message=FALSE, warning=FALSE}
 building_type = "office"
 
 filtered_dir = './data/cbecs/filtered/'
@@ -297,15 +299,12 @@ dfSummary(features1, plain.ascii = FALSE, style = "grid",
 #knitr::purl("office.Rmd", output = "office.R", documentation = 2)
 ```
 
-
-
 ## Build predictive models
 
 ```{r}
 source("models.R")
 source("metrics.R")
 
-building_type = "office"
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
 cat(colnames(data))
@@ -447,10 +446,6 @@ knitr::kable(allMetrics0, row.names = F)
 
 #### MLR plots using Source EUI
 ```{r, warning=FALSE}
-library(ggplot2)
-library(reshape2)
-library(ggpubr)
-
 mytheme = theme(legend.title = element_blank(),
            legend.text=element_text(size=12),
            axis.text=element_text(size=12),
@@ -469,7 +464,6 @@ plotR2 <- function(df, titl) {
   
   return(plot)
 }
-
 
 plotNRMSE <- function(df, titl) {
   

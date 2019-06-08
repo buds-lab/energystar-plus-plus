@@ -8,13 +8,15 @@ Pandarasamy Arjunan
 -   [Prepare features](#prepare-features)
 -   [Descriptive statistics](#descriptive-statistics)
     -   [Data Frame Summary](#data-frame-summary)
+-   [Build predictive models](#build-predictive-models)
+    -   [Multiple Linear Regression (MLR)](#multiple-linear-regression-mlr)
+    -   [Multiple Linear Regression (MLR) with Interaction terms](#multiple-linear-regression-mlr-with-interaction-terms)
+    -   [Comparision of MLR models](#comparision-of-mlr-models)
 
 Load dataset
 ------------
 
 ``` r
-library(dplyr)
-
 building_type = "k12school"
 
 filtered_dir = './data/cbecs/filtered/'
@@ -411,3 +413,255 @@ IQR (CV) : 54.2 (0.4)</p></td>
 ``` r
 #knitr::purl("k12school.Rmd", output = "k12school.R", documentation = 2)
 ```
+
+Build predictive models
+-----------------------
+
+``` r
+source("models.R")
+source("metrics.R")
+
+data = read.csv(paste0(features_dir, building_type, ".csv"))
+
+cat(colnames(data))
+```
+
+NWKER\_SQFT HDD65\_HEATP CDD65\_COOLP IsCooking IsOpenWeekends IsHighSchool SOURCE\_EUI SOURCE\_ENERGY FINALWT
+
+``` r
+allMetrics = NULL
+```
+
+### Multiple Linear Regression (MLR)
+
+#### Using SOURCE\_EUI as dependent variable
+
+``` r
+y = "SOURCE_EUI"
+w = "FINALWT"
+o = c("SOURCE_ENERGY", "SQFT")
+x = setdiff(colnames(data), c(y, w, o))
+wt = data[, w]
+intr = 1
+
+mlrFit = MLR(data, x, y, w, interaction = intr)
+
+obs  = data[, y]
+pred = as.numeric(predict(mlrFit))
+
+mlrMetrics1 = getMLRmetrics(mlrFit, obs, pred, wt)
+mlrMetrics1 = data.frame(
+  "model" = "MLR",
+  "dependent" = y,
+  "interaction" = intr,
+  "transform" = "meanCent",
+  mlrMetrics1)
+
+allMetrics = rbind(allMetrics, mlrMetrics1)
+
+knitr::kable(mlrMetrics1, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI |            1| meanCent  |  327|     7|     7|  0.157|    0.141|  1619.832|  40.247|  31.896|  0.331|      74.222|        18.987|       35.075|     94.142|
+
+#### Using SOURCE\_ENERGY as dependent variable\*\*
+
+``` r
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+o = c("SOURCE_EUI")
+x = setdiff(colnames(data), c(y, w, o))
+wt = data[, w]
+intr = 1
+
+mlrFit = MLR(data, x, y, w, interaction = intr)
+
+obs  = data[, y]
+pred = as.numeric(predict(mlrFit))
+
+mlrMetrics2 = getMLRmetrics(mlrFit, obs, pred, wt)
+mlrMetrics2 = data.frame(
+  "model" = "MLR",
+  "dependent" = y,
+  "interaction" = intr,
+  "transform" = "meanCent",
+  mlrMetrics2)
+allMetrics = rbind(allMetrics, mlrMetrics2)
+knitr::kable(allMetrics, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|          rmse|          mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|-------------:|------------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI    |            1| meanCent  |  327|     7|     7|  0.157|    0.141|  1.619832e+03|        40.247|       31.896|  0.331|      74.222|        18.987|       35.075|     94.142|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |  327|     7|     7|  0.301|    0.288|  1.344743e+14|  11596306.583|  6835185.379|  0.994|      98.802|        12.156|       87.043|     86.040|
+
+### Multiple Linear Regression (MLR) with Interaction terms
+
+#### Using SOURCE\_EUI as dependent variable
+
+``` r
+y = "SOURCE_EUI"
+w = "FINALWT"
+o = c("SOURCE_ENERGY", "SQFT")
+x = setdiff(colnames(data), c(y, w, o))
+wt = data[, w]
+
+intr_depth = length(x)
+
+for (intr in 2:intr_depth) {
+  
+  mlrFit = MLR(data, x, y, w, interaction = intr)
+  obs  = data[, y]
+  pred = as.numeric(predict(mlrFit))
+  
+  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
+  mlrMetrics = data.frame(
+    "model" = paste0("MLRi", intr),
+    "dependent" = y,
+    "interaction" = intr,
+    "transform" = "meanCent",
+    mlrMetrics)
+  
+  allMetrics = rbind(allMetrics, mlrMetrics)
+}
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI |            1| meanCent  |  327|     7|     7|  0.157|    0.141|  1619.832|  40.247|  31.896|  0.331|      74.222|        18.987|       35.075|     94.142|
+| MLRi2 | SOURCE\_EUI |            2| meanCent  |  327|    22|    22|  0.212|    0.158|  1609.821|  40.123|  32.079|  0.324|      73.994|        18.929|       34.967|     93.852|
+| MLRi3 | SOURCE\_EUI |            3| meanCent  |  327|    42|    42|  0.301|    0.201|  1558.871|  39.483|  31.516|  0.320|      72.813|        18.627|       34.409|     92.355|
+| MLRi4 | SOURCE\_EUI |            4| meanCent  |  327|    57|    57|  0.397|    0.272|  1413.994|  37.603|  29.189|  0.296|      69.346|        17.740|       32.770|     87.957|
+| MLRi5 | SOURCE\_EUI |            5| meanCent  |  327|    63|    63|  0.416|    0.279|  1388.745|  37.266|  28.547|  0.290|      68.725|        17.581|       32.477|     87.169|
+| MLRi6 | SOURCE\_EUI |            6| meanCent  |  327|    64|    64|  0.427|    0.290|  1372.966|  37.054|  28.003|  0.284|      68.334|        17.481|       32.292|     86.673|
+
+#### Using SOURCE\_ENERGY as dependent variable\*\*
+
+``` r
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+o = c("SOURCE_EUI")
+x = setdiff(colnames(data), c(y, w, o))
+wt = data[, w]
+intr_depth = length(x)
+
+for (intr in 2:intr_depth) {
+  
+  mlrFit = MLR(data, x, y, w, interaction = intr)
+  obs  = data[, y]
+  pred = as.numeric(predict(mlrFit))
+  
+  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
+  mlrMetrics = data.frame(
+    "model" = paste0("MLRi", intr),
+    "dependent" = y,
+    "interaction" = intr,
+    "transform" = "meanCent",
+    mlrMetrics)
+  
+  allMetrics = rbind(allMetrics, mlrMetrics)
+}
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|      rmse|      mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|---------:|--------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |  327|     7|     7|  0.301|    0.288|  1.344743e+14|  11596307|  6835185|  0.994|      98.802|        12.156|       87.043|     86.040|
+| MLRi2 | SOURCE\_ENERGY |            2| meanCent  |  327|    22|    22|  0.459|    0.422|  1.097948e+14|  10478303|  6186774|  0.728|      89.276|        10.984|       78.651|     77.745|
+| MLRi3 | SOURCE\_ENERGY |            3| meanCent  |  327|    42|    42|  0.528|    0.460|  9.830430e+13|   9914853|  5944744|  0.650|      84.476|        10.394|       74.422|     73.564|
+| MLRi4 | SOURCE\_ENERGY |            4| meanCent  |  327|    57|    57|  0.585|    0.499|  9.418347e+13|   9704817|  5646421|  0.589|      82.686|        10.173|       72.845|     72.006|
+| MLRi5 | SOURCE\_ENERGY |            5| meanCent  |  327|    63|    63|  0.593|    0.497|  9.262940e+13|   9624417|  5522105|  0.564|      82.001|        10.089|       72.242|     71.409|
+| MLRi6 | SOURCE\_ENERGY |            6| meanCent  |  327|    64|    64|  0.594|    0.497|  9.256253e+13|   9620942|  5491284|  0.554|      81.971|        10.085|       72.216|     71.384|
+
+### Comparision of MLR models
+
+#### MLR plots using Source EUI
+
+``` r
+mytheme = theme(legend.title = element_blank(),
+           legend.text=element_text(size=12),
+           axis.text=element_text(size=12),
+           text=element_text(size=12))
+
+plotR2 <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("R.2", "Adj.R.2"))
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank())
+  
+  return(plot)
+}
+
+plotNRMSE <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("nrmse_iqr", "nrmse_mean", 
+                                        "nrmse_sd"))
+  df1$variable = toupper(df1$variable)
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank())
+    
+  
+  return(plot)
+}  
+```
+
+``` r
+allMetrics0 = allMetrics %>%
+  filter(stringr::str_detect(model, "MLR")) %>%
+  filter(dependent == "SOURCE_EUI")
+
+plot1 = plotR2(allMetrics0, "MLR models using source EUI")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source EUI")
+
+print(plot1)
+```
+
+![](k12school_files/figure-markdown_github/unnamed-chunk-33-1.png)
+
+``` r
+print(plot2)
+```
+
+![](k12school_files/figure-markdown_github/unnamed-chunk-33-2.png)
+
+#### MLR plots using Source Energy
+
+``` r
+allMetrics0 = allMetrics %>%
+  filter(stringr::str_detect(model, "MLR")) %>%
+  filter(dependent == "SOURCE_ENERGY")
+
+plot1 = plotR2(allMetrics0, "MLR models using source energy")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
+
+print(plot1)
+```
+
+![](k12school_files/figure-markdown_github/unnamed-chunk-34-1.png)
+
+``` r
+print(plot2)
+```
+
+![](k12school_files/figure-markdown_github/unnamed-chunk-34-2.png)

@@ -17,11 +17,6 @@ Load dataset
 ------------
 
 ``` r
-library(dplyr)
-library(Metrics)
-library(caret)
-library(xgboost)
-
 building_type = "office"
 
 filtered_dir = './data/cbecs/filtered/'
@@ -421,7 +416,6 @@ Build predictive models
 source("models.R")
 source("metrics.R")
 
-building_type = "office"
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
 cat(colnames(data))
@@ -589,14 +583,6 @@ knitr::kable(allMetrics0, row.names = F)
 #### MLR plots using Source EUI
 
 ``` r
-library(ggplot2)
-library(reshape2)
-library(ggpubr)
-```
-
-    Loading required package: magrittr
-
-``` r
 mytheme = theme(legend.title = element_blank(),
            legend.text=element_text(size=12),
            axis.text=element_text(size=12),
@@ -615,7 +601,6 @@ plotR2 <- function(df, titl) {
   
   return(plot)
 }
-
 
 plotNRMSE <- function(df, titl) {
   
