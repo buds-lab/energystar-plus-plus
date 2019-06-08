@@ -609,8 +609,9 @@ plotR2 <- function(df, titl) {
   plot <- ggplot(df1, aes(x = interaction, y=value, 
                           group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top") + 
-    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank())
   
   return(plot)
 }
@@ -625,8 +626,10 @@ plotNRMSE <- function(df, titl) {
   plot <- ggplot(df1, aes(x = interaction, y=value, 
                           group=variable, col=variable)) + 
   geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="top") + 
-    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank())
+    
   
   return(plot)
 }  
