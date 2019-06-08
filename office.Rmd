@@ -299,7 +299,7 @@ dfSummary(features1, plain.ascii = FALSE, style = "grid",
 
 
 
-## Build models
+## Build predictive models
 
 ```{r}
 source("models.R")
@@ -443,39 +443,61 @@ knitr::kable(allMetrics0, row.names = F)
 ```
 
 
+### Comparision of MLR models
+
 #### MLR plots using Source EUI
-```{r}
+```{r, warning=FALSE}
 library(ggplot2)
 library(reshape2)
+library(ggpubr)
 
-th = theme(legend.title = element_blank(),
+mytheme = theme(legend.title = element_blank(),
            legend.text=element_text(size=12),
            axis.text=element_text(size=12),
            text=element_text(size=12))
-    
+
+plotR2 <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("R.2", "Adj.R.2"))
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+  theme_bw() + theme(legend.position="top") + 
+    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+  
+  return(plot)
+}
+
+
+plotNRMSE <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("nrmse_iqr", "nrmse_mean", 
+                                        "nrmse_sd"))
+  df1$variable = toupper(df1$variable)
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+  theme_bw() + theme(legend.position="top") + 
+    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+  
+  return(plot)
+}  
+
+```
+
+```{r}
+
 allMetrics0 = allMetrics %>%
   filter(stringr::str_detect(model, "MLR")) %>%
   filter(dependent == "SOURCE_EUI")
 
-df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
+plot1 = plotR2(allMetrics0, "MLR models using source EUI")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source EUI")
 
-plot1 + th
-
-
-df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean", 
-                                        "nrmse_sd"))
-
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
-
+print(plot1)
+print(plot2)
 
 ```
 
@@ -487,297 +509,10 @@ allMetrics0 = allMetrics %>%
   filter(stringr::str_detect(model, "MLR")) %>%
   filter(dependent == "SOURCE_ENERGY")
 
-df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
+plot1 = plotR2(allMetrics0, "MLR models using source energy")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
 
-plot1 + th
-
-
-df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean", 
-                                        "nrmse_sd"))
-
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
-
-
-```
-
-
-
-### Gradient Boosted Trees (XGBoost)
-
-```{r}
-
-tuneXGBoost <- function(x,
-                        y,
-                        sample_weights,
-                        search = "default",
-                        tree_height = 2
-                        ) {
-  
-  N = 10  # N-fold CV
-  R = 2   # and R repeats
-  
-  tcDefault  <- trainControl(method = "repeatedcv", 
-                            number = N, 
-                            repeats = R)
-  
-  tcRandom   <- trainControl(method = "repeatedcv", 
-                            search = "random",
-                            number = N, 
-                            repeats = R)
-  
-  tcAdaptive <- trainControl(method = "adaptive_cv", 
-                            search = "random",
-                            number = N, 
-                            repeats = R,
-                            adaptive = list(min = 5, 
-                                            alpha = 0.05, 
-                                            method = "gls",
-                                            complete = TRUE))
-  
-  default_param = expand.grid(
-    nrounds = 100,
-    max_depth = tree_height,
-    eta = 0.3,
-    gamma = 0,
-    colsample_bytree = 1,
-    min_child_weight = 1,
-    subsample = 1)
-  
-  # from https://github.com/topepo/caret/blob/master/models/files/xgbTree.R
-  len = 10
-  grid_param <- expand.grid(
-    nrounds = floor((1:len) * 10),
-    max_depth = tree_height,
-    eta = c(.3, .4),
-    gamma = 0,
-    colsample_bytree = c(.6, .8),
-    min_child_weight = c(1),
-    subsample = seq(.25, 1, length = len))
-  
-  tuned = switch(search,
-                 "default" = train(x, y,
-                                   weights = sample_weights,
-                                   method = "xgbTree", 
-                                   tuneGrid = default_param,
-                                   trControl = tcDefault,
-                                   verbose = TRUE),
-                 
-                 "grid"     = train(x, y, 
-                                   weights = sample_weights,
-                                   method = "xgbTree", 
-                                   tuneGrid = default_param,
-                                   trControl = train.control,
-                                   verbose = TRUE),
-
-                 "random"  = train(x, y, 
-                                   weights = sample_weights,
-                                   method = "xgbTree", 
-                                   trControl = tcRandom,
-                                   verbose = TRUE),
-                 
-                 "adaptive" = train(x, y, 
-                                   weights = sample_weights,
-                                   method = "xgbTree", 
-                                   trControl = tcAdaptive,
-                                   verbose = TRUE)
-                 )
-  
-  return(tuned$finalModel)
-}
-
-XGBoost <- function( xdata, 
-                     ydata,
-                     sample_weights,
-                     search = "default",
-                     interaction = 2
-                     ) {
-  
-  model = paste(y, "~", paste(x, collapse = " + "))
-  dummy = dummyVars(model, data = data, fullRank = T)
-  
-  xdata = as.data.frame(predict(dummy, data))
-  ydata = data[, y]
-  
-  xgfit = tuneXGBoost(xdata, ydata, 
-                      sample_weights,
-                      search, 
-                      tree_height = interaction)
-  return(xgfit)
-} 
-
-```
-
-#### Using SOURCE_EUI as dependent variable
-
-##### Using default search
-```{r}
-y = "SOURCE_EUI"
-w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-
-model = paste(y, "~", paste(x, collapse = " + "))
-dummy = dummyVars(model, data = data, fullRank = T)
-xdata = as.data.frame(predict(dummy, data))
-ydata = data[, y]
-intr_depth = 3
-
-for (intr in 1:intr_depth) {
-  
-  print(paste(Sys.time(), "xgboost default search", y, intr))
-  
-  xgfit = XGBoost(xdata, ydata, wt, 
-                  search = "default", 
-                  interaction = intr)
-  
-  pred = as.numeric(predict(xgfit, as.matrix(xdata)))
-  
-  xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
-  
-  xgbMetrics = data.frame(
-    "model" = paste0("XGBd", intr),
-    "dependent" = y, 
-    "interaction" = intr, 
-    "transform" = "None",
-    xgbMetrics)
-  
-  allMetrics = rbind(allMetrics, xgbMetrics)
-}
-knitr::kable(allMetrics, row.names = F)
-
-```
-
-
-##### Using adaptive search
-```{r}
-y = "SOURCE_EUI"
-w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-
-model = paste(y, "~", paste(x, collapse = " + "))
-dummy = dummyVars(model, data = data, fullRank = T)
-xdata = as.data.frame(predict(dummy, data))
-ydata = data[, y]
-intr_depth = 3
-
-for (intr in 1:intr_depth) {
-  
-  print(paste(Sys.time(), "xgboost adaptive search", y, intr))
-  
-  xgfit = XGBoost(xdata, ydata, wt, 
-                  search = "adaptive", 
-                  interaction = intr)
-  
-  pred = as.numeric(predict(xgfit, as.matrix(xdata)))
-  
-  xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
-  
-  xgbMetrics = data.frame(
-    "model" = paste0("XGBa", intr),
-    "dependent" = y, 
-    "interaction" = intr, 
-    "transform" = "None",
-    xgbMetrics)
-  
-  allMetrics = rbind(allMetrics, xgbMetrics)
-}
-knitr::kable(allMetrics, row.names = F)
-
-```
-
-
-##### Using random search
-```{r}
-y = "SOURCE_EUI"
-w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-
-model = paste(y, "~", paste(x, collapse = " + "))
-dummy = dummyVars(model, data = data, fullRank = T)
-xdata = as.data.frame(predict(dummy, data))
-ydata = data[, y]
-intr_depth = 3
-
-for (intr in 1:intr_depth) {
-  
-  print(paste(Sys.time(), "xgboost random search", y, intr))
-  
-  xgfit = XGBoost(xdata, ydata, wt, 
-                  search = "random", 
-                  interaction = intr)
-  
-  pred = as.numeric(predict(xgfit, as.matrix(xdata)))
-  
-  xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
-  
-  xgbMetrics = data.frame(
-    "model" = paste0("XGBr", intr),
-    "dependent" = y, 
-    "interaction" = intr, 
-    "transform" = "None",
-    xgbMetrics)
-  
-  allMetrics = rbind(allMetrics, xgbMetrics)
-}
-
-write.csv(allMetrics, 
-          paste0(results_dir, building_type, ".csv"), 
-          row.names = F)
-
-knitr::kable(allMetrics, row.names = F)
-
-```
-
-
-
-#### XGB plots using Source EUI
-```{r}
-library(ggplot2)
-library(reshape2)
-
-th = theme(legend.title = element_blank(),
-           legend.text=element_text(size=12),
-           axis.text=element_text(size=12),
-           text=element_text(size=12))
-    
-allMetrics0 = allMetrics %>%
-  filter(stringr::str_detect(model, "XGB")) %>%
-  mutate(algo = stringr::str_sub(model, 1, 4)) %>%
-  filter(dependent == "SOURCE_EUI")
-
-df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=algo, col=algo)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  facet_grid(. ~ algo) + 
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
-
-
-df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean", 
-                                        "nrmse_sd"))
-
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=algo, col=algo)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  facet_grid(. ~ algo) + 
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
+print(plot1)
+print(plot2)
 
 ```

@@ -8,9 +8,10 @@ Pandarasamy Arjunan
 -   [Prepare features](#prepare-features)
 -   [Descriptive statistics](#descriptive-statistics)
     -   [Data Frame Summary](#data-frame-summary)
--   [Build models](#build-models)
+-   [Build predictive models](#build-predictive-models)
     -   [Multiple Linear Regression (MLR)](#multiple-linear-regression-mlr)
     -   [Multiple Linear Regression (MLR) with Interaction terms](#multiple-linear-regression-mlr-with-interaction-terms)
+    -   [Comparision of MLR models](#comparision-of-mlr-models)
 
 Load dataset
 ------------
@@ -413,8 +414,8 @@ IQR (CV) : 121 (0.7)</p></td>
 #knitr::purl("office.Rmd", output = "office.R", documentation = 2)
 ```
 
-Build models
-------------
+Build predictive models
+-----------------------
 
 ``` r
 source("models.R")
@@ -583,45 +584,72 @@ knitr::kable(allMetrics0, row.names = F)
 | MLRi5 | SOURCE\_ENERGY |            5| meanCent  |  882|    63|    63|  0.725|    0.705|  7.046253e+14|  26544778|  6866007|  0.962|     122.133|         3.046|      131.085|     58.344|
 | MLRi6 | SOURCE\_ENERGY |            6| meanCent  |  882|    64|    64|  0.725|    0.704|  7.046189e+14|  26544658|  6865841|  0.961|     122.132|         3.046|      131.084|     58.344|
 
+### Comparision of MLR models
+
 #### MLR plots using Source EUI
 
 ``` r
 library(ggplot2)
 library(reshape2)
+library(ggpubr)
+```
 
-th = theme(legend.title = element_blank(),
+    Loading required package: magrittr
+
+``` r
+mytheme = theme(legend.title = element_blank(),
            legend.text=element_text(size=12),
            axis.text=element_text(size=12),
            text=element_text(size=12))
-    
+
+plotR2 <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("R.2", "Adj.R.2"))
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+  theme_bw() + theme(legend.position="top") + 
+    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+  
+  return(plot)
+}
+
+
+plotNRMSE <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("nrmse_iqr", "nrmse_mean", 
+                                        "nrmse_sd"))
+  df1$variable = toupper(df1$variable)
+  
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+  theme_bw() + theme(legend.position="top") + 
+    ggtitle(titl) + mytheme + theme_pubr(base_size=14)
+  
+  return(plot)
+}  
+```
+
+``` r
 allMetrics0 = allMetrics %>%
   filter(stringr::str_detect(model, "MLR")) %>%
   filter(dependent == "SOURCE_EUI")
 
-df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
+plot1 = plotR2(allMetrics0, "MLR models using source EUI")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source EUI")
 
-plot1 + th
+print(plot1)
 ```
 
-![](office_files/figure-markdown_github/unnamed-chunk-30-1.png)
+![](office_files/figure-markdown_github/unnamed-chunk-31-1.png)
 
 ``` r
-df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean", 
-                                        "nrmse_sd"))
-
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
+print(plot2)
 ```
 
-![](office_files/figure-markdown_github/unnamed-chunk-30-2.png)
+![](office_files/figure-markdown_github/unnamed-chunk-31-2.png)
 
 #### MLR plots using Source Energy
 
@@ -630,27 +658,16 @@ allMetrics0 = allMetrics %>%
   filter(stringr::str_detect(model, "MLR")) %>%
   filter(dependent == "SOURCE_ENERGY")
 
-df = melt(allMetrics0, measure.vars = c("R.2", "Adj.R.2"))
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
+plot1 = plotR2(allMetrics0, "MLR models using source energy")
+plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
 
-plot1 + th
+print(plot1)
 ```
 
-![](office_files/figure-markdown_github/unnamed-chunk-31-1.png)
+![](office_files/figure-markdown_github/unnamed-chunk-32-1.png)
 
 ``` r
-df = melt(allMetrics0, measure.vars = c("nrmse_iqr", "nrmse_mean", 
-                                        "nrmse_sd"))
-
-plot1 <- ggplot(df, aes(x = interaction, y=value, 
-                        group=variable, col=variable)) + 
-  geom_point(size=2) + geom_line(size=1) +
-  theme_bw() + theme(legend.position="right")
-
-plot1 + th
+print(plot2)
 ```
 
-![](office_files/figure-markdown_github/unnamed-chunk-31-2.png)
+![](office_files/figure-markdown_github/unnamed-chunk-32-2.png)
