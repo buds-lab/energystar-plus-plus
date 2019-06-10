@@ -2,8 +2,9 @@ MLR <- function(data,
                 x, 
                 y, 
                 w, 
-                centering = TRUE, 
-                interaction = 1) {
+                interaction,
+                centering = TRUE 
+                ) {
   
   if(centering == TRUE){
     data = mean_center_data(data, x)  

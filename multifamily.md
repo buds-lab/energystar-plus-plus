@@ -29,7 +29,7 @@ results_dir = './results/cbecs/'
 dir.create(results_dir, recursive = T, showWarnings = F)
 ```
 
-The reference data used to establish the peer building population in the United States is Fannie Mae’s Multifamily Energy and Water Market Research Survey.
+The reference data used to establish the peer building population in the United States is Fannie Maeâ€™s Multifamily Energy and Water Market Research Survey.
 
 ``` r
 multifamily = read_csv("data/cbecs/FannieMae/mewmr-survey-database_data.csv")
@@ -92,7 +92,7 @@ As per Energy Star's technical document [ENERGY STAR Score for Multifamily Housi
 
 After applying each filter, the number of remaining buildings in the dataset (*Number Remaining: X*) and any difference (*Difference: X*) in count from the original Energy Star's technical documentation is also given.
 
-1.  **Must have complete data for whole-property energy use and operating characteristics** <br/>EPA Program Filter – Complete data is necessary for analysis. <br/>Number Remaining: 357 <br/>Difference: +7.
+1.  **Must have complete data for whole-property energy use and operating characteristics** <br/>EPA Program Filter â€“ Complete data is necessary for analysis. <br/>Number Remaining: 357 <br/>Difference: +7.
 
     ``` r
     m0a = multifamily %>% 
@@ -120,32 +120,32 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                         HDD > 0 )
     ```
 
-2.  **Must have at least 20 units** <br/>Analytical filter – Analysis could not model behavior for buildings with fewer than 20 units, due to limited data. <br/>Number Remaining: 351. <br/>Difference: +9
+2.  **Must have at least 20 units** <br/>Analytical filter â€“ Analysis could not model behavior for buildings with fewer than 20 units, due to limited data. <br/>Number Remaining: 351. <br/>Difference: +9
 
     ``` r
     m1 = m0c %>% filter(Total.number.of.units >= 20)
     ```
 
-3.  **Source EUI must be less than 290 kBtu/ft2** <br/>Analytical filter – Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 347. <br/>Difference: +14.
+3.  **Source EUI must be less than 290 kBtu/ft2** <br/>Analytical filter â€“ Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 347. <br/>Difference: +14.
 
     ``` r
     m2 = m1 %>% filter(Source.EUI.using.Total.gross.floor.area > 0 & 
                      Source.EUI.using.Total.gross.floor.area < 290)
     ```
 
-4.  **Gross Floor area must be no more than 2,000,000 ft2** <br/>Analytical filter – Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 346 <br/>Difference: +14.
+4.  **Gross Floor area must be no more than 2,000,000 ft2** <br/>Analytical filter â€“ Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 346 <br/>Difference: +14.
 
     ``` r
     m3 = m2 %>% filter(Total.gross.floor.area <= 2000000)
     ```
 
-5.  **Unit density must be less than 2.75 units per 1,000 square feet** <br/>Analytical filter – Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 338. <br/>Difference: +11.
+5.  **Unit density must be less than 2.75 units per 1,000 square feet** <br/>Analytical filter â€“ Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 338. <br/>Difference: +11.
 
     ``` r
     m4 = m3 %>% filter(Unit.Density < 2.75)
     ```
 
-6.  **Bedroom Density must be more than 0.5 and less than 3.5 bedrooms per 1,000 square feet** <br/>Analytical filter – Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 336 <br/>Difference: +12.
+6.  **Bedroom Density must be more than 0.5 and less than 3.5 bedrooms per 1,000 square feet** <br/>Analytical filter â€“ Values determined to be data entry errors or statistical outliers. <br/>Number Remaining: 336 <br/>Difference: +12.
 
     ``` r
     m5 = m4 %>% filter(Bedrooms.Unit > 0.5 & Bedrooms.Unit < 3.5)
@@ -171,7 +171,7 @@ write.csv(m7, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 Prepare features
 ----------------
 
-The final regression equation includes the following variables:   - Number of Units per 1,000 square feet - Number of Bedrooms per Unit - Total Heating Degree Days - Total Cooling Degree Days - Low-Rise building (yes/no)
+The final regression equation includes the following variables: ï‚· ï‚· - Number of Units per 1,000 square feet - Number of Bedrooms per Unit - Total Heating Degree Days - Total Cooling Degree Days - Low-Rise building (yes/no)
 
 ``` r
 multifamily = read.csv(paste0(filtered_dir, building_type, ".csv"))

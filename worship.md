@@ -79,31 +79,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS = 21** <br/>Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Religious Worship is coded as PBAPBLUS= 21. <br/>Number Remaining: 352. <br/>Difference: 0.
+2.  **PBAPLUS = 21** <br/>Building Type Filter â€“ CBECS defines building types according to the variable â€œPBAPLUS.â€ Religious Worship is coded as PBAPBLUS= 21. <br/>Number Remaining: 352. <br/>Difference: 0.
 
     ``` r
     w1 = w0 %>% filter(PBAPLUS == 21)
     ```
 
-3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time worship facility. <br/>Number Remaining: 351. <br/>Difference: 0.
+3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter â€“ Baseline condition for being a full time worship facility. <br/>Number Remaining: 351. <br/>Difference: 0.
 
     ``` r
     w2 = w1 %>% filter(WKHRS >= 1)
     ```
 
-4.  **Must have at least 1 seat** <br/>EPA Program Filter – Baseline condition for being a full time worship facility. <br/>Number Remaining: 351. <br/>Difference: 0.
+4.  **Must have at least 1 seat** <br/>EPA Program Filter â€“ Baseline condition for being a full time worship facility. <br/>Number Remaining: 351. <br/>Difference: 0.
 
     ``` r
     w3 = w2 %>% filter(RWSEAT >= 1)
     ```
 
-5.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a full time worship facility. <br/>Number Remaining: 339. <br/>Difference: 0.
+5.  **Must operate for at least 10 months per year** <br/>EPA Program Filter â€“ Baseline condition for being a full time worship facility. <br/>Number Remaining: 339. <br/>Difference: 0.
 
     ``` r
     w4 = w3 %>% filter(MONUSE >= 10)
     ```
 
-6.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the worship facility peer group, more than 50% of the building must be defined as religious worship. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as religious worship (PBA=18), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 329. <br/>Difference: +2.
+6.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter â€“ In order to be considered part of the worship facility peer group, more than 50% of the building must be defined as religious worship. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as religious worship (PBA=18), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 329. <br/>Difference: +2.
 
     ``` r
     w5 = w4 %>% 
@@ -114,31 +114,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                   (ACT3 %in% c(18) & ACT3PCT > 50) )))
     ```
 
-7.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a full time worship facility. <br/>Number Remaining: 329. <br/>Difference: +2.
+7.  **Must report energy usage** <br/>EPA Program Filter â€“ Baseline condition for being a full time worship facility. <br/>Number Remaining: 329. <br/>Difference: +2.
 
     ``` r
     w6 = w5 %>% filter(!is.na(MFBTU))
     ```
 
-8.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 329. <br/>Difference: +2.
+8.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter â€“ CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 329. <br/>Difference: +2.
 
     ``` r
     w7 = w6 %>% filter(SQFT <= 1000000)
     ```
 
-9.  **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 314. <br/>Difference: +2.
+9.  **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the quantity is â€œgreater than 1000â€ or unknown. <br/>Number Remaining: 314. <br/>Difference: +2.
 
     ``` r
     w8 = w7 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-10. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 314. <br/>Difference: +2.
+10. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 314. <br/>Difference: +2.
 
     ``` r
     w9 = w8 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-11. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 314. <br/>Difference: +22.
+11. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 314. <br/>Difference: +22.
 
     ``` r
     w10 = w9 %>% 
@@ -146,44 +146,44 @@ After applying each filter, the number of remaining buildings in the dataset (*N
             (PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-12. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 310. <br/>Difference: +22.
+12. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter â€“ CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 310. <br/>Difference: +22.
 
     ``` r
     w11 = w10 %>% 
       filter(CWUSED == 2 & WOUSED == 2 & COUSED == 2 & SOUSED == 2)
     ```
 
-13. **If space within the building is used for food preparation, then square footage used for this purpose (FDPREPSFR) must be reported.** <br/>Data Limitation Filter – Cannot calculate percentage of square footage used for food preparation if square footage value is not reported. <br/>Number Remaining: 310. <br/>Difference: +22. <br/>**TODO: FDPREPSFR is not available in the dataset**
+13. **If space within the building is used for food preparation, then square footage used for this purpose (FDPREPSFR) must be reported.** <br/>Data Limitation Filter â€“ Cannot calculate percentage of square footage used for food preparation if square footage value is not reported. <br/>Number Remaining: 310. <br/>Difference: +22. <br/>**TODO: FDPREPSFR is not available in the dataset**
 
     ``` r
     w12 = w11 
     ```
 
-14. **Must have no more than 250 seats per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 303. <br/>Difference: +32.
+14. **Must have no more than 250 seats per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 303. <br/>Difference: +32.
 
     ``` r
     w13 = w12 %>% filter(RWSEAT / SQFT * 1000 <= 250)
     ```
 
-15. **Must have no more than 2.5 workers per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 292. <br/>Difference: +29.
+15. **Must have no more than 2.5 workers per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 292. <br/>Difference: +29.
 
     ``` r
     w14 = w13 %>% filter(NWKER  / SQFT * 1000 <= 2.5)
     ```
 
-16. **Must not operate 168 hours/week** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 279. <br/>Difference: +26.
+16. **Must not operate 168 hours/week** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 279. <br/>Difference: +26.
 
     ``` r
     w15 = w14 %>% filter(WKHRS != 168)
     ```
 
-17. **Must have Source EUI less than or equal to 250 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 273. <br/>Difference: +26.
+17. **Must have Source EUI less than or equal to 250 kBtu/ft2** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 273. <br/>Difference: +26.
 
     ``` r
     w16 = w15 %>% filter(SOURCE_EUI <= 250)
     ```
 
-18. **Must have Source EUI greater than or equal to 10 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 265. <br/>Difference: +22.
+18. **Must have Source EUI greater than or equal to 10 kBtu/ft2** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 265. <br/>Difference: +22.
 
     ``` r
     w17 = w16 %>% filter(SOURCE_EUI >= 10)
@@ -198,7 +198,7 @@ write.csv(w17, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 Prepare features
 ----------------
 
-The final regression equation includes the following variables: 
+The final regression equation includes the following variables: ï‚·
 
 -   Weekly Operating Hours
 -   Number of Religious Worship Seats per 1,000 Square Feet

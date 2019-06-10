@@ -86,44 +86,44 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS= 14 or 42** <br/>Building Filter – CBECS defines building types according to the variable “PBAPLUS.” Retail Stores are coded as PBAPLUS = 42 and Supermarkets are coded as PBAPLUS = 14. <br/>Number Remaining: 342. <br/>Difference: 0.
+2.  **PBAPLUS= 14 or 42** <br/>Building Filter â€“ CBECS defines building types according to the variable â€œPBAPLUS.â€ Retail Stores are coded as PBAPLUS = 42 and Supermarkets are coded as PBAPLUS = 14. <br/>Number Remaining: 342. <br/>Difference: 0.
 
     ``` r
     r1 = r0 %>% filter(PBAPLUS %in% c(14, 42))
     ```
 
-3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 335. <br/>Difference: 0.
+3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter â€“ Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 335. <br/>Difference: 0.
 
     ``` r
     r2 = r1 %>% filter(WKHRS >= 30)
     ```
 
-4.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 335. <br/>Difference: 0.
+4.  **Must have at least 1 worker** <br/>EPA Program Filter â€“ Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 335. <br/>Difference: 0.
 
     ``` r
     r3 = r2 %>% filter(NWKER >= 1)
     ```
 
-5.  **Must have at least 1 computer or cash register** <br/>EPA Program Filter – Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 323. <br/>Difference: 0.
+5.  **Must have at least 1 computer or cash register** <br/>EPA Program Filter â€“ Baseline condition for being a full time retail store or supermarket. <br/>Number Remaining: 323. <br/>Difference: 0.
 
     ``` r
     r4 = r3 %>% filter(PCTERMN >= 1 | RGSTRN >=1)
     ```
 
-6.  **If building is a supermarket, must have refrigeration equipment** <br/>EPA Program Filter – Baseline condition for being a full time supermarket. <br/>Number Remaining: 323. <br/>Difference: 0.
+6.  **If building is a supermarket, must have refrigeration equipment** <br/>EPA Program Filter â€“ Baseline condition for being a full time supermarket. <br/>Number Remaining: 323. <br/>Difference: 0.
 
     ``` r
     r5 = r4 %>% 
       filter( PBAPLUS != "03" | RFGRES == 1)
     ```
 
-7.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a full time retail store. <br/>Number Remaining: 311. <br/>Difference: 0.
+7.  **Must operate for at least 10 months per year** <br/>EPA Program Filter â€“ Baseline condition for being a full time retail store. <br/>Number Remaining: 311. <br/>Difference: 0.
 
     ``` r
     r6 = r5 %>% filter(MONUSE >= 10)
     ```
 
-8.  **A single activity must characterize more than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the retail store and supermarket peer group, more than 50% of the building must be defined as a retail store or supermarket. <br/>If the variable ONEACT=1, this indicates that one activity occupies 75% or more of the building. If the variable ONEACT=2, then the building can specify up to 3 activities (ACT1, ACT2, ACT3). One of these activities must be Food Sales or Service (PBAX=14) or Retail (Other Than Mall) (PBAX=16), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 306. <br/>Difference: +5.
+8.  **A single activity must characterize more than 50% of the floor space** <br/>EPA Program Filter â€“ In order to be considered part of the retail store and supermarket peer group, more than 50% of the building must be defined as a retail store or supermarket. <br/>If the variable ONEACT=1, this indicates that one activity occupies 75% or more of the building. If the variable ONEACT=2, then the building can specify up to 3 activities (ACT1, ACT2, ACT3). One of these activities must be Food Sales or Service (PBAX=14) or Retail (Other Than Mall) (PBAX=16), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 306. <br/>Difference: +5.
 
     ``` r
     r7 = r6 %>% 
@@ -134,25 +134,25 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                   (ACT3 %in% c(14,16) & ACT3PCT > 50) )))
     ```
 
-9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 306. <br/>Difference: +5.
+9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter â€“ CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 306. <br/>Difference: +5.
 
     ``` r
     r8 = r7 %>% filter(SQFT <= 1000000)
     ```
 
-10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 294. <br/>Difference: +5.
+10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the quantity is â€œgreater than 1000â€ or unknown. <br/>Number Remaining: 294. <br/>Difference: +5.
 
     ``` r
     r9 = r8 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 292. <br/>Difference: +5.
+11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 292. <br/>Difference: +5.
 
     ``` r
     r10 = r9 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 289. <br/>Difference: +7.
+12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 289. <br/>Difference: +7.
 
     ``` r
     r11 = r10 %>% 
@@ -160,7 +160,7 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                 (PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 282. <br/>Difference: +8.
+13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter â€“ CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 282. <br/>Difference: +8.
 
     ``` r
     r12 = r11 %>% 
@@ -170,32 +170,32 @@ After applying each filter, the number of remaining buildings in the dataset (*N
       filter(SOUSED == 2)
     ```
 
-14. **Must be at least 5,000 square feet** <br/>Analytical Limitation – Analysis could not model behavior for buildings smaller than 5,000 ft2. <br/>Number Remaining: 201. <br/>Difference: +5.
+14. **Must be at least 5,000 square feet** <br/>Analytical Limitation â€“ Analysis could not model behavior for buildings smaller than 5,000 ft2. <br/>Number Remaining: 201. <br/>Difference: +5.
 
     ``` r
     r13 = r12 %>% filter(SQFT >= 5000)
     ```
 
-15. **Must have fewer than 3 open or closed refrigeration/freezer cases per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 201. <br/>Difference: +6.
+15. **Must have fewer than 3 open or closed refrigeration/freezer cases per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 201. <br/>Difference: +6.
 
     ``` r
     r14 = r13 %>% filter( (is.na(RFGOPN) | (RFGOPN/SQFT * 1000 < 3)) | 
                           (is.na(RFGCLN) | (RFGCLN/SQFT * 1000 < 3)))
     ```
 
-16. **Must have fewer than 0.7 walk-in refrigeration/freezer cases per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 201. <br/>Difference: +6.
+16. **Must have fewer than 0.7 walk-in refrigeration/freezer cases per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 201. <br/>Difference: +6.
 
     ``` r
     r15 = r14 %>% filter(is.na(RFGWIN) | (RFGWIN / SQFT * 1000 <= 0.7)) 
     ```
 
-17. **Must have Source EUI greater than or equal to 20 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 196. <br/>Difference: +4.
+17. **Must have Source EUI greater than or equal to 20 kBtu/ft2** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 196. <br/>Difference: +4.
 
     ``` r
     r16 = r15 %>% filter( SOURCE_EUI >= 20)
     ```
 
-18. **If CDD is greater than 3,000, must be at least 60% cooled** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 193. <br/>Difference: +4.
+18. **If CDD is greater than 3,000, must be at least 60% cooled** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 193. <br/>Difference: +4.
 
     ``` r
     r17 = r16 %>% filter( CDD65 <= 3000 | COOLP >= 60) 
@@ -210,7 +210,7 @@ write.csv(r17, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 Prepare features
 ----------------
 
-The final regression equation includes the following variables: 
+The final regression equation includes the following variables: ï‚·
 
 -   Weekly Operating Hours
 -   Number of Workers per 1,000 Square Feet

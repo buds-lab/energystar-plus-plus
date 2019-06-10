@@ -80,37 +80,37 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS = 38 or 39** <br/>Building Filter – CBECS defines building types according to the variable “PBAPLUS.” Hotels are coded as PBAPLUS = 38 and Motels/Inns are coded as PBAPLUS = 39. <br/>Number Remaining: 220. <br/>Difference: 0.
+2.  **PBAPLUS = 38 or 39** <br/>Building Filter â€“ CBECS defines building types according to the variable â€œPBAPLUS.â€ Hotels are coded as PBAPLUS = 38 and Motels/Inns are coded as PBAPLUS = 39. <br/>Number Remaining: 220. <br/>Difference: 0.
 
     ``` r
     h1 = h0 %>% filter(PBAPLUS %in% c(38, 39))
     ```
 
-3.  **Must have at least 1 room** <br/>EPA Program Filter – Baseline condition for being a full time hotel. <br/>Number Remaining: 220. <br/>Difference: 0.
+3.  **Must have at least 1 room** <br/>EPA Program Filter â€“ Baseline condition for being a full time hotel. <br/>Number Remaining: 220. <br/>Difference: 0.
 
     ``` r
     h2 = h1 %>% filter( LODGRM >= 1)
     ```
 
-4.  **Must operate for 168 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time hotel. <br/>Number Remaining: 218. <br/>Difference: 0.
+4.  **Must operate for 168 hours per week** <br/>EPA Program Filter â€“ Baseline condition for being a full time hotel. <br/>Number Remaining: 218. <br/>Difference: 0.
 
     ``` r
     h3 = h2 %>% filter(WKHRS == 168)
     ```
 
-5.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time hotel. <br/>Number Remaining: 215. <br/>Difference: 0.
+5.  **Must have at least 1 worker** <br/>EPA Program Filter â€“ Baseline condition for being a full time hotel. <br/>Number Remaining: 215. <br/>Difference: 0.
 
     ``` r
     h4 = h3 %>% filter(NWKER >= 1)
     ```
 
-6.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a functioning office building. <br/>Number Remaining: 209. <br/>Difference: 0.
+6.  **Must operate for at least 10 months per year** <br/>EPA Program Filter â€“ Baseline condition for being a functioning office building. <br/>Number Remaining: 209. <br/>Difference: 0.
 
     ``` r
     h5 = h4 %>% filter(MONUSE >= 10)
     ```
 
-7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the hotel peer group, more than 50% of the building must be defined as a hotel. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as lodging (PBAX=22), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 205. <br/>Difference: +1.
+7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter â€“ In order to be considered part of the hotel peer group, more than 50% of the building must be defined as a hotel. <br/>This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as lodging (PBAX=22), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 205. <br/>Difference: +1.
 
     ``` r
     h6 = h5 %>% 
@@ -121,31 +121,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                   (ACT3 %in% c(22) & ACT3PCT > 50) )))
     ```
 
-8.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a functioning office building. <br/>Number Remaining: 205. <br/>Difference: +1.
+8.  **Must report energy usage** <br/>EPA Program Filter â€“ Baseline condition for being a functioning office building. <br/>Number Remaining: 205. <br/>Difference: +1.
 
     ``` r
     h7 = h6 %>% filter(!is.na(MFBTU))
     ```
 
-9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 197. <br/>Difference: +1.
+9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter â€“ CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 197. <br/>Difference: +1.
 
     ``` r
     h8 = h7 %>% filter(SQFT <= 1000000)
     ```
 
-10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 186. <br/>Difference: +1.
+10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the quantity is â€œgreater than 1000â€ or unknown. <br/>Number Remaining: 186. <br/>Difference: +1.
 
     ``` r
     h9 = h8 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 184. <br/>Difference: +1.
+11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 184. <br/>Difference: +1.
 
     ``` r
     h10 = h9 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 176. <br/>Difference: -7.
+12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 176. <br/>Difference: -7.
 
     ``` r
     h11 = h10 %>% 
@@ -153,32 +153,32 @@ After applying each filter, the number of remaining buildings in the dataset (*N
             ( PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 171. <br/>Difference: -6.
+13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 171. <br/>Difference: -6.
 
     ``` r
     h12 = h11 %>% 
       filter(CWUSED == 2 & WOUSED == 2 & COUSED == 2 & SOUSED == 2)
     ```
 
-14. **Must be at least 5,000 square feet** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 162. <br/>Difference: -7.
+14. **Must be at least 5,000 square feet** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 162. <br/>Difference: -7.
 
     ``` r
     h13 = h12 %>% filter(SQFT >= 5000)
     ```
 
-15. **Must have Source EUI less than or equal to 400 kBtu/ft2** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 156. <br/>Difference: -7.
+15. **Must have Source EUI less than or equal to 400 kBtu/ft2** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 156. <br/>Difference: -7.
 
     ``` r
     h14 = h13 %>% filter(SOURCE_EUI <= 400)
     ```
 
-16. **Must have no more than 4 rooms per 1,000 square feet** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 146. <br/>Difference: -6.
+16. **Must have no more than 4 rooms per 1,000 square feet** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 146. <br/>Difference: -6.
 
     ``` r
     h15 = h14 %>% filter(LODGRM/SQFT *1000 <= 4)
     ```
 
-17. **Must have average occupancy greater than 40%** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 133. <br/>Difference: -6.
+17. **Must have average occupancy greater than 40%** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 133. <br/>Difference: -6.
 
     ``` r
     h16 = h15 %>% filter(LODOCCP > 40)

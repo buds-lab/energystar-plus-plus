@@ -78,37 +78,37 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS = 28 or 29** <br/>Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Elementary/Middle Schools are coded as PBAPLUS=28; High Schools are coded as PBAPLUS=29. <br/>Number Remaining: 539. <br/>Difference: 0.
+2.  **PBAPLUS = 28 or 29** <br/>Building Type Filter â€“ CBECS defines building types according to the variable â€œPBAPLUS.â€ Elementary/Middle Schools are coded as PBAPLUS=28; High Schools are coded as PBAPLUS=29. <br/>Number Remaining: 539. <br/>Difference: 0.
 
     ``` r
     s1 = s0 %>% filter(PBAPLUS %in% c(28, 29))
     ```
 
-3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time K-12 school. <br/>Number Remaining: 523. <br/>Difference: 0.
+3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter â€“ Baseline condition for being a full time K-12 school. <br/>Number Remaining: 523. <br/>Difference: 0.
 
     ``` r
     s2 = s1 %>% filter(WKHRS >= 30)
     ```
 
-4.  **Must operate for at least 8 months per year** <br/>EPA Program Filter – Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
+4.  **Must operate for at least 8 months per year** <br/>EPA Program Filter â€“ Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
 
     ``` r
     s3 = s2 %>% filter(MONUSE >= 8)
     ```
 
-5.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
+5.  **Must have at least 1 worker** <br/>EPA Program Filter â€“ Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
 
     ``` r
     s4 = s3 %>% filter(NWKER >= 1)
     ```
 
-6.  **Must have at least 1 classroom seat** <br/>EPA Program Filter – Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
+6.  **Must have at least 1 classroom seat** <br/>EPA Program Filter â€“ Baseline condition for being a full time K-12 school. <br/>Number Remaining: 517. <br/>Difference: 0.
 
     ``` r
     s5 = s4 %>% filter(EDSEAT >= 1)
     ```
 
-7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the K-12 school peer group, more than 50% of the building must be defined as elementary/middle school or high school. This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as education (PBAX=17), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 513. <br/>Difference: 0.
+7.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter â€“ In order to be considered part of the K-12 school peer group, more than 50% of the building must be defined as elementary/middle school or high school. This filter is applied by a set of screens. If the variable ONEACT=1, then one activity occupies 75% or more of the building. If the variable ONEACT=2, then the activities in the building are defined by ACT1, ACT2, and ACT3. One of these activities must be coded as education (PBAX=17), with a corresponding percent (ACT1PCT, ACT2PCT, ACT3PCT) that is greater than 50. <br/>Number Remaining: 513. <br/>Difference: 0.
 
     ``` r
     s6 = s5 %>% 
@@ -119,31 +119,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
                   (ACT1 == 17 & ACT2PCT > 50) )))
     ```
 
-8.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a full time K-12 school. <br/>Number Remaining: 513. <br/>Difference: 0.
+8.  **Must report energy usage** <br/>EPA Program Filter â€“ Baseline condition for being a full time K-12 school. <br/>Number Remaining: 513. <br/>Difference: 0.
 
     ``` r
     s7 = s6 %>% filter(!is.na(MFBTU))
     ```
 
-9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties at or above above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 513. <br/>Difference: 0.
+9.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter â€“ CBECS masks surveyed properties at or above above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 513. <br/>Difference: 0.
 
     ``` r
     s8 = s7 %>% filter(SQFT <= 1000000)
     ```
 
-10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 496. <br/>Difference: 0.
+10. **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** Data Limitation Filter â€“ Cannot estimate propane use if the quantity is â€œgreater than 1000â€ or unknown. <br/>Number Remaining: 496. <br/>Difference: 0.
 
     ``` r
     s9 = s8 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 496. <br/>Difference: 0.
+11. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 496. <br/>Difference: 0.
 
     ``` r
     s10 = s9 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 490. <br/>Difference: -6.
+12. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 490. <br/>Difference: -6.
 
     ``` r
     s11 = s10 %>% 
@@ -151,38 +151,38 @@ After applying each filter, the number of remaining buildings in the dataset (*N
             ( PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 451. <br/>Difference: -6.
+13. **must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter â€“ CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 451. <br/>Difference: -6.
 
     ``` r
     s12 = s11 %>% 
       filter(CWUSED == 2 & WOUSED == 2 & COUSED == 2 & SOUSED == 2)
     ```
 
-14. **Must have Source EUI no greater than 250 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 429. <br/>Difference: -6.
+14. **Must have Source EUI no greater than 250 kBtu/ft2** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 429. <br/>Difference: -6.
 
     ``` r
     s13 = s12 %>% filter(SOURCE_EUI <= 250)
     ```
 
-15. **Must have no more than 1.9 workers per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 405. <br/>Difference: -6.
+15. **Must have no more than 1.9 workers per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 405. <br/>Difference: -6.
 
     ``` r
     s14 = s13 %>% filter(NWKER  / SQFT * 1000 <= 1.9)
     ```
 
-16. **Must have no more than 0.06 walk-in refrigeration per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 396. <br/>Difference: -6.
+16. **Must have no more than 0.06 walk-in refrigeration per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 396. <br/>Difference: -6.
 
     ``` r
     s15 = s14 %>% filter(is.na(RFGWIN) | (RFGWIN / SQFT * 1000 <= 0.06)) 
     ```
 
-17. **Must have no more than 17 classroom seats per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 349. <br/>Difference: -6.
+17. **Must have no more than 17 classroom seats per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 349. <br/>Difference: -6.
 
     ``` r
     s16 = s15 %>% filter(EDSEAT / SQFT * 1000 <= 17)
     ```
 
-18. **Must operate no more than 140 hours per week** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 344. <br/>Difference: -6.
+18. **Must operate no more than 140 hours per week** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 344. <br/>Difference: -6.
 
     ``` r
     s17 = s16 %>% filter(WKHRS <= 140)
@@ -197,7 +197,7 @@ write.csv(s17, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 Prepare features
 ----------------
 
-The final regression equation includes the following variables:  - Number of Workers per 1,000 Square Feet - Heating Degree Days times Percent of the Building that is Heated - Cooling Degree Days times Percent of the Building that is Cooled - Whether there is Energy Used for Cooking (1 = yes, 0 = no) - Whether the School is Open on Weekends (1 = yes, 0 = no) - Whether the School is a High School (1 = yes, 0 = no)
+The final regression equation includes the following variables: ï‚· - Number of Workers per 1,000 Square Feet - Heating Degree Days times Percent of the Building that is Heated - Cooling Degree Days times Percent of the Building that is Cooled - Whether there is Energy Used for Cooking (1 = yes, 0 = no) - Whether the School is Open on Weekends (1 = yes, 0 = no) - Whether the School is a High School (1 = yes, 0 = no)
 
 ``` r
 k12school = read.csv(paste0(filtered_dir, building_type, ".csv"))

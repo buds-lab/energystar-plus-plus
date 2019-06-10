@@ -77,31 +77,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     #summary(o14$MFBTU - o14$SUMBTU)
     ```
 
-2.  **PBAPLUS = 9, 10, or 20** Building Type Filter – CBECS defines building types according to the variable “PBAPLUS.” Distribution/Shipping Centers are coded as PBAPLUS=9; Non-Refrigerated Warehouses are coded as PBAPLUS=10; and Refrigerated Warehouses are coded as PBAPLUS=20. <br/>Number Remaining: 678. <br/>Difference: 0.
+2.  **PBAPLUS = 9, 10, or 20** Building Type Filter â€“ CBECS defines building types according to the variable â€œPBAPLUS.â€ Distribution/Shipping Centers are coded as PBAPLUS=9; Non-Refrigerated Warehouses are coded as PBAPLUS=10; and Refrigerated Warehouses are coded as PBAPLUS=20. <br/>Number Remaining: 678. <br/>Difference: 0.
 
     ``` r
     w1 = w0 %>% filter(PBAPLUS %in% c(9, 10, 20))
     ```
 
-3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter – Baseline condition for being a full time warehouse. <br/>Number Remaining: 621. <br/>Difference: 0.
+3.  **Must operate for at least 30 hours per week** <br/>EPA Program Filter â€“ Baseline condition for being a full time warehouse. <br/>Number Remaining: 621. <br/>Difference: 0.
 
     ``` r
     w2 = w1 %>% filter(WKHRS >= 30)
     ```
 
-4.  **Must have at least 1 worker** <br/>EPA Program Filter – Baseline condition for being a full time warehouse <br/>Number Remaining: 597. <br/>Difference: 0.
+4.  **Must have at least 1 worker** <br/>EPA Program Filter â€“ Baseline condition for being a full time warehouse <br/>Number Remaining: 597. <br/>Difference: 0.
 
     ``` r
     w3 = w2 %>% filter(NWKER >= 1)
     ```
 
-5.  **Must operate for at least 10 months per year** <br/>EPA Program Filter – Baseline condition for being a full time warehouse. <br/>Number Remaining: 580. <br/>Difference: 0.
+5.  **Must operate for at least 10 months per year** <br/>EPA Program Filter â€“ Baseline condition for being a full time warehouse. <br/>Number Remaining: 580. <br/>Difference: 0.
 
     ``` r
     w4 = w3 %>% filter(MONUSE >= 10)
     ```
 
-6.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter – In order to be considered part of the warehouse peer group, more than 50% of the building must be defined as distribution/shipping center, non-refrigerated warehouse, or refrigerated warehouse. <br/>Number Remaining: 568. <br/>Difference: +25
+6.  **A single activity must characterize greater than 50% of the floor space** <br/>EPA Program Filter â€“ In order to be considered part of the warehouse peer group, more than 50% of the building must be defined as distribution/shipping center, non-refrigerated warehouse, or refrigerated warehouse. <br/>Number Remaining: 568. <br/>Difference: +25
 
     ``` r
     w5 = w4 %>% 
@@ -120,31 +120,31 @@ After applying each filter, the number of remaining buildings in the dataset (*N
     # print(nrow(w51) + nrow(w5a) + nrow(w5b) + nrow(w5c))
     ```
 
-7.  **Must report energy usage** <br/>EPA Program Filter – Baseline condition for being a full time warehouse. <br/>Number Remaining: 562. <br/>Difference: +19.
+7.  **Must report energy usage** <br/>EPA Program Filter â€“ Baseline condition for being a full time warehouse. <br/>Number Remaining: 562. <br/>Difference: +19.
 
     ``` r
     w6 = w5 %>% filter(!is.na(MFBTU))
     ```
 
-8.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter – CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 555. <br/>Difference: +19.
+8.  **Must be less than or equal to 1,000,000 square feet** <br/>Data Limitation Filter â€“ CBECS masks surveyed properties above 1,000,000 square feet by applying regional averages. <br/>Number Remaining: 555. <br/>Difference: +19.
 
     ``` r
     w7 = w6 %>% filter(SQFT <= 1000000)
     ```
 
-9.  **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter – Cannot estimate propane use if the quantity is “greater than 1000” or unknown. <br/>Number Remaining: 530. <br/>Difference: +19.
+9.  **If propane is used, the amount category (PRAMTC) must equal 1, 2, or 3** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the quantity is â€œgreater than 1000â€ or unknown. <br/>Number Remaining: 530. <br/>Difference: +19.
 
     ``` r
     w8 = w7 %>% filter(is.na(PRAMTC) | PRAMTC %in% c(1,2,3))
     ```
 
-10. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter – Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 526. <br/>Difference: +19.
+10. **If propane is used, the unit (PRUNIT) must be known** <br/>Data Limitation Filter â€“ Cannot estimate propane use if the unit is unknown. <br/>Number Remaining: 526. <br/>Difference: +19.
 
     ``` r
     w9 = w8 %>% filter(is.na(PRUNIT) | PRUNIT %in% c(1,2))
     ```
 
-11. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter – Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 510. <br/>Difference: +6.
+11. **If propane is used, the maximum estimated propane amount must be 10% or less of the total source energy** <br/>Data Limitation Filter â€“ Because propane values are estimated from a range, propane is restricted to 10% of the total source energy. <br/>Number Remaining: 510. <br/>Difference: +6.
 
     ``` r
     w10 = w9 %>% 
@@ -152,7 +152,7 @@ After applying each filter, the number of remaining buildings in the dataset (*N
             (PRUSED == 1 & NGBTU_PERCENT <= 10))
     ```
 
-12. **Must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter – CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 499. <br/>Difference: +6.
+12. **Must not use chilled water, wood, coal, or solar** <br/>Data Limitation Filter â€“ CBECS does not collect quantities of chilled water, wood, coal, or solar. <br/>Number Remaining: 499. <br/>Difference: +6.
 
     ``` r
     w11 = w10 %>% 
@@ -162,19 +162,19 @@ After applying each filter, the number of remaining buildings in the dataset (*N
       filter(SOUSED == 2)
     ```
 
-13. **Must have no more than 2.8 workers per 1,000 square feet** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 487. <br/>Difference: +4.
+13. **Must have no more than 2.8 workers per 1,000 square feet** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 487. <br/>Difference: +4.
 
     ``` r
     w12 = w11 %>% filter(NWKER  / SQFT * 1000 <= 2.8)
     ```
 
-14. **Source EUI cannot be greater than 500 kBtu/ft2** <br/>Analytical Filter – Values determined to be statistical outliers. <br/>Number Remaining: 483. <br/>Difference: +3.
+14. **Source EUI cannot be greater than 500 kBtu/ft2** <br/>Analytical Filter â€“ Values determined to be statistical outliers. <br/>Number Remaining: 483. <br/>Difference: +3.
 
     ``` r
     w13 = w12 %>% filter(SOURCE_EUI <= 500)
     ```
 
-15. **Percent Cooled plus Percent Cold Storage must be less than or equal to 100%** <br/>Analytical Filter – Values exceed what is physically expected to be possible. <br/>Number Remaining: 477. <br/>Difference: +3.
+15. **Percent Cooled plus Percent Cold Storage must be less than or equal to 100%** <br/>Analytical Filter â€“ Values exceed what is physically expected to be possible. <br/>Number Remaining: 477. <br/>Difference: +3.
 
     ``` r
     w14 = w13 %>% 
@@ -183,7 +183,7 @@ After applying each filter, the number of remaining buildings in the dataset (*N
       filter(COLD_SUM <= 100)
     ```
 
-16. **Percent Heated plus Percent Cold Storage must be less than or equal to 100%** <br/>Analytical Filter – Values exceed what is physically expected to be possible. <br/>Number Remaining: 475. <br/>Difference: +3.
+16. **Percent Heated plus Percent Cold Storage must be less than or equal to 100%** <br/>Analytical Filter â€“ Values exceed what is physically expected to be possible. <br/>Number Remaining: 475. <br/>Difference: +3.
 
     ``` r
     w15 = w14 %>% 
@@ -201,7 +201,7 @@ write.csv(w15, paste0(filtered_dir, building_type, ".csv"), row.names = F)
 Prepare features
 ----------------
 
-The final regression equation includes the following variables: 
+The final regression equation includes the following variables: ï‚·
 
 -   Weekly Operating Hours
 -   Number of Workers per 1,000 Square Feet
