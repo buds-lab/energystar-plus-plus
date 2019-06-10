@@ -1,5 +1,4 @@
 ## filter office buildings
-
 library(readr)
 library(dplyr)
 
