@@ -12,6 +12,9 @@ Pandarasamy Arjunan
     -   [Multiple Linear Regression (MLR)](#multiple-linear-regression-mlr)
     -   [Multiple Linear Regression (MLR) with Interaction terms](#multiple-linear-regression-mlr-with-interaction-terms)
     -   [Comparision of MLR models](#comparision-of-mlr-models)
+    -   [Gradient Boosted Trees (XGBoost)](#gradient-boosted-trees-xgboost)
+    -   [Comparision of XGB models](#comparision-of-xgb-models)
+    -   [Comparision between MLR and XGB models](#comparision-between-mlr-and-xgb-models)
 
 Load dataset
 ------------
@@ -419,77 +422,113 @@ Build predictive models
 -----------------------
 
 ``` r
-source("models.R")
+#source("models.R")
 source("metrics.R")
 
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
-cat(colnames(data))
-```
-
-SQFT WKHRS RWSEAT\_SQFT HDD65\_HEATP CDD65\_COOLP SOURCE\_EUI SOURCE\_ENERGY FINALWT
-
-``` r
 allMetrics = NULL
+
+sourceEUI_attributes = setdiff(colnames(data),
+                               c("SQFT", "FINALWT", "SOURCE_EUI", "SOURCE_ENERGY"))
+
+sourceEnergy_attributes = setdiff(colnames(data), 
+                               c("FINALWT", "SOURCE_EUI", "SOURCE_ENERGY"))
+#cat(colnames(data))
+knitr::kable(colnames(data), col.names = NULL)
 ```
+
+    Warning in kable_markdown(x, padding = padding, ...): The table should have
+    a header (column names)
+
+|                |
+|:---------------|
+| SQFT           |
+| WKHRS          |
+| RWSEAT\_SQFT   |
+| HDD65\_HEATP   |
+| CDD65\_COOLP   |
+| SOURCE\_EUI    |
+| SOURCE\_ENERGY |
+| FINALWT        |
 
 ### Multiple Linear Regression (MLR)
+
+``` r
+MLR.fit <- function(data, 
+                    x, 
+                    y, 
+                    w, 
+                    interaction,
+                    centering = TRUE 
+                    ) {
+  
+  if(centering == TRUE){
+    data = mean_center_data(data, x)  
+  }
+  
+  if(interaction == 1) {  ### ordinary model
+    model = paste(y, "~", paste(x, collapse = " + "))  
+  } else {  ### interaction model
+    allvars = paste(x, collapse = " + ")
+    model = paste(y, "~ (", allvars, ") ^", interaction )
+  }
+  
+  fit = lm(model, data = data, weights = data[, w])
+  return (fit)
+}
+
+MLR.predict <- function(data, x, y, w, i) {
+  
+  mlrFit = MLR.fit(data, x, y, w, i)
+  
+  wt   = data[, w]
+  obs  = data[, y]
+  pred = as.numeric(predict(mlrFit))
+  
+  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
+  mlrMetrics = data.frame(
+    "model" = "MLR",
+    "dependent" = y,
+    "interaction" = i,
+    "transform" = "meanCent",
+    mlrMetrics)
+  
+  return(mlrMetrics)
+}
+```
 
 #### Using SOURCE\_EUI as dependent variable
 
 ``` r
+x = sourceEUI_attributes
 y = "SOURCE_EUI"
 w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-intr = 1
+interaction = 1
 
-mlrFit = MLR(data, x, y, w, interaction = intr)
+mlrMetrics = MLR.predict(data, x, y, w, interaction)
 
-obs  = data[, y]
-pred = as.numeric(predict(mlrFit))
+allMetrics = rbind(allMetrics, mlrMetrics)
 
-mlrMetrics1 = getMLRmetrics(mlrFit, obs, pred, wt)
-mlrMetrics1 = data.frame(
-  "model" = "MLR",
-  "dependent" = y,
-  "interaction" = intr,
-  "transform" = "meanCent",
-  mlrMetrics1)
-
-allMetrics = rbind(allMetrics, mlrMetrics1)
-
-knitr::kable(mlrMetrics1, row.names = F)
+knitr::kable(allMetrics, row.names = F)
 ```
 
 | model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
 | MLR   | SOURCE\_EUI |            1| meanCent  |  249|     5|     5|  0.161|    0.147|  1924.033|  43.864|  32.496|  0.685|      76.605|        19.282|       61.754|     92.264|
 
-#### Using SOURCE\_ENERGY as dependent variable\*\*
+#### Using SOURCE\_ENERGY as dependent variable
 
 ``` r
+x = sourceEnergy_attributes
 y = "SOURCE_ENERGY"
 w = "FINALWT"
-o = c("SOURCE_EUI")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-intr = 1
+interaction = 1
 
-mlrFit = MLR(data, x, y, w, interaction = intr)
+mlrMetrics = MLR.predict(data, x, y, w, interaction)
 
-obs  = data[, y]
-pred = as.numeric(predict(mlrFit))
+allMetrics = rbind(allMetrics, mlrMetrics)
 
-mlrMetrics2 = getMLRmetrics(mlrFit, obs, pred, wt)
-mlrMetrics2 = data.frame(
-  "model" = "MLR",
-  "dependent" = y,
-  "interaction" = intr,
-  "transform" = "meanCent",
-  mlrMetrics2)
-allMetrics = rbind(allMetrics, mlrMetrics2)
 knitr::kable(allMetrics, row.names = F)
 ```
 
@@ -503,30 +542,20 @@ knitr::kable(allMetrics, row.names = F)
 #### Using SOURCE\_EUI as dependent variable
 
 ``` r
+x = sourceEUI_attributes
 y = "SOURCE_EUI"
 w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
 
 intr_depth = length(x)
 
-for (intr in 2:intr_depth) {
-  
-  mlrFit = MLR(data, x, y, w, interaction = intr)
-  obs  = data[, y]
-  pred = as.numeric(predict(mlrFit))
-  
-  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
-  mlrMetrics = data.frame(
-    "model" = paste0("MLRi", intr),
-    "dependent" = y,
-    "interaction" = intr,
-    "transform" = "meanCent",
-    mlrMetrics)
-  
+for (interaction in 2:intr_depth) {
+  mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
 
 allMetrics0 = allMetrics %>% filter(dependent == y)
 knitr::kable(allMetrics0, row.names = F)
@@ -535,34 +564,21 @@ knitr::kable(allMetrics0, row.names = F)
 | model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
 | MLR   | SOURCE\_EUI |            1| meanCent  |  249|     5|     5|  0.161|    0.147|  1924.033|  43.864|  32.496|  0.685|      76.605|        19.282|       61.754|     92.264|
-| MLRi2 | SOURCE\_EUI |            2| meanCent  |  249|    11|    11|  0.185|    0.151|  1895.424|  43.536|  32.343|  0.676|      76.032|        19.138|       61.292|     91.574|
-| MLRi3 | SOURCE\_EUI |            3| meanCent  |  249|    15|    15|  0.208|    0.161|  1847.425|  42.982|  31.872|  0.665|      75.065|        18.894|       60.512|     90.408|
-| MLRi4 | SOURCE\_EUI |            4| meanCent  |  249|    16|    16|  0.208|    0.157|  1846.693|  42.973|  31.871|  0.665|      75.049|        18.890|       60.500|     90.389|
+| MLR   | SOURCE\_EUI |            2| meanCent  |  249|    11|    11|  0.185|    0.151|  1895.424|  43.536|  32.343|  0.676|      76.032|        19.138|       61.292|     91.574|
+| MLR   | SOURCE\_EUI |            3| meanCent  |  249|    15|    15|  0.208|    0.161|  1847.425|  42.982|  31.872|  0.665|      75.065|        18.894|       60.512|     90.408|
+| MLR   | SOURCE\_EUI |            4| meanCent  |  249|    16|    16|  0.208|    0.157|  1846.693|  42.973|  31.871|  0.665|      75.049|        18.890|       60.500|     90.389|
 
 #### Using SOURCE\_ENERGY as dependent variable\*\*
 
 ``` r
+x = sourceEnergy_attributes
 y = "SOURCE_ENERGY"
 w = "FINALWT"
-o = c("SOURCE_EUI")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
+
 intr_depth = length(x)
 
-for (intr in 2:intr_depth) {
-  
-  mlrFit = MLR(data, x, y, w, interaction = intr)
-  obs  = data[, y]
-  pred = as.numeric(predict(mlrFit))
-  
-  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
-  mlrMetrics = data.frame(
-    "model" = paste0("MLRi", intr),
-    "dependent" = y,
-    "interaction" = intr,
-    "transform" = "meanCent",
-    mlrMetrics)
-  
+for (interaction in 2:intr_depth) {
+  mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
 
@@ -577,10 +593,10 @@ knitr::kable(allMetrics0, row.names = F)
 | model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|     rmse|       mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|--------:|---------:|------:|-----------:|-------------:|------------:|----------:|
 | MLR   | SOURCE\_ENERGY |            1| meanCent  |  249|     6|     6|  0.714|    0.708|  1.924860e+12|  1387393|  658508.2|  0.832|     110.900|         7.303|       95.402|     55.241|
-| MLRi2 | SOURCE\_ENERGY |            2| meanCent  |  249|    16|    16|  0.806|    0.793|  1.629286e+12|  1276435|  575211.9|  0.691|     102.031|         6.719|       87.772|     50.823|
-| MLRi3 | SOURCE\_ENERGY |            3| meanCent  |  249|    26|    26|  0.818|    0.797|  1.551240e+12|  1245488|  566291.2|  0.672|      99.557|         6.556|       85.644|     49.591|
-| MLRi4 | SOURCE\_ENERGY |            4| meanCent  |  249|    31|    31|  0.821|    0.797|  1.521526e+12|  1233501|  558468.8|  0.653|      98.599|         6.493|       84.820|     49.114|
-| MLRi5 | SOURCE\_ENERGY |            5| meanCent  |  249|    32|    32|  0.822|    0.796|  1.523799e+12|  1234422|  558680.3|  0.656|      98.672|         6.498|       84.883|     49.151|
+| MLR   | SOURCE\_ENERGY |            2| meanCent  |  249|    16|    16|  0.806|    0.793|  1.629286e+12|  1276435|  575211.9|  0.691|     102.031|         6.719|       87.772|     50.823|
+| MLR   | SOURCE\_ENERGY |            3| meanCent  |  249|    26|    26|  0.818|    0.797|  1.551240e+12|  1245488|  566291.2|  0.672|      99.557|         6.556|       85.644|     49.591|
+| MLR   | SOURCE\_ENERGY |            4| meanCent  |  249|    31|    31|  0.821|    0.797|  1.521526e+12|  1233501|  558468.8|  0.653|      98.599|         6.493|       84.820|     49.114|
+| MLR   | SOURCE\_ENERGY |            5| meanCent  |  249|    32|    32|  0.822|    0.796|  1.523799e+12|  1234422|  558680.3|  0.656|      98.672|         6.498|       84.883|     49.151|
 
 ### Comparision of MLR models
 
@@ -635,13 +651,13 @@ plot2 = plotNRMSE(allMetrics0, "MLR models using source EUI")
 print(plot1)
 ```
 
-![](worship_files/figure-markdown_github/unnamed-chunk-33-1.png)
+![](worship_files/figure-markdown_github/unnamed-chunk-34-1.png)
 
 ``` r
 print(plot2)
 ```
 
-![](worship_files/figure-markdown_github/unnamed-chunk-33-2.png)
+![](worship_files/figure-markdown_github/unnamed-chunk-34-2.png)
 
 #### MLR plots using Source Energy
 
@@ -656,10 +672,558 @@ plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
 print(plot1)
 ```
 
-![](worship_files/figure-markdown_github/unnamed-chunk-34-1.png)
+![](worship_files/figure-markdown_github/unnamed-chunk-35-1.png)
 
 ``` r
 print(plot2)
 ```
 
-![](worship_files/figure-markdown_github/unnamed-chunk-34-2.png)
+![](worship_files/figure-markdown_github/unnamed-chunk-35-2.png)
+
+### Gradient Boosted Trees (XGBoost)
+
+``` r
+tuneXGBoost <- function(x,
+                        y,
+                        sample_weights,
+                        search = "default",
+                        tree_height = 2
+                        ) {
+  
+  N = 10  # N-fold CV
+  R = 2   # and R repeats
+  
+  tcDefault  <- trainControl(method = "repeatedcv", 
+                            number = N, 
+                            repeats = R)
+  
+  tcRandom   <- trainControl(method = "repeatedcv", 
+                            search = "random",
+                            number = N, 
+                            repeats = R)
+  
+  tcAdaptive <- trainControl(method = "adaptive_cv", 
+                            search = "random",
+                            number = N, 
+                            repeats = R,
+                            adaptive = list(min = 5, 
+                                            alpha = 0.05, 
+                                            method = "gls",
+                                            complete = TRUE))
+  
+  default_param = expand.grid(
+    nrounds = 100,
+    max_depth = tree_height,
+    eta = 0.3,
+    gamma = 0,
+    colsample_bytree = 1,
+    min_child_weight = 1,
+    subsample = 1)
+  
+  # from https://github.com/topepo/caret/blob/master/models/files/xgbTree.R
+  len = 10
+  grid_param <- expand.grid(
+    nrounds = floor((1:len) * 10),
+    max_depth = tree_height,
+    eta = c(.3, .4),
+    gamma = 0,
+    colsample_bytree = c(.6, .8),
+    min_child_weight = c(1),
+    subsample = seq(.25, 1, length = len))
+  
+  tuned = switch(search,
+                 "default" = train(x, y,
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   tuneGrid = default_param,
+                                   trControl = tcDefault,
+                                   verbose = TRUE),
+                 
+                 "grid"     = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   tuneGrid = grid_param,
+                                   trControl = tcDefault,
+                                   verbose = TRUE),
+
+                 "random"  = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   trControl = tcRandom,
+                                   verbose = TRUE),
+                 
+                 "adaptive" = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   trControl = tcAdaptive,
+                                   verbose = TRUE)
+                 )
+  
+  return(tuned$finalModel)
+}
+
+XGBoost <- function( xdata, 
+                     ydata,
+                     sample_weights,
+                     search = "default",
+                     interaction = 2
+                     ) {
+  
+  model = paste(y, "~", paste(x, collapse = " + "))
+  dummy = dummyVars(model, data = data, fullRank = T)
+  
+  xdata = as.data.frame(predict(dummy, data))
+  ydata = data[, y]
+  
+  xgfit = tuneXGBoost(xdata, ydata, 
+                      sample_weights,
+                      search, 
+                      tree_height = interaction)
+  return(xgfit)
+} 
+
+
+XGBoost.predict <- function(data, x, y, w, search) {
+
+  model = paste(y, "~", paste(x, collapse = " + "))
+  dummy = dummyVars(model, data = data, fullRank = T)
+  xdata = as.data.frame(predict(dummy, data))
+  ydata = data[, y]
+  wt = data[, w]
+  
+  intr_depth = 3
+  
+  xgbMetricsAll = NULL
+  
+  for (intr in 1:intr_depth) {
+    
+    cat(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
+    
+    xgfit = XGBoost(xdata, ydata, wt, 
+                    search = search, 
+                    interaction = intr)
+    
+    pred = as.numeric(predict(xgfit, as.matrix(xdata)))
+    
+    xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
+    
+    xgbMetrics = data.frame(
+      "model" = paste0("XGB", substr(search, 1,1), intr),
+      "dependent" = y, 
+      "interaction" = intr, 
+      "transform" = "None",
+      xgbMetrics)
+    
+    xgbMetricsAll = rbind(xgbMetricsAll, xgbMetrics)
+  }
+  
+  return(xgbMetricsAll)
+}
+```
+
+``` r
+# y = "SOURCE_EUI"
+# w = "FINALWT"
+# o = c("SOURCE_ENERGY", "SQFT")
+# x = setdiff(colnames(data), c(y, w, o))
+# wt = data[, w]
+# 
+# model = paste(y, "~", paste(x, collapse = " + "))
+# dummy = dummyVars(model, data = data, fullRank = T)
+# xdata = as.data.frame(predict(dummy, data))
+# ydata = data[, y]
+# intr_depth = 3
+# 
+# for (intr in 1:intr_depth) {
+#   
+#   print(paste(Sys.time(), "xgboost default search", y, intr, "\n"))
+#   
+#   xgfit = XGBoost(xdata, ydata, wt, 
+#                   search = "default", 
+#                   interaction = intr)
+#   
+#   pred = as.numeric(predict(xgfit, as.matrix(xdata)))
+#   
+#   xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
+#   
+#   xgbMetrics = data.frame(
+#     "model" = paste0("XGBd", intr),
+#     "dependent" = y, 
+#     "interaction" = intr, 
+#     "transform" = "None",
+#     xgbMetrics)
+#   
+#   allMetrics = rbind(allMetrics, xgbMetrics)
+# }
+# knitr::kable(allMetrics, row.names = F)
+```
+
+#### Using SOURCE\_EUI as dependent variable
+
+``` r
+library(doParallel)
+ncore = 4
+registerDoParallel(cores = ncore)
+```
+
+##### Using default search
+
+``` r
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "default"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:42:34 xgboost default SOURCE\_EUI 1 2019-06-10 16:43:57 xgboost default SOURCE\_EUI 2 2019-06-10 16:43:59 xgboost default SOURCE\_EUI 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBd1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  0.350|    0.342|  1444.194|  38.003|  28.170|  0.562|      66.369|        16.705|       53.503|     79.936|
+| XGBd2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.840|    0.838|   500.775|  22.378|  15.554|  0.309|      39.081|         9.837|       31.505|     47.070|
+| XGBd3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  0.977|    0.977|   142.934|  11.956|   6.848|  0.133|      20.880|         5.256|       16.832|     25.148|
+
+##### Using grid search
+
+``` r
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "grid"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:44:09 xgboost grid SOURCE\_EUI 1 2019-06-10 16:44:47 xgboost grid SOURCE\_EUI 2 2019-06-10 16:45:39 xgboost grid SOURCE\_EUI 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBg1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  0.243|    0.234|  1629.145|  40.363|  29.724|  0.597|      70.491|        17.743|       56.825|     84.900|
+| XGBg2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.307|    0.298|  1410.061|  37.551|  27.784|  0.574|      65.580|        16.507|       52.866|     78.985|
+| XGBg3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  0.382|    0.374|  1219.743|  34.925|  25.852|  0.522|      60.994|        15.352|       49.169|     73.461|
+
+##### Using adaptive search
+
+``` r
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "adaptive"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:46:56 xgboost adaptive SOURCE\_EUI 1 2019-06-10 16:48:06 xgboost adaptive SOURCE\_EUI 2 2019-06-10 16:48:20 xgboost adaptive SOURCE\_EUI 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|      mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|--------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBa1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  1.000|    1.000|    0.002|   0.046|   0.016|  0.000|       0.080|         0.020|        0.065|      0.097|
+| XGBa2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.675|    0.671|  828.765|  28.788|  21.175|  0.416|      50.276|        12.655|       40.529|     60.553|
+| XGBa3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  1.000|    1.000|    0.005|   0.074|   0.043|  0.001|       0.129|         0.033|        0.104|      0.156|
+
+##### Using random search
+
+``` r
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "random"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:49:35 xgboost random SOURCE\_EUI 1 2019-06-10 16:50:20 xgboost random SOURCE\_EUI 2 2019-06-10 16:50:59 xgboost random SOURCE\_EUI 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+```
+
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_EUI |            1| meanCent  |  249|     5|     5|  0.161|    0.147|  1924.033|  43.864|  32.496|  0.685|      76.605|        19.282|       61.754|     92.264|
+| MLR   | SOURCE\_EUI |            2| meanCent  |  249|    11|    11|  0.185|    0.151|  1895.424|  43.536|  32.343|  0.676|      76.032|        19.138|       61.292|     91.574|
+| MLR   | SOURCE\_EUI |            3| meanCent  |  249|    15|    15|  0.208|    0.161|  1847.425|  42.982|  31.872|  0.665|      75.065|        18.894|       60.512|     90.408|
+| MLR   | SOURCE\_EUI |            4| meanCent  |  249|    16|    16|  0.208|    0.157|  1846.693|  42.973|  31.871|  0.665|      75.049|        18.890|       60.500|     90.389|
+| XGBd1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  0.350|    0.342|  1444.194|  38.003|  28.170|  0.562|      66.369|        16.705|       53.503|     79.936|
+| XGBd2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.840|    0.838|   500.775|  22.378|  15.554|  0.309|      39.081|         9.837|       31.505|     47.070|
+| XGBd3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  0.977|    0.977|   142.934|  11.956|   6.848|  0.133|      20.880|         5.256|       16.832|     25.148|
+| XGBg1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  0.243|    0.234|  1629.145|  40.363|  29.724|  0.597|      70.491|        17.743|       56.825|     84.900|
+| XGBg2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.307|    0.298|  1410.061|  37.551|  27.784|  0.574|      65.580|        16.507|       52.866|     78.985|
+| XGBg3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  0.382|    0.374|  1219.743|  34.925|  25.852|  0.522|      60.994|        15.352|       49.169|     73.461|
+| XGBa1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  1.000|    1.000|     0.002|   0.046|   0.016|  0.000|       0.080|         0.020|        0.065|      0.097|
+| XGBa2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.675|    0.671|   828.765|  28.788|  21.175|  0.416|      50.276|        12.655|       40.529|     60.553|
+| XGBa3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  1.000|    1.000|     0.005|   0.074|   0.043|  0.001|       0.129|         0.033|        0.104|      0.156|
+| XGBr1 | SOURCE\_EUI |            1| None      |  249|     4|     4|  1.000|    1.000|     0.003|   0.054|   0.031|  0.001|       0.094|         0.024|        0.076|      0.114|
+| XGBr2 | SOURCE\_EUI |            2| None      |  249|     4|     4|  0.426|    0.419|   995.262|  31.548|  24.236|  0.480|      55.096|        13.868|       44.415|     66.358|
+| XGBr3 | SOURCE\_EUI |            3| None      |  249|     4|     4|  1.000|    1.000|     0.000|   0.016|   0.009|  0.000|       0.028|         0.007|        0.023|      0.034|
+
+#### Using SOURCE\_ENERGY as dependent variable
+
+##### Using default search
+
+``` r
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "default"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:51:38 xgboost default SOURCE\_ENERGY 1 2019-06-10 16:51:40 xgboost default SOURCE\_ENERGY 2 2019-06-10 16:51:43 xgboost default SOURCE\_ENERGY 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|       rmse|       mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|----------:|---------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBd1 | SOURCE\_ENERGY |            1| None      |  249|     5|     5|  0.838|    0.836|  1.264514e+12|  1124506.3|  506736.4|  0.636|      89.886|         5.919|       77.325|     44.774|
+| XGBd2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  0.978|    0.978|  1.898019e+11|   435662.6|  234114.6|  0.372|      34.824|         2.293|       29.958|     17.347|
+| XGBd3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.996|    0.996|  8.484840e+10|   291287.5|  105489.1|  0.181|      23.284|         1.533|       20.030|     11.598|
+
+##### Using grid search
+
+``` r
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "grid"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:51:46 xgboost grid SOURCE\_ENERGY 1 2019-06-10 16:52:24 xgboost grid SOURCE\_ENERGY 2 2019-06-10 16:53:16 xgboost grid SOURCE\_ENERGY 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|       rmse|       mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|----------:|---------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBg1 | SOURCE\_ENERGY |            1| None      |  249|     4|     4|  0.745|    0.742|  1.680822e+12|  1296465.1|  601110.4|  0.949|     103.632|         6.824|       89.150|     51.621|
+| XGBg2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  0.834|    0.832|  9.556830e+11|   977590.4|  515241.2|  0.812|      78.143|         5.146|       67.223|     38.924|
+| XGBg3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.923|    0.921|  5.099477e+11|   714106.2|  394413.4|  0.669|      57.081|         3.759|       49.105|     28.433|
+
+##### Using adaptive search
+
+``` r
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "adaptive"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:54:26 xgboost adaptive SOURCE\_ENERGY 1 2019-06-10 16:55:45 xgboost adaptive SOURCE\_ENERGY 2 2019-06-10 16:56:31 xgboost adaptive SOURCE\_ENERGY 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|        rmse|         mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|-----------:|-----------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBa1 | SOURCE\_ENERGY |            1| None      |  249|     5|     5|  1.000|    1.000|  2.641000e+00|       1.625|       0.467|  0.000|       0.000|         0.000|        0.000|      0.000|
+| XGBa2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  1.000|    1.000|  1.580251e+08|   12570.804|    3100.906|  0.007|       1.005|         0.066|        0.864|      0.501|
+| XGBa3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.874|    0.872|  8.707276e+11|  933127.872|  478319.847|  0.749|      74.589|         4.912|       64.165|     37.154|
+
+##### Using random search
+
+``` r
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "random"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+```
+
+2019-06-10 16:57:26 xgboost random SOURCE\_ENERGY 1 2019-06-10 16:58:00 xgboost random SOURCE\_ENERGY 2 2019-06-10 16:58:17 xgboost random SOURCE\_ENERGY 3
+
+``` r
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+```
+
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|         rmse|         mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|------------:|-----------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |  249|     6|     6|  0.714|    0.708|  1.924860e+12|  1387393.165|  658508.238|  0.832|     110.900|         7.303|       95.402|     55.241|
+| MLR   | SOURCE\_ENERGY |            2| meanCent  |  249|    16|    16|  0.806|    0.793|  1.629286e+12|  1276434.800|  575211.943|  0.691|     102.031|         6.719|       87.772|     50.823|
+| MLR   | SOURCE\_ENERGY |            3| meanCent  |  249|    26|    26|  0.818|    0.797|  1.551240e+12|  1245487.847|  566291.192|  0.672|      99.557|         6.556|       85.644|     49.591|
+| MLR   | SOURCE\_ENERGY |            4| meanCent  |  249|    31|    31|  0.821|    0.797|  1.521526e+12|  1233501.442|  558468.811|  0.653|      98.599|         6.493|       84.820|     49.114|
+| MLR   | SOURCE\_ENERGY |            5| meanCent  |  249|    32|    32|  0.822|    0.796|  1.523799e+12|  1234422.472|  558680.343|  0.656|      98.672|         6.498|       84.883|     49.151|
+| XGBd1 | SOURCE\_ENERGY |            1| None      |  249|     5|     5|  0.838|    0.836|  1.264514e+12|  1124506.306|  506736.396|  0.636|      89.886|         5.919|       77.325|     44.774|
+| XGBd2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  0.978|    0.978|  1.898019e+11|   435662.599|  234114.616|  0.372|      34.824|         2.293|       29.958|     17.347|
+| XGBd3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.996|    0.996|  8.484840e+10|   291287.483|  105489.107|  0.181|      23.284|         1.533|       20.030|     11.598|
+| XGBg1 | SOURCE\_ENERGY |            1| None      |  249|     4|     4|  0.745|    0.742|  1.680822e+12|  1296465.141|  601110.428|  0.949|     103.632|         6.824|       89.150|     51.621|
+| XGBg2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  0.834|    0.832|  9.556830e+11|   977590.395|  515241.247|  0.812|      78.143|         5.146|       67.223|     38.924|
+| XGBg3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.923|    0.921|  5.099477e+11|   714106.229|  394413.421|  0.669|      57.081|         3.759|       49.105|     28.433|
+| XGBa1 | SOURCE\_ENERGY |            1| None      |  249|     5|     5|  1.000|    1.000|  2.641000e+00|        1.625|       0.467|  0.000|       0.000|         0.000|        0.000|      0.000|
+| XGBa2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  1.000|    1.000|  1.580251e+08|    12570.804|    3100.906|  0.007|       1.005|         0.066|        0.864|      0.501|
+| XGBa3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.874|    0.872|  8.707276e+11|   933127.872|  478319.847|  0.749|      74.589|         4.912|       64.165|     37.154|
+| XGBr1 | SOURCE\_ENERGY |            1| None      |  249|     5|     5|  0.998|    0.998|  1.379008e+10|   117431.186|   66861.354|  0.128|       9.387|         0.618|        8.075|      4.676|
+| XGBr2 | SOURCE\_ENERGY |            2| None      |  249|     5|     5|  0.961|    0.961|  2.030188e+11|   450576.114|  295684.144|  0.558|      36.016|         2.372|       30.983|     17.940|
+| XGBr3 | SOURCE\_ENERGY |            3| None      |  249|     5|     5|  0.996|    0.996|  3.411262e+10|   184696.025|  111201.288|  0.237|      14.764|         0.972|       12.700|      7.354|
+
+### Comparision of XGB models
+
+``` r
+plotXgbR2 <- function(df, titl) {
+  
+  plot <- ggplot(df, aes(x = interaction, y=Adj.R.2, 
+                          group=model, col=model)) + 
+    geom_point(size=2) + geom_line(size=1) +  
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank()) 
+
+  return(plot)
+}
+
+plotXgbNRMSE <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("nrmse_iqr", "nrmse_mean", 
+                                        "nrmse_sd"))
+  df1$variable = toupper(df1$variable)
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+    facet_wrap(. ~ model, scales = "fixed", nrow=2) + 
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank()) + 
+    theme(strip.placement = "outside", strip.background = element_blank())
+  
+  return(plot)
+}
+```
+
+#### XGB plots using Source EUI
+
+``` r
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_EUI")
+
+plot1 = plotXgbR2(allMetrics0, "XGB models using source EUI")
+plot2 = plotXgbNRMSE(allMetrics0, "XGB models using source EUI")
+
+print(plot1)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-48-1.png)
+
+``` r
+print(plot2)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-48-2.png)
+
+#### XGB plots using Source Energy
+
+``` r
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_ENERGY")
+
+plot1 = plotXgbR2(allMetrics0, "XGB models using source energy")
+plot2 = plotXgbNRMSE(allMetrics0, "XGB models using source energy")
+
+print(plot1)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-49-1.png)
+
+``` r
+print(plot2)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-49-2.png)
+
+### Comparision between MLR and XGB models
+
+#### MLR and XGB plots using Source EUI
+
+``` r
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  #filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_EUI")
+
+plot1 = plotXgbR2(allMetrics0, "Comparison MLR and XGB models using source EUI")
+plot2 = plotXgbNRMSE(allMetrics0, "Comparison MLR and XGB models using source EUI")
+
+print(plot1)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-50-1.png)
+
+``` r
+print(plot2)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-50-2.png)
+
+#### MLR and XGB plots using Source Energy
+
+``` r
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  #filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_ENERGY")
+
+plot1 = plotXgbR2(allMetrics0, "Comparison MLR and XGB models using source energy")
+plot2 = plotXgbNRMSE(allMetrics0, "Comparison MLR and XGB models using source energy")
+
+print(plot1)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-51-1.png)
+
+``` r
+print(plot2)
+```
+
+![](worship_files/figure-markdown_github/unnamed-chunk-51-2.png)

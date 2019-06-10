@@ -458,8 +458,6 @@ MLR.fit <- function(data,
                     centering = TRUE 
                     ) {
   
-  print(paste(x, y, w, interaction))
-  
   if(centering == TRUE){
     data = mean_center_data(data, x)  
   }
@@ -476,8 +474,6 @@ MLR.fit <- function(data,
 }
 
 MLR.predict <- function(data, x, y, w, i) {
-  
-  print(paste(x, y, w, i))
   
   mlrFit = MLR.fit(data, x, y, w, i)
   
@@ -506,14 +502,7 @@ w = "FINALWT"
 interaction = 1
 
 mlrMetrics = MLR.predict(data, x, y, w, interaction)
-```
 
-\[1\] "WKHRS SOURCE\_EUI FINALWT 1" "NWKER\_SQFT SOURCE\_EUI FINALWT 1"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 1" "CDD65\_COOLP SOURCE\_EUI FINALWT 1" \[5\] "IsBank SOURCE\_EUI FINALWT 1"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 1" "NWKER\_SQFT SOURCE\_EUI FINALWT 1"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 1" "CDD65\_COOLP SOURCE\_EUI FINALWT 1" \[5\] "IsBank SOURCE\_EUI FINALWT 1"
-
-``` r
 allMetrics = rbind(allMetrics, mlrMetrics)
 
 knitr::kable(allMetrics, row.names = F)
@@ -532,18 +521,7 @@ w = "FINALWT"
 interaction = 1
 
 mlrMetrics = MLR.predict(data, x, y, w, interaction)
-```
 
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 1"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 1"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 1"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 1" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 1" \[6\] "IsBank SOURCE\_ENERGY FINALWT 1"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 1"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 1"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 1"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 1" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 1" \[6\] "IsBank SOURCE\_ENERGY FINALWT 1"
-
-``` r
 allMetrics = rbind(allMetrics, mlrMetrics)
 
 knitr::kable(allMetrics, row.names = F)
@@ -569,26 +547,7 @@ for (interaction in 2:intr_depth) {
   mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
-```
 
-\[1\] "WKHRS SOURCE\_EUI FINALWT 2" "NWKER\_SQFT SOURCE\_EUI FINALWT 2"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 2" "CDD65\_COOLP SOURCE\_EUI FINALWT 2" \[5\] "IsBank SOURCE\_EUI FINALWT 2"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 2" "NWKER\_SQFT SOURCE\_EUI FINALWT 2"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 2" "CDD65\_COOLP SOURCE\_EUI FINALWT 2" \[5\] "IsBank SOURCE\_EUI FINALWT 2"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 3" "NWKER\_SQFT SOURCE\_EUI FINALWT 3"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 3" "CDD65\_COOLP SOURCE\_EUI FINALWT 3" \[5\] "IsBank SOURCE\_EUI FINALWT 3"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 3" "NWKER\_SQFT SOURCE\_EUI FINALWT 3"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 3" "CDD65\_COOLP SOURCE\_EUI FINALWT 3" \[5\] "IsBank SOURCE\_EUI FINALWT 3"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 4" "NWKER\_SQFT SOURCE\_EUI FINALWT 4"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 4" "CDD65\_COOLP SOURCE\_EUI FINALWT 4" \[5\] "IsBank SOURCE\_EUI FINALWT 4"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 4" "NWKER\_SQFT SOURCE\_EUI FINALWT 4"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 4" "CDD65\_COOLP SOURCE\_EUI FINALWT 4" \[5\] "IsBank SOURCE\_EUI FINALWT 4"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 5" "NWKER\_SQFT SOURCE\_EUI FINALWT 5"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 5" "CDD65\_COOLP SOURCE\_EUI FINALWT 5" \[5\] "IsBank SOURCE\_EUI FINALWT 5"
-\[1\] "WKHRS SOURCE\_EUI FINALWT 5" "NWKER\_SQFT SOURCE\_EUI FINALWT 5"
-\[3\] "PCTERMN\_SQFT SOURCE\_EUI FINALWT 5" "CDD65\_COOLP SOURCE\_EUI FINALWT 5" \[5\] "IsBank SOURCE\_EUI FINALWT 5"
-
-``` r
 write.csv(allMetrics, 
           paste0(results_dir, building_type, ".csv"), 
           row.names = F)
@@ -618,50 +577,7 @@ for (interaction in 2:intr_depth) {
   mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
-```
 
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 2"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 2"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 2"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 2" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 2" \[6\] "IsBank SOURCE\_ENERGY FINALWT 2"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 2"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 2"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 2"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 2" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 2" \[6\] "IsBank SOURCE\_ENERGY FINALWT 2"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 3"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 3"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 3"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 3" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 3" \[6\] "IsBank SOURCE\_ENERGY FINALWT 3"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 3"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 3"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 3"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 3" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 3" \[6\] "IsBank SOURCE\_ENERGY FINALWT 3"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 4"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 4"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 4"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 4" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 4" \[6\] "IsBank SOURCE\_ENERGY FINALWT 4"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 4"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 4"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 4"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 4" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 4" \[6\] "IsBank SOURCE\_ENERGY FINALWT 4"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 5"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 5"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 5"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 5" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 5" \[6\] "IsBank SOURCE\_ENERGY FINALWT 5"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 5"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 5"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 5"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 5" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 5" \[6\] "IsBank SOURCE\_ENERGY FINALWT 5"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 6"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 6"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 6"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 6" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 6" \[6\] "IsBank SOURCE\_ENERGY FINALWT 6"
-\[1\] "SQFT SOURCE\_ENERGY FINALWT 6"
-\[2\] "WKHRS SOURCE\_ENERGY FINALWT 6"
-\[3\] "NWKER\_SQFT SOURCE\_ENERGY FINALWT 6"
-\[4\] "PCTERMN\_SQFT SOURCE\_ENERGY FINALWT 6" \[5\] "CDD65\_COOLP SOURCE\_ENERGY FINALWT 6" \[6\] "IsBank SOURCE\_ENERGY FINALWT 6"
-
-``` r
 write.csv(allMetrics, 
           paste0(results_dir, building_type, ".csv"), 
           row.names = F)
@@ -878,7 +794,7 @@ XGBoost.predict <- function(data, x, y, w, search) {
   
   for (intr in 1:intr_depth) {
     
-    print(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
+    cat(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
     
     xgfit = XGBoost(xdata, ydata, wt, 
                     search = search, 
@@ -943,15 +859,6 @@ XGBoost.predict <- function(data, x, y, w, search) {
 
 ``` r
 library(doParallel)
-```
-
-    Loading required package: foreach
-
-    Loading required package: iterators
-
-    Loading required package: parallel
-
-``` r
 ncore = 4
 registerDoParallel(cores = ncore)
 ```
@@ -967,7 +874,7 @@ search = "default"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:48:03 xgboost default SOURCE\_EUI 1 " \[1\] "2019-06-10 12:48:10 xgboost default SOURCE\_EUI 2 " \[1\] "2019-06-10 12:48:13 xgboost default SOURCE\_EUI 3 "
+2019-06-10 15:54:44 xgboost default SOURCE\_EUI 1 2019-06-10 15:55:32 xgboost default SOURCE\_EUI 2 2019-06-10 15:55:35 xgboost default SOURCE\_EUI 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -992,7 +899,7 @@ search = "grid"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:48:16 xgboost grid SOURCE\_EUI 1 " \[1\] "2019-06-10 12:49:07 xgboost grid SOURCE\_EUI 2 " \[1\] "2019-06-10 12:50:04 xgboost grid SOURCE\_EUI 3 "
+2019-06-10 15:55:38 xgboost grid SOURCE\_EUI 1 2019-06-10 15:56:19 xgboost grid SOURCE\_EUI 2 2019-06-10 15:57:17 xgboost grid SOURCE\_EUI 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1002,9 +909,9 @@ knitr::kable(xgbMetrics, row.names = F)
 
 | model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|     rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|--------:|-------:|------:|-----------:|-------------:|------------:|----------:|
-| XGBg1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.253|    0.250|  15313.10|  123.746|  75.849|  0.553|     102.253|         9.977|       67.982|     95.733|
-| XGBg2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.200|    0.196|  15536.63|  124.646|  74.713|  0.532|     102.996|        10.050|       68.476|     96.429|
-| XGBg3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.359|    0.356|  13369.09|  115.625|  69.675|  0.510|      95.542|         9.322|       63.520|     89.450|
+| XGBg1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.220|    0.216|  15053.56|  122.693|  74.255|  0.553|     101.382|         9.892|       67.403|     94.918|
+| XGBg2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.230|    0.226|  14354.27|  119.809|  72.784|  0.547|      98.999|         9.660|       65.819|     92.687|
+| XGBg3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.259|    0.255|  13906.23|  117.925|  71.191|  0.515|      97.443|         9.508|       64.784|     91.229|
 
 ##### Using adaptive search
 
@@ -1017,7 +924,7 @@ search = "adaptive"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:51:15 xgboost adaptive SOURCE\_EUI 1 " \[1\] "2019-06-10 12:51:33 xgboost adaptive SOURCE\_EUI 2 " \[1\] "2019-06-10 12:51:43 xgboost adaptive SOURCE\_EUI 3 "
+2019-06-10 15:58:42 xgboost adaptive SOURCE\_EUI 1 2019-06-10 15:58:59 xgboost adaptive SOURCE\_EUI 2 2019-06-10 15:59:28 xgboost adaptive SOURCE\_EUI 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1025,11 +932,11 @@ allMetrics = rbind(allMetrics, xgbMetrics)
 knitr::kable(xgbMetrics, row.names = F)
 ```
 
-| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|       mse|    rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
-|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|---------:|-------:|-------:|------:|-----------:|-------------:|------------:|----------:|
-| XGBa1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.700|    0.699|  8590.282|  92.684|  58.027|  0.418|      76.586|         7.473|       50.917|     71.702|
-| XGBa2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.840|    0.839|  7836.697|  88.525|  49.454|  0.346|      73.149|         7.137|       48.633|     68.485|
-| XGBa3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.999|    0.999|   195.459|  13.981|   7.418|  0.051|      11.553|         1.127|        7.681|     10.816|
+| model | dependent   |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|        mse|     rmse|     mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:------------|------------:|:----------|----:|-----:|-----:|------:|--------:|----------:|--------:|-------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBa1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.402|    0.399|  13388.571|  115.709|  69.577|  0.503|      95.611|         9.329|       63.566|     89.515|
+| XGBa2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  1.000|    1.000|     57.746|    7.599|   2.633|  0.017|       6.279|         0.613|        4.175|      5.879|
+| XGBa3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.586|    0.584|   9080.911|   95.294|  57.537|  0.415|      78.742|         7.683|       52.351|     73.721|
 
 ##### Using random search
 
@@ -1042,7 +949,7 @@ search = "random"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:52:05 xgboost random SOURCE\_EUI 1 " \[1\] "2019-06-10 12:53:09 xgboost random SOURCE\_EUI 2 " \[1\] "2019-06-10 12:53:48 xgboost random SOURCE\_EUI 3 "
+2019-06-10 15:59:52 xgboost random SOURCE\_EUI 1 2019-06-10 16:00:21 xgboost random SOURCE\_EUI 2 2019-06-10 16:01:12 xgboost random SOURCE\_EUI 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1065,15 +972,15 @@ knitr::kable(allMetrics0, row.names = F)
 | XGBd1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.250|    0.247|  14835.734|  121.802|  73.639|  0.543|     100.646|         9.820|       66.914|     94.229|
 | XGBd2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.601|    0.599|  11366.735|  106.615|  63.407|  0.458|      88.097|         8.596|       58.571|     82.480|
 | XGBd3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.845|    0.844|   7138.016|   84.487|  48.384|  0.341|      69.812|         6.812|       46.414|     65.361|
-| XGBg1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.253|    0.250|  15313.098|  123.746|  75.849|  0.553|     102.253|         9.977|       67.982|     95.733|
-| XGBg2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.200|    0.196|  15536.629|  124.646|  74.713|  0.532|     102.996|        10.050|       68.476|     96.429|
-| XGBg3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.359|    0.356|  13369.087|  115.625|  69.675|  0.510|      95.542|         9.322|       63.520|     89.450|
-| XGBa1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.700|    0.699|   8590.282|   92.684|  58.027|  0.418|      76.586|         7.473|       50.917|     71.702|
-| XGBa2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.840|    0.839|   7836.697|   88.525|  49.454|  0.346|      73.149|         7.137|       48.633|     68.485|
-| XGBa3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.999|    0.999|    195.459|   13.981|   7.418|  0.051|      11.553|         1.127|        7.681|     10.816|
-| XGBr1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  1.000|    1.000|      0.151|    0.388|   0.050|  0.000|       0.321|         0.031|        0.213|      0.300|
-| XGBr2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.239|    0.235|  14637.051|  120.984|  72.808|  0.535|      99.970|         9.754|       66.464|     93.596|
-| XGBr3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.950|    0.950|   2814.409|   53.051|  32.735|  0.231|      43.837|         4.277|       29.144|     41.041|
+| XGBg1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.220|    0.216|  15053.559|  122.693|  74.255|  0.553|     101.382|         9.892|       67.403|     94.918|
+| XGBg2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.230|    0.226|  14354.266|  119.809|  72.784|  0.547|      98.999|         9.660|       65.819|     92.687|
+| XGBg3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.259|    0.255|  13906.232|  117.925|  71.191|  0.515|      97.443|         9.508|       64.784|     91.229|
+| XGBa1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.402|    0.399|  13388.571|  115.709|  69.577|  0.503|      95.611|         9.329|       63.566|     89.515|
+| XGBa2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  1.000|    1.000|     57.746|    7.599|   2.633|  0.017|       6.279|         0.613|        4.175|      5.879|
+| XGBa3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  0.586|    0.584|   9080.911|   95.294|  57.537|  0.415|      78.742|         7.683|       52.351|     73.721|
+| XGBr1 | SOURCE\_EUI |            1| None      |  882|     5|     5|  0.306|    0.303|  14371.411|  119.881|  72.745|  0.530|      99.059|         9.665|       65.858|     92.742|
+| XGBr2 | SOURCE\_EUI |            2| None      |  882|     5|     5|  0.678|    0.677|  10240.886|  101.197|  60.086|  0.434|      83.620|         8.159|       55.594|     78.288|
+| XGBr3 | SOURCE\_EUI |            3| None      |  882|     5|     5|  1.000|    1.000|      2.822|    1.680|   0.207|  0.001|       1.388|         0.135|        0.923|      1.300|
 
 #### Using SOURCE\_ENERGY as dependent variable
 
@@ -1088,7 +995,7 @@ search = "default"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:54:34 xgboost default SOURCE\_ENERGY 1 " \[1\] "2019-06-10 12:54:36 xgboost default SOURCE\_ENERGY 2 " \[1\] "2019-06-10 12:54:39 xgboost default SOURCE\_ENERGY 3 "
+2019-06-10 16:02:12 xgboost default SOURCE\_ENERGY 1 2019-06-10 16:02:15 xgboost default SOURCE\_ENERGY 2 2019-06-10 16:02:17 xgboost default SOURCE\_ENERGY 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1113,7 +1020,7 @@ search = "grid"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:54:42 xgboost grid SOURCE\_ENERGY 1 " \[1\] "2019-06-10 12:55:22 xgboost grid SOURCE\_ENERGY 2 " \[1\] "2019-06-10 12:56:19 xgboost grid SOURCE\_ENERGY 3 "
+2019-06-10 16:02:21 xgboost grid SOURCE\_ENERGY 1 2019-06-10 16:03:09 xgboost grid SOURCE\_ENERGY 2 2019-06-10 16:04:17 xgboost grid SOURCE\_ENERGY 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1123,9 +1030,9 @@ knitr::kable(xgbMetrics, row.names = F)
 
 | model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|      rmse|      mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
 |:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|---------:|--------:|------:|-----------:|-------------:|------------:|----------:|
-| XGBg1 | SOURCE\_ENERGY |            1| None      |  882|     5|     5|  0.609|    0.607|  9.439666e+14|  30724040|  8081383|  1.434|     141.362|         3.525|      151.723|     67.530|
-| XGBg2 | SOURCE\_ENERGY |            2| None      |  882|     5|     5|  0.807|    0.806|  3.348046e+14|  18297667|  6551068|  1.088|      84.188|         2.099|       90.358|     40.218|
-| XGBg3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.873|    0.872|  2.326485e+14|  15252820|  6053779|  0.800|      70.178|         1.750|       75.322|     33.525|
+| XGBg1 | SOURCE\_ENERGY |            1| None      |  882|     5|     5|  0.641|    0.640|  8.854970e+14|  29757302|  7819448|  1.270|     136.914|         3.414|      146.949|     65.405|
+| XGBg2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.788|    0.786|  4.506301e+14|  21228050|  7013302|  0.925|      97.670|         2.436|      104.829|     46.658|
+| XGBg3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.900|    0.900|  1.912469e+14|  13829204|  5389836|  0.761|      63.628|         1.587|       68.292|     30.396|
 
 ##### Using adaptive search
 
@@ -1138,7 +1045,7 @@ search = "adaptive"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:57:32 xgboost adaptive SOURCE\_ENERGY 1 " \[1\] "2019-06-10 12:58:09 xgboost adaptive SOURCE\_ENERGY 2 " \[1\] "2019-06-10 12:58:31 xgboost adaptive SOURCE\_ENERGY 3 "
+2019-06-10 16:05:43 xgboost adaptive SOURCE\_ENERGY 1 2019-06-10 16:05:59 xgboost adaptive SOURCE\_ENERGY 2 2019-06-10 16:06:48 xgboost adaptive SOURCE\_ENERGY 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1146,11 +1053,11 @@ allMetrics = rbind(allMetrics, xgbMetrics)
 knitr::kable(xgbMetrics, row.names = F)
 ```
 
-| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|      rmse|      mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
-|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|---------:|--------:|------:|-----------:|-------------:|------------:|----------:|
-| XGBa1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.995|    0.995|  2.260676e+13|   4754657|  1590267|  0.490|      21.876|         0.546|       23.480|     10.451|
-| XGBa2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.902|    0.901|  2.012845e+14|  14187477|  5662406|  1.049|      65.277|         1.628|       70.061|     31.183|
-| XGBa3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.885|    0.885|  2.132728e+14|  14603863|  5794470|  0.798|      67.192|         1.676|       72.117|     32.099|
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|      rmse|        mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|---------:|----------:|------:|-----------:|-------------:|------------:|----------:|
+| XGBa1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.814|    0.813|  3.812431e+14|  19525449|  6288348.9|  0.817|      89.837|         2.240|       96.421|     42.916|
+| XGBa2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.897|    0.897|  1.857516e+14|  13629073|  5586346.5|  0.780|      62.707|         1.564|       67.304|     29.956|
+| XGBa3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  1.000|    1.000|  4.903393e+12|   2214361|   402797.6|  0.163|      10.188|         0.254|       10.935|      4.867|
 
 ##### Using random search
 
@@ -1163,7 +1070,7 @@ search = "random"
 xgbMetrics = XGBoost.predict(data, x, y, w, search)
 ```
 
-\[1\] "2019-06-10 12:58:46 xgboost random SOURCE\_ENERGY 1 " \[1\] "2019-06-10 12:59:45 xgboost random SOURCE\_ENERGY 2 " \[1\] "2019-06-10 13:00:32 xgboost random SOURCE\_ENERGY 3 "
+2019-06-10 16:07:42 xgboost random SOURCE\_ENERGY 1 2019-06-10 16:08:37 xgboost random SOURCE\_ENERGY 2 2019-06-10 16:08:51 xgboost random SOURCE\_ENERGY 3
 
 ``` r
 allMetrics = rbind(allMetrics, xgbMetrics)
@@ -1176,26 +1083,26 @@ allMetrics0 = allMetrics %>% filter(dependent == y)
 knitr::kable(allMetrics0, row.names = F)
 ```
 
-| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|        rmse|         mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
-|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|-----------:|-----------:|------:|-----------:|-------------:|------------:|----------:|
-| MLR   | SOURCE\_ENERGY |            1| meanCent  |  882|     7|     7|  0.653|    0.650|  9.244025e+14|  30403987.7|  7855736.67|  1.207|     139.889|         3.489|      150.142|     66.827|
-| MLR   | SOURCE\_ENERGY |            2| meanCent  |  882|    22|    22|  0.684|    0.676|  8.322307e+14|  28848409.8|  7421791.51|  0.858|     132.732|         3.310|      142.460|     63.408|
-| MLR   | SOURCE\_ENERGY |            3| meanCent  |  882|    42|    42|  0.704|    0.689|  7.771532e+14|  27877468.2|  7460930.95|  1.039|     128.264|         3.199|      137.666|     61.274|
-| MLR   | SOURCE\_ENERGY |            4| meanCent  |  882|    57|    57|  0.723|    0.704|  7.038205e+14|  26529615.8|  6967648.46|  0.952|     122.063|         3.044|      131.010|     58.311|
-| MLR   | SOURCE\_ENERGY |            5| meanCent  |  882|    63|    63|  0.725|    0.705|  7.046253e+14|  26544778.4|  6866006.73|  0.962|     122.133|         3.046|      131.085|     58.344|
-| MLR   | SOURCE\_ENERGY |            6| meanCent  |  882|    64|    64|  0.725|    0.704|  7.046189e+14|  26544657.7|  6865841.49|  0.961|     122.132|         3.046|      131.084|     58.344|
-| XGBd1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.690|    0.688|  8.381887e+14|  28951489.4|  7747799.72|  0.772|     133.206|         3.322|      142.970|     63.634|
-| XGBd2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.925|    0.924|  1.619283e+14|  12725106.3|  4972673.47|  0.651|      58.548|         1.460|       62.840|     27.969|
-| XGBd3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.982|    0.982|  3.330192e+13|   5770781.9|  2729109.62|  0.481|      26.551|         0.662|       28.498|     12.684|
-| XGBg1 | SOURCE\_ENERGY |            1| None      |  882|     5|     5|  0.609|    0.607|  9.439666e+14|  30724039.5|  8081383.19|  1.434|     141.362|         3.525|      151.723|     67.530|
-| XGBg2 | SOURCE\_ENERGY |            2| None      |  882|     5|     5|  0.807|    0.806|  3.348046e+14|  18297667.1|  6551068.42|  1.088|      84.188|         2.099|       90.358|     40.218|
-| XGBg3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.873|    0.872|  2.326485e+14|  15252819.7|  6053778.60|  0.800|      70.178|         1.750|       75.322|     33.525|
-| XGBa1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.995|    0.995|  2.260676e+13|   4754657.0|  1590267.46|  0.490|      21.876|         0.546|       23.480|     10.451|
-| XGBa2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.902|    0.901|  2.012845e+14|  14187477.3|  5662406.05|  1.049|      65.277|         1.628|       70.061|     31.183|
-| XGBa3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.885|    0.885|  2.132728e+14|  14603862.8|  5794469.86|  0.798|      67.192|         1.676|       72.117|     32.099|
-| XGBr1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  1.000|    1.000|  2.757245e+11|    525094.7|    54014.65|  0.012|       2.416|         0.060|        2.593|      1.154|
-| XGBr2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.979|    0.979|  3.846627e+13|   6202118.2|  2895028.48|  0.801|      28.536|         0.712|       30.628|     13.632|
-| XGBr3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.995|    0.995|  2.751108e+13|   5245101.0|  1513824.88|  0.357|      24.133|         0.602|       25.902|     11.529|
+| model | dependent      |  interaction| transform |  obs|  rank|  coef|    R.2|  Adj.R.2|           mse|          rmse|          mae|   mape|  nrmse\_iqr|  nrmse\_range|  nrmse\_mean|  nrmse\_sd|
+|:------|:---------------|------------:|:----------|----:|-----:|-----:|------:|--------:|-------------:|-------------:|------------:|------:|-----------:|-------------:|------------:|----------:|
+| MLR   | SOURCE\_ENERGY |            1| meanCent  |  882|     7|     7|  0.653|    0.650|  9.244025e+14|  30403987.719|  7855736.665|  1.207|     139.889|         3.489|      150.142|     66.827|
+| MLR   | SOURCE\_ENERGY |            2| meanCent  |  882|    22|    22|  0.684|    0.676|  8.322307e+14|  28848409.803|  7421791.508|  0.858|     132.732|         3.310|      142.460|     63.408|
+| MLR   | SOURCE\_ENERGY |            3| meanCent  |  882|    42|    42|  0.704|    0.689|  7.771532e+14|  27877468.217|  7460930.945|  1.039|     128.264|         3.199|      137.666|     61.274|
+| MLR   | SOURCE\_ENERGY |            4| meanCent  |  882|    57|    57|  0.723|    0.704|  7.038205e+14|  26529615.772|  6967648.464|  0.952|     122.063|         3.044|      131.010|     58.311|
+| MLR   | SOURCE\_ENERGY |            5| meanCent  |  882|    63|    63|  0.725|    0.705|  7.046253e+14|  26544778.368|  6866006.733|  0.962|     122.133|         3.046|      131.085|     58.344|
+| MLR   | SOURCE\_ENERGY |            6| meanCent  |  882|    64|    64|  0.725|    0.704|  7.046189e+14|  26544657.659|  6865841.488|  0.961|     122.132|         3.046|      131.084|     58.344|
+| XGBd1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.690|    0.688|  8.381887e+14|  28951489.428|  7747799.720|  0.772|     133.206|         3.322|      142.970|     63.634|
+| XGBd2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.925|    0.924|  1.619283e+14|  12725106.274|  4972673.475|  0.651|      58.548|         1.460|       62.840|     27.969|
+| XGBd3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.982|    0.982|  3.330192e+13|   5770781.904|  2729109.618|  0.481|      26.551|         0.662|       28.498|     12.684|
+| XGBg1 | SOURCE\_ENERGY |            1| None      |  882|     5|     5|  0.641|    0.640|  8.854970e+14|  29757301.919|  7819448.064|  1.270|     136.914|         3.414|      146.949|     65.405|
+| XGBg2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.788|    0.786|  4.506301e+14|  21228050.123|  7013301.565|  0.925|      97.670|         2.436|      104.829|     46.658|
+| XGBg3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  0.900|    0.900|  1.912469e+14|  13829204.418|  5389836.267|  0.761|      63.628|         1.587|       68.292|     30.396|
+| XGBa1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.814|    0.813|  3.812431e+14|  19525448.646|  6288348.885|  0.817|      89.837|         2.240|       96.421|     42.916|
+| XGBa2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.897|    0.897|  1.857516e+14|  13629073.421|  5586346.519|  0.780|      62.707|         1.564|       67.304|     29.956|
+| XGBa3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  1.000|    1.000|  4.903393e+12|   2214360.721|   402797.590|  0.163|      10.188|         0.254|       10.935|      4.867|
+| XGBr1 | SOURCE\_ENERGY |            1| None      |  882|     6|     6|  0.836|    0.836|  3.216893e+14|  17935700.360|  6289023.807|  0.832|      82.522|         2.058|       88.571|     39.422|
+| XGBr2 | SOURCE\_ENERGY |            2| None      |  882|     6|     6|  0.711|    0.709|  8.095667e+14|  28452884.757|  7429447.142|  0.955|     130.912|         3.265|      140.507|     62.538|
+| XGBr3 | SOURCE\_ENERGY |            3| None      |  882|     6|     6|  1.000|    1.000|  6.777279e+07|      8232.423|      572.932|  0.000|       0.038|         0.001|        0.041|      0.018|
 
 ### Comparision of XGB models
 

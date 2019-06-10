@@ -639,7 +639,7 @@ XGBoost.predict <- function(data, x, y, w, search) {
   
   for (intr in 1:intr_depth) {
     
-    print(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
+    cat(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
     
     xgfit = XGBoost(xdata, ydata, wt, 
                     search = search, 

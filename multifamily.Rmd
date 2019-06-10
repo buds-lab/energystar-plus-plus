@@ -206,7 +206,7 @@ features = data %>%
   dplyr::rename(SITE_EUI = Site.EUIusing.Total.gross.floor.area) %>%
   dplyr::rename(SOURCE_EUI = Source.EUI.using.Total.gross.floor.area) %>%
   dplyr::rename(FINALWT = Survey.Weights.for.ENERGY.STAR.score.analysis) %>%
-  dplyr::select(-c(SQFT, SITE_EUI, SITE_ENERGY))
+  dplyr::select(-c(SITE_EUI, SITE_ENERGY))
 
 #summary(features)
 features = features %>% na.omit()
@@ -257,107 +257,126 @@ dfSummary(features1, plain.ascii = FALSE, style = "grid",
 ```
 
 
+
 ## Build predictive models
 
 ```{r}
-source("models.R")
+#source("models.R")
 source("metrics.R")
 
 data = read.csv(paste0(features_dir, building_type, ".csv"))
 
-cat(colnames(data))
-
 allMetrics = NULL
+
+sourceEUI_attributes = setdiff(colnames(data),
+                               c("SQFT", "FINALWT", "SOURCE_EUI", "SOURCE_ENERGY"))
+
+sourceEnergy_attributes = setdiff(colnames(data), 
+                               c("FINALWT", "SOURCE_EUI", "SOURCE_ENERGY"))
+#cat(colnames(data))
+knitr::kable(colnames(data), col.names = NULL)
 
 ```
 
 
 ### Multiple Linear Regression (MLR)
 
-#### Using SOURCE_EUI as dependent variable
 ```{r}
-y = "SOURCE_EUI"
-w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-intr = 1
+MLR.fit <- function(data, 
+                    x, 
+                    y, 
+                    w, 
+                    interaction,
+                    centering = TRUE 
+                    ) {
+  
+  if(centering == TRUE){
+    data = mean_center_data(data, x)  
+  }
+  
+  if(interaction == 1) {  ### ordinary model
+    model = paste(y, "~", paste(x, collapse = " + "))  
+  } else {  ### interaction model
+    allvars = paste(x, collapse = " + ")
+    model = paste(y, "~ (", allvars, ") ^", interaction )
+  }
+  
+  fit = lm(model, data = data, weights = data[, w])
+  return (fit)
+}
 
-mlrFit = MLR(data, x, y, w, interaction = intr)
-
-obs  = data[, y]
-pred = as.numeric(predict(mlrFit))
-
-mlrMetrics1 = getMLRmetrics(mlrFit, obs, pred, wt)
-mlrMetrics1 = data.frame(
-  "model" = "MLR",
-  "dependent" = y,
-  "interaction" = intr,
-  "transform" = "meanCent",
-  mlrMetrics1)
-
-allMetrics = rbind(allMetrics, mlrMetrics1)
-
-knitr::kable(mlrMetrics1, row.names = F)
+MLR.predict <- function(data, x, y, w, i) {
+  
+  mlrFit = MLR.fit(data, x, y, w, i)
+  
+  wt   = data[, w]
+  obs  = data[, y]
+  pred = as.numeric(predict(mlrFit))
+  
+  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
+  mlrMetrics = data.frame(
+    "model" = "MLR",
+    "dependent" = y,
+    "interaction" = i,
+    "transform" = "meanCent",
+    mlrMetrics)
+  
+  return(mlrMetrics)
+}
 
 ```
 
-#### Using SOURCE_ENERGY as dependent variable**
+
+#### Using SOURCE_EUI as dependent variable
 ```{r}
-y = "SOURCE_ENERGY"
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
 w = "FINALWT"
-o = c("SOURCE_EUI")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
-intr = 1
+interaction = 1
 
-mlrFit = MLR(data, x, y, w, interaction = intr)
+mlrMetrics = MLR.predict(data, x, y, w, interaction)
 
-obs  = data[, y]
-pred = as.numeric(predict(mlrFit))
+allMetrics = rbind(allMetrics, mlrMetrics)
 
-mlrMetrics2 = getMLRmetrics(mlrFit, obs, pred, wt)
-mlrMetrics2 = data.frame(
-  "model" = "MLR",
-  "dependent" = y,
-  "interaction" = intr,
-  "transform" = "meanCent",
-  mlrMetrics2)
-allMetrics = rbind(allMetrics, mlrMetrics2)
 knitr::kable(allMetrics, row.names = F)
 
 ```
 
+
+#### Using SOURCE_ENERGY as dependent variable
+```{r}
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+interaction = 1
+
+mlrMetrics = MLR.predict(data, x, y, w, interaction)
+
+allMetrics = rbind(allMetrics, mlrMetrics)
+
+knitr::kable(allMetrics, row.names = F)
+
+```
 
 
 ### Multiple Linear Regression (MLR) with Interaction terms
 
 #### Using SOURCE_EUI as dependent variable
 ```{r}
+x = sourceEUI_attributes
 y = "SOURCE_EUI"
 w = "FINALWT"
-o = c("SOURCE_ENERGY", "SQFT")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
 
 intr_depth = length(x)
 
-for (intr in 2:intr_depth) {
-  
-  mlrFit = MLR(data, x, y, w, interaction = intr)
-  obs  = data[, y]
-  pred = as.numeric(predict(mlrFit))
-  
-  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
-  mlrMetrics = data.frame(
-    "model" = paste0("MLRi", intr),
-    "dependent" = y,
-    "interaction" = intr,
-    "transform" = "meanCent",
-    mlrMetrics)
-  
+for (interaction in 2:intr_depth) {
+  mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
 
 allMetrics0 = allMetrics %>% filter(dependent == y)
 knitr::kable(allMetrics0, row.names = F)
@@ -366,27 +385,14 @@ knitr::kable(allMetrics0, row.names = F)
 
 #### Using SOURCE_ENERGY as dependent variable**
 ```{r}
+x = sourceEnergy_attributes
 y = "SOURCE_ENERGY"
 w = "FINALWT"
-o = c("SOURCE_EUI")
-x = setdiff(colnames(data), c(y, w, o))
-wt = data[, w]
+
 intr_depth = length(x)
 
-for (intr in 2:intr_depth) {
-  
-  mlrFit = MLR(data, x, y, w, interaction = intr)
-  obs  = data[, y]
-  pred = as.numeric(predict(mlrFit))
-  
-  mlrMetrics = getMLRmetrics(mlrFit, obs, pred, wt)
-  mlrMetrics = data.frame(
-    "model" = paste0("MLRi", intr),
-    "dependent" = y,
-    "interaction" = intr,
-    "transform" = "meanCent",
-    mlrMetrics)
-  
+for (interaction in 2:intr_depth) {
+  mlrMetrics = MLR.predict(data, x, y, w, interaction)
   allMetrics = rbind(allMetrics, mlrMetrics)
 }
 
@@ -466,6 +472,427 @@ allMetrics0 = allMetrics %>%
 
 plot1 = plotR2(allMetrics0, "MLR models using source energy")
 plot2 = plotNRMSE(allMetrics0, "MLR models using source energy")
+
+print(plot1)
+print(plot2)
+
+```
+
+
+
+### Gradient Boosted Trees (XGBoost)
+
+```{r}
+
+tuneXGBoost <- function(x,
+                        y,
+                        sample_weights,
+                        search = "default",
+                        tree_height = 2
+                        ) {
+  
+  N = 10  # N-fold CV
+  R = 2   # and R repeats
+  
+  tcDefault  <- trainControl(method = "repeatedcv", 
+                            number = N, 
+                            repeats = R)
+  
+  tcRandom   <- trainControl(method = "repeatedcv", 
+                            search = "random",
+                            number = N, 
+                            repeats = R)
+  
+  tcAdaptive <- trainControl(method = "adaptive_cv", 
+                            search = "random",
+                            number = N, 
+                            repeats = R,
+                            adaptive = list(min = 5, 
+                                            alpha = 0.05, 
+                                            method = "gls",
+                                            complete = TRUE))
+  
+  default_param = expand.grid(
+    nrounds = 100,
+    max_depth = tree_height,
+    eta = 0.3,
+    gamma = 0,
+    colsample_bytree = 1,
+    min_child_weight = 1,
+    subsample = 1)
+  
+  # from https://github.com/topepo/caret/blob/master/models/files/xgbTree.R
+  len = 10
+  grid_param <- expand.grid(
+    nrounds = floor((1:len) * 10),
+    max_depth = tree_height,
+    eta = c(.3, .4),
+    gamma = 0,
+    colsample_bytree = c(.6, .8),
+    min_child_weight = c(1),
+    subsample = seq(.25, 1, length = len))
+  
+  tuned = switch(search,
+                 "default" = train(x, y,
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   tuneGrid = default_param,
+                                   trControl = tcDefault,
+                                   verbose = TRUE),
+                 
+                 "grid"     = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   tuneGrid = grid_param,
+                                   trControl = tcDefault,
+                                   verbose = TRUE),
+
+                 "random"  = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   trControl = tcRandom,
+                                   verbose = TRUE),
+                 
+                 "adaptive" = train(x, y, 
+                                   weights = sample_weights,
+                                   method = "xgbTree", 
+                                   trControl = tcAdaptive,
+                                   verbose = TRUE)
+                 )
+  
+  return(tuned$finalModel)
+}
+
+XGBoost <- function( xdata, 
+                     ydata,
+                     sample_weights,
+                     search = "default",
+                     interaction = 2
+                     ) {
+  
+  model = paste(y, "~", paste(x, collapse = " + "))
+  dummy = dummyVars(model, data = data, fullRank = T)
+  
+  xdata = as.data.frame(predict(dummy, data))
+  ydata = data[, y]
+  
+  xgfit = tuneXGBoost(xdata, ydata, 
+                      sample_weights,
+                      search, 
+                      tree_height = interaction)
+  return(xgfit)
+} 
+
+
+XGBoost.predict <- function(data, x, y, w, search) {
+
+  model = paste(y, "~", paste(x, collapse = " + "))
+  dummy = dummyVars(model, data = data, fullRank = T)
+  xdata = as.data.frame(predict(dummy, data))
+  ydata = data[, y]
+  wt = data[, w]
+  
+  intr_depth = 3
+  
+  xgbMetricsAll = NULL
+  
+  for (intr in 1:intr_depth) {
+    
+    cat(paste(Sys.time(), "xgboost", search, y, intr, "\n"))
+    
+    xgfit = XGBoost(xdata, ydata, wt, 
+                    search = search, 
+                    interaction = intr)
+    
+    pred = as.numeric(predict(xgfit, as.matrix(xdata)))
+    
+    xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
+    
+    xgbMetrics = data.frame(
+      "model" = paste0("XGB", substr(search, 1,1), intr),
+      "dependent" = y, 
+      "interaction" = intr, 
+      "transform" = "None",
+      xgbMetrics)
+    
+    xgbMetricsAll = rbind(xgbMetricsAll, xgbMetrics)
+  }
+  
+  return(xgbMetricsAll)
+}
+
+```
+
+```{r}
+# y = "SOURCE_EUI"
+# w = "FINALWT"
+# o = c("SOURCE_ENERGY", "SQFT")
+# x = setdiff(colnames(data), c(y, w, o))
+# wt = data[, w]
+# 
+# model = paste(y, "~", paste(x, collapse = " + "))
+# dummy = dummyVars(model, data = data, fullRank = T)
+# xdata = as.data.frame(predict(dummy, data))
+# ydata = data[, y]
+# intr_depth = 3
+# 
+# for (intr in 1:intr_depth) {
+#   
+#   print(paste(Sys.time(), "xgboost default search", y, intr, "\n"))
+#   
+#   xgfit = XGBoost(xdata, ydata, wt, 
+#                   search = "default", 
+#                   interaction = intr)
+#   
+#   pred = as.numeric(predict(xgfit, as.matrix(xdata)))
+#   
+#   xgbMetrics = getXgboostmetrics(xgfit, xdata, ydata, pred, wt)
+#   
+#   xgbMetrics = data.frame(
+#     "model" = paste0("XGBd", intr),
+#     "dependent" = y, 
+#     "interaction" = intr, 
+#     "transform" = "None",
+#     xgbMetrics)
+#   
+#   allMetrics = rbind(allMetrics, xgbMetrics)
+# }
+# knitr::kable(allMetrics, row.names = F)
+
+```
+
+#### Using SOURCE_EUI as dependent variable
+
+```{r, warning=FALSE}
+library(doParallel)
+ncore = 4
+registerDoParallel(cores = ncore)
+```
+
+##### Using default search
+```{r}
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "default"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+##### Using grid search
+```{r}
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "grid"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+
+##### Using adaptive search
+```{r}
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "adaptive"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+
+##### Using random search
+```{r}
+x = sourceEUI_attributes
+y = "SOURCE_EUI"
+w = "FINALWT"
+search = "random"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+
+```
+
+
+#### Using SOURCE_ENERGY as dependent variable
+
+
+##### Using default search
+```{r}
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "default"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+
+##### Using grid search
+```{r}
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "grid"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+
+##### Using adaptive search
+```{r}
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "adaptive"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+knitr::kable(xgbMetrics, row.names = F)
+
+```
+
+
+##### Using random search
+```{r}
+x = sourceEnergy_attributes
+y = "SOURCE_ENERGY"
+w = "FINALWT"
+search = "random"
+
+xgbMetrics = XGBoost.predict(data, x, y, w, search)
+allMetrics = rbind(allMetrics, xgbMetrics)
+
+write.csv(allMetrics, 
+          paste0(results_dir, building_type, ".csv"), 
+          row.names = F)
+
+allMetrics0 = allMetrics %>% filter(dependent == y)
+knitr::kable(allMetrics0, row.names = F)
+
+```
+
+
+
+
+### Comparision of XGB models
+
+```{r, warning=FALSE}
+plotXgbR2 <- function(df, titl) {
+  
+  plot <- ggplot(df, aes(x = interaction, y=Adj.R.2, 
+                          group=model, col=model)) + 
+    geom_point(size=2) + geom_line(size=1) +  
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank()) 
+
+  return(plot)
+}
+
+plotXgbNRMSE <- function(df, titl) {
+  
+  df1 = melt(df, measure.vars = c("nrmse_iqr", "nrmse_mean", 
+                                        "nrmse_sd"))
+  df1$variable = toupper(df1$variable)
+  plot <- ggplot(df1, aes(x = interaction, y=value, 
+                          group=variable, col=variable)) + 
+  geom_point(size=2) + geom_line(size=1) +
+    facet_wrap(. ~ model, scales = "fixed", nrow=2) + 
+    ggtitle(titl) + 
+    theme_pubr(base_size=12) +
+    theme(legend.position="top", legend.title = element_blank()) + 
+    theme(strip.placement = "outside", strip.background = element_blank())
+  
+  return(plot)
+}
+```
+
+#### XGB plots using Source EUI
+```{r}
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_EUI")
+
+plot1 = plotXgbR2(allMetrics0, "XGB models using source EUI")
+plot2 = plotXgbNRMSE(allMetrics0, "XGB models using source EUI")
+
+print(plot1)
+print(plot2)
+
+```
+
+#### XGB plots using Source Energy
+```{r}
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_ENERGY")
+
+plot1 = plotXgbR2(allMetrics0, "XGB models using source energy")
+plot2 = plotXgbNRMSE(allMetrics0, "XGB models using source energy")
+
+print(plot1)
+print(plot2)
+
+```
+
+
+### Comparision between MLR and XGB models
+
+#### MLR and XGB plots using Source EUI
+```{r}
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  #filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_EUI")
+
+plot1 = plotXgbR2(allMetrics0, "Comparison MLR and XGB models using source EUI")
+plot2 = plotXgbNRMSE(allMetrics0, "Comparison MLR and XGB models using source EUI")
+
+print(plot1)
+print(plot2)
+
+```
+
+#### MLR and XGB plots using Source Energy
+```{r}
+allMetrics0 = allMetrics %>%
+  mutate(model = substr(model, 1, 4)) %>%
+  #filter(stringr::str_detect(model, "XGB")) %>%
+  filter(dependent == "SOURCE_ENERGY")
+
+plot1 = plotXgbR2(allMetrics0, "Comparison MLR and XGB models using source energy")
+plot2 = plotXgbNRMSE(allMetrics0, "Comparison MLR and XGB models using source energy")
 
 print(plot1)
 print(plot2)
